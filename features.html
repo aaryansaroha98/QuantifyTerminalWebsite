@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Feature inventory for Quantify Terminal covering market data, command screens, Python workflows, and risk analytics.">
+  <title>Features | Quantify Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary navigation">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Open-Source Indian Markets Terminal</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">&#9776;</button>
+
+        <ul class="nav-links" id="primary-menu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link active" href="features.html">Features</a></li>
+          <li><a class="nav-link" href="documentation.html">Documentation</a></li>
+          <li><a class="nav-link" href="download.html">Download</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub <span class="ext-icon" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero reveal">
+      <div class="container">
+        <span class="section-label">01 / Features</span>
+        <h1>Feature Inventory<span class="terminal-cursor">█</span></h1>
+        <p>All modules are organized for command-first analysis on Indian markets.</p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">02 / Capability Grid</span>
+        <h2>Core modules in the current build.</h2>
+        <div class="grid grid-3">
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">MD</span>
+            <h3>Market Data</h3>
+            <p>Live quotes, symbols, and index monitoring with direct links to chart and detail views.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">CF</span>
+            <h3>Command Flow</h3>
+            <p>Typed commands route directly to pricing, description, chart, and risk modules.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">PY</span>
+            <h3>Python Runtime</h3>
+            <p>Script research logic using embedded Python APIs and local workspace data.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">RS</span>
+            <h3>Risk Snapshot</h3>
+            <p>Position and exposure metrics are calculated in one view for review before execution.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">AL</span>
+            <h3>Alerts</h3>
+            <p>Condition rules support threshold notifications across symbols and index instruments.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">DB</span>
+            <h3>Local Storage</h3>
+            <p>Layouts and watchlists are saved locally for repeatable desk setup.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">03 / Screen Inventory</span>
+        <h2>Available screens and their role.</h2>
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;" class="table-wrap">
+          <table aria-label="Screen inventory table">
+            <thead>
+              <tr>
+                <th>Screen</th>
+                <th>Category</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Quote Board</td><td>Market Monitoring</td><td>Tracks selected symbols with live last price, change, and volume.</td></tr>
+              <tr><td>Index Monitor</td><td>Market Monitoring</td><td>Shows broad index movement and market breadth at a glance.</td></tr>
+              <tr><td>Company Snapshot</td><td>Research</td><td>Displays summary fundamentals and key instrument metadata.</td></tr>
+              <tr><td>Chart Workbench</td><td>Technical Views</td><td>Loads multi-timeframe charts with indicator overlays and drawing tools.</td></tr>
+              <tr><td>News Feed</td><td>Research</td><td>Lists latest instrument-linked headlines for event context.</td></tr>
+              <tr><td>Position Book</td><td>Portfolio</td><td>Aggregates holdings, fills, and current P&amp;L for open positions.</td></tr>
+              <tr><td>Risk Monitor</td><td>Portfolio</td><td>Summarizes exposure, concentration, and daily limit checks.</td></tr>
+              <tr><td>Python Console</td><td>Automation</td><td>Runs custom scripts against terminal data and workspace state.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">04 / Workflow Detail</span>
+        <h2>Examples of terminal-style session output.</h2>
+
+        <article class="deep-dive">
+          <div class="deep-dive-layout">
+            <div>
+              <h3>Command Routing</h3>
+              <p>The command parser maps each token to a module and returns a deterministic view. This keeps navigation short during active sessions.</p>
+            </div>
+            <div class="output-panel" aria-label="Command routing output">
+              <div class="panel-header"><span>COMMAND OUTPUT</span><span>ROUTE LOG</span></div>
+              <div class="output-body">
+                <div class="output-line">&gt; RELIANCE:IN EQUITY GP</div>
+                <div class="output-line">MODULE: PRICE SNAPSHOT</div>
+                <div class="output-line">LAST: 2948.60 | CHG: +32.25 | VOL: 5.8M</div>
+                <div class="output-line">NEXT: DES | HP | NEWS</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="deep-dive">
+          <div class="deep-dive-layout">
+            <div>
+              <h3>Python Session</h3>
+              <p>The Python interpreter runs in-process, so data retrieval and calculations stay in one workspace context.</p>
+            </div>
+            <div class="code-block" aria-label="Python session output">
+              <div class="code-header">python_session.py</div>
+              <pre><code><span class="hl-cmd">&gt;&gt;&gt;</span> import qt
+<span class="hl-cmd">&gt;&gt;&gt;</span> df = qt.history("NIFTY:IN INDEX", period="3M")
+<span class="hl-cmd">&gt;&gt;&gt;</span> signal = df.close.pct_change().rolling(5).mean().iloc[-1]
+<span class="hl-cmd">&gt;&gt;&gt;</span> round(signal, 4)
+0.0032</code></pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="deep-dive">
+          <div class="deep-dive-layout">
+            <div>
+              <h3>Risk Summary</h3>
+              <p>Risk metrics are calculated in the same terminal session and can be checked before placing new orders.</p>
+            </div>
+            <div class="output-panel" aria-label="Risk snapshot output">
+              <div class="panel-header"><span>RISK SNAPSHOT</span><span>INR BASE</span></div>
+              <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <table class="output-table" aria-label="Risk metrics table">
+                  <thead>
+                    <tr><th>Metric</th><th>Value</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Daily P&amp;L</td><td class="positive">+₹42,800</td></tr>
+                    <tr><td>Max Drawdown</td><td class="negative">-3.9%</td></tr>
+                    <tr><td>Sharpe Ratio</td><td>1.42</td></tr>
+                    <tr><td>1D VaR (95%)</td><td>₹1,18,000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">05 / Comparison</span>
+        <h2>Quantify Terminal compared with common platforms.</h2>
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;" class="table-wrap">
+          <table aria-label="Comparison table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Quantify Terminal</th>
+                <th>Refinitiv Eikon</th>
+                <th>Broker Web Platform</th>
+                <th>Charting Platform</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Price</td>
+                <td>Free (MIT)</td>
+                <td>Subscription</td>
+                <td>Broker-linked</td>
+                <td>Freemium</td>
+              </tr>
+              <tr>
+                <td>NSE Data</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+              </tr>
+              <tr>
+                <td>Python Scripting</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+              </tr>
+              <tr>
+                <td>Command Interface</td>
+                <td class="yes">Yes</td>
+                <td class="yes">Yes</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+              </tr>
+              <tr>
+                <td>Open Source</td>
+                <td class="yes">Yes</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+                <td class="no">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-banner reveal">
+      <div class="container">
+        <span class="section-label">06 / Next Step</span>
+        <h2>Open the documentation and run a local setup.</h2>
+        <a class="btn" href="documentation.html">Open Documentation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Indian Markets. Open Source.</span>
+          </span>
+        </a>
+        <p>Desktop infrastructure for trading and research workflows in Indian markets.</p>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="download.html#changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="documentation.html">Docs</a></li>
+            <li><a href="documentation.html#api-reference">API Reference</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:quantifyterminal@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Quantify Terminal · Built by Aaryan · IIT Jammu · MIT License</p>
+    </div>
+  </footer>
+</body>
+</html>

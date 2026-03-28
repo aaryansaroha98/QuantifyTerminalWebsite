@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Download Quantify Terminal source archives and build from source for Windows, macOS, and Linux.">
+  <title>Download | Quantify Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary navigation">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Open-Source Indian Markets Terminal</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">&#9776;</button>
+
+        <ul class="nav-links" id="primary-menu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="features.html">Features</a></li>
+          <li><a class="nav-link" href="documentation.html">Documentation</a></li>
+          <li><a class="nav-link active" href="download.html">Download</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub <span class="ext-icon" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero reveal">
+      <div class="container">
+        <span class="section-label">01 / Downloads</span>
+        <h1>Source Release Download<span class="terminal-cursor">█</span></h1>
+        <p>Quantify Terminal currently ships as source code only. No pre-built binaries are published yet.</p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">02 / Release</span>
+        <h2>Build from source is the primary installation path.</h2>
+        <p class="download-meta">v1.0.0 · Released March 26, 2026 · Commit f1b3f18</p>
+        <div class="hero-ctas">
+          <a class="btn" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases" target="_blank" rel="noopener noreferrer">Open Release Assets</a>
+          <a class="link-cta" href="https://github.com/Quantify-Terminal/qt/archive/refs/tags/v1.0.0.tar.gz" target="_blank" rel="noopener noreferrer">Source code (.tar.gz)</a>
+          <a class="link-cta" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases" target="_blank" rel="noopener noreferrer">Open v1.0.0 Release Page</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">03 / Platform Build Notes</span>
+        <h2>Platform-specific source build entry points.</h2>
+        <div class="download-platforms">
+          <article class="download-platform">
+            <h3>Windows</h3>
+            <p class="download-file">Source package: qt-v1.0.0.zip</p>
+            <p class="download-req">Requires CMake, MSVC (C++20), Qt6, and Python 3.11.</p>
+            <a class="download-link" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases" target="_blank" rel="noopener noreferrer">Open Release Assets</a>
+          </article>
+
+          <article class="download-platform">
+            <h3>macOS</h3>
+            <p class="download-file">Source package: qt-v1.0.0.tar.gz</p>
+            <p class="download-req">Requires Xcode toolchain, CMake, Qt6, and Python 3.11.</p>
+            <a class="download-link" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases" target="_blank" rel="noopener noreferrer">Open Release Assets</a>
+          </article>
+
+          <article class="download-platform">
+            <h3>Linux</h3>
+            <p class="download-file">Source package: qt-v1.0.0.tar.gz</p>
+            <p class="download-req">Requires GCC/Clang (C++20), CMake, Qt6 dev packages, and Python 3.11.</p>
+            <a class="download-link" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases" target="_blank" rel="noopener noreferrer">Open Release Assets</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">04 / Build Command</span>
+        <h2>Canonical source build flow.</h2>
+        <div class="code-block">
+          <div class="code-header">setup.sh</div>
+          <pre><code><span class="hl-cmd">$</span> git clone <span class="hl-path">https://github.com/Quantify-Terminal/qt.git</span>
+<span class="hl-cmd">$</span> cd <span class="hl-path">qt</span>
+<span class="hl-cmd">$</span> git checkout <span class="hl-arg">f1b3f18</span>
+<span class="hl-cmd">$</span> cmake -B build -DCMAKE_BUILD_TYPE=Release
+<span class="hl-cmd">$</span> cmake --build build</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">05 / Requirements</span>
+        <h2>Minimum build requirements.</h2>
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;" class="table-wrap stack-mobile">
+          <table aria-label="Build requirements table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Minimum Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Component">OS</td><td data-label="Minimum Specification">Windows 10/11, macOS 12+, Ubuntu 20.04+ / Fedora 36+</td></tr>
+              <tr><td data-label="Component">Compiler</td><td data-label="Minimum Specification">C++20 toolchain (MSVC, GCC, or Clang)</td></tr>
+              <tr><td data-label="Component">Build Tool</td><td data-label="Minimum Specification">CMake 3.20 or newer</td></tr>
+              <tr><td data-label="Component">Qt</td><td data-label="Minimum Specification">Qt6 development libraries</td></tr>
+              <tr><td data-label="Component">Python</td><td data-label="Minimum Specification">Python 3.11</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal" id="changelog">
+      <div class="container">
+        <span class="section-label">06 / Changelog</span>
+        <h2>Release notes.</h2>
+        <ul class="changelog-list">
+          <li class="changelog-item card">
+            <div class="changelog-head">
+              <h3>v1.0.0</h3>
+              <p class="muted">March 26, 2026</p>
+            </div>
+            <ul>
+              <li>Published source release for build-from-source installation.</li>
+              <li>Tagged release at commit <code>f1b3f18</code>.</li>
+              <li>Published source archives as <code>.zip</code> and <code>.tar.gz</code>.</li>
+            </ul>
+          </li>
+
+          <li class="changelog-item card">
+            <div class="changelog-head">
+              <h3>v0.0.9 Preview</h3>
+              <p class="muted">February 11, 2026</p>
+            </div>
+            <ul>
+              <li>Improved NSE/BSE symbol lookup speed and reduced cold-start latency.</li>
+              <li>Added portfolio risk module with drawdown and VaR prototype metrics.</li>
+              <li>Expanded command help index with contextual examples.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="download-banner reveal">
+      <div class="container">
+        <span class="section-label">07 / Next Step</span>
+        <h2>Need build help?</h2>
+        <a class="btn" href="documentation.html">Open Setup Documentation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Indian Markets. Open Source.</span>
+          </span>
+        </a>
+        <p>Desktop infrastructure for trading and research workflows in Indian markets.</p>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="download.html#changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="documentation.html">Docs</a></li>
+            <li><a href="documentation.html#api-reference">API Reference</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:quantifyterminal@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Quantify Terminal · Built by Aaryan · IIT Jammu · MIT License</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quantify Terminal is an open-source desktop terminal for Indian markets, built in C++20 with Qt6 and Python.">
+  <title>Quantify Terminal | Open-Source Financial Terminal for India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary navigation">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Open-Source Indian Markets Terminal</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">&#9776;</button>
+
+        <ul class="nav-links" id="primary-menu">
+          <li><a class="nav-link active" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="features.html">Features</a></li>
+          <li><a class="nav-link" href="documentation.html">Documentation</a></li>
+          <li><a class="nav-link" href="download.html">Download</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub <span class="ext-icon" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-layout">
+        <div class="reveal">
+          <span class="section-label">01 / Overview</span>
+          <h1 class="hero-title">QUANTIFY TERMINAL<span class="terminal-cursor">█</span></h1>
+          <p class="hero-subtitle">Desktop terminal for NSE and BSE research, charting, and scripted workflows.</p>
+          <div class="hero-ctas">
+            <a class="btn" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases">Open Download Page</a>
+            <a class="link-cta" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">Open GitHub Repository</a>
+          </div>
+          <p class="version-badge">v1.0.0 source release</p>
+        </div>
+
+        <div class="terminal-panel reveal" aria-label="Illustrated market terminal panel">
+          <div class="terminal-topbar">
+            <span>NSE/BSE STREAM</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px;"><span class="live-dot" aria-hidden="true"></span>LIVE</span>
+          </div>
+          <div class="terminal-body">
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+              <table class="market-table" aria-label="Market snapshot">
+                <thead>
+                  <tr>
+                    <th>SYMBOL</th>
+                    <th>LAST</th>
+                    <th>CHG</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RELIANCE</td>
+                    <td>2948.60</td>
+                    <td class="positive">+32.25</td>
+                    <td class="positive">+1.11%</td>
+                  </tr>
+                  <tr>
+                    <td>NIFTY 50</td>
+                    <td>22481.45</td>
+                    <td class="positive">+174.20</td>
+                    <td class="positive">+0.78%</td>
+                  </tr>
+                  <tr>
+                    <td>SENSEX</td>
+                    <td>73982.10</td>
+                    <td class="negative">-58.40</td>
+                    <td class="negative">-0.08%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="ticker-strip" aria-hidden="true">
+              <span>HDFCBANK +0.43%</span>
+              <span>TCS +1.18%</span>
+              <span>INFY -0.26%</span>
+              <span>SBIN +0.52%</span>
+              <span>BANKNIFTY +0.62%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal" aria-label="Platform highlights">
+      <div class="container stats-grid">
+        <p class="stat-box">MIT License</p>
+        <p class="stat-box">NSE + BSE workflows</p>
+        <p class="stat-box">C++20 · Qt6 · Python 3.11</p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container content-block grid-2">
+        <div>
+          <span class="section-label">01 / Core</span>
+          <h2>Single terminal for market data and scripted analysis.</h2>
+          <p>Quantify Terminal is a local desktop app designed for Indian market workflows. It combines quotes, chart context, and command execution in one interface.</p>
+          <p>The runtime is compiled with C++20 and Qt6, and Python scripting is available for repeatable analysis tasks.</p>
+        </div>
+
+        <div class="spec-panel" aria-label="Core specification panel">
+          <div class="panel-header"><span>SPECIFICATION</span><span>CURRENT</span></div>
+          <div class="spec-row"><span>Language</span><span>C++20</span></div>
+          <div class="spec-row"><span>UI Framework</span><span>Qt6</span></div>
+          <div class="spec-row"><span>Scripting</span><span>Python 3.11</span></div>
+          <div class="spec-row"><span>Primary Feeds</span><span>NSE / BSE</span></div>
+          <div class="spec-row"><span>License</span><span>MIT</span></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">02 / Screen Map</span>
+        <h2>Screen groups and their primary use.</h2>
+        <dl class="screen-map">
+          <div class="screen-row">
+            <dt>Market Monitoring</dt>
+            <dd>Quote Board, Index Monitor, Sector Heatmap</dd>
+          </div>
+          <div class="screen-row">
+            <dt>Research</dt>
+            <dd>Company Snapshot, Event Timeline, News Feed</dd>
+          </div>
+          <div class="screen-row">
+            <dt>Technical Views</dt>
+            <dd>Multi-Timeframe Charts, Indicator Stack, Pattern Scan</dd>
+          </div>
+          <div class="screen-row">
+            <dt>Portfolio</dt>
+            <dd>Position Book, P&amp;L Ladder, Risk Limits</dd>
+          </div>
+          <div class="screen-row">
+            <dt>Automation</dt>
+            <dd>Python Console, Strategy Runner, Alert Manager</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">03 / Feature Set</span>
+        <h2>Key functions used in daily sessions.</h2>
+        <div class="grid grid-3">
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">RT</span>
+            <h3>Real-Time Market Stream</h3>
+            <p>Live updates for symbol watchlists with direct switch to deeper views.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">CMD</span>
+            <h3>Command Navigation</h3>
+            <p>Command syntax moves from quote checks to chart and risk screens without tab switching.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="feature-icon" aria-hidden="true">PY</span>
+            <h3>Embedded Python</h3>
+            <p>Scripts run inside the same workspace for repeatable analysis and alert logic.</p>
+          </article>
+        </div>
+        <p class="mt-4"><a class="docs-link" href="features.html">Read Full Feature Breakdown</a></p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container quote-block">
+        <p>Market tooling should be inspectable, scriptable, and available without license barriers.</p>
+      </div>
+    </section>
+
+    <section class="download-banner reveal">
+      <div class="container">
+        <span class="section-label">04 / Next Step</span>
+        <h2>Download source and run a local build.</h2>
+        <a class="btn" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases">Open Download Instructions</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Indian Markets. Open Source.</span>
+          </span>
+        </a>
+        <p>Desktop infrastructure for trading and research workflows in Indian markets.</p>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="download.html#changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="documentation.html">Docs</a></li>
+            <li><a href="documentation.html#api-reference">API Reference</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:quantifyterminal@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Quantify Terminal · Built by Aaryan · IIT Jammu · MIT License</p>
+    </div>
+  </footer>
+</body>
+</html>

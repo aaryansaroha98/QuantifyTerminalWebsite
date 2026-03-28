@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Quantify Terminal, project goals, founder background, and technical stack.">
+  <title>About | Quantify Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary navigation">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Open-Source Indian Markets Terminal</span>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">&#9776;</button>
+
+        <ul class="nav-links" id="primary-menu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="features.html">Features</a></li>
+          <li><a class="nav-link" href="documentation.html">Documentation</a></li>
+          <li><a class="nav-link" href="download.html">Download</a></li>
+          <li><a class="nav-link active" href="about.html">About</a></li>
+          <li><a class="nav-link" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub <span class="ext-icon" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero reveal">
+      <div class="container">
+        <span class="section-label">01 / About</span>
+        <h1>Project Background<span class="terminal-cursor">█</span></h1>
+        <p>Quantify Terminal was started to provide inspectable market tools for Indian traders and developers.</p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container content-block grid-2">
+        <div>
+          <span class="section-label">02 / Problem</span>
+          <h2>Institutional tooling remains expensive for most independent users.</h2>
+          <p>Many professional market terminals are priced at enterprise levels. That pricing blocks students, independent traders, and small research teams from accessing comparable workflows.</p>
+          <p>Quantify Terminal is built to reduce that gap with an open repository and local runtime.</p>
+        </div>
+
+        <div class="mission">
+          <span class="section-label">03 / Mission</span>
+          <h2>Open desktop infrastructure for Indian market workflows.</h2>
+          <p>The project focuses on local execution, transparent code paths, and scriptable workflows for daily research and decision support.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container founder-layout">
+        <div class="founder-col">
+          <span class="section-label">04 / Founder</span>
+          <h2>Aaryan</h2>
+          <p>Aaryan is an Electrical Engineering student at IIT Jammu and leads product and engineering for Quantify Terminal.</p>
+          <p>Current work includes command interface design, market data adapters, and local-first runtime tooling.</p>
+        </div>
+
+        <div class="founder-col">
+          <span class="section-label">05 / Public Links</span>
+          <h2>Project Channels</h2>
+          <p>Code, releases, and issue tracking are maintained in the public GitHub organization. Project updates are shared through LinkedIn and Instagram channels.</p>
+          <div class="founder-links">
+            <a class="link-cta" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub Organization</a>
+            <a class="link-cta" href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn Page</a>
+            <a class="link-cta" href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram Page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">06 / Tech Stack</span>
+        <h2>Technology and role in project.</h2>
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;" class="table-wrap stack-mobile">
+          <table aria-label="Technology stack table">
+            <thead>
+              <tr>
+                <th>Technology</th>
+                <th>Role in project</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td data-label="Technology">C++20</td><td data-label="Role in project">Core runtime and performance-sensitive execution paths.</td></tr>
+              <tr><td data-label="Technology">Qt6</td><td data-label="Role in project">Desktop UI and windowing framework for terminal views.</td></tr>
+              <tr><td data-label="Technology">Python 3.11</td><td data-label="Role in project">Embedded scripting layer for analysis and automation.</td></tr>
+              <tr><td data-label="Technology">CMake</td><td data-label="Role in project">Cross-platform build configuration and compilation workflow.</td></tr>
+              <tr><td data-label="Technology">SQLite</td><td data-label="Role in project">Local storage for workspace state and saved layouts.</td></tr>
+              <tr><td data-label="Technology">OpenSSL</td><td data-label="Role in project">Secure transport utilities for integrations.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <section class="reveal">
+      <div class="container">
+        <span class="section-label">07 / Working Style</span>
+        <h2>Open development model.</h2>
+        <div class="grid grid-3">
+          <article class="card value-card">
+            <span class="value-icon" aria-hidden="true">TR</span>
+            <h3>Transparent</h3>
+            <p>Issues, pull requests, and release notes are visible in the public repository.</p>
+          </article>
+          <article class="card value-card">
+            <span class="value-icon" aria-hidden="true">CM</span>
+            <h3>Community Input</h3>
+            <p>Feature requests and bug reports guide roadmap prioritization.</p>
+          </article>
+          <article class="card value-card">
+            <span class="value-icon" aria-hidden="true">EX</span>
+            <h3>Extensible</h3>
+            <p>Developers can adapt workflows through scripts and source changes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-banner reveal">
+      <div class="container">
+        <span class="section-label">08 / Next Step</span>
+        <h2>Review release notes and start from source.</h2>
+        <a class="btn" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases">Open Download Page</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
+          <span class="brand-wordmark">
+            <strong>QUANTIFY TERMINAL</strong>
+            <span>Indian Markets. Open Source.</span>
+          </span>
+        </a>
+        <p>Desktop infrastructure for trading and research workflows in Indian markets.</p>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="download.html#changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="documentation.html">Docs</a></li>
+            <li><a href="documentation.html#api-reference">API Reference</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:quantifyterminal@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Quantify Terminal · Built by Aaryan · IIT Jammu · MIT License</p>
+    </div>
+  </footer>
+</body>
+</html>
