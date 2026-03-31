@@ -1092,7 +1092,7 @@ pre code {
 
 @media (max-width: 768px) {
   :root {
-    --nav-height: 56px;
+    --nav-height: 64px;
   }
 
   body {
@@ -1126,15 +1126,12 @@ pre code {
   }
 
   .nav-inner {
-    position: relative;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 
   .nav-toggle {
     display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    /* Vertically centered by flex container */
   }
 
   .brand-wordmark span {
