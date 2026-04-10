@@ -265,8 +265,8 @@ p + p {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 32px;
+  grid-template-columns: 0.9fr 1.25fr;
+  gap: 40px;
   align-items: start;
 }
 
