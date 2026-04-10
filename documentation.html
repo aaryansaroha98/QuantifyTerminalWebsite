@@ -76,13 +76,13 @@
 
           <article class="quick-step">
             <p class="step-number">III</p>
-            <h3>TradingView Bridge Integration</h3>
+            <h3>Proprietary Institutional Charting Bridge Integration</h3>
             <div class="code-block mt-2">
               <div class="code-header">chart_bridge.py / abstract</div>
               <pre><code><span class="hl-cmd">def</span> <span class="hl-path">sync_chart_window</span>(symbol, timeframe, live_feed=True):
     <span class="hl-cmd">if</span> not live_feed.active():
         live_feed.start_qthread_publisher()
-    WebViewEngine.inject_tradingview_script(payload=symbol)
+    WebViewEngine.inject_proprietary_chart_script(payload=symbol)
     <span class="hl-cmd">return</span> STATUS_OK</code></pre>
             </div>
           </article>
@@ -107,7 +107,7 @@
             </thead>
             <tbody>
               <tr><td>Pricing</td><td><code>RELIANCE:IN EQUITY GP</code></td><td>Spawns async fetching thread for Real-Time Price payload.</td></tr>
-              <tr><td>Charting</td><td><code>NIFTY:IN INDEX TV_VIEW 15M</code></td><td>Loads TradingView module locked to the 15M aggregated timeframe.</td></tr>
+              <tr><td>Charting</td><td><code>NIFTY:IN INDEX TV_VIEW 15M</code></td><td>Loads Proprietary Institutional Charting module locked to the 15M aggregated timeframe.</td></tr>
               <tr><td>Macro News</td><td><code>GLOBAL NEWS STREAM_ON</code></td><td>Activates continuous WebSocket listening on the news parser module.</td></tr>
               <tr><td>Risk Calc</td><td><code>PORT RISK VAR ENABLE</code></td><td>Initiates background VaR calculation across the entire connected portfolio.</td></tr>
               <tr><td>Custom Logic</td><td><code>PYTH EXEC strategy_alpha.py</code></td><td>Executes proprietary user python scripts directly within application memory.</td></tr>
