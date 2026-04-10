@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Quantify Terminal documentation for setup, command reference, scripting, and contribution workflow.">
-  <title>Documentation | Quantify Terminal</title>
+  <meta name="description" content="Quantify Terminal architecture, API documentation, Python scripting rules, and systemic data flows.">
+  <title>Architecture & API | Quantify Terminal</title>
   <link rel="icon" type="image/png" href="Public/IMG_6653.PNG">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
           <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
           <span class="brand-wordmark">
             <strong>QUANTIFY TERMINAL</strong>
-            <span>Open-Source Indian Markets Terminal</span>
+            <span>Professional Market Infrastructure</span>
           </span>
         </a>
 
@@ -31,12 +31,11 @@
         </button>
 
         <ul class="nav-links" id="primary-menu">
-          <li><a class="nav-link" href="index.html">Home</a></li>
-          <li><a class="nav-link" href="features.html">Features</a></li>
-          <li><a class="nav-link active" href="documentation.html">Documentation</a></li>
-          <li><a class="nav-link" href="download.html">Download</a></li>
+          <li><a class="nav-link" href="index.html">Platform</a></li>
+          <li><a class="nav-link" href="features.html">Data & Features</a></li>
+          <li><a class="nav-link active" href="documentation.html">Architecture</a></li>
           <li><a class="nav-link" href="about.html">About</a></li>
-          <li><a class="nav-link" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub <span class="ext-icon" aria-hidden="true">↗</span></a></li>
+          <li><a class="nav-link" href="download.html">Access</a></li>
         </ul>
       </div>
     </nav>
@@ -45,66 +44,46 @@
   <main>
     <section class="page-hero reveal">
       <div class="container">
-        <span class="section-label">01 / Documentation</span>
-        <h1>Setup and Command Guide<span class="terminal-cursor">█</span></h1>
-        <p>Use this page to install from source, run the terminal, and review command syntax.</p>
+        <span class="section-label">01 / Engineering Notes</span>
+        <h1>Architecture & API Engine<span class="terminal-cursor">█</span></h1>
+        <p>Understand how Quantify Terminal routes millions of data points asynchronously directly into a dynamic PyQt6 presentation layer.</p>
       </div>
     </section>
 
     <hr class="section-rule">
 
-    <section class="reveal" id="quick-start">
+    <section class="reveal" id="architecture">
       <div class="container">
-        <span class="section-label">02 / Quick Start</span>
-        <h2>Build and run in five steps.</h2>
+        <span class="section-label">02 / Technical Stack</span>
+        <h2>100% Python. Unlimited Power.</h2>
 
         <div class="quick-start">
           <article class="quick-step">
-            <p class="step-number">01</p>
-            <h3>Clone the repository.</h3>
-            <div class="code-block mt-2">
-              <div class="code-header">macOS / Linux</div>
-              <pre><code><span class="hl-cmd">$</span> git clone <span class="hl-path">https://github.com/Quantify-Terminal/QuantifyTerminal</span>
-<span class="hl-cmd">$</span> cd <span class="hl-path">QuantifyTerminal</span></code></pre>
+            <p class="step-number">I</p>
+            <h3>The Transition to Pure Python</h3>
+            <div class="mt-2">
+              <p style="color: var(--text-secondary); max-width: 800px;">Previous iterations of the terminal relied on C++20 and legacy Qt frameworks. The modern Quantitative Terminal is rebuilt entirely from the ground up in Python utilizing the state-of-the-art PyQt6 library. This deliberate design choice provides institutional quantitative researchers the capacity to directly inject native Python data science libraries (Pandas, NumPy, SciPy) without translation layers or cross-language bottlenecks.</p>
             </div>
           </article>
 
           <article class="quick-step">
-            <p class="step-number">02</p>
-            <h3>Checkout the release commit.</h3>
-            <div class="code-block mt-2">
-              <div class="code-header">release_commit.txt</div>
-              <pre><code><span class="hl-cmd">$</span> git checkout <span class="hl-arg">f1b3f18</span></code></pre>
+            <p class="step-number">II</p>
+            <h3>QThread Concurrency Paradigm</h3>
+            <div class="mt-2">
+              <p style="color: var(--text-secondary); max-width: 800px;">Market feeds do not pause, and neither should the interface. All data fetching mechanisms—including the NSE/BSE streaming routers, multi-currency live FX background processes, and Global News ingestors—are offloaded horizontally onto isolated QThreads working in tandem with the Asyncio loop.</p>
             </div>
           </article>
 
           <article class="quick-step">
-            <p class="step-number">03</p>
-            <h3>Configure and build with CMake.</h3>
+            <p class="step-number">III</p>
+            <h3>TradingView Bridge Integration</h3>
             <div class="code-block mt-2">
-              <div class="code-header">setup.sh</div>
-              <pre><code><span class="hl-cmd">$</span> cmake -B build -DCMAKE_BUILD_TYPE=Release
-<span class="hl-cmd">$</span> cmake --build build</code></pre>
-            </div>
-          </article>
-
-          <article class="quick-step">
-            <p class="step-number">04</p>
-            <h3>Run the terminal binary.</h3>
-            <div class="code-block mt-2">
-              <div class="code-header">run_terminal.sh</div>
-              <pre><code><span class="hl-cmd">$</span> ./build/bin/quantify-terminal</code></pre>
-            </div>
-          </article>
-
-          <article class="quick-step">
-            <p class="step-number">05</p>
-            <h3>Check built-in command help.</h3>
-            <div class="code-block mt-2">
-              <div class="code-header">terminal_session</div>
-              <pre><code><span class="hl-cmd">&gt;</span> HELP
-<span class="hl-cmd">&gt;</span> HELP COMMANDS
-<span class="hl-cmd">&gt;</span> HELP PYTH</code></pre>
+              <div class="code-header">chart_bridge.py / abstract</div>
+              <pre><code><span class="hl-cmd">def</span> <span class="hl-path">sync_chart_window</span>(symbol, timeframe, live_feed=True):
+    <span class="hl-cmd">if</span> not live_feed.active():
+        live_feed.start_qthread_publisher()
+    WebViewEngine.inject_tradingview_script(payload=symbol)
+    <span class="hl-cmd">return</span> STATUS_OK</code></pre>
             </div>
           </article>
         </div>
@@ -113,27 +92,25 @@
 
     <hr class="section-rule">
 
-    <section class="reveal" id="api-reference">
+    <section class="reveal" id="api">
       <div class="container">
-        <span class="section-label">03 / Command Reference</span>
-        <h2>Common commands and syntax.</h2>
+        <span class="section-label">03 / Internal Console Reference</span>
+        <h2>Command syntax for native Python workflows.</h2>
         <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;" class="table-wrap">
           <table aria-label="Quantify command reference">
             <thead>
               <tr>
-                <th>Command</th>
-                <th>Syntax</th>
-                <th>Description</th>
+                <th>Command Type</th>
+                <th>Syntax Example</th>
+                <th>Action Result</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>GP</td><td><code>RELIANCE:IN EQUITY GP</code></td><td>Returns live price and day summary fields.</td></tr>
-              <tr><td>DES</td><td><code>SBIN:IN EQUITY DES</code></td><td>Opens company description and metadata panel.</td></tr>
-              <tr><td>HP</td><td><code>NIFTY:IN INDEX HP 1Y</code></td><td>Loads historical chart data for selected period.</td></tr>
-              <tr><td>PORT</td><td><code>PORT OVERVIEW</code></td><td>Shows current holdings and aggregated P&amp;L.</td></tr>
-              <tr><td>RISK</td><td><code>PORT RISK VAR</code></td><td>Runs VaR and drawdown checks on current portfolio.</td></tr>
-              <tr><td>PYTH</td><td><code>PYTH OPEN</code></td><td>Starts the embedded Python interpreter.</td></tr>
-              <tr><td>HELP</td><td><code>HELP [COMMAND]</code></td><td>Displays syntax examples and command notes.</td></tr>
+              <tr><td>Pricing</td><td><code>RELIANCE:IN EQUITY GP</code></td><td>Spawns async fetching thread for Real-Time Price payload.</td></tr>
+              <tr><td>Charting</td><td><code>NIFTY:IN INDEX TV_VIEW 15M</code></td><td>Loads TradingView module locked to the 15M aggregated timeframe.</td></tr>
+              <tr><td>Macro News</td><td><code>GLOBAL NEWS STREAM_ON</code></td><td>Activates continuous WebSocket listening on the news parser module.</td></tr>
+              <tr><td>Risk Calc</td><td><code>PORT RISK VAR ENABLE</code></td><td>Initiates background VaR calculation across the entire connected portfolio.</td></tr>
+              <tr><td>Custom Logic</td><td><code>PYTH EXEC strategy_alpha.py</code></td><td>Executes proprietary user python scripts directly within application memory.</td></tr>
             </tbody>
           </table>
         </div>
@@ -142,86 +119,38 @@
 
     <hr class="section-rule">
 
-    <section class="reveal">
-      <div class="container">
-        <span class="section-label">04 / Developer Notes</span>
-        <h2>Reference points for contributors.</h2>
-        <div class="grid grid-3">
-          <article class="card doc-card">
-            <h3>Setup Checklist</h3>
-            <p>Toolchain requirements, Qt setup, and source build commands for first-time contributors.</p>
-            <p class="mt-3"><a class="docs-link" href="#quick-start">Open Setup Checklist</a></p>
-          </article>
-
-          <article class="card doc-card">
-            <h3>Command Grammar</h3>
-            <p>Token structure and common command patterns used by market, chart, and risk modules.</p>
-            <p class="mt-3"><a class="docs-link" href="#api-reference">Open Command Grammar</a></p>
-          </article>
-
-          <article class="card doc-card">
-            <h3>Scripting Entry</h3>
-            <p>Python entry points for data retrieval, indicator calculation, and workspace helpers.</p>
-            <p class="mt-3"><a class="docs-link" href="#api-reference">Open Scripting Entry</a></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <hr class="section-rule">
-
     <section class="reveal" id="faq">
       <div class="container">
-        <span class="section-label">05 / FAQ</span>
-        <h2>Common setup and usage questions.</h2>
+        <span class="section-label">04 / Client FAQ</span>
+        <h2>Technical deployment common questions.</h2>
         <div class="faq-list">
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false">
-              <span>Is Quantify Terminal free to use?</span>
+              <span>Why don't you support C++ anymore?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
-              <p>Yes. The project is released under the MIT License, which allows personal and commercial use under standard license terms.</p>
+              <p>We sunsetted C++ arrays to lean heavily into Python's supremacy in the data science and quantitative finance fields. Moving to PyQt6 combined with asynchronous architecture gives us native native speeds without sacrificing the data integration flexibility of Python.</p>
             </div>
           </article>
 
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false">
-              <span>Which data feeds are supported in the current build?</span>
+              <span>How secure is the workspace?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
-              <p>The default adapters cover NSE and public feed integrations, and additional providers can be added through the adapter layer.</p>
+              <p>Highly secure. Access is gated by customized Account Hubs equipped with Brevo-powered Email OTPs. All portfolio data, layout settings, and script paths are persistently encrypted to ensure proprietary trade secrets cannot be extracted.</p>
             </div>
           </article>
 
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false">
-              <span>How do I open the Python console?</span>
+              <span>Where are my custom UI layouts stored?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
-              <p>Run <code>PYTH OPEN</code> inside the terminal session and the embedded interpreter will open with access to terminal APIs.</p>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>Can I contribute documentation updates?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. You can submit pull requests for documentation, examples, and setup instructions through the public repository.</p>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>Where can I report setup issues?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Open an issue in the GitHub repository with your OS, compiler version, and the build log so maintainers can reproduce the problem.</p>
+              <p>Because the panel resizing system is completely free-form across all 12 modules, window dimensions and dock locations are converted to JSON and stored locally to your specific secured profile.</p>
             </div>
           </article>
         </div>
@@ -230,9 +159,9 @@
 
     <section class="download-banner reveal">
       <div class="container">
-        <span class="section-label">06 / Next Step</span>
-        <h2>Open release downloads and start a source build.</h2>
-        <a class="btn" href="https://github.com/Quantify-Terminal/QuantifyTerminal/releases">Open Download Page</a>
+        <span class="section-label">05 / Take Action</span>
+        <h2>Gain Access and configure your terminal.</h2>
+        <a class="btn" href="download.html">Submit Request Form</a>
       </div>
     </section>
   </main>
@@ -244,41 +173,41 @@
           <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
           <span class="brand-wordmark">
             <strong>QUANTIFY TERMINAL</strong>
-            <span>Indian Markets. Open Source.</span>
+            <span>Professional Market Infrastructure.</span>
           </span>
         </a>
-        <p>Desktop infrastructure for trading and research workflows in Indian markets.</p>
+        <p>Desktop infrastructure for quantitative research, algorithmic workflows, and professional portfolio management.</p>
       </div>
 
       <div class="footer-grid">
         <div class="footer-col">
-          <h4>Product</h4>
+          <h4>Platform</h4>
           <ul>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="download.html">Download</a></li>
-            <li><a href="download.html#changelog">Changelog</a></li>
+            <li><a href="features.html">Data & Features</a></li>
+            <li><a href="documentation.html">Engineering</a></li>
+            <li><a href="download.html">Access Terminal</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Developers</h4>
+          <h4>Architecture</h4>
           <ul>
-            <li><a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="documentation.html">Docs</a></li>
-            <li><a href="documentation.html#api-reference">API Reference</a></li>
+            <li><a href="features.html#data-pipeline">Async Data Pipelines</a></li>
+            <li><a href="features.html#security">Brevo Authentication</a></li>
+            <li><a href="documentation.html#api">Custom APIs</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mailto:quantifyterminal@gmail.com">Contact</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="mailto:quantifyterminal@gmail.com">Contact Support</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Community</h4>
+          <h4>Connect</h4>
           <ul>
             <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
@@ -288,7 +217,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 Quantify Terminal · Built by Aaryan · IIT Jammu · MIT License</p>
+      <p>© 2026 Quantify Terminal · Proprietary Systems</p>
     </div>
   </footer>
 </body>
