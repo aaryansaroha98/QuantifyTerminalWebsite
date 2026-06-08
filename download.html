@@ -3,201 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Download the proprietary Quantify Terminal for macOS, Windows, and Linux. Institutional-grade market infrastructure.">
-  <title>Download Terminal | Quantify Terminal</title>
-  <link rel="icon" type="image/png" href="Public/IMG_6653.PNG">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Download Quantify Terminal for Windows, macOS, and Linux.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="Downloads | Quantify Terminal">
+  <meta property="og:description" content="Choose the Quantify Terminal desktop build for your operating system.">
+  <meta property="og:image" content="Public/logo.PNG">
+  <title>Downloads | Quantify Terminal</title>
+  <link rel="icon" type="image/png" href="Public/logo.PNG">
+  <link rel="apple-touch-icon" href="Public/logo.PNG">
   <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <nav class="navbar" aria-label="Primary navigation">
-      <div class="container nav-inner">
-        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
-          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
-          <span class="brand-wordmark">
-            <strong>QUANTIFY TERMINAL</strong>
-            <span>Professional Market Infrastructure</span>
-          </span>
-        </a>
-
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">
-          <span class="line" aria-hidden="true"></span>
-          <span class="line" aria-hidden="true"></span>
-          <span class="line" aria-hidden="true"></span>
-        </button>
-
-        <ul class="nav-links" id="primary-menu">
-          <li><a class="nav-link" href="index.html">Platform</a></li>
-          <li><a class="nav-link" href="features.html">Data & Features</a></li>
-          <li><a class="nav-link" href="documentation.html">Architecture</a></li>
-          <li><a class="nav-link" href="about.html">About</a></li>
-          <li><a class="nav-link active" href="download.html">Download</a></li>
-        </ul>
-      </div>
-    </nav>
+<body data-page="download">
+  <header class="site-header" data-site-header>
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+        <img class="brand-logo" src="Public/logo.PNG" alt="Quantify Terminal logo">
+        <span class="brand-copy"><strong>Quantify Terminal</strong><span>Market intelligence workstation</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="features.html" data-nav="features">Features</a>
+        <a href="documentation.html" data-nav="platform">Platform</a>
+        <a href="download.html" data-nav="download">Downloads</a>
+        <a href="about.html" data-nav="about">Founder</a>
+        <a href="connect.html" data-nav="connect">Connect</a>
+      </nav>
+      <a class="nav-action" href="download.html">Get Terminal</a>
+    </div>
   </header>
 
   <main>
-    <section class="page-hero reveal">
-      <div class="container">
-        <span class="section-label">01 / Deployment</span>
-        <h1>Install the Platform<span class="terminal-cursor">█</span></h1>
-        <p>Download the proprietary Quantify Terminal binary for your operating system. Engineered specifically for high-frequency workflows and algorithmic processing.</p>
+    <section class="page-hero download-hero">
+      <div class="section-inner page-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Desktop downloads</p>
+          <h1>Choose your Quantify Terminal build.</h1>
+          <p class="hero-lede">Windows, macOS, and Linux options are ready on the website. Public installer files can be dropped into the release paths when you are ready to open direct downloads.</p>
+        </div>
+        <figure class="asset-mockup mini-asset reveal" aria-label="Download page terminal mockup">
+          <img src="Public/qt%20svg%20white%20mac.svg" alt="Quantify Terminal desktop mockup">
+        </figure>
       </div>
     </section>
 
-    <hr class="section-rule">
-
-    <section class="reveal">
-      <div class="container">
-        <span class="section-label">02 / Platform Installers</span>
-        <h2>Select your operating system architecture.</h2>
-        
-        <div class="grid grid-3" style="margin-top: 2rem;">
-          
-          <!-- Windows OS Box -->
-          <article class="card feature-card" style="text-align: center; padding-top: 3rem; padding-bottom: 3rem;">
-            <div style="margin-bottom: 1.5rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary);"><path d="M4 5.95l16-2.5v17.1l-16-2.5V5.95z"/></svg>
-            </div>
-            <h3>Windows</h3>
-            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Windows 11 / Windows 10 (64-bit)<br>v2.0.0 Enterprise Build</p>
-            <a class="btn" href="#" style="width: 100%;">Download for Windows</a>
-          </article>
-
-          <!-- Mac OS Box -->
-          <article class="card feature-card" style="text-align: center; border: 1px solid var(--accent-light); padding-top: 3rem; padding-bottom: 3rem; position: relative;">
-            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--bg-surface); padding: 0 10px; color: var(--accent-light); font-size: 0.75rem; letter-spacing: 0.1em; border: 1px solid var(--accent-light); border-radius: 4px;">RECOMMENDED</div>
-            <div style="margin-bottom: 1.5rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary);"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 1.44S9.88 5 7.65 5C4 5 2 8 2 12c0 5 4 10 5 10s2.75-1.06 4-1.06z"/><path d="M16 2.5a4.05 4.05 0 0 0-4 4"/></svg>
-            </div>
-            <h3>macOS</h3>
-            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Apple Silicon (M1/M2/M3) & Intel<br>v2.0.0 Enterprise Build</p>
-            <a class="btn" href="#" style="width: 100%;">Download for macOS</a>
-          </article>
-
-          <!-- Linux OS Box -->
-          <article class="card feature-card" style="text-align: center; padding-top: 3rem; padding-bottom: 3rem;">
-            <div style="margin-bottom: 1.5rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary);"><path d="m12 2 9 4.9V17L12 22l-9-4.9V7z"/><path d="m12 22v-10"/><path d="m3 7 9 5.1"/><path d="m21 7-9 5.1"/></svg>
-            </div>
-            <h3>Linux</h3>
-            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Ubuntu 22.04+ (Debian Based)<br>v2.0.0 AppImage Build</p>
-            <a class="btn" href="#" style="width: 100%;">Download for Linux</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <hr class="section-rule">
-
-    <section class="reveal">
-      <div class="container content-block grid-2">
-        <div>
-          <span class="section-label">03 / Authentication Prerequisites</span>
-          <h2>A Secure Session Initialization.</h2>
-          <p>Please note that completing the download is only the first step. Upon initialization, the application will require an authenticated domain session.</p>
-          <p>The terminal will prompt you to execute an Enterprise OTP relay. Ensure that your workstation matches the deployment prerequisites to successfully ingest local data streams.</p>
+    <section class="section-block">
+      <div class="section-inner">
+        <div class="download-selector reveal" role="tablist" aria-label="Operating system selector">
+          <button type="button" class="os-tab active" data-os-button="windows" role="tab" aria-selected="true">Windows</button>
+          <button type="button" class="os-tab" data-os-button="macos" role="tab" aria-selected="false">macOS</button>
+          <button type="button" class="os-tab" data-os-button="linux" role="tab" aria-selected="false">Linux</button>
         </div>
 
-        <div class="spec-panel" aria-label="System requirements">
-          <div class="panel-header"><span>SYSTEM REQUIREMENTS</span><span>MINIMUM</span></div>
-          <div class="spec-row"><span>CPU Architecture</span><span>Apple Silicon or Intel i7+</span></div>
-          <div class="spec-row"><span>RAM Required</span><span>16GB (32GB Recommended)</span></div>
-          <div class="spec-row"><span>Storage</span><span>500MB Local Disk</span></div>
-          <div class="spec-row"><span>Network</span><span>Stable Broadband (Low Latency)</span></div>
+        <div class="download-panels">
+          <article class="download-panel active reveal" data-os-panel="windows" role="tabpanel">
+            <div class="download-meta">
+              <span>Windows</span>
+              <h2>Windows installer</h2>
+              <p>Recommended for most Windows users. Built for a guided installation experience and standard desktop launching.</p>
+            </div>
+            <div class="download-actions">
+              <a class="button primary" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20Windows%20build">Request Windows build</a>
+              <span class="download-path">Public release slot: Windows installer</span>
+            </div>
+          </article>
+
+          <article class="download-panel reveal" data-os-panel="macos" role="tabpanel" hidden>
+            <div class="download-meta">
+              <span>macOS</span>
+              <h2>macOS DMG</h2>
+              <p>Recommended for Apple desktop users. Designed for a clean app install flow and native launch experience.</p>
+            </div>
+            <div class="download-actions">
+              <a class="button primary" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20macOS%20build">Request macOS build</a>
+              <span class="download-path">Public release slot: macOS DMG</span>
+            </div>
+          </article>
+
+          <article class="download-panel reveal" data-os-panel="linux" role="tabpanel" hidden>
+            <div class="download-meta">
+              <span>Linux</span>
+              <h2>Linux AppImage and package</h2>
+              <p>Recommended for Linux users who want either a portable build or a package-based installation path.</p>
+            </div>
+            <div class="download-actions two-actions">
+              <a class="button primary" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20Linux%20AppImage">Request AppImage</a>
+              <a class="button secondary" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20Linux%20package">Request package</a>
+              <span class="download-path">Public release slots: AppImage and package</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <hr class="section-rule">
-
-    <section class="reveal" id="changelog">
-      <div class="container">
-        <span class="section-label">04 / Version History</span>
-        <h2>Recent framework upgrades.</h2>
-        
-        <div class="changelog-list">
-          <article class="changelog-item">
-            <div class="changelog-meta">
-              <span class="version">v2.0.0</span>
-              <span class="date">April 2026</span>
-            </div>
-            <div class="changelog-content">
-              <h3>The Proprietary Engine</h3>
-              <ul>
-                <li>Total rebuild into a 100% Python and PyQt6 ecosystem.</li>
-                <li>Implemented QThread background async routines for entirely non-blocking live tick data.</li>
-                <li>Added full Advanced Charting integration seamlessly bridged across the platform.</li>
-                <li>Integrated Secure Platform Login system with custom Admin controls.</li>
-                <li>Introduced dynamic JSON memory for panel resizing dimensions across all modules.</li>
-                <li>Launched live multi-threaded global FX converters and asynchronous macro News feed scraping.</li>
-              </ul>
-            </div>
-          </article>
+    <section class="section-block tinted">
+      <div class="section-inner release-notes">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Before installing</p>
+          <h2>Release notes for users.</h2>
+          <p>Quantify Terminal is desktop software. Use a machine with enough screen space for multi-panel workflows, keep your account credentials private, and install only builds distributed through official Quantify Terminal channels.</p>
         </div>
+        <div class="install-list reveal">
+          <div><span>01</span><strong>Download the build for your operating system.</strong></div>
+          <div><span>02</span><strong>Install using the native installer or package flow.</strong></div>
+          <div><span>03</span><strong>Launch the terminal and complete account setup.</strong></div>
+          <div><span>04</span><strong>Add screenshots, documentation, and release notes here as the public release matures.</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-inner download-grid">
+        <article class="release-card reveal">
+          <span>Support</span>
+          <strong>Need a build?</strong>
+          <p>Email the team with your operating system and use case.</p>
+          <a class="text-link" href="mailto:contact@quantifyterminal.com">Contact support</a>
+        </article>
+        <article class="release-card reveal">
+          <span>Source hub</span>
+          <strong>Project organization</strong>
+          <p>Follow the official repository organization for public updates.</p>
+          <a class="text-link" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">Open GitHub</a>
+        </article>
+        <article class="release-card reveal">
+          <span>Community</span>
+          <strong>Ask questions</strong>
+          <p>Join the public community channel for updates and discussion.</p>
+          <a class="text-link" href="https://discord.gg/dw2qVe9Y" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-top">
+    <div class="section-inner footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html" aria-label="Quantify Terminal home">
-          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
-          <span class="brand-wordmark">
-            <strong>QUANTIFY TERMINAL</strong>
-            <span>Professional Market Infrastructure.</span>
-          </span>
+          <img class="brand-logo" src="Public/logo.PNG" alt="Quantify Terminal logo">
+          <span class="brand-copy"><strong>Quantify Terminal</strong><span>Market intelligence workstation</span></span>
         </a>
-        <p>Desktop infrastructure for quantitative research, algorithmic workflows, and professional portfolio management.</p>
+        <p>Professional desktop market software for research, portfolio intelligence, alerts, screeners, maps, news, and quantitative workflows.</p>
       </div>
-
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="features.html">Data & Features</a></li>
-            <li><a href="documentation.html">Engineering</a></li>
-            <li><a href="download.html">Download Terminal</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="features.html#data-pipeline">Async Data Pipelines</a></li>
-            <li><a href="features.html#security">Secure Authentication</a></li>
-            <li><a href="documentation.html#api">Custom APIs</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="mailto:quantifyterminal@gmail.com">Contact Support</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          </ul>
-        </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="features.html">Features</a>
+        <a href="documentation.html">Platform</a>
+        <a href="download.html">Downloads</a>
+        <a href="about.html">Founder</a>
+        <a href="connect.html">Connect</a>
+      </nav>
+      <div class="footer-contact">
+        <a href="mailto:contact@quantifyterminal.com">contact@quantifyterminal.com</a>
+        <a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/QuantifTerm" target="_blank" rel="noopener noreferrer">X</a>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Quantify Terminal · Engineered by Aaryan Saroha · Proprietary Systems</p>
-    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Quantify Terminal.</span><span>Built from Haryana, India for global market work.</span></div>
   </footer>
 </body>
 </html>

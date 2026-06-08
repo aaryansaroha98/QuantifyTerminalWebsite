@@ -3,230 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Feature inventory for Quantify Terminal covering threaded market data, dynamic Python workflows, live FX, auth controls, and advanced charting.">
-  <title>Features & Analytics | Quantify Terminal</title>
-  <link rel="icon" type="image/png" href="Public/IMG_6653.PNG">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Explore Quantify Terminal features across markets, research, portfolio, screeners, alerts, workspaces, maps, and quantitative workflows.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="Features | Quantify Terminal">
+  <meta property="og:description" content="A full feature inventory for Quantify Terminal.">
+  <meta property="og:image" content="Public/logo.PNG">
+  <title>Features | Quantify Terminal</title>
+  <link rel="icon" type="image/png" href="Public/logo.PNG">
+  <link rel="apple-touch-icon" href="Public/logo.PNG">
   <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <nav class="navbar" aria-label="Primary navigation">
-      <div class="container nav-inner">
-        <a class="brand" href="index.html" aria-label="Quantify Terminal home">
-          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
-          <span class="brand-wordmark">
-            <strong>QUANTIFY TERMINAL</strong>
-            <span>Professional Market Infrastructure</span>
-          </span>
-        </a>
-
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">
-          <span class="line" aria-hidden="true"></span>
-          <span class="line" aria-hidden="true"></span>
-          <span class="line" aria-hidden="true"></span>
-        </button>
-
-        <ul class="nav-links" id="primary-menu">
-          <li><a class="nav-link" href="index.html">Platform</a></li>
-          <li><a class="nav-link active" href="features.html">Data & Features</a></li>
-          <li><a class="nav-link" href="documentation.html">Architecture</a></li>
-          <li><a class="nav-link" href="about.html">About</a></li>
-          <li><a class="nav-link" href="download.html">Download</a></li>
-        </ul>
-      </div>
-    </nav>
+<body data-page="features">
+  <header class="site-header" data-site-header>
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="Quantify Terminal home">
+        <img class="brand-logo" src="Public/logo.PNG" alt="Quantify Terminal logo">
+        <span class="brand-copy"><strong>Quantify Terminal</strong><span>Market intelligence workstation</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="features.html" data-nav="features">Features</a>
+        <a href="documentation.html" data-nav="platform">Platform</a>
+        <a href="download.html" data-nav="download">Downloads</a>
+        <a href="about.html" data-nav="about">Founder</a>
+        <a href="connect.html" data-nav="connect">Connect</a>
+      </nav>
+      <a class="nav-action" href="download.html">Get Terminal</a>
+    </div>
   </header>
 
   <main>
-    <section class="page-hero reveal">
-      <div class="container">
-        <span class="section-label">01 / Analytics Suite</span>
-        <h1>Quantitative Feature Inventory<span class="terminal-cursor">█</span></h1>
-        <p>A completely overhauled 15+-tab workstation designed for massive data ingestion, algorithmic research, and institutional execution capabilities.</p>
+    <section class="page-hero">
+      <div class="section-inner page-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Feature inventory</p>
+          <h1>Every major workflow has a working surface.</h1>
+          <p class="hero-lede">Quantify Terminal is a 22+ tab workstation covering market monitoring, research, portfolios, watchlists, screeners, alerts, workspace tools, maps, strategy development, live monitors, and account operations.</p>
+        </div>
+        <figure class="asset-mockup mini-asset reveal" aria-label="Feature page terminal mockup">
+          <img src="Public/qt%20svg%20white%20mac.svg" alt="Quantify Terminal feature overview mockup">
+        </figure>
       </div>
     </section>
 
-    <hr class="section-rule">
+    <section class="section-block">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Core modules</p>
+          <h2>The terminal is organized by how decisions are made.</h2>
+        </div>
 
-    <section class="reveal">
-      <div class="container">
-        <span class="section-label">02 / Deep Capability Grid</span>
-        <h2>Core modules powering the Terminal architecture.</h2>
-        <div class="grid grid-3">
-          <article class="card feature-card">
-            <span class="feature-icon" aria-hidden="true">ASYNC</span>
-            <h3>Threaded Live MD</h3>
-            <p>QThread integration fetches heavy index and options chain quotes asynchronously, eliminating main-thread blocking entirely.</p>
+        <div class="module-list">
+          <article class="module-row reveal">
+            <div>
+              <span class="module-kicker">Market cockpit</span>
+              <h3>Dashboard, Market Data, Heatmap, News, Live Monitors</h3>
+            </div>
+            <p>Monitor indices, movers, sector performance, commodities, currencies, rates, volatility, ETF flow, crypto, calendars, headlines, trending topics, saved articles, and live watch panes.</p>
           </article>
-          <article class="card feature-card">
-            <span class="feature-icon" aria-hidden="true">PANEL</span>
-            <h3>Dynamic 15+-Tab UI</h3>
-            <p>Free-form resize mechanisms across all dashboards. Users manipulate widget spacing universally. Your exact layout is automatically synced securely.</p>
+          <article class="module-row reveal">
+            <div>
+              <span class="module-kicker">Research suite</span>
+              <h3>Analysis, Equity Research, Relationship Map, Supply Chain</h3>
+            </div>
+            <p>Study a company from multiple angles: financial summaries, ratios, valuation, growth, DCF work, peers, analyst coverage, ownership, ESG context, filings, historical data, product exposure, relationship graphs, suppliers, customers, and revenue context.</p>
           </article>
-          <article class="card feature-card">
-            <span class="feature-icon" aria-hidden="true">TV</span>
-            <h3>Proprietary Institutional Charting Bridge</h3>
-            <p>Embedded, GPU-accelerated Proprietary GPU Charts with internal pipeline bridges, ensuring your custom indicators synchronize perfectly with terminal data.</p>
+          <article class="module-row reveal">
+            <div>
+              <span class="module-kicker">Portfolio and lists</span>
+              <h3>Portfolio, Watchlist, Alerts, Screener</h3>
+            </div>
+            <p>Track holdings, allocation, risk, relative performance, reviews, stress tests, multiple watchlists, symbol detail, chart previews, comparison panels, technical scorecards, filters, alert groups, alert history, and alert analytics.</p>
           </article>
-          <article class="card feature-card">
-            <span class="feature-icon" aria-hidden="true">AUTH</span>
-            <h3>Secure Platform Login</h3>
-            <p>Integrated Account settings ensuring maximum data isolation. Features real-time Email OTP secure login verification mapped directly to user infrastructure.</p>
+          <article class="module-row reveal">
+            <div>
+              <span class="module-kicker">Quant workflows</span>
+              <h3>Algo Trading, Quant Studio, Trade Desk</h3>
+            </div>
+            <p>Create rules, test strategies, review equity curves, inspect signal logs, study correlations, prepare orders, monitor positions, organize execution context, and keep strategy research close to market data.</p>
           </article>
-          <article class="card feature-card">
-            <span class="feature-icon" aria-hidden="true">NLP</span>
-            <h3>Live Global News</h3>
-            <p>The News Tab consumes multiple unstructured news feeds, converting them into structured, filterable macro events synced to your exact portfolio holdings.</p>
+          <article class="module-row reveal">
+            <div>
+              <span class="module-kicker">Workspace and intelligence</span>
+              <h3>Workspace, Economics, Geo Intelligence, Geopolitics, AI Chat</h3>
+            </div>
+            <p>Use notes, journal entries, trade logs, spreadsheets, formula references, export schedules, macro dashboards, geopolitical layers, geo maps, and assistant-style market context in the same desktop environment.</p>
           </article>
-          <article class="card feature-card">
-            <span class="feature-icon" aria-hidden="true">FX</span>
-            <h3>Threaded FX Rates</h3>
-            <p>Real-time, cross-currency pairs computed instantly in the background, standardizing global exposure across all internal portfolio computations.</p>
+          <article class="module-row reveal">
+            <div>
+              <span class="module-kicker">Operations</span>
+              <h3>Account, Profile, Settings, Update Controls</h3>
+            </div>
+            <p>Manage identity, preferences, platform settings, access flows, data routing preferences, update metadata, and account-level controls from a dedicated operational surface.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <hr class="section-rule">
-
-    <section class="reveal">
-      <div class="container">
-        <span class="section-label">03 / Institutional Modules</span>
-        <h2>The 15+-Tab Ecosystem Overview</h2>
-        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;" class="table-wrap">
-          <table aria-label="Screen inventory table">
-            <thead>
-              <tr>
-                <th>Module Name</th>
-                <th>Underlying Tech</th>
-                <th>Strategic Function</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Watchlist & Monitors</td><td>Async Data Feeds</td><td>Real-time tick capture for symbols and index instruments across BSE/NSE.</td></tr>
-              <tr><td>Account Hub & Admin</td><td>Encrypted SMTP Auth</td><td>Centralized, secure control panel for environment settings and user roles.</td></tr>
-              <tr><td>Proprietary Institutional Charting Charts</td><td>Embedded WebEngine</td><td>Ultra-smooth web views plotting real-time intra-day metrics and indicators.</td></tr>
-              <tr><td>Live Macro News</td><td>RESTful Threading</td><td>Instant headline dissemination across multiple business journalism networks.</td></tr>
-              <tr><td>FX Rate Conversion</td><td>Background QThread</td><td>Standardization mechanics converting exotic currency structures into base rates.</td></tr>
-              <tr><td>Portfolio Ledger</td><td>Proprietary Calcs</td><td>Granular P&amp;L rendering, risk metrics computation, and day-limit adherence.</td></tr>
-              <tr><td>Advanced Python IDE</td><td>Internal Execution</td><td>Direct, protected memory access for running user-defined logic against market data.</td></tr>
-            </tbody>
-          </table>
+    <section class="section-block tinted">
+      <div class="section-inner split-layout reversed">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Panel ergonomics</p>
+          <h2>Built for dense screens without losing control.</h2>
+          <p>The product uses a panel-first workspace model. Users can detach panels into windows, duplicate panels, resize columns, link symbol context, export panel data, save views, collapse panels, and reset layouts when a workflow gets too complex.</p>
+          <p>This matters because professional market work rarely happens in a single table. A chart, screener result, news item, portfolio exposure, and research panel often need to sit together.</p>
+        </div>
+        <div class="control-board reveal" aria-label="Panel controls">
+          <div class="control-row"><span>Move</span><strong>Rearrange panels by column and priority.</strong></div>
+          <div class="control-row"><span>Detach</span><strong>Open important views in a separate window.</strong></div>
+          <div class="control-row"><span>Link</span><strong>Keep related panels following the same symbol.</strong></div>
+          <div class="control-row"><span>Export</span><strong>Move table output into reports or review files.</strong></div>
+          <div class="control-row"><span>Clone</span><strong>Create alternate views without rebuilding context.</strong></div>
         </div>
       </div>
     </section>
 
-    <hr class="section-rule">
+    <section class="section-block">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Capability depth</p>
+          <h2>Feature groups at a glance.</h2>
+        </div>
 
-    <section class="reveal" id="security">
-      <div class="container">
-        <span class="section-label">04 / Security & Accounts</span>
-        <h2>Deep Dive: Enterprise Security.</h2>
-
-        <article class="deep-dive">
-          <div class="deep-dive-layout">
-            <div>
-              <h3>Secure Centralized Hub</h3>
-              <p>We designed the Account Tab to eliminate scattered setting windows. Now, user roles, API key integrations, layout persistence, and global properties run through a single, professionally structured grid pipeline.</p>
-            </div>
-            <div class="output-panel" aria-label="Auth routing output">
-              <div class="panel-header"><span>SECURE AUTH EVENT</span><span>VERIFICATION</span></div>
-              <div class="output-body">
-                <div class="output-line">[2026-04-11 08:30:12] INITIALIZING SESSION...</div>
-                <div class="output-line">[2026-04-11 08:30:13] REQUESTING ACCESS FOR USER</div>
-                <div class="output-line">[2026-04-11 08:30:14] SMTP OTP DISPATCHED (SECURE RELAY)</div>
-                <div class="output-line">[2026-04-11 08:30:30] OTP VALIDATED. ACCESS GRANTED.</div>
-              </div>
-            </div>
+        <div class="capability-table reveal" role="table" aria-label="Quantify Terminal capability groups">
+          <div class="capability-line" role="row">
+            <strong role="cell">Market monitoring</strong>
+            <span role="cell">Index snapshots, movers, commodities, FX, rates, sectors, volatility, ETF flow, crypto, calendars, headlines.</span>
           </div>
-        </article>
-
-        <article class="deep-dive">
-          <div class="deep-dive-layout">
-            <div>
-              <h3>Responsive Custom Interface</h3>
-              <p>The GUI doesn't dictate your workflow. Users can drag handle-edges across all interfaces, pulling chart boundaries, widening news columns, or condensing risk ladders. The system commits your personalized multi-panel size dimensions to local persistence files.</p>
-            </div>
-            <div class="code-block" aria-label="Layout session output">
-              <div class="code-header">layout_controller.py</div>
-              <pre><code><span class="hl-cmd">&gt;&gt;&gt;</span> EVENT: Window Resize Triggered
-<span class="hl-cmd">&gt;&gt;&gt;</span> Dims: RightPanel(W=350), LeftPanel(W=850)
-<span class="hl-cmd">&gt;&gt;&gt;</span> Committing to layout_config.json...
-<span class="hl-cmd">&gt;&gt;&gt;</span> STATUS: PERSISTED</code></pre>
-            </div>
+          <div class="capability-line" role="row">
+            <strong role="cell">Company research</strong>
+            <span role="cell">Overview, financials, financial charts, valuation, ownership, ratings, technicals, products, news, filings, history, compare.</span>
           </div>
-        </article>
+          <div class="capability-line" role="row">
+            <strong role="cell">Portfolio analytics</strong>
+            <span role="cell">Summary, holdings, allocation, heatmaps, performance analytics, risk metrics, dividends, tax lots, stress tests, reviews.</span>
+          </div>
+          <div class="capability-line" role="row">
+            <strong role="cell">Screening and alerts</strong>
+            <span role="cell">Filters, result tables, symbol details, chart preview, fundamentals comparison, technical scores, alert creation, alert groups, alert history.</span>
+          </div>
+          <div class="capability-line" role="row">
+            <strong role="cell">Workspace tools</strong>
+            <span role="cell">Notes, spreadsheets, formulas, managed workbooks, export center, schedules, journals, trade logs, formula builder.</span>
+          </div>
+          <div class="capability-line" role="row">
+            <strong role="cell">Market intelligence</strong>
+            <span role="cell">Relationship maps, supply-chain maps, supplier and customer views, geo intelligence, geopolitical layers, economic views.</span>
+          </div>
+          <div class="capability-line" role="row">
+            <strong role="cell">Quant and trade prep</strong>
+            <span role="cell">Strategy builder, backtests, equity curves, live price panels, correlation heatmaps, positions, order book, monitor, signal log.</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <hr class="section-rule">
+    <section class="section-block compact">
+      <div class="section-inner image-strip reveal" aria-label="Feature screenshot placeholders">
+        <div class="screen-placeholder" data-image-slot="feature-market-data"></div>
+        <div class="screen-placeholder" data-image-slot="feature-equity-research"></div>
+        <div class="screen-placeholder" data-image-slot="feature-portfolio"></div>
+      </div>
+    </section>
 
-    <section class="download-banner reveal">
-      <div class="container">
-        <span class="section-label">05 / Next Step</span>
-        <h2>Understand the underlying engineering choices.</h2>
-        <a class="btn" href="documentation.html">View Architecture Details</a>
+    <section class="cta-section">
+      <div class="section-inner cta-layout reveal">
+        <div>
+          <p class="eyebrow">Next</p>
+          <h2>See how the platform fits together.</h2>
+          <p>Review the system-level structure behind the terminal without exposing implementation or provider details.</p>
+        </div>
+        <a class="button primary" href="documentation.html">View platform</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-top">
+    <div class="section-inner footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html" aria-label="Quantify Terminal home">
-          <img class="brand-logo" src="Public/IMG_6653.PNG" alt="Quantify Terminal logo" loading="lazy">
-          <span class="brand-wordmark">
-            <strong>QUANTIFY TERMINAL</strong>
-            <span>Professional Market Infrastructure.</span>
-          </span>
+          <img class="brand-logo" src="Public/logo.PNG" alt="Quantify Terminal logo">
+          <span class="brand-copy"><strong>Quantify Terminal</strong><span>Market intelligence workstation</span></span>
         </a>
-        <p>Desktop infrastructure for quantitative research, algorithmic workflows, and professional portfolio management.</p>
+        <p>Professional desktop market software for research, portfolio intelligence, alerts, screeners, maps, news, and quantitative workflows.</p>
       </div>
-
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="features.html">Data & Features</a></li>
-            <li><a href="documentation.html">Engineering</a></li>
-            <li><a href="download.html">Download Terminal</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="features.html#data-pipeline">Async Data Pipelines</a></li>
-            <li><a href="features.html#security">Secure Authentication</a></li>
-            <li><a href="documentation.html#api">Custom APIs</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="mailto:quantifyterminal@gmail.com">Contact Support</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com/quantifyterminal/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          </ul>
-        </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="features.html">Features</a>
+        <a href="documentation.html">Platform</a>
+        <a href="download.html">Downloads</a>
+        <a href="about.html">Founder</a>
+        <a href="connect.html">Connect</a>
+      </nav>
+      <div class="footer-contact">
+        <a href="mailto:contact@quantifyterminal.com">contact@quantifyterminal.com</a>
+        <a href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/QuantifTerm" target="_blank" rel="noopener noreferrer">X</a>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Quantify Terminal · Engineered by Aaryan Saroha · Proprietary Systems</p>
-    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Quantify Terminal.</span><span>Built from Haryana, India for global market work.</span></div>
   </footer>
 </body>
 </html>
