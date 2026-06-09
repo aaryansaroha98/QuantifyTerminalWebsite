@@ -312,6 +312,10 @@ h3 {
   line-height: 1.68;
 }
 
+.lead-compact {
+  display: none;
+}
+
 .hero-actions,
 .actions {
   display: flex;
@@ -409,7 +413,8 @@ h3 {
 }
 
 .hero-mockup {
-  width: min(1320px, 96vw);
+  width: min(1180px, 94vw);
+  margin: 0 auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -1346,6 +1351,77 @@ h1.typing::after {
   transform: scale(1.045);
 }
 
+/* Professional showcase cards (homepage quad grid) */
+.image-grid.quad {
+  counter-reset: qcard;
+}
+
+.image-grid.quad .image-card {
+  counter-increment: qcard;
+}
+
+.image-grid.quad .image-card::before {
+  content: counter(qcard, decimal-leading-zero);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  min-width: 32px;
+  height: 26px;
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 159, 28, 0.35);
+  background: rgba(8, 8, 8, 0.66);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--accent-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  transition: background 240ms ease, color 240ms ease, border-color 240ms ease;
+}
+
+.image-grid.quad .image-card:hover::before {
+  background: rgba(255, 159, 28, 0.18);
+  border-color: rgba(255, 159, 28, 0.6);
+}
+
+.image-grid.quad .image-card:hover {
+  border-color: rgba(255, 159, 28, 0.4);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 159, 28, 0.08);
+}
+
+.image-grid.quad .image-card .copy {
+  position: relative;
+}
+
+.image-grid.quad .image-card h3 {
+  display: inline-block;
+  transition: color 220ms ease;
+}
+
+.image-grid.quad .image-card h3::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-top: 6px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(255, 159, 28, 0));
+  transition: width 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.image-grid.quad .image-card:hover h3 {
+  color: var(--accent-soft);
+}
+
+.image-grid.quad .image-card:hover h3::after {
+  width: 46px;
+}
+
 .media-panel {
   transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
 }
@@ -1513,7 +1589,17 @@ h1.typing::after {
   }
 
   .hero .hero-mockup {
-    margin-top: 34px;
+    margin-top: 26px;
+  }
+
+  .lead-full {
+    display: none;
+  }
+
+  .lead-compact {
+    display: block;
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .hero.compact {
@@ -1582,7 +1668,7 @@ h1.typing::after {
 
   .hero-mockup {
     width: 100%;
-    max-width: 360px;
+    max-width: 460px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 18px;
