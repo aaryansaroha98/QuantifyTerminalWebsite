@@ -234,9 +234,13 @@ body.menu-open .site-header {
 }
 
 .hero {
-  padding: 116px 0 74px;
+  padding: 84px 0 74px;
   text-align: center;
   overflow: hidden;
+}
+
+.hero .hero-mockup {
+  margin-top: 52px;
 }
 
 .hero.compact {
@@ -1311,8 +1315,12 @@ ul.terminal-list {
   }
 
   .hero {
-    padding: 86px 0 38px;
+    padding: 70px 0 38px;
     text-align: left;
+  }
+
+  .hero .hero-mockup {
+    margin-top: 34px;
   }
 
   .hero.compact {
