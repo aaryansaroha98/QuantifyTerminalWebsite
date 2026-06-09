@@ -461,6 +461,21 @@ h3 {
   transform: translateY(-6px);
 }
 
+/* MacBook hero mockup: shown only on mobile (desktop keeps the iMac mockup) */
+.hero-mac {
+  display: none;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
 .section {
   padding: 82px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.055);
@@ -1352,43 +1367,6 @@ h1.typing::after {
 }
 
 /* Professional showcase cards (homepage quad grid) */
-.image-grid.quad {
-  counter-reset: qcard;
-}
-
-.image-grid.quad .image-card {
-  counter-increment: qcard;
-}
-
-.image-grid.quad .image-card::before {
-  content: counter(qcard, decimal-leading-zero);
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 3;
-  min-width: 32px;
-  height: 26px;
-  padding: 0 9px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 159, 28, 0.35);
-  background: rgba(8, 8, 8, 0.66);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  color: var(--accent-soft);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  transition: background 240ms ease, color 240ms ease, border-color 240ms ease;
-}
-
-.image-grid.quad .image-card:hover::before {
-  background: rgba(255, 159, 28, 0.18);
-  border-color: rgba(255, 159, 28, 0.6);
-}
-
 .image-grid.quad .image-card:hover {
   border-color: rgba(255, 159, 28, 0.4);
   box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 159, 28, 0.08);
@@ -1396,30 +1374,25 @@ h1.typing::after {
 
 .image-grid.quad .image-card .copy {
   position: relative;
+  padding: 20px 20px 22px;
 }
 
 .image-grid.quad .image-card h3 {
-  display: inline-block;
-  transition: color 220ms ease;
-}
-
-.image-grid.quad .image-card h3::after {
-  content: "";
   display: block;
-  width: 0;
-  height: 2px;
-  margin-top: 6px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent), rgba(255, 159, 28, 0));
-  transition: width 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  margin-bottom: 8px;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  transition: color 220ms ease;
 }
 
 .image-grid.quad .image-card:hover h3 {
   color: var(--accent-soft);
 }
 
-.image-grid.quad .image-card:hover h3::after {
-  width: 46px;
+.image-grid.quad .image-card p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--quiet);
 }
 
 .media-panel {
@@ -1681,6 +1654,37 @@ h1.typing::after {
 
   .mac-shot img {
     filter: drop-shadow(0 20px 44px rgba(0, 0, 0, 0.5));
+  }
+
+  /* Mobile: swap the iMac mockup for the MacBook mockup */
+  .hero-mockup-desktop {
+    display: none;
+  }
+
+  .hero-mac {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    margin: 18px auto 2px;
+  }
+
+  .hero-mac::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 88%;
+    height: 72%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 159, 28, 0.22), rgba(255, 159, 28, 0) 70%);
+    filter: blur(6px);
+  }
+
+  .hero-mac img {
+    filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.58));
+    animation: hero-float 5.5s ease-in-out infinite;
   }
 
   .screen-shot {
