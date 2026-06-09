@@ -3,45 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Quantify Terminal page not found.">
-  <meta name="theme-color" content="#080808">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#030303">
   <title>Page Not Found | Quantify Terminal</title>
-  <link rel="icon" type="image/png" href="Public/logo.PNG">
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <link rel="icon" type="image/png" href="/Public/logo.PNG">
+  <link rel="apple-touch-icon" href="/Public/logo.PNG">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/main.js" defer></script>
 </head>
-<body data-page="none">
+<body data-page="404">
   <header class="site-header" data-site-header>
     <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Quantify Terminal home">
-        <img class="brand-logo" src="Public/logo.PNG" alt="Quantify Terminal logo">
-        <span class="brand-copy"><strong>Quantify Terminal</strong><span>Market intelligence workstation</span></span>
+      <a class="brand-mark" href="/" aria-label="Quantify Terminal home">
+        <img src="/Public/logo.PNG" alt="Quantify Terminal logo">
+        <span>Quantify<span>Terminal</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
-        <a href="/" data-nav="home">Home</a>
         <a href="/features" data-nav="features">Features</a>
+        <a href="/#overview">Overview</a>
+        <a href="/#compare">Compare</a>
+        <a href="/#changelog">Changelog</a>
         <a href="/documentation" data-nav="platform">Platform</a>
         <a href="/download" data-nav="download">Downloads</a>
         <a href="/about" data-nav="about">Founder</a>
-        <a href="/connect" data-nav="connect">Connect</a>
+        <a href="/connect" data-nav="connect">Contact</a>
       </nav>
-      <a class="nav-action" href="/download">Get Terminal</a>
+      <a class="nav-action" href="/download">Launch Terminal</a>
     </div>
   </header>
+
   <main>
-    <section class="page-hero">
-      <div class="section-inner">
+    <section class="not-found-section">
+      <div class="section-shell final-panel reveal">
         <p class="eyebrow">404</p>
-        <h1>That page is not on the terminal.</h1>
-        <p class="hero-lede">The page may have moved, or the URL may be incorrect.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="/">Return home</a>
-          <a class="button secondary" href="/connect">Contact us</a>
+        <h1>That route is not in the terminal.</h1>
+        <p class="hero-statement">The page may have moved during the rebuild. Use the primary product pages below to get back into the live site.</p>
+        <div class="final-actions">
+          <a class="button button-amber" href="/">Go Home</a>
+          <a class="button button-ghost" href="/features">View Features</a>
+          <a class="button button-ghost" href="/download">Open Downloads</a>
         </div>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <a class="brand-mark footer-brand" href="/" aria-label="Quantify Terminal home">
+        <img src="/Public/logo.PNG" alt="Quantify Terminal logo">
+        <span>Quantify<span>Terminal</span></span>
+      </a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/features">Features</a>
+        <a href="/documentation">Platform</a>
+        <a href="/download">Downloads</a>
+        <a href="/about">Founder</a>
+        <a href="/connect">Connect</a>
+      </nav>
+    </div>
+    <p class="footer-note">&copy; 2026 Quantify Terminal.</p>
+  </footer>
 </body>
 </html>

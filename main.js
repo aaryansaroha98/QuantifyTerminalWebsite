@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveal();
   initDownloadTabs();
   initHeaderShadow();
+  initRailKeyboardSupport();
 });
 
 function initNavigation() {
@@ -33,8 +34,16 @@ function initNavigation() {
     link.addEventListener("click", close);
   });
 
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (!nav.classList.contains("open")) return;
+    if (nav.contains(target) || toggle.contains(target)) return;
+    close();
+  });
+
   window.addEventListener("resize", () => {
-    if (window.innerWidth >= 920) close();
+    if (window.innerWidth >= 1080) close();
   });
 
   document.addEventListener("keydown", (event) => {
@@ -76,7 +85,10 @@ function initReveal() {
     }
   );
 
-  items.forEach((item) => observer.observe(item));
+  items.forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index % 5, 4) * 55}ms`;
+    observer.observe(item);
+  });
 }
 
 function initDownloadTabs() {
@@ -124,4 +136,19 @@ function initHeaderShadow() {
 
   update();
   window.addEventListener("scroll", update, { passive: true });
+}
+
+function initRailKeyboardSupport() {
+  const rails = Array.from(document.querySelectorAll(".runway-rail, .control-rail, .platform-flow, .shot-row, .feature-shot-grid"));
+  if (!rails.length) return;
+
+  rails.forEach((rail) => {
+    rail.setAttribute("tabindex", "0");
+    rail.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      rail.scrollBy({ left: direction * 320, behavior: "smooth" });
+    });
+  });
 }
