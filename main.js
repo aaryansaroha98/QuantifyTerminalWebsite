@@ -1,159 +1,132 @@
-document.addEventListener("DOMContentLoaded", () => {
-  initNavigation();
-  initActiveNav();
-  initReveal();
-  initDownloadTabs();
-  initHeaderShadow();
-  initRailKeyboardSupport();
-});
+(function () {
+  document.documentElement.classList.add("js");
 
-function initNavigation() {
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".primary-nav");
-
-  if (!toggle || !nav) return;
-
-  const close = () => {
-    toggle.setAttribute("aria-expanded", "false");
-    nav.classList.remove("open");
-    document.body.classList.remove("menu-open");
-  };
-
-  toggle.addEventListener("click", () => {
-    const isOpen = toggle.getAttribute("aria-expanded") === "true";
-    if (isOpen) {
-      close();
-      return;
-    }
-    toggle.setAttribute("aria-expanded", "true");
-    nav.classList.add("open");
-    document.body.classList.add("menu-open");
-  });
-
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", close);
-  });
-
-  document.addEventListener("click", (event) => {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
-    if (!nav.classList.contains("open")) return;
-    if (nav.contains(target) || toggle.contains(target)) return;
-    close();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 1080) close();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") close();
-  });
-}
-
-function initActiveNav() {
-  const page = document.body.dataset.page;
-  if (!page) return;
-
-  document.querySelectorAll("[data-nav]").forEach((link) => {
-    if (link.dataset.nav === page) {
-      link.setAttribute("aria-current", "page");
-    }
-  });
-}
-
-function initReveal() {
-  const items = Array.from(document.querySelectorAll(".reveal"));
-  if (!items.length) return;
-
-  if (!("IntersectionObserver" in window)) {
-    items.forEach((item) => item.classList.add("in-view"));
-    return;
+  function setActiveNav() {
+    var current = window.location.pathname.replace(/\/$/, "") || "/";
+    document.querySelectorAll("[data-nav-link]").forEach(function (link) {
+      var href = link.getAttribute("href") || "/";
+      var normalized = href.replace(/\/$/, "") || "/";
+      if (normalized === current) {
+        link.classList.add("active");
+      }
+    });
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target);
+  function setupMenu() {
+    var toggle = document.querySelector("[data-menu-toggle]");
+    var menu = document.querySelector("[data-menu]");
+    if (!toggle || !menu) return;
+
+    function closeMenu() {
+      toggle.classList.remove("is-open");
+      menu.classList.remove("is-open");
+      document.body.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    toggle.addEventListener("click", function () {
+      var isOpen = menu.classList.toggle("is-open");
+      toggle.classList.toggle("is-open", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1040) closeMenu();
+    });
+  }
+
+  function setupReveal() {
+    var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+    if (!items.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (item) {
+        item.classList.add("is-visible");
       });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: "0px 0px 180px 0px",
-    }
-  );
-
-  items.forEach((item, index) => {
-    item.style.transitionDelay = `${Math.min(index % 5, 4) * 55}ms`;
-    const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight + 180) {
-      item.classList.add("in-view");
       return;
     }
-    observer.observe(item);
-  });
-}
 
-function initDownloadTabs() {
-  const buttons = Array.from(document.querySelectorAll("[data-os-button]"));
-  const panels = Array.from(document.querySelectorAll("[data-os-panel]"));
-  if (!buttons.length || !panels.length) return;
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
 
-  const setActive = (target) => {
-    buttons.forEach((button) => {
-      const active = button.dataset.osButton === target;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-selected", active ? "true" : "false");
+    items.forEach(function (item, index) {
+      item.style.transitionDelay = Math.min(index * 38, 190) + "ms";
+      observer.observe(item);
     });
-
-    panels.forEach((panel) => {
-      const active = panel.dataset.osPanel === target;
-      panel.classList.toggle("active", active);
-      panel.hidden = !active;
-    });
-  };
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      setActive(button.dataset.osButton);
-    });
-  });
-
-  const platform = `${navigator.platform || ""} ${navigator.userAgent || ""}`.toLowerCase();
-  if (platform.includes("mac")) {
-    setActive("macos");
-  } else if (platform.includes("linux")) {
-    setActive("linux");
-  } else {
-    setActive("windows");
   }
-}
 
-function initHeaderShadow() {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
+  function setupLightbox() {
+    var images = Array.prototype.slice.call(
+      document.querySelectorAll(".library-grid img, .image-grid img, .media-panel img")
+    );
+    if (!images.length) return;
 
-  const update = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
-  };
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.innerHTML =
+      '<button class="lightbox-close" type="button" aria-label="Close image">×</button>' +
+      "<figure><img alt=\"\"><figcaption></figcaption></figure>";
+    document.body.appendChild(overlay);
 
-  update();
-  window.addEventListener("scroll", update, { passive: true });
-}
+    var bigImg = overlay.querySelector("img");
+    var caption = overlay.querySelector("figcaption");
+    var closeBtn = overlay.querySelector(".lightbox-close");
 
-function initRailKeyboardSupport() {
-  const rails = Array.from(document.querySelectorAll(".runway-rail, .control-rail, .platform-flow, .shot-row, .feature-shot-grid"));
-  if (!rails.length) return;
+    function openImage(src, alt) {
+      bigImg.setAttribute("src", src);
+      bigImg.setAttribute("alt", alt || "");
+      caption.textContent = alt || "";
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+    }
 
-  rails.forEach((rail) => {
-    rail.setAttribute("tabindex", "0");
-    rail.addEventListener("keydown", (event) => {
-      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-      event.preventDefault();
-      const direction = event.key === "ArrowRight" ? 1 : -1;
-      rail.scrollBy({ left: direction * 320, behavior: "smooth" });
+    function closeImage() {
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+      bigImg.setAttribute("src", "");
+    }
+
+    images.forEach(function (img) {
+      img.classList.add("gallery-zoom");
+      img.addEventListener("click", function () {
+        openImage(img.getAttribute("src"), img.getAttribute("alt"));
+      });
     });
+
+    closeBtn.addEventListener("click", closeImage);
+    overlay.addEventListener("click", function (event) {
+      if (event.target === overlay) closeImage();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && overlay.classList.contains("is-open")) {
+        closeImage();
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setActiveNav();
+    setupMenu();
+    setupReveal();
+    setupLightbox();
   });
-}
+})();
