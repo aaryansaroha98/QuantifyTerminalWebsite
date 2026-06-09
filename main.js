@@ -123,8 +123,21 @@
     });
   }
 
+  function setupHeader() {
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+
+    function onScroll() {
+      header.classList.toggle("scrolled", window.scrollY > 12);
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
+    setupHeader();
     setupMenu();
     setupReveal();
     setupLightbox();
