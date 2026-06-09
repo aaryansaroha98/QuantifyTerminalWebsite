@@ -81,12 +81,17 @@ function initReveal() {
     },
     {
       threshold: 0.12,
-      rootMargin: "0px 0px -48px 0px",
+      rootMargin: "0px 0px 180px 0px",
     }
   );
 
   items.forEach((item, index) => {
     item.style.transitionDelay = `${Math.min(index % 5, 4) * 55}ms`;
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 180) {
+      item.classList.add("in-view");
+      return;
+    }
     observer.observe(item);
   });
 }

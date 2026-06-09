@@ -300,9 +300,9 @@ li {
 
 .hero-cinema {
   position: relative;
-  min-height: 82vh;
+  min-height: auto;
   overflow: hidden;
-  padding: 88px 0 28px;
+  padding: 72px 0 0;
   border-bottom: 1px solid var(--line);
   background: #020202;
   isolation: isolate;
@@ -392,7 +392,7 @@ li {
 
 .hero-actions,
 .final-actions {
-  margin-top: 32px;
+  margin-top: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,23 +401,34 @@ li {
 }
 
 .hero-device {
+  position: relative;
   width: min(1160px, calc(100% - 34px));
-  margin: 52px auto 0;
+  height: 430px;
+  margin: 26px auto 0;
+  overflow: hidden;
   transform: translateZ(0);
   filter: drop-shadow(0 36px 56px rgba(0, 0, 0, 0.72));
   animation: floatDevice 7s ease-in-out infinite;
 }
 
 .hero-device img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
   width: 100%;
   height: auto;
   object-fit: contain;
+  transform: translateY(-30%) scale(1.08);
+  transform-origin: top center;
 }
 
 .terminal-ticker {
   width: min(1180px, calc(100% - 34px));
   height: 46px;
-  margin: 8px auto 0;
+  position: relative;
+  z-index: 2;
+  margin: -22px auto 28px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
@@ -860,7 +871,7 @@ li {
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 92px 0 72px;
+  padding: 76px 0 64px;
   border-bottom: 1px solid var(--line);
   background: #020202;
   isolation: isolate;
@@ -896,11 +907,36 @@ li {
 }
 
 .page-device {
+  position: relative;
+  height: 340px;
   padding: 12px;
+  overflow: hidden;
 }
 
 .page-device img {
-  transform: scale(1.04);
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  width: 100%;
+  transform: translateY(-30%) scale(1.12);
+  transform-origin: top center;
+}
+
+.download-hero-layout,
+.connect-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.76fr) minmax(360px, 0.64fr);
+  gap: 58px;
+  align-items: center;
+}
+
+.download-device {
+  height: 360px;
+}
+
+.download-hero-actions {
+  justify-content: flex-start;
 }
 
 .feature-ledger {
@@ -971,10 +1007,6 @@ a.control-card {
   align-items: start;
 }
 
-.download-hero .page-device {
-  max-height: 430px;
-}
-
 .download-tabs {
   width: min(620px, 100%);
   margin: 0 auto 26px;
@@ -1026,6 +1058,36 @@ a.control-card {
   margin-top: 8px;
 }
 
+.download-heading {
+  max-width: 760px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.download-heading h2 {
+  margin-bottom: 12px;
+}
+
+.build-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.build-facts span {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #11100f;
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 760;
+}
+
 .download-meta span,
 .release-terminal span {
   color: var(--amber);
@@ -1061,6 +1123,95 @@ a.control-card {
 
 .release-rail .control-card {
   min-height: 170px;
+}
+
+.download-matrix-section,
+.contact-hub-section {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--line);
+  background: #020202;
+}
+
+.release-matrix,
+.social-matrix {
+  display: grid;
+  gap: 16px;
+}
+
+.release-matrix {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.release-card-pro,
+.social-card,
+.contact-command {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #090908;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 22px 44px var(--shadow);
+}
+
+.release-card-pro,
+.social-card {
+  min-width: 0;
+  min-height: 210px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 24px;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.release-card-pro:hover,
+.social-card:hover {
+  transform: translateY(-2px);
+  border-color: #5a5142;
+  background: #11100f;
+}
+
+.release-card-pro span,
+.social-card span,
+.contact-command span {
+  color: var(--amber);
+  font-size: 0.86rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.release-card-pro strong,
+.social-card strong,
+.contact-command strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 1.2rem;
+  overflow-wrap: anywhere;
+}
+
+.social-matrix {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.primary-social {
+  grid-column: span 2;
+  background: #11100f;
+}
+
+.contact-command {
+  min-height: 330px;
+  display: grid;
+  align-content: center;
+  gap: 9px;
+  padding: 28px;
+}
+
+.contact-command strong {
+  margin-bottom: 16px;
+}
+
+.founder-contact-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
 .founder-hero {
@@ -1330,6 +1481,8 @@ a.control-card {
   .release-docs,
   .founder-story,
   .founder-vision,
+  .download-hero-layout,
+  .connect-hero-layout,
   .page-hero-grid,
   .founder-grid {
     gap: 46px;
@@ -1359,7 +1512,8 @@ a.control-card {
   }
 
   .section-shell {
-    width: min(100% - 32px, var(--shell));
+    width: calc(100% - 32px);
+    max-width: var(--shell);
   }
 
   .nav-shell {
@@ -1420,7 +1574,7 @@ a.control-card {
 
   .hero-cinema {
     min-height: 0;
-    padding: 62px 0 22px;
+    padding: 56px 0 0;
   }
 
   .hero-core {
@@ -1433,7 +1587,12 @@ a.control-card {
 
   .hero-device {
     width: calc(100% - 18px);
-    margin-top: 32px;
+    height: 330px;
+    margin-top: 22px;
+  }
+
+  .hero-device img {
+    transform: translateY(-28%) scale(1.1);
   }
 
   .terminal-ticker {
@@ -1475,6 +1634,8 @@ a.control-card {
   .release-docs,
   .founder-story,
   .founder-vision,
+  .download-hero-layout,
+  .connect-hero-layout,
   .page-hero-grid,
   .founder-grid {
     grid-template-columns: 1fr;
@@ -1525,6 +1686,41 @@ a.control-card {
   .download-panel {
     grid-template-columns: 1fr;
     padding: 24px;
+    min-width: 0;
+  }
+
+  .download-hero-actions {
+    justify-content: center;
+  }
+
+  .page-device,
+  .download-device {
+    height: 290px;
+  }
+
+  .page-device img {
+    transform: translateY(-28%) scale(1.18);
+  }
+
+  .release-matrix,
+  .social-matrix,
+  .founder-contact-cards {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 18px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .release-card-pro,
+  .social-card {
+    min-width: 300px;
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+  }
+
+  .primary-social {
+    min-width: 330px;
   }
 
   .footer-shell {
@@ -1578,7 +1774,7 @@ a.control-card {
   }
 
   .hero-cinema {
-    padding-top: 42px;
+    padding-top: 38px;
   }
 
   .hero-core h1 {
@@ -1626,9 +1822,14 @@ a.control-card {
   }
 
   .hero-device {
-    width: 136%;
-    margin-top: 18px;
-    margin-left: -18%;
+    width: calc(100% + 76px);
+    height: 228px;
+    margin-top: 14px;
+    margin-left: -38px;
+  }
+
+  .hero-device img {
+    transform: translateY(-25%) scale(1.1);
   }
 
   .ticker-track {
@@ -1637,11 +1838,29 @@ a.control-card {
   }
 
   .page-hero {
-    padding: 58px 0 54px;
+    padding: 50px 0 48px;
   }
 
   .page-device {
+    height: 226px;
     margin-inline: -12px;
+  }
+
+  .page-device img {
+    transform: translateY(-25%) scale(1.26);
+  }
+
+  .download-device {
+    height: 220px;
+  }
+
+  .download-heading {
+    text-align: left;
+  }
+
+  .download-matrix-section,
+  .contact-hub-section {
+    padding: 68px 0;
   }
 
   .product-frame {
@@ -1693,15 +1912,99 @@ a.control-card {
 
   .download-tabs {
     width: 100%;
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-right: 0;
+    margin-left: 0;
+    overflow: hidden;
   }
 
   .os-tab {
     min-height: 44px;
-    font-size: 0.88rem;
+    min-width: 0;
+    width: 100%;
+    padding: 0 6px;
+    font-size: 0.9rem;
   }
 
   .download-panel {
+    width: 100%;
     padding: 18px;
+  }
+
+  .download-cockpit .section-shell,
+  .download-matrix-section .section-shell,
+  .contact-hub-section .section-shell,
+  .compare-section .section-shell {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+  }
+
+  .download-heading,
+  .download-meta,
+  .release-terminal,
+  .vision-copy,
+  .install-copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .download-heading h2,
+  .vision-copy h2,
+  .install-copy h2,
+  .final-panel h2 {
+    max-width: 300px;
+    font-size: 1.78rem;
+    overflow-wrap: break-word;
+  }
+
+  .download-heading p,
+  .vision-copy p,
+  .install-copy p,
+  .download-meta p {
+    max-width: 300px;
+  }
+
+  .download-stage,
+  .download-panel {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    overflow: hidden;
+  }
+
+  .release-terminal {
+    width: 100%;
+    max-width: calc(100vw - 64px);
+    margin-right: auto;
+    margin-left: auto;
+    padding: 22px;
+    overflow: hidden;
+  }
+
+  .release-terminal .button {
+    min-width: 0;
+    width: 100%;
+    max-width: 270px;
+    justify-self: start;
+  }
+
+  .build-facts {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .build-facts span {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .release-matrix,
+  .social-matrix,
+  .founder-contact-cards {
+    width: 100%;
+    max-width: 100%;
   }
 
   .portrait-screen {

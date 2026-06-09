@@ -34,26 +34,36 @@
         <a href="/about" data-nav="about">Founder</a>
         <a href="/connect" data-nav="connect">Contact</a>
       </nav>
-      <a class="nav-action" href="/download">Launch Terminal</a>
+      <a class="nav-action" href="/download">Download Terminal</a>
     </div>
   </header>
 
   <main>
     <section class="page-hero download-hero">
-      <div class="section-shell page-hero-grid">
+      <div class="section-shell download-hero-layout">
         <div class="page-copy reveal">
           <p class="eyebrow">Desktop downloads</p>
-          <h1>Choose your Quantify Terminal build.</h1>
-          <p class="hero-statement">Windows, macOS, and Linux release paths are ready. Public installer files can be dropped into the build slots when distribution opens.</p>
+          <h1>Download Quantify Terminal.</h1>
+          <p class="hero-statement">Choose the workstation build for your operating system. Windows, macOS, and Linux release paths are organized here so the public installer links can go live cleanly when distribution opens.</p>
+          <div class="hero-actions download-hero-actions">
+            <a class="button button-amber" href="#builds">Choose Build</a>
+            <a class="button button-ghost" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20release%20access">Request Access</a>
+          </div>
         </div>
-        <figure class="page-device reveal" aria-label="Download page terminal mockup">
+        <figure class="page-device download-device reveal" aria-label="Download page terminal mockup">
           <img src="/Public/qt%20svg%20white%20mac.svg" alt="Quantify Terminal desktop mockup">
         </figure>
       </div>
     </section>
 
-    <section class="download-cockpit">
+    <section class="download-cockpit" id="builds">
       <div class="section-shell">
+        <div class="download-heading reveal">
+          <p class="eyebrow">Build selector</p>
+          <h2>Pick your operating system.</h2>
+          <p>Each path is prepared for a production release flow: one clear operating system, one clear build type, one official contact path until public files are attached.</p>
+        </div>
+
         <div class="download-tabs reveal" role="tablist" aria-label="Operating system selector">
           <button type="button" class="os-tab active" data-os-button="windows" role="tab" aria-selected="true">Windows</button>
           <button type="button" class="os-tab" data-os-button="macos" role="tab" aria-selected="false">macOS</button>
@@ -63,15 +73,20 @@
         <div class="download-stage reveal">
           <article class="download-panel active" data-os-panel="windows" role="tabpanel">
             <div class="download-meta">
-              <span>Recommended path</span>
+              <span>Windows workstation</span>
               <h2>Windows installer</h2>
-              <p>Built for a guided installation flow, desktop launch, and a familiar update path for Windows workstations.</p>
+              <p>For analysts and investors running Quantify Terminal on a Windows desktop or laptop. The installer path is designed for a guided setup and standard desktop launch behavior.</p>
+              <div class="build-facts">
+                <span>Installer</span>
+                <span>Desktop app</span>
+                <span>Release access</span>
+              </div>
             </div>
             <div class="release-terminal">
-              <span>Build slot</span>
+              <span>Primary build</span>
               <strong>Quantify Terminal for Windows</strong>
-              <small>Installer file will appear here when public release opens.</small>
-              <a class="button button-amber" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20Windows%20build">Request Windows Build</a>
+              <small>Public file slot: Windows installer. Until the binary is attached, use the download request below.</small>
+              <a class="button button-amber" href="mailto:contact@quantifyterminal.com?subject=Download%20Quantify%20Terminal%20for%20Windows">Download Windows Build</a>
             </div>
           </article>
 
@@ -79,13 +94,18 @@
             <div class="download-meta">
               <span>Apple desktop</span>
               <h2>macOS DMG</h2>
-              <p>Designed for a clean app install flow and a polished launch experience on Mac workstations.</p>
+              <p>For Mac users who want a clean desktop install flow. The macOS path is prepared for a DMG-style release with a simple app installation experience.</p>
+              <div class="build-facts">
+                <span>DMG</span>
+                <span>Apple desktop</span>
+                <span>Release access</span>
+              </div>
             </div>
             <div class="release-terminal">
-              <span>Build slot</span>
+              <span>Primary build</span>
               <strong>Quantify Terminal for macOS</strong>
-              <small>DMG file will appear here when public release opens.</small>
-              <a class="button button-amber" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20macOS%20build">Request macOS Build</a>
+              <small>Public file slot: macOS DMG. Until the binary is attached, use the download request below.</small>
+              <a class="button button-amber" href="mailto:contact@quantifyterminal.com?subject=Download%20Quantify%20Terminal%20for%20macOS">Download macOS Build</a>
             </div>
           </article>
 
@@ -93,15 +113,46 @@
             <div class="download-meta">
               <span>Linux workstation</span>
               <h2>AppImage and package paths</h2>
-              <p>Prepared for users who prefer either a portable release or a package-based installation route.</p>
+              <p>For Linux users who prefer either a portable AppImage or a package-based installation route. Both release slots are prepared for future public files.</p>
+              <div class="build-facts">
+                <span>AppImage</span>
+                <span>Package</span>
+                <span>Release access</span>
+              </div>
             </div>
             <div class="release-terminal dual-actions">
-              <span>Build slots</span>
+              <span>Build options</span>
               <strong>Quantify Terminal for Linux</strong>
-              <small>AppImage and package files will appear here when public release opens.</small>
-              <a class="button button-amber" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20Linux%20AppImage">Request AppImage</a>
-              <a class="button button-ghost" href="mailto:contact@quantifyterminal.com?subject=Quantify%20Terminal%20Linux%20package">Request Package</a>
+              <small>Public file slots: AppImage and package. Until binaries are attached, request the format you want.</small>
+              <a class="button button-amber" href="mailto:contact@quantifyterminal.com?subject=Download%20Quantify%20Terminal%20Linux%20AppImage">Download AppImage</a>
+              <a class="button button-ghost" href="mailto:contact@quantifyterminal.com?subject=Download%20Quantify%20Terminal%20Linux%20package">Download Package</a>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="download-matrix-section">
+      <div class="section-shell">
+        <div class="download-heading reveal">
+          <p class="eyebrow">Release matrix</p>
+          <h2>Three desktop paths, one terminal experience.</h2>
+        </div>
+        <div class="release-matrix" aria-label="Operating system release matrix">
+          <article class="release-card-pro reveal">
+            <span>Windows</span>
+            <strong>Installer path</strong>
+            <p>Best for a standard workstation setup with guided installation and desktop launch behavior.</p>
+          </article>
+          <article class="release-card-pro reveal">
+            <span>macOS</span>
+            <strong>DMG path</strong>
+            <p>Best for Apple desktop users who want a clean app install and familiar Mac workflow.</p>
+          </article>
+          <article class="release-card-pro reveal">
+            <span>Linux</span>
+            <strong>AppImage and package path</strong>
+            <p>Best for users who want either a portable desktop build or package-managed installation.</p>
           </article>
         </div>
       </div>
@@ -110,28 +161,16 @@
     <section class="cinema-section">
       <div class="section-shell install-grid">
         <div class="install-copy reveal">
-          <p class="eyebrow">Install discipline</p>
-          <h2>Use official channels only.</h2>
-          <p>Quantify Terminal is desktop market software. Install builds only from official Quantify Terminal distribution paths, keep account credentials private, and use a workstation with enough screen space for multi-panel workflows.</p>
+          <p class="eyebrow">Official channel</p>
+          <h2>Install only from Quantify Terminal channels.</h2>
+          <p>Use the official website, official repository organization, or direct email channel for release access. Keep account credentials private and use a machine with enough screen space for multi-panel market workflows.</p>
         </div>
         <div class="install-list reveal">
-          <div><span>01</span><strong>Choose your operating system.</strong></div>
-          <div><span>02</span><strong>Request or download the public build.</strong></div>
-          <div><span>03</span><strong>Install through the native installer or package flow.</strong></div>
-          <div><span>04</span><strong>Launch the terminal and complete account setup.</strong></div>
+          <div><span>01</span><strong>Select Windows, macOS, or Linux.</strong></div>
+          <div><span>02</span><strong>Use the official download or request link.</strong></div>
+          <div><span>03</span><strong>Install through the native operating-system flow.</strong></div>
+          <div><span>04</span><strong>Open Quantify Terminal and complete account setup.</strong></div>
         </div>
-      </div>
-    </section>
-
-    <section class="terminal-runway compact-runway">
-      <div class="section-shell runway-heading reveal">
-        <p class="eyebrow">Release channels</p>
-        <h2>Support paths for release access.</h2>
-      </div>
-      <div class="control-rail release-rail" aria-label="Release support links">
-        <a class="control-card reveal" href="mailto:contact@quantifyterminal.com"><span>Email</span><p>Request release access or installation support.</p></a>
-        <a class="control-card reveal" href="https://discord.gg/dw2qVe9Y" target="_blank" rel="noopener noreferrer"><span>Discord</span><p>Join the public community channel.</p></a>
-        <a class="control-card reveal" href="https://github.com/Quantify-Terminal" target="_blank" rel="noopener noreferrer"><span>GitHub</span><p>Follow official project organization updates.</p></a>
       </div>
     </section>
   </main>
