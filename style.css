@@ -1367,19 +1367,42 @@ h1.typing::after {
 }
 
 /* Professional showcase cards (homepage quad grid) */
+.image-grid.quad .image-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .image-grid.quad .image-card:hover {
   border-color: rgba(255, 159, 28, 0.4);
   box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 159, 28, 0.08);
 }
 
+.image-grid.quad .image-card img {
+  border-bottom: 0;
+}
+
 .image-grid.quad .image-card .copy {
   position: relative;
-  padding: 20px 20px 22px;
+  padding: 24px 24px 26px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-grid.quad .image-card .copy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 159, 28, 0.3), rgba(255, 255, 255, 0.06), rgba(255, 159, 28, 0.3));
 }
 
 .image-grid.quad .image-card h3 {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-size: 17px;
   letter-spacing: -0.01em;
   transition: color 220ms ease;
@@ -1390,9 +1413,10 @@ h1.typing::after {
 }
 
 .image-grid.quad .image-card p {
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--quiet);
+  letter-spacing: 0.005em;
 }
 
 .media-panel {
@@ -1758,6 +1782,15 @@ h1.typing::after {
 
   .image-card .copy {
     padding: 14px;
+  }
+
+  .image-grid.quad .image-card .copy {
+    padding: 18px 18px 20px;
+  }
+
+  .image-grid.quad .image-card .copy::before {
+    left: 18px;
+    right: 18px;
   }
 
   .image-card p,
