@@ -2089,3 +2089,105 @@ h1.typing::after {
     display: none;
   }
 }
+
+
+/* === Screen gallery marquee === */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 30px;
+  padding: 6px 0;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.marquee + .marquee {
+  margin-top: 16px;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 18px;
+  animation: marquee-left 70s linear infinite;
+  will-change: transform;
+}
+
+.marquee-reverse .marquee-track {
+  animation-name: marquee-right;
+  animation-duration: 46s;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  margin: 0;
+  width: clamp(280px, 26vw, 380px);
+}
+
+.marquee-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+
+.marquee-names {
+  gap: 12px;
+}
+
+.marquee-name {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.marquee-name::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .marquee-item { width: clamp(220px, 72vw, 300px); }
+  .marquee { margin-top: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; transform: none; }
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask: none;
+    mask: none;
+  }
+}
