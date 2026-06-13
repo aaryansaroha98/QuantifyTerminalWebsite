@@ -836,9 +836,7 @@ ul.terminal-list {
   opacity: 1;
 }
 
-.download-card[data-os="mac"] {
-  border-color: rgba(255, 159, 28, 0.28);
-}
+
 
 .download-tag {
   position: absolute;
