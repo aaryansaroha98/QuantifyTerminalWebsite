@@ -1235,7 +1235,7 @@ ul.terminal-list {
 .site-footer {
   padding: 42px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  color: var(--accent);
+  color: var(--quiet);
 }
 
 .footer-shell {
@@ -1251,7 +1251,7 @@ ul.terminal-list {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--text);
+  color: var(--accent);
   font-size: 14px;
   font-weight: 850;
 }
