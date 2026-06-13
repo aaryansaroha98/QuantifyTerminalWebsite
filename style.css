@@ -954,6 +954,8 @@ ul.terminal-list {
 
 .prose.legal {
   max-width: 820px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .prose.legal .updated {
@@ -1233,7 +1235,7 @@ ul.terminal-list {
 .site-footer {
   padding: 42px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  color: var(--quiet);
+  color: var(--accent);
 }
 
 .footer-shell {
