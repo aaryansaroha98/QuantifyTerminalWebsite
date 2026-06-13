@@ -665,7 +665,7 @@ h3 {
   list-style: none;
   display: grid;
   grid-template-columns: 50px 1fr;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 18px;
   margin: 0;
   padding: 18px 2px;
@@ -702,7 +702,7 @@ ul.terminal-list {
 
 .dot {
   display: inline-flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: flex-start;
   width: auto;
   height: auto;
@@ -716,6 +716,7 @@ ul.terminal-list {
   line-height: 1;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
+  margin-top: 1px;
 }
 
 .dot::before {
