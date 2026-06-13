@@ -536,8 +536,8 @@ h3 {
 
 .kpi {
   min-width: 0;
-  min-height: 130px;
-  padding: 20px;
+  min-height: 120px;
+  padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.008) 100%);
@@ -557,7 +557,7 @@ h3 {
   display: block;
   margin-bottom: 6px;
   color: var(--text);
-  font-size: 28px;
+  font-size: 26px;
   line-height: 1.1;
   font-weight: 850;
   letter-spacing: -0.01em;
@@ -567,7 +567,7 @@ h3 {
 .kpi span {
   display: block;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.5;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -1994,18 +1994,18 @@ h1.typing::after {
   }
 
   .kpi {
-    min-height: 110px;
-    padding: 16px;
+    min-height: 100px;
+    padding: 14px;
     border-radius: 10px;
   }
 
   .kpi strong {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .kpi span {
     display: block;
-    font-size: 12.5px;
+    font-size: 12px;
     overflow-wrap: anywhere;
     line-height: 1.5;
   }
