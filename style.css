@@ -710,7 +710,7 @@ ul.terminal-list {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  color: var(--accent);
+  color: var(--text);
   font-size: 26px;
   font-weight: 800;
   line-height: 1;
@@ -720,8 +720,8 @@ ul.terminal-list {
 }
 
 .dot::before {
-  content: "0";
-  opacity: 0.5;
+  content: "";
+  display: none;
 }
 
 .media-panel {
