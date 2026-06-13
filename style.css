@@ -573,6 +573,11 @@ h3 {
   letter-spacing: 0.01em;
 }
 
+/* KPI text versions - desktop shows full, mobile shows short */
+.kpi-mobile {
+  display: none;
+}
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2182,7 +2187,7 @@ h1.typing::after {
 
   h1 {
     max-width: 320px;
-    font-size: 26px;
+    font-size: 32px;
   }
 
   .hero-actions .btn {
@@ -2204,6 +2209,12 @@ h1.typing::after {
 
   .social-card p {
     display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 36px;
   }
 }
 
