@@ -1,4 +1,17 @@
+# robots.txt for Quantify Terminal
+# https://www.quantifyterminal.com
+
 User-agent: *
+Allow: /
+
+# Block crawling of the custom 404 page
+Disallow: /404
+
+# Major AI / search crawlers explicitly welcomed
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://www.quantifyterminal.com/sitemap.xml
