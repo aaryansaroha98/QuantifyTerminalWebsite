@@ -756,7 +756,7 @@ connect_html = HTML_HEAD("Connect") + """
           Instagram Media Library
         </a>
 
-        <a href="https://discord.gg/dw2qVe9Y" target="_blank" class="social-card">
+        <a href="https://discord.gg/djKVhBH8cF" target="_blank" class="social-card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 14.5c-1.5 1.5-3.5 1.5-5 0"></path><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
           Discord Core Server
         </a>
