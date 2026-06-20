@@ -205,10 +205,6 @@ body.menu-open .site-header {
   cursor: pointer;
 }
 
-.nav-backdrop {
-  display: none;
-}
-
 .menu-toggle span {
   position: relative;
   width: 18px;
@@ -1930,46 +1926,23 @@ h1.typing::after {
     display: inline-flex;
   }
 
-  .nav-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 40;
-    background: rgba(3, 4, 4, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 280ms ease, visibility 0s linear 280ms;
-  }
-
-  .nav-backdrop.is-open {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 280ms ease;
-  }
-
   .nav-panel {
     position: fixed;
-    z-index: 50;
-    top: 74px;
+    top: 78px;
     left: auto;
-    right: 14px;
-    width: min(300px, calc(100vw - 28px));
+    right: 18px;
+    width: min(240px, calc(100vw - 36px));
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4px;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 0;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
-      rgba(10, 11, 11, 0.98);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 30px 70px rgba(0, 0, 0, 0.6);
+    gap: 6px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(8, 9, 9, 0.98);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55);
     transform-origin: top right;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-12px) scale(0.98);
+    transform: translateY(-14px) scaleY(0.96);
     pointer-events: none;
     transition:
       opacity 260ms ease,
@@ -1980,7 +1953,7 @@ h1.typing::after {
   .nav-panel.is-open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scaleY(1);
     pointer-events: auto;
     transition:
       opacity 260ms ease,
@@ -1989,56 +1962,13 @@ h1.typing::after {
   }
 
   .nav-panel a {
-    min-height: 52px;
+    min-height: 42px;
     justify-content: flex-start;
-    padding: 0 16px;
-    border-radius: 0;
-    font-size: 15px;
-    font-weight: 720;
-    letter-spacing: -0.01em;
-    color: var(--muted);
+    padding: 0 14px;
+    font-size: 14px;
     opacity: 0;
     transform: translateY(-6px);
     transition: opacity 260ms ease, transform 260ms ease, color 180ms ease, background 180ms ease;
-  }
-
-  .nav-panel a::after {
-    content: "\203A";
-    position: absolute;
-    left: auto;
-    right: 16px;
-    bottom: auto;
-    top: 50%;
-    width: auto;
-    height: auto;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-    color: var(--quiet);
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1;
-    transform: translateY(-50%);
-    opacity: 0.55;
-    transition: color 180ms ease, transform 220ms ease, opacity 180ms ease;
-  }
-
-  .nav-panel a:hover,
-  .nav-panel a.active {
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .nav-panel a.active {
-    color: var(--accent);
-    background: rgba(255, 159, 28, 0.1);
-  }
-
-  .nav-panel a:hover::after,
-  .nav-panel a.active::after {
-    color: var(--accent);
-    opacity: 1;
-    transform: translate(3px, -50%);
   }
 
   .nav-panel.is-open a {
@@ -2046,13 +1976,13 @@ h1.typing::after {
     transform: translateY(0);
   }
 
-  .nav-panel.is-open a:nth-child(1) { transition-delay: 0.04s; }
-  .nav-panel.is-open a:nth-child(2) { transition-delay: 0.08s; }
-  .nav-panel.is-open a:nth-child(3) { transition-delay: 0.12s; }
-  .nav-panel.is-open a:nth-child(4) { transition-delay: 0.16s; }
-  .nav-panel.is-open a:nth-child(5) { transition-delay: 0.20s; }
-  .nav-panel.is-open a:nth-child(6) { transition-delay: 0.24s; }
-  .nav-panel.is-open a:nth-child(7) { transition-delay: 0.28s; }
+  .nav-panel.is-open a:nth-child(1) { transition-delay: 0.05s; }
+  .nav-panel.is-open a:nth-child(2) { transition-delay: 0.09s; }
+  .nav-panel.is-open a:nth-child(3) { transition-delay: 0.13s; }
+  .nav-panel.is-open a:nth-child(4) { transition-delay: 0.17s; }
+  .nav-panel.is-open a:nth-child(5) { transition-delay: 0.21s; }
+  .nav-panel.is-open a:nth-child(6) { transition-delay: 0.25s; }
+  .nav-panel.is-open a:nth-child(7) { transition-delay: 0.29s; }
 
   .nav-actions {
     display: none;
@@ -2510,9 +2440,9 @@ h1.typing::after {
 @media (max-width: 420px) {
   .nav-panel {
     left: auto;
-    right: 14px;
+    right: 18px;
     top: 72px;
-    width: min(280px, calc(100vw - 28px));
+    width: min(230px, calc(100vw - 36px));
   }
 
   h1 {
