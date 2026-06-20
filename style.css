@@ -1497,32 +1497,30 @@ ul.terminal-list {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 16px;
 }
 
 .footer-social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9px;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.03);
-  transition: transform 200ms ease, border-color 200ms ease, color 200ms ease, background 200ms ease;
-}
-
-.footer-social a:hover {
-  transform: translateY(-2px);
-  color: var(--accent);
-  border-color: rgba(255, 159, 28, 0.45);
-  background: rgba(255, 159, 28, 0.08);
+  color: var(--quiet);
+  transition: transform 200ms ease, color 200ms ease, filter 200ms ease;
 }
 
 .footer-social svg {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
+}
+
+.footer-social a[href*="x.com"] { color: #ffffff; }
+.footer-social a[href*="linkedin"] { color: #0a66c2; }
+.footer-social a[href*="youtube"] { color: #ff0000; }
+.footer-social a[href*="discord"] { color: #5865f2; }
+
+.footer-social a:hover {
+  transform: translateY(-2px) scale(1.12);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
 }
 
 .gallery-zoom {
@@ -2425,7 +2423,13 @@ h1.typing::after {
   }
 
   .footer-social {
-    justify-content: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .footer-social svg {
+    width: 19px;
+    height: 19px;
   }
 
   .footer-social-extra {
