@@ -1935,9 +1935,7 @@ h1.typing::after {
     position: fixed;
     inset: 0;
     z-index: 40;
-    background: rgba(3, 4, 4, 0.55);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    background: rgba(3, 4, 4, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: opacity 280ms ease, visibility 0s linear 280ms;
@@ -1953,21 +1951,22 @@ h1.typing::after {
     position: fixed;
     z-index: 50;
     top: 74px;
-    left: 14px;
+    left: auto;
     right: 14px;
+    width: min(300px, calc(100vw - 28px));
     display: grid;
     grid-template-columns: 1fr;
     gap: 4px;
     padding: 10px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: 0;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
       rgba(10, 11, 11, 0.98);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.06),
       0 30px 70px rgba(0, 0, 0, 0.6);
-    transform-origin: top center;
+    transform-origin: top right;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-12px) scale(0.98);
@@ -1993,7 +1992,7 @@ h1.typing::after {
     min-height: 52px;
     justify-content: flex-start;
     padding: 0 16px;
-    border-radius: 11px;
+    border-radius: 0;
     font-size: 15px;
     font-weight: 720;
     letter-spacing: -0.01em;
@@ -2510,9 +2509,10 @@ h1.typing::after {
 
 @media (max-width: 420px) {
   .nav-panel {
-    left: 14px;
+    left: auto;
     right: 14px;
     top: 72px;
+    width: min(280px, calc(100vw - 28px));
   }
 
   h1 {
