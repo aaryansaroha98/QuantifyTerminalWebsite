@@ -17,18 +17,41 @@
     var menu = document.querySelector("[data-menu]");
     if (!toggle || !menu) return;
 
+    var backdrop = document.createElement("div");
+    backdrop.className = "nav-backdrop";
+    backdrop.setAttribute("aria-hidden", "true");
+    document.body.appendChild(backdrop);
+
     function closeMenu() {
       toggle.classList.remove("is-open");
       menu.classList.remove("is-open");
+      backdrop.classList.remove("is-open");
       document.body.classList.remove("menu-open");
       toggle.setAttribute("aria-expanded", "false");
     }
 
+    function openMenu() {
+      toggle.classList.add("is-open");
+      menu.classList.add("is-open");
+      backdrop.classList.add("is-open");
+      document.body.classList.add("menu-open");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
     toggle.addEventListener("click", function () {
-      var isOpen = menu.classList.toggle("is-open");
-      toggle.classList.toggle("is-open", isOpen);
-      document.body.classList.toggle("menu-open", isOpen);
-      toggle.setAttribute("aria-expanded", String(isOpen));
+      if (menu.classList.contains("is-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    backdrop.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menu.classList.contains("is-open")) {
+        closeMenu();
+      }
     });
 
     menu.querySelectorAll("a").forEach(function (link) {
