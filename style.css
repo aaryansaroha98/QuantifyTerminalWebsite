@@ -1466,8 +1466,32 @@ ul.terminal-list {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
+}
+
+.footer-copy {
+  color: var(--quiet);
+}
+
+.footer-legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-legal a {
+  color: var(--quiet);
+  font-size: 13px;
+  font-weight: 700;
+  transition: color 180ms ease;
+}
+
+.footer-legal a:hover {
+  color: var(--text);
+}
+
+.footer-social {
+  margin-left: auto;
 }
 
 .footer-brand {
@@ -2419,17 +2443,23 @@ h1.typing::after {
 
   .footer-shell {
     display: grid;
-    gap: 18px;
-    justify-items: center;
-    text-align: center;
+    gap: 14px;
+    justify-items: start;
+    text-align: left;
   }
+
+  .footer-brand { order: 1; }
+  .footer-legal { order: 2; }
+  .footer-copy { order: 3; }
+  .footer-social { order: 4; }
 
   .footer-links {
     justify-content: flex-start;
   }
 
   .footer-social {
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 0;
   }
 
   .footer-social-extra {
