@@ -2451,7 +2451,7 @@ h1.typing::after {
   }
 
   .footer-brand { order: 1; }
-  .footer-legal { order: 2; }
+  .footer-legal { order: 2; margin-left: auto; gap: 12px; }
   .footer-copy { order: 3; width: 100%; margin-left: 0; }
   .footer-social { order: 4; width: 100%; }
 
