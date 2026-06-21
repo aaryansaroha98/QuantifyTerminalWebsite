@@ -2443,23 +2443,23 @@ h1.typing::after {
   }
 
   .footer-shell {
-    display: grid;
-    gap: 14px;
-    justify-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 14px;
     text-align: left;
   }
 
   .footer-brand { order: 1; }
   .footer-legal { order: 2; }
-  .footer-copy { order: 3; margin-left: 0; }
-  .footer-social { order: 4; }
+  .footer-copy { order: 3; width: 100%; margin-left: 0; }
+  .footer-social { order: 4; width: 100%; }
 
   .footer-links {
     justify-content: flex-start;
   }
 
   .footer-social {
-    justify-self: center;
     justify-content: center;
     margin-left: 0;
   }
