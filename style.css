@@ -1471,6 +1471,7 @@ ul.terminal-list {
 
 .footer-copy {
   color: var(--quiet);
+  margin-left: 40px;
 }
 
 .footer-legal {
@@ -2450,7 +2451,7 @@ h1.typing::after {
 
   .footer-brand { order: 1; }
   .footer-legal { order: 2; }
-  .footer-copy { order: 3; }
+  .footer-copy { order: 3; margin-left: 0; }
   .footer-social { order: 4; }
 
   .footer-links {
@@ -2458,7 +2459,8 @@ h1.typing::after {
   }
 
   .footer-social {
-    justify-content: flex-start;
+    justify-self: center;
+    justify-content: center;
     margin-left: 0;
   }
 
