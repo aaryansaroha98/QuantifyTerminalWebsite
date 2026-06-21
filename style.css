@@ -2446,8 +2446,9 @@ h1.typing::after {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 12px 14px;
-    text-align: left;
+    text-align: center;
   }
 
   .footer-brand { order: 1; }
