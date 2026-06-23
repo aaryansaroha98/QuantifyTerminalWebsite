@@ -608,6 +608,7 @@ h3 {
 
 .image-card {
   min-height: 340px;
+  border-radius: 0;
 }
 
 .library-grid .image-card {
@@ -619,11 +620,12 @@ h3 {
 }
 
 .library-grid .image-card .copy {
-  padding: 13px;
+  padding: 16px 16px 20px;
+  text-align: center;
 }
 
 .library-grid .image-card h3 {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   font-size: 15px;
 }
 
@@ -647,7 +649,15 @@ h3 {
 }
 
 .image-card .copy {
-  padding: 18px;
+  padding: 20px 20px 24px;
+  text-align: center;
+}
+
+.image-card .copy h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .image-card p,
