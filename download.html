@@ -92,7 +92,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
               <span>Download for macOS</span>
             </a>
-            <a class="download-alt" href="https://qtterminalprod001.z29.web.core.windows.net/download/SHA256SUMS.txt" target="_blank" rel="noopener">Verify macOS checksum</a>
             <span class="download-sub">Version 1.0.0 &middot; DMG &middot; 234&nbsp;MB</span>
           </article>
 
@@ -116,7 +115,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
               <span>Download for Windows</span>
             </a>
-            <a class="download-alt" href="https://qtterminalprod001.z29.web.core.windows.net/download/SHA256SUMS.txt" target="_blank" rel="noopener">Verify Windows checksum</a>
             <span class="download-sub">Version 1.0.0 &middot; EXE &middot; 203&nbsp;MB</span>
           </article>
 
@@ -170,7 +168,7 @@
               <p>Portable AppImage and Debian package for modern x86_64 Linux desktops.</p>
             </article>
           </div>
-          <p class="release-note">Use the checksum file to verify each downloaded package before installing.</p>
+          <p class="release-note">Version 1.0.0 packages are available for Windows, macOS, and Linux.</p>
         </section>
 
         <div class="system-requirements" aria-label="System requirements">
@@ -179,42 +177,44 @@
             <h2>Built for modern desktop workstations.</h2>
             <p>Quantify Terminal runs best on a current laptop or desktop with enough memory, storage, and network access for live market workflows.</p>
           </div>
-          <article class="requirement-card reveal">
-            <h3>macOS</h3>
-            <ul>
-              <li><span>Operating system</span><b>macOS 13 Ventura or newer</b></li>
-              <li><span>Processor</span><b>Apple Silicon or Intel 64-bit</b></li>
-              <li><span>Memory</span><b>8&nbsp;GB RAM minimum, 16&nbsp;GB recommended</b></li>
-              <li><span>Storage</span><b>2&nbsp;GB free space for app and local data</b></li>
-            </ul>
-          </article>
-          <article class="requirement-card reveal">
-            <h3>Windows</h3>
-            <ul>
-              <li><span>Operating system</span><b>Windows 10 or Windows 11</b></li>
-              <li><span>Processor</span><b>64-bit Intel or AMD PC</b></li>
-              <li><span>Memory</span><b>8&nbsp;GB RAM minimum, 16&nbsp;GB recommended</b></li>
-              <li><span>Storage</span><b>2&nbsp;GB free space for app and local data</b></li>
-            </ul>
-          </article>
-          <article class="requirement-card reveal">
-            <h3>Linux</h3>
-            <ul>
-              <li><span>Operating system</span><b>Ubuntu 22.04+, Debian 12+, or Fedora 39+</b></li>
-              <li><span>Processor</span><b>x86_64 / amd64 desktop</b></li>
-              <li><span>Runtime</span><b>glibc 2.35+ with AppImage or DEB support</b></li>
-              <li><span>Memory</span><b>8&nbsp;GB RAM minimum, 16&nbsp;GB recommended</b></li>
-              <li><span>Storage</span><b>2&nbsp;GB free space for app and local data</b></li>
-            </ul>
-          </article>
-          <article class="requirement-card reveal requirement-card-wide">
-            <h3>Connectivity &amp; workspace</h3>
-            <ul>
-              <li><span>Network</span><b>Internet access for sign-in, live data, sync, AI, news, maps, and updates</b></li>
-              <li><span>Display</span><b>1440px-wide desktop display recommended for dense market layouts</b></li>
-              <li><span>Graphics</span><b>Modern integrated or dedicated GPU recommended for chart-heavy workflows</b></li>
-            </ul>
-          </article>
+          <div class="requirements-list">
+            <section class="requirement-row reveal">
+              <h3>macOS</h3>
+              <ol>
+                <li><span>Operating system</span><b>macOS 13 Ventura or newer</b></li>
+                <li><span>Processor</span><b>Apple Silicon or Intel 64-bit</b></li>
+                <li><span>Memory</span><b>8&nbsp;GB RAM minimum, 16&nbsp;GB recommended</b></li>
+                <li><span>Storage</span><b>2&nbsp;GB free space for app and local data</b></li>
+              </ol>
+            </section>
+            <section class="requirement-row reveal">
+              <h3>Windows</h3>
+              <ol>
+                <li><span>Operating system</span><b>Windows 10 or Windows 11</b></li>
+                <li><span>Processor</span><b>64-bit Intel or AMD PC</b></li>
+                <li><span>Memory</span><b>8&nbsp;GB RAM minimum, 16&nbsp;GB recommended</b></li>
+                <li><span>Storage</span><b>2&nbsp;GB free space for app and local data</b></li>
+              </ol>
+            </section>
+            <section class="requirement-row reveal">
+              <h3>Linux</h3>
+              <ol>
+                <li><span>Operating system</span><b>Ubuntu 22.04+, Debian 12+, or Fedora 39+</b></li>
+                <li><span>Processor</span><b>x86_64 / amd64 desktop</b></li>
+                <li><span>Runtime</span><b>glibc 2.35+ with AppImage or DEB support</b></li>
+                <li><span>Memory</span><b>8&nbsp;GB RAM minimum, 16&nbsp;GB recommended</b></li>
+                <li><span>Storage</span><b>2&nbsp;GB free space for app and local data</b></li>
+              </ol>
+            </section>
+            <section class="requirement-row reveal">
+              <h3>Connectivity</h3>
+              <ol>
+                <li><span>Network</span><b>Internet access for sign-in, live data, sync, AI, news, maps, and updates</b></li>
+                <li><span>Display</span><b>1440px-wide desktop display recommended for dense market layouts</b></li>
+                <li><span>Graphics</span><b>Modern integrated or dedicated GPU recommended for chart-heavy workflows</b></li>
+              </ol>
+            </section>
+          </div>
         </div>
       </div>
     </section>
