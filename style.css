@@ -939,6 +939,114 @@ ul.terminal-list {
   transform: translateY(2px);
 }
 
+.download-sub {
+  display: block;
+  margin-top: 10px;
+  color: var(--quiet);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.download-alt {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 10px;
+  color: var(--accent-soft);
+  font-size: 13px;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(255, 159, 28, 0.36);
+}
+
+.download-alt:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.48);
+}
+
+.release-section {
+  margin-top: 24px;
+  padding: 26px;
+  border: 1px solid rgba(255, 159, 28, 0.22);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 159, 28, 0.14), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.014)),
+    rgba(13, 14, 14, 0.94);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 22px 60px rgba(0, 0, 0, 0.28);
+}
+
+.release-kicker {
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 159, 28, 0.34);
+  border-radius: 999px;
+  color: var(--accent-soft);
+  background: rgba(255, 159, 28, 0.09);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.release-headline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.release-headline h2 {
+  margin: 0 0 8px;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.release-headline p,
+.release-note {
+  margin: 0;
+  color: var(--muted);
+}
+
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0 18px;
+}
+
+.release-card {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.028);
+}
+
+.release-card span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--accent-soft);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.release-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.release-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .install-notes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2056,6 +2164,14 @@ h1.typing::after {
 
   .module-row:nth-child(even) .module-copy {
     order: 0;
+  }
+
+  .release-headline {
+    display: grid;
+  }
+
+  .release-grid {
+    grid-template-columns: 1fr;
   }
 
   .workflows {
