@@ -130,88 +130,6 @@
     );
   }
 
-  function setupTypewriter() {
-    var el = document.querySelector("[data-typewriter]");
-    if (!el) return;
-
-    var text = el.getAttribute("data-text") || el.textContent;
-    if (prefersReducedMotion()) {
-      el.textContent = text;
-      return;
-    }
-
-    el.classList.add("typing");
-    el.textContent = "";
-    var i = 0;
-
-    function tick() {
-      if (i <= text.length) {
-        el.textContent = text.slice(0, i);
-        i += 1;
-        window.setTimeout(tick, 65);
-      } else {
-        el.classList.remove("typing");
-        el.classList.add("typed");
-      }
-    }
-
-    window.setTimeout(tick, 240);
-  }
-
-  function setupWordReveal() {
-    var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-words]"));
-    if (!nodes.length) return;
-
-    nodes.forEach(function (node) {
-      var text = node.textContent.trim();
-      if (prefersReducedMotion()) return;
-
-      var words = text.split(/\s+/);
-      node.textContent = "";
-      var frag = document.createDocumentFragment();
-
-      words.forEach(function (word, idx) {
-        var span = document.createElement("span");
-        span.className = "word";
-        span.textContent = word;
-        span.style.transitionDelay = 600 + idx * 22 + "ms";
-        frag.appendChild(span);
-        if (idx < words.length - 1) {
-          frag.appendChild(document.createTextNode(" "));
-        }
-      });
-
-      node.appendChild(frag);
-
-      window.requestAnimationFrame(function () {
-        node.classList.add("words-in");
-      });
-    });
-  }
-
-  function setupTilt() {
-    if (prefersReducedMotion()) return;
-    var cards = Array.prototype.slice.call(document.querySelectorAll("[data-tilt]"));
-    if (!cards.length) return;
-
-    cards.forEach(function (card) {
-      card.addEventListener("mousemove", function (e) {
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform =
-          "perspective(900px) rotateX(" +
-          (-py * 5).toFixed(2) +
-          "deg) rotateY(" +
-          (px * 5).toFixed(2) +
-          "deg) translateY(-4px)";
-      });
-      card.addEventListener("mouseleave", function () {
-        card.style.transform = "";
-      });
-    });
-  }
-
   function setupHeader() {
     var header = document.querySelector(".site-header");
     if (!header) return;
@@ -248,8 +166,5 @@
     setupMenu();
     setupReveal();
     setupLightbox();
-    setupTypewriter();
-    setupWordReveal();
-    setupTilt();
   });
 })();
