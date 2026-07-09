@@ -2518,3 +2518,230 @@ ul.terminal-list {
     mask: none;
   }
 }
+
+/* =====================================================================
+   MINIMAL — monochrome, quiet, whitespace-led theme (homepage only)
+   Scoped to body.minimal so other pages are untouched.
+   ===================================================================== */
+.minimal {
+  --bg: #050505;
+  --text: #f4f4f2;
+  --muted: #9a9a95;
+  --quiet: #6a6a65;
+  --line-soft: #1c1c1a;
+  --line: #2a2a27;
+  --panel: #0b0b0b;
+  --panel-raised: #101010;
+  /* neutralise the accent so nothing renders orange */
+  --accent: #f4f4f2;
+  --accent-soft: #ffffff;
+}
+
+/* --- Typography: lighter weights, tighter tracking, calmer scale --- */
+.minimal h1 {
+  max-width: 15ch;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 560;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.minimal h2 {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 560;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.minimal h3 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.minimal .lead {
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+.minimal p {
+  font-weight: 400;
+}
+
+/* --- Eyebrow: quiet grey label, thin rule, no orange --- */
+.minimal .eyebrow {
+  color: var(--quiet);
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+}
+
+.minimal .eyebrow::before {
+  width: 18px;
+  background: var(--line);
+}
+
+/* --- Header / brand: monochrome wordmark --- */
+.minimal .site-header {
+  border-bottom-color: transparent;
+  background: rgba(5, 5, 5, 0.7);
+}
+
+.minimal .brand strong,
+.minimal .brand span {
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.minimal .brand span {
+  color: var(--quiet);
+}
+
+.minimal .brand img {
+  box-shadow: none;
+}
+
+.minimal .nav-panel a {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.minimal .nav-panel a::after {
+  background: var(--text);
+}
+
+.minimal .nav-panel a:hover,
+.minimal .nav-panel a.active {
+  color: var(--text);
+  background: transparent;
+}
+
+/* --- Buttons: white primary, hairline ghost secondary --- */
+.minimal .btn {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.minimal .btn:hover {
+  border-color: var(--muted);
+  background: transparent;
+}
+
+.minimal .btn.primary {
+  border-color: var(--text);
+  background: var(--text);
+  color: #050505;
+}
+
+.minimal .btn.primary:hover {
+  border-color: #fff;
+  background: #fff;
+}
+
+/* --- More breathing room in the hero --- */
+.minimal .hero {
+  padding: 150px 0 40px;
+}
+
+.minimal .hero-actions {
+  margin-top: 36px;
+}
+
+/* --- KPI strip: borderless, quiet, generous --- */
+.minimal .kpi-strip {
+  margin-top: 88px;
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
+}
+
+.minimal .kpi {
+  border: 0;
+  background: var(--bg);
+}
+
+.minimal .kpi:hover {
+  border: 0;
+}
+
+.minimal .kpi strong {
+  font-weight: 560;
+  letter-spacing: -0.02em;
+}
+
+.minimal .kpi span {
+  color: var(--quiet);
+  font-weight: 400;
+}
+
+/* --- Section rhythm: taller, calmer --- */
+.minimal .section {
+  padding: 92px 0;
+}
+
+.minimal .section.tight {
+  padding-top: 56px;
+}
+
+.minimal .section-head h2 {
+  max-width: 18ch;
+}
+
+/* --- Terminal list: quieter dividers and headings --- */
+.minimal .terminal-list b {
+  font-weight: 600;
+}
+
+.minimal .terminal-list li {
+  border-top-color: var(--line-soft);
+}
+
+.minimal .terminal-list li:last-child {
+  border-bottom-color: var(--line-soft);
+}
+
+/* --- Pills / marquee chips: monochrome, no orange dot --- */
+.minimal .pill,
+.minimal .marquee-name {
+  border-color: var(--line-soft);
+  background: transparent;
+  color: var(--quiet);
+  font-weight: 500;
+}
+
+.minimal .pill:hover {
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.minimal .marquee-name::before {
+  background: var(--quiet);
+}
+
+/* --- Media panels: softer, flatter shadow --- */
+.minimal .media-panel img {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.minimal .marquee-item img {
+  border-color: var(--line-soft);
+  box-shadow: none;
+}
+
+/* --- Footer: quieter --- */
+.minimal .footer-brand {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.minimal .footer-social a:hover {
+  border-color: var(--line);
+  color: var(--text);
+}
