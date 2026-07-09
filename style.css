@@ -2828,3 +2828,78 @@ html:has(.minimal) {
   border-color: var(--text);
   color: var(--text);
 }
+
+/* --- Single-screen hero (homepage) --- */
+.minimal .hero-solo {
+  display: flex;
+  flex-direction: column;
+}
+
+.minimal .hero-solo-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 54vh;
+  padding-top: 104px;
+  text-align: center;
+}
+
+.minimal .hero-solo-inner h1 {
+  margin-bottom: 6px;
+}
+
+.minimal .hero-solo-inner .lead {
+  margin-top: 22px;
+}
+
+/* quiet text links to the other pages, Markov-style */
+.minimal .hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 8px;
+  margin-top: 40px;
+}
+
+.minimal .hero-links a {
+  padding: 6px 12px;
+  color: var(--quiet);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+
+.minimal .hero-links a:hover {
+  color: var(--text);
+}
+
+/* full-width triple-monitor mockup — cropped to the screen band, blends into white */
+.minimal .hero-solo-shot {
+  width: min(1360px, 96vw);
+  margin: 0 auto 64px;
+  aspect-ratio: 3.6 / 1;
+  overflow: hidden;
+}
+
+.minimal .hero-solo-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 56%;
+}
+
+@media (max-width: 720px) {
+  .minimal .hero-solo-inner {
+    min-height: 46vh;
+    padding-top: 84px;
+  }
+  .minimal .hero-solo-shot {
+    width: 100vw;
+    aspect-ratio: 2.6 / 1;
+    margin-bottom: 40px;
+  }
+}
