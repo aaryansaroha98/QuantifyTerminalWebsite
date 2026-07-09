@@ -2940,8 +2940,17 @@ html:has(.minimal) {
 
 /* bigger headline now that the page is hero-only */
 .minimal .hero-solo-inner h1 {
-  font-size: clamp(52px, 8.6vw, 116px);
-  letter-spacing: -0.035em;
+  font-size: clamp(60px, 10.5vw, 148px);
+  letter-spacing: -0.04em;
+}
+
+/* tighten spacing so the buttons sit higher, closer to the subtitle */
+.minimal .hero-solo-inner .lead {
+  margin-top: 18px;
+}
+
+.minimal .hero-solo .hero-actions {
+  margin-top: 22px;
 }
 
 @media (max-width: 720px) {
