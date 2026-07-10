@@ -3845,6 +3845,18 @@ html:has(.minimal) {
   .minimal .site-header .hero-topnav { display: none; }
   .minimal .site-header.page-topbar { min-height: 0; padding: 0; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
 
+  /* Never let the header become a containing block (backdrop-filter / transform)
+     or the fixed mobile menu would shrink to the header instead of the viewport. */
+  .minimal .site-header,
+  .minimal .site-header.hide,
+  body.menu-open .site-header {
+    transform: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
   .nav-burger {
     display: inline-flex;
     align-items: center;
