@@ -3333,10 +3333,6 @@ html:has(.minimal) {
   margin-top: 24px;
 }
 
-.docs-actions-center {
-  justify-content: center;
-}
-
 .docs-section .pill-row {
   margin: 22px 0 4px;
 }
