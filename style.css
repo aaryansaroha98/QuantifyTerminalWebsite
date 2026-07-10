@@ -3048,7 +3048,7 @@ html:has(.minimal) {
 @media (max-width: 720px) {
   .minimal .hero-solo-inner {
     min-height: auto;
-    padding-top: 92px;
+    padding-top: calc(84px + env(safe-area-inset-top));
     padding-bottom: 4px;
   }
   /* bigger, wrapping headline on phones */
@@ -3878,18 +3878,17 @@ html:has(.minimal) {
 .nav-logo { display: none; }
 
 @media (max-width: 760px) {
-  /* solid fixed top bar behind the logo + hamburger */
+  /* solid fixed top bar behind the logo + hamburger (covers the notch safe area) */
   body.minimal::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 64px;
-    background: rgba(255, 255, 255, 0.94);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    height: calc(58px + env(safe-area-inset-top));
+    background: #ffffff;
     border-bottom: 1px solid var(--line-soft);
+    box-shadow: 0 2px 12px rgba(11, 14, 23, 0.05);
     z-index: 60;
   }
 
@@ -3909,24 +3908,24 @@ html:has(.minimal) {
     backdrop-filter: none !important;
   }
 
-  /* fixed logo (far left) + burger (far right) — pinned, never scroll away */
+  /* fixed logo (far left) + burger (far right) — pinned in the top bar, centered under the notch */
   .nav-logo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 10px;
+    top: calc(env(safe-area-inset-top) + 5px);
     left: 12px;
     z-index: 70;
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     border-radius: 12px;
     background: transparent;
   }
 
   .nav-logo img {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
   }
 
@@ -3935,26 +3934,24 @@ html:has(.minimal) {
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 12px;
+    top: calc(env(safe-area-inset-top) + 8px);
     right: 14px;
     z-index: 70;
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border: 1px solid var(--line);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 6px 18px rgba(11, 14, 23, 0.08);
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(11, 14, 23, 0.08);
     cursor: pointer;
   }
 
   /* keep content clear of the fixed top bar on content pages */
   .minimal .page-topbar + main.page {
-    padding-top: 76px;
+    padding-top: calc(72px + env(safe-area-inset-top));
   }
   .minimal .docs-page {
-    padding-top: 72px;
+    padding-top: calc(70px + env(safe-area-inset-top));
   }
 
   .nav-burger span {
