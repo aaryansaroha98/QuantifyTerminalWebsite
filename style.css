@@ -1052,35 +1052,36 @@ ul.terminal-list {
 
 .focus-list {
   list-style: none;
-  margin: 6px 0 0;
+  margin: 10px 0 0;
   padding: 0;
 }
 
 .focus-list li {
   display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding: 15px 0;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
   border-top: 1px solid var(--line-soft);
 }
 
 .focus-list li:first-child {
   border-top: 0;
+  padding-top: 4px;
 }
 
-.focus-index {
+.focus-list li::before {
+  content: "";
   flex: 0 0 auto;
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 640;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .focus-label {
   color: var(--text);
   font-size: 15px;
-  font-weight: 560;
+  font-weight: 540;
   letter-spacing: 0.005em;
 }
 
