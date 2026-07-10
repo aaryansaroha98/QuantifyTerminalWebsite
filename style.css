@@ -2769,6 +2769,29 @@ html:has(.minimal) {
   color: var(--text);
 }
 
+/* download: system-requirement cards — black outline + visible row rules */
+.minimal .requirement-card {
+  border-color: var(--text);
+}
+
+.minimal .requirement-card li {
+  border-top-color: var(--line);
+}
+
+.minimal .requirement-card li:last-child {
+  border-bottom-color: var(--line);
+}
+
+/* careers: "Starting Soon" button — black outline to match the cards */
+.minimal .career-soon {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.minimal .career-soon::before {
+  background: var(--text);
+}
+
 /* --- KPI strip: white, hairline-divided --- */
 .minimal .kpi-strip {
   margin-top: 52px;
