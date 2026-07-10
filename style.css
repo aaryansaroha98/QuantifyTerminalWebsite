@@ -2966,3 +2966,19 @@ html:has(.minimal) {
     letter-spacing: 0.06em;
   }
 }
+
+/* --- Content pages: same links top-bar, sticky white (in-flow so nothing is hidden) --- */
+.minimal .page-topbar {
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* content pages carry generous but not excessive top whitespace under the bar */
+.minimal .page-topbar + main .hero,
+.minimal .page-topbar + main > .section:first-of-type {
+  padding-top: 64px;
+}
