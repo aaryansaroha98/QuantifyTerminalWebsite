@@ -3047,13 +3047,25 @@ html:has(.minimal) {
 
 @media (max-width: 720px) {
   .minimal .hero-solo-inner {
-    min-height: 46vh;
-    padding-top: 84px;
+    min-height: auto;
+    padding-top: 92px;
+    padding-bottom: 4px;
+  }
+  /* bigger, wrapping headline on phones */
+  .minimal .hero-solo .hero-solo-inner h1 {
+    white-space: normal;
+    font-size: clamp(46px, 15vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+  .minimal .hero-solo .hero-solo-inner .lead {
+    margin-top: 16px;
   }
   .minimal .hero-solo-shot {
     width: 100vw;
     aspect-ratio: 1600 / 1055;
-    margin-bottom: 40px;
+    margin-top: 28px;
+    margin-bottom: 32px;
     background: #ffffff;
   }
   .minimal .hero-solo-shot picture,
@@ -3839,6 +3851,7 @@ html:has(.minimal) {
    ===================================================================== */
 .nav-burger { display: none; }
 .mobile-menu { display: none; }
+.nav-logo { display: none; }
 
 @media (max-width: 760px) {
   /* hide the inline top links, show the hamburger */
@@ -3855,6 +3868,30 @@ html:has(.minimal) {
     border: 0 !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
+  }
+
+  /* fixed logo (far left) + burger (far right) — pinned, never scroll away */
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 12px;
+    left: 14px;
+    z-index: 70;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 18px rgba(11, 14, 23, 0.08);
+  }
+
+  .nav-logo img {
+    width: 30px;
+    height: 30px;
   }
 
   .nav-burger {
@@ -3874,6 +3911,11 @@ html:has(.minimal) {
     backdrop-filter: blur(8px);
     box-shadow: 0 6px 18px rgba(11, 14, 23, 0.08);
     cursor: pointer;
+  }
+
+  /* keep content clear of the fixed logo/burger on content pages */
+  .minimal .page-topbar + main.page {
+    padding-top: 40px;
   }
 
   .nav-burger span {
@@ -3929,13 +3971,23 @@ html:has(.minimal) {
   }
 
   .mobile-menu a {
-    padding: 13px 18px;
+    padding: 12px 18px;
     color: var(--text);
     font-size: 18px;
     font-weight: 650;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+
+  .mobile-menu a[href="/privacy"],
+  .mobile-menu a[href="/terms"] {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--quiet);
+    padding: 8px 18px;
+  }
+
+  .mobile-menu a[href="/privacy"] { margin-top: 14px; }
 
   .mobile-menu a:active { color: var(--muted); }
 }
