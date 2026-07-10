@@ -3394,3 +3394,324 @@ html:has(.minimal) {
     grid-template-columns: 1fr;
   }
 }
+
+/* =====================================================================
+   DOCS — production tab-by-tab guide components
+   ===================================================================== */
+
+/* Meta bar under the intro (version / updated / edition) */
+.docs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.docs-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.docs-meta dt {
+  color: var(--quiet);
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.docs-meta dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 640;
+}
+
+/* Steps (getting started / moving around) */
+.docs-steps {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: docstep;
+  display: grid;
+  gap: 2px;
+}
+
+.docs-steps li {
+  position: relative;
+  counter-increment: docstep;
+  padding: 14px 0 14px 44px;
+  border-top: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 660px;
+}
+
+.docs-steps li:first-child {
+  border-top: 0;
+}
+
+.docs-steps li::before {
+  content: counter(docstep, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 14px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.docs-steps li strong {
+  color: var(--text);
+  font-weight: 640;
+}
+
+/* Feature ("what you can do") lists with accent markers */
+.docs-list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+  max-width: 680px;
+}
+
+.docs-list li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.docs-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.docs-list li strong {
+  color: var(--text);
+  font-weight: 640;
+}
+
+/* Individual tab entry */
+.docs-tab {
+  padding: 34px 0;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 96px;
+}
+
+.docs-tab:first-of-type {
+  padding-top: 6px;
+  border-top: 0;
+}
+
+.docs-tab-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.docs-tab-head h3 {
+  color: var(--text);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 680;
+  letter-spacing: -0.015em;
+}
+
+.docs-tab-head .docs-num {
+  color: var(--quiet);
+  font-size: 13px;
+  font-weight: 640;
+  font-variant-numeric: tabular-nums;
+}
+
+.docs-tab-lead {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.docs-tab .media-panel {
+  margin-top: 24px;
+}
+
+.docs-tab-caption {
+  margin: 10px 0 0;
+  color: var(--quiet);
+  font-size: 13px;
+  font-style: italic;
+  max-width: 720px;
+}
+
+/* Function-key badge */
+.docs-fkey {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel-soft);
+  color: var(--text);
+  font-size: 11.5px;
+  font-weight: 680;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sub-view grid (e.g. Equity Research's ten views) */
+.docs-subgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+  max-width: 720px;
+}
+
+.docs-subgrid div {
+  padding: 14px 16px;
+  border: 1px solid var(--line-soft);
+  background: var(--panel-raised);
+}
+
+.docs-subgrid h4 {
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 660;
+}
+
+.docs-subgrid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Screenshot gallery for multi-view tabs */
+.docs-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.docs-gallery figure {
+  margin: 0;
+}
+
+.docs-gallery img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(11, 14, 23, 0.06);
+}
+
+.docs-gallery figcaption {
+  margin-top: 8px;
+  color: var(--quiet);
+  font-size: 12.5px;
+}
+
+/* Callout / note */
+.docs-callout {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  background: var(--panel-soft);
+  max-width: 720px;
+}
+
+.docs-callout svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--accent);
+}
+
+.docs-callout p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.docs-callout strong {
+  color: var(--text);
+  font-weight: 640;
+}
+
+/* FAQ */
+.docs-faq {
+  margin-top: 22px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.docs-faq details {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.docs-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 4px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 620;
+  list-style: none;
+}
+
+.docs-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.docs-faq summary::after {
+  content: "+";
+  color: var(--quiet);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.docs-faq details[open] summary::after {
+  content: "\2013";
+}
+
+.docs-faq details p {
+  margin: 0;
+  padding: 0 4px 18px;
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 680px;
+}
+
+@media (max-width: 900px) {
+  .docs-subgrid,
+  .docs-gallery {
+    grid-template-columns: 1fr;
+  }
+  .docs-meta {
+    gap: 20px;
+  }
+}

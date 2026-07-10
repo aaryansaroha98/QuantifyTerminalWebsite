@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Docs | Quantify Terminal</title>
-  <meta name="description" content="Quantify Terminal documentation — learn the platform structure across research, monitoring, context, and action layers, plus setup and support.">
+  <meta name="description" content="Quantify Terminal user guide — a full tab-by-tab walkthrough of every tool: dashboard, market data, equity research, charts, screener, economics, geopolitics, trading, alerts and more, plus setup, tips and FAQ.">
   <meta name="theme-color" content="#030404">
   <meta property="og:title" content="Docs | Quantify Terminal">
   <meta property="og:description" content="Documentation for the Quantify Terminal market workstation.">
@@ -67,130 +67,585 @@
           <span class="docs-nav-label">Overview</span>
           <a href="#introduction" class="docs-nav-link">Introduction</a>
           <a href="#getting-started" class="docs-nav-link">Getting started</a>
-          <span class="docs-nav-label">Platform layers</span>
-          <a href="#research" class="docs-nav-link">Research layer</a>
-          <a href="#monitoring" class="docs-nav-link">Monitoring layer</a>
-          <a href="#context" class="docs-nav-link">Context layer</a>
-          <a href="#action" class="docs-nav-link">Action layer</a>
-          <span class="docs-nav-label">Resources</span>
-          <a href="#downloads" class="docs-nav-link">Downloads</a>
+          <a href="#navigation" class="docs-nav-link">Navigating the app</a>
+          <span class="docs-nav-label">Markets &amp; monitoring</span>
+          <a href="#dashboard" class="docs-nav-link">Dashboard</a>
+          <a href="#market-data" class="docs-nav-link">Market Data</a>
+          <a href="#watchlist" class="docs-nav-link">Watchlist</a>
+          <a href="#heatmap" class="docs-nav-link">Heatmap</a>
+          <a href="#news" class="docs-nav-link">News</a>
+          <span class="docs-nav-label">Research &amp; analysis</span>
+          <a href="#profile" class="docs-nav-link">Profile</a>
+          <a href="#analysis" class="docs-nav-link">Analysis</a>
+          <a href="#screener" class="docs-nav-link">Screener</a>
+          <a href="#equity-research" class="docs-nav-link">Equity Research</a>
+          <a href="#investors" class="docs-nav-link">Investors</a>
+          <span class="docs-nav-label">Charting &amp; trading</span>
+          <a href="#charts" class="docs-nav-link">Charts</a>
+          <a href="#portfolio" class="docs-nav-link">Portfolio</a>
+          <a href="#trade-desk" class="docs-nav-link">Trade Desk</a>
+          <a href="#algo-trading" class="docs-nav-link">Algo Trading</a>
+          <a href="#quant-studio" class="docs-nav-link">Quant Studio</a>
+          <span class="docs-nav-label">Global &amp; macro</span>
+          <a href="#geo-intelligence" class="docs-nav-link">Geo Intelligence</a>
+          <a href="#economics" class="docs-nav-link">Economics</a>
+          <a href="#geopolitics" class="docs-nav-link">Geopolitics</a>
+          <a href="#relationship-map" class="docs-nav-link">Relationship Map</a>
+          <a href="#supply-chain" class="docs-nav-link">Supply Chain</a>
+          <a href="#live-news" class="docs-nav-link">Live News &amp; Monitors</a>
+          <span class="docs-nav-label">Tools &amp; account</span>
+          <a href="#workspace" class="docs-nav-link">Workspace</a>
+          <a href="#ai-chat" class="docs-nav-link">AI Chat</a>
+          <a href="#alerts" class="docs-nav-link">Alerts</a>
+          <a href="#account" class="docs-nav-link">Account</a>
+          <span class="docs-nav-label">Reference</span>
+          <a href="#tips" class="docs-nav-link">Tips &amp; shortcuts</a>
+          <a href="#faq" class="docs-nav-link">FAQ</a>
           <a href="#support" class="docs-nav-link">Support</a>
         </nav>
       </aside>
 
       <div class="docs-content">
         <section id="introduction" class="docs-section reveal">
-          <span class="docs-eyebrow">Documentation</span>
-          <h1>Quantify Terminal docs</h1>
-          <p class="docs-lead">Quantify Terminal is a desktop system for market work, organized around repeatable daily workflows: scan, research, compare, monitor, map, alert, and act with context. These docs explain how the platform is structured — without exposing internal implementation details.</p>
+          <span class="docs-eyebrow">User Guide · v1.0.0</span>
+          <h1>Quantify Terminal documentation</h1>
+          <p class="docs-lead">Quantify Terminal is a professional market intelligence desktop that brings live markets, deep company research, charting, global data, trading tools and automation together in one place. This guide walks through every tab — what it is for, what you can do, and how it fits into a daily workflow.</p>
           <div class="docs-actions">
-            <a class="btn primary" href="/download">Download</a>
+            <a class="btn primary" href="/download">Download the app</a>
             <a class="btn" href="/features">View features</a>
           </div>
+          <dl class="docs-meta">
+            <div><dt>Version</dt><dd>1.0.0</dd></div>
+            <div><dt>Platform</dt><dd>Windows</dd></div>
+            <div><dt>Edition</dt><dd>Public Guide</dd></div>
+            <div><dt>Updated</dt><dd>June 22, 2026</dd></div>
+          </dl>
         </section>
 
         <section id="getting-started" class="docs-section reveal">
-          <h2>Getting started</h2>
-          <p>The platform is grouped into four working layers. Most users move through them top to bottom in a normal session — starting with research, keeping monitoring open, pulling in context, and finishing with action.</p>
-          <div class="docs-cards">
-            <div class="docs-card">
-              <span class="docs-card-index">01</span>
-              <h3>Research</h3>
-              <p>Company work, filings, comparisons, and source notes in one place.</p>
+          <span class="docs-kicker">Getting started</span>
+          <h2>Install, sign in, and find your way around</h2>
+          <p>Quantify Terminal runs on Windows and is available two official ways. Always install from one of these to be sure you have a genuine, up-to-date copy.</p>
+          <ul class="docs-list">
+            <li><strong>Official website</strong> — download the latest build directly from quantifyterminal.com.</li>
+            <li><strong>Microsoft Store</strong> — install and auto-update through the Store on Windows.</li>
+          </ul>
+          <p>When you first open the terminal, create your account or sign in. You arrive at the <strong>Dashboard</strong> — your home base. Your watchlists, notes and preferences are saved to your account, so they are waiting for you each time you return.</p>
+          <div class="docs-callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <p><strong>New here?</strong> Start with the Dashboard, add a few names to a Watchlist, then open any symbol in Equity Research to see how much depth is available.</p>
+          </div>
+        </section>
+
+        <section id="navigation" class="docs-section reveal">
+          <h2>Navigating the app</h2>
+          <p>The layout is designed to stay out of your way. A row of tabs runs across the top — each tab is a different tool, and many have a function-key shortcut. The active tab fills the screen, and a search box lets you jump to any symbol or tool in seconds.</p>
+          <ol class="docs-steps">
+            <li>Click a tab at the top, or press its <span class="docs-fkey">F-key</span>, to switch tools instantly.</li>
+            <li>Type a ticker or company name into the search box to pull it up from anywhere.</li>
+            <li>Open any item — a stock, fund or country — to drill into its detailed view.</li>
+            <li>Use the Workspace and Watchlists to keep the things you care about close at hand.</li>
+            <li>Switch between light and dark themes to suit your eyes and your room.</li>
+          </ol>
+        </section>
+
+        <!-- ============ MARKETS & MONITORING ============ -->
+        <section id="dashboard" class="docs-section reveal">
+          <span class="docs-kicker">Markets &amp; monitoring</span>
+          <h2>Markets &amp; monitoring</h2>
+          <p>Keep the whole market in view — indices, movers, headlines and events — while you work.</p>
+
+          <div class="docs-tab" id="dashboard-tab">
+            <div class="docs-tab-head"><span class="docs-num">01</span><h3>Dashboard</h3></div>
+            <p class="docs-tab-lead">Your command center. The Dashboard is the first thing you see, giving you a single-screen read on the whole market the moment you open the terminal.</p>
+            <ul class="docs-list">
+              <li>Track major indices, commodities, currencies and crypto in one live snapshot.</li>
+              <li>See how each sector is performing and which stocks are the day's biggest movers.</li>
+              <li>Read the latest market headlines without leaving the screen.</li>
+              <li>Check the economic calendar for events coming up that could move markets.</li>
+              <li>Click any item to open it instantly in a more detailed view.</li>
+            </ul>
+            <div class="media-panel">
+              <img src="/Public/qt_images/optimized/image_33.jpg?v=2" alt="Command dashboard with gainers, losers, indices, sectors, chart, and news" width="1600" height="924" loading="lazy" decoding="async">
             </div>
-            <div class="docs-card">
-              <span class="docs-card-index">02</span>
-              <h3>Monitoring</h3>
-              <p>Markets, watchlists, screeners, and alerts kept visible while you work.</p>
+            <p class="docs-tab-caption">Dashboard — live market monitor, index snapshot, commodities and forex, sector performance, top movers, news headlines, and economic calendar.</p>
+          </div>
+        </section>
+
+        <section id="market-data" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">04</span><h3>Market Data</h3></div>
+          <p class="docs-tab-lead">A complete view of global markets. Use Market Data as your daily pulse-check on where the world's markets are heading.</p>
+          <ul class="docs-list">
+            <li>Browse world, Asian, US and European indices side by side.</li>
+            <li>Follow futures, commodities, foreign exchange and crypto in one place.</li>
+            <li>Compare how sectors are performing across different regions.</li>
+            <li>Get an instant sense of the overall market mood.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_30.jpg?v=2" alt="Markets overview with global indices, commodities, forex, and crypto" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Market Data — world, Asian, US and European indices alongside futures, commodities, FX, crypto, and sector performance.</p>
+        </section>
+
+        <section id="watchlist" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">03</span><h3>Watchlist</h3></div>
+          <p class="docs-tab-lead">Follow the symbols you care about. Build as many watchlists as you like and keep your favourite names one glance away.</p>
+          <ul class="docs-list">
+            <li>Create separate watchlists for stocks, crypto and anything else you follow.</li>
+            <li>See live prices, daily change and a mini price preview for every symbol.</li>
+            <li>Spot momentum quickly with the built-in movers board.</li>
+            <li>Click any symbol to jump straight into its full detail view.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_31.jpg?v=2" alt="Watchlists with ticker tables and an inline candlestick preview" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Watchlist — watchlist manager, momentum board, inline price-chart preview, crypto watchlist, and per-symbol detail.</p>
+        </section>
+
+        <section id="heatmap" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">06</span><h3>Heatmap</h3><span class="docs-fkey">F6</span></div>
+          <p class="docs-tab-lead">See the entire market in one colourful grid. The Heatmap makes it effortless to spot where money is moving.</p>
+          <ul class="docs-list">
+            <li>Instantly identify winners and losers by colour and tile size.</li>
+            <li>Filter by market, by sector or by your own watchlist.</li>
+            <li>Hover over any tile for quick detail.</li>
+            <li>Read the mood of the whole market in a single view.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_29.jpg?v=2" alt="S&amp;P 500 treemap heatmap colored by daily move and grouped by sector" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Heatmap — a performance grid colored by percentage change with a market summary and a movers panel.</p>
+        </section>
+
+        <section id="news" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">12</span><h3>News</h3><span class="docs-fkey">F12</span></div>
+          <p class="docs-tab-lead">Stay on top of the headlines. The News tab gathers the market's stories into one easy feed.</p>
+          <ul class="docs-list">
+            <li>Read an aggregated news feed drawn from across the markets.</li>
+            <li>Open any article in a clean, built-in reader.</li>
+            <li>Compare related news across peer companies.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_26.jpg?v=2" alt="Three-pane news reader with feeds, article viewer, and saved articles" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">News — an aggregated news feed with an article viewer and peer-news comparison.</p>
+        </section>
+
+        <!-- ============ RESEARCH & ANALYSIS ============ -->
+        <section id="profile" class="docs-section reveal">
+          <span class="docs-kicker">Research &amp; analysis</span>
+          <h2>Research &amp; analysis</h2>
+          <p>Go deep on a single company — from a one-screen profile to a ten-view research workstation.</p>
+
+          <div class="docs-tab">
+            <div class="docs-tab-head"><span class="docs-num">08</span><h3>Profile</h3><span class="docs-fkey">F8</span></div>
+            <p class="docs-tab-lead">A deep look at a single security. The Profile tab puts everything about one company on a single screen.</p>
+            <ul class="docs-list">
+              <li>Study one company's price chart in detail.</li>
+              <li>Read its profile, business description and key facts.</li>
+              <li>Follow news specific to that company.</li>
+              <li>Check core fundamentals and technical signals side by side.</li>
+            </ul>
+            <div class="media-panel">
+              <img src="/Public/qt_images/optimized/image_27.jpg?v=2" alt="Company profile with price chart, fundamentals, and live news feed" width="1600" height="924" loading="lazy" decoding="async">
             </div>
-            <div class="docs-card">
-              <span class="docs-card-index">03</span>
-              <h3>Context</h3>
-              <p>Global maps, macro pressure, and relationship views around an asset.</p>
+            <p class="docs-tab-caption">Profile — a single-security chart with company profile, news feed, and fundamentals and technicals together.</p>
+          </div>
+        </section>
+
+        <section id="analysis" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">10</span><h3>Analysis</h3><span class="docs-fkey">F10</span></div>
+          <p class="docs-tab-lead">Understand a company from every angle. The Analysis tab turns the numbers into a clear picture.</p>
+          <ul class="docs-list">
+            <li>Review key ratios and valuation at a glance.</li>
+            <li>Compare a company directly against its peers.</li>
+            <li>Study growth trends and a clean financial summary.</li>
+            <li>Get quick context on the wider sector.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_25.jpg?v=2" alt="Single-symbol analysis with ratios, peers, growth, and valuation" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Analysis — sector overview, key ratios, peer comparison, valuation metrics, growth analysis, and a financial summary.</p>
+        </section>
+
+        <section id="screener" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">09</span><h3>Screener</h3><span class="docs-fkey">F9</span></div>
+          <p class="docs-tab-lead">Find opportunities that match your criteria. The Screener helps you search the market the way you think about it.</p>
+          <ul class="docs-list">
+            <li>Filter thousands of securities by the measures that matter to you.</li>
+            <li>Combine several conditions to narrow your search precisely.</li>
+            <li>Sort and scan the results in a live, interactive table.</li>
+            <li>Open any result to dig deeper in one click.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_14.jpg?v=2" alt="Stock screener with filter panel and results table" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Screener — a multi-criteria filter panel with a live, sortable results table.</p>
+        </section>
+
+        <section id="equity-research" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">13</span><h3>Equity Research</h3><span class="docs-fkey">F13</span></div>
+          <p class="docs-tab-lead">A full research workstation for any stock. Equity Research is one of the most powerful areas of the terminal, organised into ten focused views.</p>
+          <div class="docs-subgrid">
+            <div><h4>Summary</h4><p>A company overview with performance and key ratios.</p></div>
+            <div><h4>Financials</h4><p>The income statement, balance sheet and cash flow.</p></div>
+            <div><h4>Financial Charts</h4><p>Visual trends for revenue, margins, debt and more.</p></div>
+            <div><h4>Valuation</h4><p>Valuation multiples, history and a discounted-cash-flow model.</p></div>
+            <div><h4>Ratings</h4><p>Analyst recommendations and price-target forecasts.</p></div>
+            <div><h4>Technical</h4><p>Price action, indicators and trading signals.</p></div>
+            <div><h4>Ownership</h4><p>Who owns the stock, the top holders and insider activity.</p></div>
+            <div><h4>Product Analytics</h4><p>A look at the company's product mix and demand.</p></div>
+            <div><h4>Historical Data</h4><p>Full price history with range statistics.</p></div>
+            <div><h4>Compare</h4><p>Line up several companies side by side.</p></div>
+          </div>
+          <div class="docs-gallery">
+            <figure>
+              <img src="/Public/qt_images/optimized/image_19.jpg?v=2" alt="Financials tab with income statement, balance sheet, cash flow, ratios, and margins" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Financials — income statement, balance sheet, cash flow, ratios, profitability, and per-share data.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_18.jpg?v=2" alt="Valuation multiples and DCF model with growth and margin scenarios" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Valuation — valuation multiples, history, a discounted-cash-flow model, and a growth/margin scanner.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_23.jpg?v=2" alt="Analyst recommendations with rating distribution and price targets" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Ratings — analyst recommendation, a rating snapshot, a 12-month price-target forecast, and a breakdown.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_17.jpg?v=2" alt="Technical view with price, volume, indicator table, and signal matrix" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Technical — price chart, technical indicators, a volatility/momentum matrix, and a signal matrix.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_37.jpg?v=2" alt="Ownership tab with top institutional holders, recent insider transactions, and a holder concentration chart" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Ownership — ownership summary, top holders, holder concentration, and insider activity.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_13.jpg?v=2" alt="Equity comparison with indexed price, market cap, revenue, and valuation" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Compare — indexed price, returns, market cap, revenue, valuation, and margins across peers.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="investors" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">11</span><h3>Investors</h3><span class="docs-fkey">F11</span></div>
+          <p class="docs-tab-lead">Explore funds and large investors. See how the big players are positioned and what they hold.</p>
+          <ul class="docs-list">
+            <li>Browse fund overviews, sector allocation and concentration.</li>
+            <li>See top holdings and country exposure for any fund.</li>
+            <li>Switch to the Portfolios view to study how major investors are positioned.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_28.jpg?v=2" alt="Funds and investors view with sector, country, and holdings breakdowns" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Investors — fund overview, sector allocation, concentration, top holdings, country exposure, and a Portfolios view.</p>
+        </section>
+
+        <!-- ============ CHARTING & TRADING ============ -->
+        <section id="charts" class="docs-section reveal">
+          <span class="docs-kicker">Charting &amp; trading</span>
+          <h2>Charting &amp; trading</h2>
+          <p>Study price action, track what you own, place orders, and automate strategies.</p>
+
+          <div class="docs-tab">
+            <div class="docs-tab-head"><span class="docs-num">05</span><h3>Charts</h3><span class="docs-fkey">F4</span></div>
+            <p class="docs-tab-lead">Professional, multi-panel charting. Study price action across several instruments at once, each on its own chart.</p>
+            <ul class="docs-list">
+              <li>Open multiple charts together, each with its own symbol and timeframe.</li>
+              <li>Switch between line, candlestick and other chart styles.</li>
+              <li>Add technical indicators to study trends and momentum.</li>
+              <li>Compare different instruments side by side on the same screen.</li>
+            </ul>
+            <div class="media-panel">
+              <img src="/Public/qt_images/optimized/image_01.jpg?v=2" alt="Advanced candlestick charting with volume, RSI, MACD, and an indicator stack" width="1600" height="924" loading="lazy" decoding="async">
             </div>
-            <div class="docs-card">
-              <span class="docs-card-index">04</span>
-              <h3>Action</h3>
-              <p>Portfolio, broker support, and repeatable strategy routines.</p>
+            <p class="docs-tab-caption">Charts — a multi-chart board with an independent symbol, timeframe, chart type, and indicators on every panel.</p>
+          </div>
+        </section>
+
+        <section id="portfolio" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">02</span><h3>Portfolio</h3></div>
+          <p class="docs-tab-lead">Keep track of what you own and how it is doing. The Portfolio tab brings your holdings together and shows your performance at a glance.</p>
+          <ul class="docs-list">
+            <li>Add your holdings and watch their value update live through the day.</li>
+            <li>See total gains and losses, both realized and still open.</li>
+            <li>Break performance down by individual asset, by sector and by currency.</li>
+            <li>Review your full transaction history in one place.</li>
+            <li>Understand your risk and returns with clear, easy-to-read performance metrics.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_32.jpg?v=4" alt="Portfolio with holdings, performance, transactions, and position detail" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Portfolio — holdings table, performance chart, transaction history, and per-position detail.</p>
+        </section>
+
+        <section id="trade-desk" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">07</span><h3>Trade Desk</h3><span class="docs-fkey">F7</span></div>
+          <p class="docs-tab-lead">Place and manage trades. The Trade Desk brings your chart, your account and your orders together in one workspace.</p>
+          <ul class="docs-list">
+            <li>Watch a live chart with your own trade markers on it.</li>
+            <li>Review your account summary and available buying power.</li>
+            <li>Enter orders quickly with a clear, simple order ticket.</li>
+            <li>Track all of your open positions in real time.</li>
+            <li>Connect a supported broker to trade live, or practise first in a simulated account.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_36.jpg?v=2" alt="Trade desk with account balances, order ticket, open positions, and P&amp;L" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Trade Desk — a live trading chart with trade markers, account summary, an order ticket, and open positions.</p>
+        </section>
+
+        <section id="algo-trading" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">23</span><h3>Algo Trading</h3><span class="docs-fkey">F23</span></div>
+          <p class="docs-tab-lead">Build and test automated strategies. Algo Trading lets you design a strategy and see how it would have performed.</p>
+          <ul class="docs-list">
+            <li>Design strategies with a guided builder.</li>
+            <li>Backtest them and review the results in detail.</li>
+            <li>Watch a live chart, your positions and an activity monitor.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_06.jpg?v=2" alt="Algo trading workspace with strategy builder, backtest results, and live algo monitor" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Algo Trading — a strategy builder, a live price chart, open positions, backtest metrics, and an activity monitor.</p>
+        </section>
+
+        <section id="quant-studio" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">24</span><h3>Quant Studio</h3><span class="docs-fkey">F24</span></div>
+          <p class="docs-tab-lead">Advanced quantitative research. Quant Studio is a workshop for more sophisticated, data-driven analysis.</p>
+          <ul class="docs-list">
+            <li>Browse a library of strategies to start from.</li>
+            <li>Build and run backtest models.</li>
+            <li>Keep a research notebook and review your analytics.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_07.jpg?v=2" alt="Quant studio with a Python strategy notebook, backtest engine, and factor edge" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Quant Studio — a quant summary, a strategy library, a backtest model, a research notebook, and analytics.</p>
+        </section>
+
+        <!-- ============ GLOBAL & MACRO ============ -->
+        <section id="geo-intelligence" class="docs-section reveal">
+          <span class="docs-kicker">Global &amp; macro</span>
+          <h2>Global &amp; macro context</h2>
+          <p>Markets do not move in isolation. Explore the bigger picture with an interactive globe, country economics, live geopolitics, and the relationship and supply-chain webs behind companies.</p>
+
+          <div class="docs-tab">
+            <div class="docs-tab-head"><span class="docs-num">17</span><h3>Geo Intelligence</h3><span class="docs-fkey">F17</span></div>
+            <p class="docs-tab-lead">The world on an interactive globe. Geo Intelligence gives global events and conditions a geographic view.</p>
+            <ul class="docs-list">
+              <li>Spin a 3D globe and add layers of information.</li>
+              <li>Track world clocks and local conditions for the places that matter to you.</li>
+              <li>See at a glance what is happening around the world.</li>
+            </ul>
+            <div class="media-panel">
+              <img src="/Public/qt_images/optimized/geo.webp" alt="Interactive 3D globe with layered map items, world clocks, and per-location weather" width="1600" height="924" loading="lazy" decoding="async">
+            </div>
+            <p class="docs-tab-caption">Geo Intelligence — an interactive 3D globe with layered map items, world clocks, and per-location weather.</p>
+          </div>
+        </section>
+
+        <section id="economics" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">18</span><h3>Economics</h3><span class="docs-fkey">F18</span></div>
+          <p class="docs-tab-lead">Country-level economic insight. The Economics tab makes the big-picture economy easy to explore, across eight views.</p>
+          <div class="docs-subgrid">
+            <div><h4>Country Profile</h4><p>An economic snapshot at a glance.</p></div>
+            <div><h4>GDP &amp; Growth</h4><p>Output, growth and per-capita trends.</p></div>
+            <div><h4>Population</h4><p>Size, density and demographics.</p></div>
+            <div><h4>Trade</h4><p>Exports, imports and the trade balance.</p></div>
+            <div><h4>Government</h4><p>Debt, spending and revenue.</p></div>
+            <div><h4>Environment</h4><p>Emissions, renewable energy and more.</p></div>
+            <div><h4>Inclusion</h4><p>Inequality and social indicators.</p></div>
+            <div><h4>Calendar</h4><p>Upcoming economic events and releases.</p></div>
+          </div>
+          <div class="docs-gallery">
+            <figure>
+              <img src="/Public/qt_images/optimized/image_12.jpg?v=2" alt="GDP history, growth, per-capita, and sector composition charts" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>GDP &amp; Growth — GDP history, growth, per capita, sector mix, and key GDP metrics.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_11.jpg?v=2" alt="Trade balance view with exports vs imports and trade metrics" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Trade — exports vs imports, trade balance, and trade metrics.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_10.jpg?v=2" alt="Economic inclusion view with inequality, gender, and education charts" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Inclusion — inequality metrics, gender inclusion, education equity, and related trends.</figcaption>
+            </figure>
+            <figure>
+              <img src="/Public/qt_images/optimized/image_15.jpg?v=2" alt="Economic calendar with upcoming releases, actual, forecast, and prior values by country" width="1600" height="924" loading="lazy" decoding="async">
+              <figcaption>Calendar — date, event, country, actual, forecast, prior, and impact.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="geopolitics" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">19</span><h3>Geopolitics</h3><span class="docs-fkey">F19</span></div>
+          <p class="docs-tab-lead">A live map of world events. Geopolitics helps you keep an eye on developments that can shape the markets.</p>
+          <ul class="docs-list">
+            <li>Follow conflicts, crises and incidents on a global map.</li>
+            <li>Open country intelligence and detail for any event.</li>
+            <li>Track live developments — including an aircraft-tracking overlay — as they unfold around the world.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_08.jpg?v=2" alt="Geopolitics map with live conflict events, country intelligence, and air traffic" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Geopolitics — a conflict and crisis event map with country intelligence, incident detail, an incident list, and a live aircraft-tracking overlay.</p>
+        </section>
+
+        <section id="relationship-map" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">20</span><h3>Relationship Map</h3><span class="docs-fkey">F20</span></div>
+          <p class="docs-tab-lead">See how companies connect. The Relationship Map reveals the web of links between businesses.</p>
+          <ul class="docs-list">
+            <li>Explore a network graph of company relationships.</li>
+            <li>Review clear summaries and supporting tables.</li>
+            <li>Understand partners, peers and connections at a glance.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_05.jpg?v=2" alt="Relationship network graph of institutional holders with ownership tables" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Relationship Map — company info, a relationship network graph, a relationship summary, and relationship tables.</p>
+        </section>
+
+        <section id="supply-chain" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">21</span><h3>Supply Chain</h3><span class="docs-fkey">F21</span></div>
+          <p class="docs-tab-lead">Map the chain behind a company. The Supply Chain tab shows who a company depends on and who depends on it.</p>
+          <ul class="docs-list">
+            <li>Visualise suppliers and customers on a map.</li>
+            <li>Drill into the detail of any single supplier.</li>
+            <li>See dependencies clearly in a connected graph.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_04.jpg?v=2" alt="Supply chain network map with supplier and customer nodes" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Supply Chain — a supply-chain map, selected supplier detail, a customers table, and a dependency graph.</p>
+        </section>
+
+        <section id="live-news" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">22</span><h3>Live News &amp; Monitors</h3><span class="docs-fkey">F22</span></div>
+          <p class="docs-tab-lead">A live video wall. Keep the news playing beside your markets without switching apps.</p>
+          <ul class="docs-list">
+            <li>Watch multiple live news channels at once.</li>
+            <li>Arrange your own monitor layout to suit you.</li>
+            <li>Keep a built-in browser handy right next to the markets.</li>
+          </ul>
+          <div class="media-panel">
+            <img src="/Public/qt_images/optimized/image_03.jpg?v=2" alt="Live news and video desk with multiple streaming feeds and monitors" width="1600" height="924" loading="lazy" decoding="async">
+          </div>
+          <p class="docs-tab-caption">Live News and Monitors — a multi-channel live video wall with monitors and an embedded browser.</p>
+        </section>
+
+        <!-- ============ TOOLS & ACCOUNT ============ -->
+        <section id="workspace" class="docs-section reveal">
+          <span class="docs-kicker">Tools &amp; account</span>
+          <h2>Tools &amp; account</h2>
+          <p>Bring your own thinking together with live data, ask questions in plain language, set alerts, and make the terminal your own.</p>
+
+          <div class="docs-tab">
+            <div class="docs-tab-head"><span class="docs-num">15</span><h3>Workspace</h3><span class="docs-fkey">F15</span></div>
+            <p class="docs-tab-lead">Your own research notebook and spreadsheet. The Workspace is where you bring your own thinking together with live market data.</p>
+            <ul class="docs-list">
+              <li>Keep notes right alongside a built-in spreadsheet.</li>
+              <li>Pull live market values straight into your sheets.</li>
+              <li>Use a library of ready-made formulas, or build your own.</li>
+              <li>Import and export your work whenever you need to.</li>
+            </ul>
+            <div class="docs-gallery">
+              <figure>
+                <img src="/Public/qt_images/optimized/image_24.jpg?v=2" alt="Spreadsheet workspace with QT formulas and live tickers" width="1600" height="924" loading="lazy" decoding="async">
+                <figcaption>A cloud workbook with notes and an embedded spreadsheet grid with import and export.</figcaption>
+              </figure>
+              <figure>
+                <img src="/Public/qt_images/optimized/image_21.jpg?v=2" alt="Formula reference and builder with the QT formula library and live syntax" width="1600" height="924" loading="lazy" decoding="async">
+                <figcaption>A formula library, a syntax reference, and a formula builder for live spreadsheet data.</figcaption>
+              </figure>
             </div>
           </div>
         </section>
 
-        <section id="research" class="docs-section reveal">
-          <span class="docs-kicker">Research layer</span>
-          <h2>Company work, market context, and source notes together.</h2>
-          <p>The research layer is built for investors and analysts who need to move between companies, filings, financial statements, peers, headlines, and charts without constantly changing tools.</p>
-          <div class="pill-row">
-            <span class="pill">Company pages</span>
-            <span class="pill">Filings</span>
-            <span class="pill">Comparisons</span>
-            <span class="pill">Research notes</span>
-          </div>
-          <div class="media-panel">
-            <img src="/Public/qt_images/optimized/image_21.jpg?v=2" alt="Financial statements workspace with income statement, balance sheet, cash flow, and ratios" width="1600" height="924" loading="lazy" decoding="async">
-          </div>
+        <section id="ai-chat" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">16</span><h3>AI Chat</h3><span class="docs-fkey">F16</span></div>
+          <p class="docs-tab-lead">Ask questions in plain language. A built-in assistant sits beside your work to help you research and learn faster.</p>
+          <ul class="docs-list">
+            <li>Get help understanding companies, markets and unfamiliar terms.</li>
+            <li>Ask for summaries and explanations as you research.</li>
+            <li>Use it as a knowledgeable companion right inside the terminal.</li>
+          </ul>
         </section>
 
-        <section id="monitoring" class="docs-section reveal">
-          <span class="docs-kicker">Monitoring layer</span>
-          <h2>Markets, watchlists, screeners, and alerts.</h2>
-          <p>The monitoring layer is for active market observation. Users can follow symbols, compare watchlists, review screeners, and keep important changes visible while they work.</p>
-          <div class="pill-row">
-            <span class="pill">Watchlists</span>
-            <span class="pill">Screeners</span>
-            <span class="pill">Alerts</span>
-            <span class="pill">Market tables</span>
-          </div>
+        <section id="alerts" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">14</span><h3>Alerts</h3><span class="docs-fkey">F14</span></div>
+          <p class="docs-tab-lead">Never miss a move. Set the terminal to watch the market for you and let you know when something happens.</p>
+          <ul class="docs-list">
+            <li>Set price and condition alerts on any symbol.</li>
+            <li>Review your active alerts and your full alert history.</li>
+            <li>Choose how you would like to be notified.</li>
+          </ul>
           <div class="media-panel">
-            <img src="/Public/qt_images/optimized/image_14.jpg?v=2" alt="Stock screener with filter panel and a results table of matching tickers" width="1600" height="924" loading="lazy" decoding="async">
+            <img src="/Public/qt_images/optimized/image_22.jpg?v=2" alt="Alerts workspace with active alerts, create-alert panel, and alert history" width="1600" height="924" loading="lazy" decoding="async">
           </div>
+          <p class="docs-tab-caption">Alerts — active alerts, alert history, and the create-alert builder with conditions and delivery options.</p>
         </section>
 
-        <section id="context" class="docs-section reveal">
-          <span class="docs-kicker">Context layer</span>
-          <h2>Global maps, macro pressure, and relationship views.</h2>
-          <p>Markets do not move in isolation. The platform includes global, macro, and relationship views to help users understand broader forces around an asset, region, or sector.</p>
-          <div class="pill-row">
-            <span class="pill">Global maps</span>
-            <span class="pill">Macro series</span>
-            <span class="pill">Network views</span>
-            <span class="pill">Heatmaps</span>
-          </div>
-          <div class="media-panel">
-            <img src="/Public/qt_images/optimized/image_05.jpg?v=2" alt="Relationship map and global market context workspace" width="1600" height="924" loading="lazy" decoding="async">
-          </div>
+        <section id="account" class="docs-tab reveal">
+          <div class="docs-tab-head"><span class="docs-num">25</span><h3>Account</h3><span class="docs-fkey">F25</span></div>
+          <p class="docs-tab-lead">Manage your profile and preferences. The Account tab is where you make the terminal your own.</p>
+          <ul class="docs-list">
+            <li>Update your details and sign-in settings.</li>
+            <li>Choose your theme and display preferences.</li>
+            <li>Manage notifications and keep the app up to date.</li>
+          </ul>
         </section>
 
-        <section id="action" class="docs-section reveal">
-          <span class="docs-kicker">Action layer</span>
-          <h2>Portfolio, broker support, and strategy routines.</h2>
-          <p>Portfolio and broker-support views help keep research close to operational workflows. Strategy tools help users organize signals, logic, and repeatable market routines.</p>
-          <div class="pill-row">
-            <span class="pill">Portfolio</span>
-            <span class="pill">Broker support</span>
-            <span class="pill">Strategy logic</span>
-            <span class="pill">Risk framing</span>
-          </div>
-          <div class="media-panel">
-            <img src="/Public/qt_images/optimized/image_02.jpg?v=2" alt="Broker support and live trading connection screen with supported brokers" width="1400" height="906" loading="lazy" decoding="async">
-          </div>
+        <!-- ============ REFERENCE ============ -->
+        <section id="tips" class="docs-section reveal">
+          <span class="docs-kicker">Reference</span>
+          <h2>Tips &amp; shortcuts</h2>
+          <p>A few habits make the terminal noticeably faster to work in day to day.</p>
+          <ul class="docs-list">
+            <li>Press a function key to jump straight to a tab — no clicking required.</li>
+            <li>Type a ticker into the search box from anywhere to load it fast.</li>
+            <li>Build separate watchlists for the different themes or sectors you follow.</li>
+            <li>Set alerts so the terminal keeps watch and tells you when something moves.</li>
+            <li>Use the Workspace to keep your research, notes and numbers in one place.</li>
+            <li>Try Equity Research and Compare when you want the deepest view of a company.</li>
+          </ul>
         </section>
 
-        <section id="downloads" class="docs-section reveal">
-          <h2>Downloads</h2>
-          <p>Quantify Terminal is a native desktop application. Choose your operating system and install the latest build to get started.</p>
-          <div class="docs-actions">
-            <a class="btn primary" href="/download">Go to downloads</a>
-            <a class="btn" href="/features">Compare features</a>
+        <section id="faq" class="docs-section reveal">
+          <h2>Frequently asked questions</h2>
+          <div class="docs-faq">
+            <details>
+              <summary>Which platform does it run on?</summary>
+              <p>Windows — available from the official website and the Microsoft Store.</p>
+            </details>
+            <details>
+              <summary>Do I have to trade to use it?</summary>
+              <p>No. Most of the terminal is built for research and monitoring; trading is optional.</p>
+            </details>
+            <details>
+              <summary>Are my watchlists and notes saved?</summary>
+              <p>Yes. Your watchlists, notes and preferences are kept with your account.</p>
+            </details>
+            <details>
+              <summary>How often do prices update?</summary>
+              <p>Prices stream live through the trading day wherever live data is available.</p>
+            </details>
+            <details>
+              <summary>Can I change how it looks?</summary>
+              <p>Yes. Switch between light and dark themes and set your display preferences in the Account tab.</p>
+            </details>
           </div>
         </section>
 
         <section id="support" class="docs-section reveal">
-          <h2>Support</h2>
-          <p>Need help, have a question, or want to talk to the team? Reach out directly and we'll get back to you.</p>
+          <h2>Support &amp; downloads</h2>
+          <p>Quantify Terminal is a native desktop application. Choose your operating system and install the latest build to get started, or reach out if you need a hand.</p>
           <div class="docs-actions">
-            <a class="btn primary" href="/connect">Contact us</a>
+            <a class="btn primary" href="/download">Go to downloads</a>
+            <a class="btn" href="/connect">Contact us</a>
             <a class="btn" href="https://discord.gg/djKVhBH8cF" target="_blank" rel="noopener">Join Discord</a>
+          </div>
+          <div class="docs-callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <p><strong>Need a hand?</strong> Visit <a href="/">quantifyterminal.com</a> to learn more and get the latest version.</p>
           </div>
         </section>
       </div>
