@@ -52,11 +52,29 @@
       <a href="/connect">Connect</a>
       <a href="/careers">Careers</a>
     </nav>
+    <button class="nav-burger" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+    <div class="mobile-menu" id="mobile-menu" data-menu aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/features">Features</a>
+        <a href="/documentation">Docs</a>
+        <a href="/download">Downloads</a>
+        <a href="/about">Founder</a>
+        <a href="/connect">Connect</a>
+        <a href="/careers">Careers</a>
+    </div>
   </header>
 
   <main class="page docs-page">
+    <button class="docs-nav-toggle" type="button" data-docs-nav-open aria-controls="docs-sidebar" aria-expanded="false" aria-label="Show documentation menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Contents</span>
+    </button>
+    <div class="docs-nav-backdrop" data-docs-nav-close></div>
     <div class="docs-shell">
-      <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+        <button class="docs-nav-close" type="button" data-docs-nav-close aria-label="Hide documentation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
         <a class="docs-brand" href="/">
           <img src="/Public/logo-96.webp" alt="Quantify Terminal logo" width="48" height="48" decoding="async">
           <span>
