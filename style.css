@@ -2693,11 +2693,11 @@ html:has(.minimal) {
 
 /* --- Hero: single-screen breathing room --- */
 .minimal .hero {
-  padding: 120px 0 32px;
+  padding: 64px 0 20px;
 }
 
 .minimal .hero-actions {
-  margin-top: 28px;
+  margin-top: 18px;
 }
 
 /* clean product mockups — no grey glow box on white */
@@ -2717,6 +2717,26 @@ html:has(.minimal) {
 
 .minimal .device-foot {
   background: linear-gradient(90deg, transparent, rgba(11, 14, 23, 0.28), transparent);
+}
+
+/* --- Connect: crisp black-outlined channel boxes + dark X/GitHub marks --- */
+.minimal .social-card {
+  border-color: var(--text);
+}
+
+.minimal .social-card:hover,
+.minimal .social-card:focus-visible {
+  border-color: var(--text);
+}
+
+.minimal .social-mark {
+  border-color: var(--text);
+}
+
+/* the light-grey brand marks are invisible on white — force them to ink */
+.minimal .social-card[data-brand="x"],
+.minimal .social-card[data-brand="github"] {
+  --brand: 11, 14, 23;
 }
 
 /* --- KPI strip: white, hairline-divided --- */
@@ -2749,11 +2769,11 @@ html:has(.minimal) {
 
 /* --- Section rhythm --- */
 .minimal .section {
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 .minimal .section.tight {
-  padding-top: 36px;
+  padding-top: 24px;
 }
 
 .minimal .section-head h2 {
@@ -2814,11 +2834,11 @@ html:has(.minimal) {
 }
 
 .minimal .hero.compact {
-  padding-bottom: 20px;
+  padding-bottom: 14px;
 }
 
 .minimal .page-topbar + main .hero.compact {
-  padding-top: 52px;
+  padding-top: 32px;
 }
 
 /* --- Footer --- */
@@ -2948,7 +2968,7 @@ html:has(.minimal) {
 
 .minimal .hero-topnav a {
   padding: 8px 14px;
-  color: var(--quiet);
+  color: var(--text);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.09em;
@@ -2957,7 +2977,7 @@ html:has(.minimal) {
 }
 
 .minimal .hero-topnav a:hover {
-  color: var(--text);
+  color: var(--muted);
 }
 
 /* bigger headline, always on a single line */
@@ -2993,7 +3013,7 @@ html:has(.minimal) {
 .minimal .page-topbar {
   position: sticky;
   top: 0;
-  border-bottom: 1px solid var(--line-soft);
+  border-bottom: 0;
   background: rgba(255, 255, 255, 0.85);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -3002,7 +3022,7 @@ html:has(.minimal) {
 /* content pages carry generous but not excessive top whitespace under the bar */
 .minimal .page-topbar + main .hero,
 .minimal .page-topbar + main > .section:first-of-type {
-  padding-top: 64px;
+  padding-top: 40px;
 }
 
 /* --- Minimal theme: phone sizing so headlines never overflow --- */
