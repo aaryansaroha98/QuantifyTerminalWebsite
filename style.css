@@ -3004,3 +3004,32 @@ html:has(.minimal) {
 .minimal .page-topbar + main > .section:first-of-type {
   padding-top: 64px;
 }
+
+/* --- Minimal theme: phone sizing so headlines never overflow --- */
+@media (max-width: 720px) {
+  .minimal h1 {
+    font-size: clamp(30px, 8.5vw, 40px);
+    letter-spacing: -0.02em;
+  }
+  .minimal h2 {
+    font-size: clamp(24px, 6.4vw, 30px);
+    letter-spacing: -0.02em;
+  }
+  .minimal .lead,
+  .minimal p {
+    max-width: 100%;
+  }
+  .minimal .hero.compact {
+    padding-top: 40px;
+    padding-bottom: 12px;
+  }
+  .minimal .page-topbar + main .hero.compact {
+    padding-top: 44px;
+  }
+  .minimal .section {
+    padding: 40px 0;
+  }
+  .minimal .kpi-strip {
+    margin-top: 34px;
+  }
+}
