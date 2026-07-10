@@ -3090,12 +3090,12 @@ html:has(.minimal) {
 
 .hero-solo-inner h1 .type-caret {
   display: inline-block;
-  width: 0.055em;
+  width: 0.035em;
   min-width: 2px;
-  height: 0.82em;
-  margin-left: 0.04em;
+  height: 0.6em;
+  margin-left: 0.03em;
   background: currentColor;
-  vertical-align: -0.06em;
+  vertical-align: -0.02em;
   animation: type-caret-blink 1.05s steps(1) infinite;
 }
 
