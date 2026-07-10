@@ -2755,6 +2755,20 @@ html:has(.minimal) {
   color: var(--text);
 }
 
+/* --- Download: same crisp black-outlined boxes --- */
+.minimal .download-card {
+  border-color: var(--text);
+}
+
+.minimal .download-card:hover {
+  border-color: var(--text);
+}
+
+.minimal .os-mark {
+  border-color: var(--text);
+  color: var(--text);
+}
+
 /* --- KPI strip: white, hairline-divided --- */
 .minimal .kpi-strip {
   margin-top: 52px;
