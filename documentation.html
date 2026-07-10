@@ -11,11 +11,11 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Platform | Quantify Terminal</title>
-  <meta name="description" content="Understand the Quantify Terminal platform structure across research, markets, portfolios, global intelligence, alerts, strategy workflows, and support channels.">
+  <title>Docs | Quantify Terminal</title>
+  <meta name="description" content="Quantify Terminal documentation — learn the platform structure across research, monitoring, context, and action layers, plus setup and support.">
   <meta name="theme-color" content="#030404">
-  <meta property="og:title" content="Platform | Quantify Terminal">
-  <meta property="og:description" content="A structured view of the Quantify Terminal market workstation.">
+  <meta property="og:title" content="Docs | Quantify Terminal">
+  <meta property="og:description" content="Documentation for the Quantify Terminal market workstation.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_21.jpg?v=2">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.quantifyterminal.com/documentation">
@@ -35,7 +35,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.quantifyterminal.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Platform", "item": "https://www.quantifyterminal.com/documentation" }
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://www.quantifyterminal.com/documentation" }
     ]
   }
   </script>
@@ -45,7 +45,7 @@
     <nav class="hero-topnav" aria-label="Primary navigation">
       <a href="/">Home</a>
       <a href="/features">Features</a>
-      <a href="/documentation">Platform</a>
+      <a href="/documentation">Docs</a>
       <a href="/download">Downloads</a>
       <a href="/about">Founder</a>
       <a href="/connect">Connect</a>
@@ -53,111 +53,153 @@
     </nav>
   </header>
 
-  <main class="page">
-    <section class="hero compact container">
-      <div class="eyebrow reveal">Platform</div>
-      <h1 class="reveal">A desktop system for market work.</h1>
-      <p class="lead reveal">Quantify Terminal is organized around repeatable daily workflows: scan, research, compare, monitor, map, alert, and act with context. This page explains the structure without exposing internal implementation details.</p>
-      <div class="hero-actions reveal">
-        <a class="btn primary" href="/download">Download</a>
-        <a class="btn" href="/features">View Features</a>
-      </div>
-    </section>
+  <main class="page docs-page">
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <a class="docs-brand" href="/">
+          <img src="/Public/logo.PNG" alt="Quantify Terminal logo">
+          <span>
+            <strong>Quantify Terminal</strong>
+            <small>Documentation</small>
+          </span>
+        </a>
+        <nav class="docs-nav" aria-label="Docs sections">
+          <span class="docs-nav-label">Overview</span>
+          <a href="#introduction" class="docs-nav-link">Introduction</a>
+          <a href="#getting-started" class="docs-nav-link">Getting started</a>
+          <span class="docs-nav-label">Platform layers</span>
+          <a href="#research" class="docs-nav-link">Research layer</a>
+          <a href="#monitoring" class="docs-nav-link">Monitoring layer</a>
+          <a href="#context" class="docs-nav-link">Context layer</a>
+          <a href="#action" class="docs-nav-link">Action layer</a>
+          <span class="docs-nav-label">Resources</span>
+          <a href="#downloads" class="docs-nav-link">Downloads</a>
+          <a href="#support" class="docs-nav-link">Support</a>
+        </nav>
+      </aside>
 
-    <section class="section tight">
-      <div class="container module-stack">
-        <article class="module-row">
-          <div class="module-copy reveal">
-            <div class="eyebrow">Research layer</div>
-            <h2>Company work, market context, and source notes together.</h2>
-            <p>The research layer is built for investors and analysts who need to move between companies, filings, financial statements, peers, headlines, and charts without constantly changing tools.</p>
-            <div class="pill-row">
-              <span class="pill">Company pages</span>
-              <span class="pill">Filings</span>
-              <span class="pill">Comparisons</span>
-              <span class="pill">Research notes</span>
+      <div class="docs-content">
+        <section id="introduction" class="docs-section reveal">
+          <span class="docs-eyebrow">Documentation</span>
+          <h1>Quantify Terminal docs</h1>
+          <p class="docs-lead">Quantify Terminal is a desktop system for market work, organized around repeatable daily workflows: scan, research, compare, monitor, map, alert, and act with context. These docs explain how the platform is structured — without exposing internal implementation details.</p>
+          <div class="docs-actions">
+            <a class="btn primary" href="/download">Download</a>
+            <a class="btn" href="/features">View features</a>
+          </div>
+        </section>
+
+        <section id="getting-started" class="docs-section reveal">
+          <h2>Getting started</h2>
+          <p>The platform is grouped into four working layers. Most users move through them top to bottom in a normal session — starting with research, keeping monitoring open, pulling in context, and finishing with action.</p>
+          <div class="docs-cards">
+            <div class="docs-card">
+              <span class="docs-card-index">01</span>
+              <h3>Research</h3>
+              <p>Company work, filings, comparisons, and source notes in one place.</p>
+            </div>
+            <div class="docs-card">
+              <span class="docs-card-index">02</span>
+              <h3>Monitoring</h3>
+              <p>Markets, watchlists, screeners, and alerts kept visible while you work.</p>
+            </div>
+            <div class="docs-card">
+              <span class="docs-card-index">03</span>
+              <h3>Context</h3>
+              <p>Global maps, macro pressure, and relationship views around an asset.</p>
+            </div>
+            <div class="docs-card">
+              <span class="docs-card-index">04</span>
+              <h3>Action</h3>
+              <p>Portfolio, broker support, and repeatable strategy routines.</p>
             </div>
           </div>
-          <div class="media-panel reveal">
+        </section>
+
+        <section id="research" class="docs-section reveal">
+          <span class="docs-kicker">Research layer</span>
+          <h2>Company work, market context, and source notes together.</h2>
+          <p>The research layer is built for investors and analysts who need to move between companies, filings, financial statements, peers, headlines, and charts without constantly changing tools.</p>
+          <div class="pill-row">
+            <span class="pill">Company pages</span>
+            <span class="pill">Filings</span>
+            <span class="pill">Comparisons</span>
+            <span class="pill">Research notes</span>
+          </div>
+          <div class="media-panel">
             <img src="/Public/qt_images/optimized/image_21.jpg?v=2" alt="Financial statements workspace with income statement, balance sheet, cash flow, and ratios" width="1600" height="924" loading="lazy" decoding="async">
           </div>
-        </article>
+        </section>
 
-        <article class="module-row">
-          <div class="module-copy reveal">
-            <div class="eyebrow">Monitoring layer</div>
-            <h2>Markets, watchlists, screeners, and alerts.</h2>
-            <p>The monitoring layer is for active market observation. Users can follow symbols, compare watchlists, review screeners, and keep important changes visible while they work.</p>
-            <div class="pill-row">
-              <span class="pill">Watchlists</span>
-              <span class="pill">Screeners</span>
-              <span class="pill">Alerts</span>
-              <span class="pill">Market tables</span>
-            </div>
+        <section id="monitoring" class="docs-section reveal">
+          <span class="docs-kicker">Monitoring layer</span>
+          <h2>Markets, watchlists, screeners, and alerts.</h2>
+          <p>The monitoring layer is for active market observation. Users can follow symbols, compare watchlists, review screeners, and keep important changes visible while they work.</p>
+          <div class="pill-row">
+            <span class="pill">Watchlists</span>
+            <span class="pill">Screeners</span>
+            <span class="pill">Alerts</span>
+            <span class="pill">Market tables</span>
           </div>
-          <div class="media-panel reveal">
+          <div class="media-panel">
             <img src="/Public/qt_images/optimized/image_14.jpg?v=2" alt="Stock screener with filter panel and a results table of matching tickers" width="1600" height="924" loading="lazy" decoding="async">
           </div>
-        </article>
+        </section>
 
-        <article class="module-row">
-          <div class="module-copy reveal">
-            <div class="eyebrow">Context layer</div>
-            <h2>Global maps, macro pressure, and relationship views.</h2>
-            <p>Markets do not move in isolation. The platform includes global, macro, and relationship views to help users understand broader forces around an asset, region, or sector.</p>
-            <div class="pill-row">
-              <span class="pill">Global maps</span>
-              <span class="pill">Macro series</span>
-              <span class="pill">Network views</span>
-              <span class="pill">Heatmaps</span>
-            </div>
+        <section id="context" class="docs-section reveal">
+          <span class="docs-kicker">Context layer</span>
+          <h2>Global maps, macro pressure, and relationship views.</h2>
+          <p>Markets do not move in isolation. The platform includes global, macro, and relationship views to help users understand broader forces around an asset, region, or sector.</p>
+          <div class="pill-row">
+            <span class="pill">Global maps</span>
+            <span class="pill">Macro series</span>
+            <span class="pill">Network views</span>
+            <span class="pill">Heatmaps</span>
           </div>
-          <div class="media-panel reveal">
+          <div class="media-panel">
             <img src="/Public/qt_images/optimized/image_05.jpg?v=2" alt="Relationship map and global market context workspace" width="1600" height="924" loading="lazy" decoding="async">
           </div>
-        </article>
+        </section>
 
-        <article class="module-row">
-          <div class="module-copy reveal">
-            <div class="eyebrow">Action layer</div>
-            <h2>Portfolio, broker support, and strategy routines.</h2>
-            <p>Portfolio and broker-support views help keep research close to operational workflows. Strategy tools help users organize signals, logic, and repeatable market routines.</p>
-            <div class="pill-row">
-              <span class="pill">Portfolio</span>
-              <span class="pill">Broker support</span>
-              <span class="pill">Strategy logic</span>
-              <span class="pill">Risk framing</span>
-            </div>
+        <section id="action" class="docs-section reveal">
+          <span class="docs-kicker">Action layer</span>
+          <h2>Portfolio, broker support, and strategy routines.</h2>
+          <p>Portfolio and broker-support views help keep research close to operational workflows. Strategy tools help users organize signals, logic, and repeatable market routines.</p>
+          <div class="pill-row">
+            <span class="pill">Portfolio</span>
+            <span class="pill">Broker support</span>
+            <span class="pill">Strategy logic</span>
+            <span class="pill">Risk framing</span>
           </div>
-          <div class="media-panel reveal">
+          <div class="media-panel">
             <img src="/Public/qt_images/optimized/image_02.jpg?v=2" alt="Broker support and live trading connection screen with supported brokers" width="1400" height="906" loading="lazy" decoding="async">
           </div>
-        </article>
-      </div>
-    </section>
+        </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="cta-panel reveal">
-          <div class="section-head" style="margin-bottom: 0;">
-            <div>
-              <div class="eyebrow">Get started</div>
-              <h2>Choose your system and download the terminal.</h2>
-            </div>
-            <div class="actions" style="margin-top: 0;">
-              <a class="btn primary" href="/download">Downloads</a>
-              <a class="btn" href="/connect">Contact</a>
-            </div>
+        <section id="downloads" class="docs-section reveal">
+          <h2>Downloads</h2>
+          <p>Quantify Terminal is a native desktop application. Choose your operating system and install the latest build to get started.</p>
+          <div class="docs-actions">
+            <a class="btn primary" href="/download">Go to downloads</a>
+            <a class="btn" href="/features">Compare features</a>
           </div>
-        </div>
+        </section>
+
+        <section id="support" class="docs-section reveal">
+          <h2>Support</h2>
+          <p>Need help, have a question, or want to talk to the team? Reach out directly and we'll get back to you.</p>
+          <div class="docs-actions">
+            <a class="btn primary" href="/connect">Contact us</a>
+            <a class="btn" href="https://discord.gg/djKVhBH8cF" target="_blank" rel="noopener">Join Discord</a>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-shell">
       <div class="footer-brand">
-        <img src="/Public/logo.PNG" alt="Quantify Terminal logo">
         <span>QUANTIFY TERMINAL</span>
       </div>
       <div class="footer-copy">Copyright 2026 Quantify Terminal. All rights reserved.</div>
@@ -175,5 +217,30 @@
   </footer>
 
   <script src="/main.js"></script>
+  <script>
+    // Docs sidebar scroll-spy
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.docs-nav-link'));
+      if (!links.length) return;
+      var map = {};
+      links.forEach(function (l) {
+        var id = l.getAttribute('href').slice(1);
+        var sec = document.getElementById(id);
+        if (sec) map[id] = l;
+      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            links.forEach(function (l) { l.classList.remove('active'); });
+            var active = map[e.target.id];
+            if (active) active.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      Object.keys(map).forEach(function (id) {
+        observer.observe(document.getElementById(id));
+      });
+    })();
+  </script>
 </body>
 </html>
