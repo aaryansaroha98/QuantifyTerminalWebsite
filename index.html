@@ -31,8 +31,11 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
-  <link rel="preload" as="image" href="/Public/qt_images/optimized/mobile.webp?v=2" media="(max-width: 720px)">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="preload" as="image" href="/Public/hero-1400.webp"
+        imagesrcset="/Public/hero-800.webp 800w, /Public/hero-1400.webp 1400w, /Public/hero-2400.webp 2400w"
+        imagesizes="(max-width: 720px) 100vw, min(1360px, 96vw)" fetchpriority="high">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -112,8 +115,14 @@
         <a class="btn" href="/features">Explore Features</a>
       </div>
     </section>
-    <div class="hero-solo-shot reveal" aria-label="Quantify Terminal triple-monitor workspace">
-      <img src="/Public/whiteqttt.png" alt="Quantify Terminal running across a triple-monitor desk setup" fetchpriority="high">
+    <div class="hero-solo-shot" aria-label="Quantify Terminal triple-monitor workspace">
+      <img
+        src="/Public/hero-1400.webp"
+        srcset="/Public/hero-800.webp 800w, /Public/hero-1400.webp 1400w, /Public/hero-2400.webp 2400w"
+        sizes="(max-width: 720px) 100vw, min(1360px, 96vw)"
+        alt="Quantify Terminal running across a triple-monitor desk setup"
+        width="2400" height="1800"
+        fetchpriority="high" decoding="async">
     </div>
   </main>
 
