@@ -3470,13 +3470,16 @@ html:has(.minimal) {
     bottom: 0;
     z-index: 80;
     width: min(300px, 84vw);
-    max-height: none;
+    max-height: 100vh;
+    max-height: 100dvh;
     margin: 0;
-    padding: 20px 16px 28px;
+    padding: 20px 16px calc(28px + env(safe-area-inset-bottom));
     background: #ffffff;
     border-right: 1px solid var(--line);
     box-shadow: 0 16px 50px rgba(11, 14, 23, 0.18);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     transform: translateX(-102%);
     transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
   }
@@ -3526,12 +3529,14 @@ html:has(.minimal) {
 
   /* arrow inside the open drawer that hides it */
   .docs-nav-close {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 12px;
-    right: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-left: auto;
+    margin-bottom: 4px;
     width: 34px;
     height: 34px;
     border: 1px solid var(--line-soft);
