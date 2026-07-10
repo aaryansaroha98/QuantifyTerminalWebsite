@@ -107,28 +107,22 @@
 
       <div class="docs-content">
         <section id="introduction" class="docs-section reveal">
-          <span class="docs-eyebrow">User Guide · v1.0.0</span>
+          <span class="docs-eyebrow">User Guide</span>
           <h1>Quantify Terminal documentation</h1>
           <p class="docs-lead">Quantify Terminal is a professional market intelligence desktop that brings live markets, deep company research, charting, global data, trading tools and automation together in one place. This guide walks through every tab — what it is for, what you can do, and how it fits into a daily workflow.</p>
           <div class="docs-actions">
             <a class="btn primary" href="/download">Download the app</a>
             <a class="btn" href="/features">View features</a>
           </div>
-          <dl class="docs-meta">
-            <div><dt>Version</dt><dd>1.0.0</dd></div>
-            <div><dt>Platform</dt><dd>Windows</dd></div>
-            <div><dt>Edition</dt><dd>Public Guide</dd></div>
-            <div><dt>Updated</dt><dd>June 22, 2026</dd></div>
-          </dl>
         </section>
 
         <section id="getting-started" class="docs-section reveal">
           <span class="docs-kicker">Getting started</span>
           <h2>Install, sign in, and find your way around</h2>
-          <p>Quantify Terminal runs on Windows and is available two official ways. Always install from one of these to be sure you have a genuine, up-to-date copy.</p>
+          <p>Quantify Terminal is a native desktop app for macOS, Windows and Linux. Get it two official ways so you always have a genuine, up-to-date copy.</p>
           <ul class="docs-list">
-            <li><strong>Official website</strong> — download the latest build directly from quantifyterminal.com.</li>
-            <li><strong>Microsoft Store</strong> — install and auto-update through the Store on Windows.</li>
+            <li><strong>Official website</strong> — download the latest build for your operating system from the <a href="/download">downloads page</a>.</li>
+            <li><strong>Microsoft Store</strong> — install and auto-update on Windows.</li>
           </ul>
           <p>When you first open the terminal, create your account or sign in. You arrive at the <strong>Dashboard</strong> — your home base. Your watchlists, notes and preferences are saved to your account, so they are waiting for you each time you return.</p>
           <div class="docs-callout">
@@ -613,8 +607,8 @@
           <h2>Frequently asked questions</h2>
           <div class="docs-faq">
             <details>
-              <summary>Which platform does it run on?</summary>
-              <p>Windows — available from the official website and the Microsoft Store.</p>
+              <summary>Which platforms does it run on?</summary>
+              <p>macOS, Windows and Linux — available from the official website, with a Microsoft Store option on Windows.</p>
             </details>
             <details>
               <summary>Do I have to trade to use it?</summary>
@@ -677,18 +671,35 @@
     (function () {
       var links = Array.prototype.slice.call(document.querySelectorAll('.docs-nav-link'));
       if (!links.length) return;
+      var sidebar = document.querySelector('.docs-sidebar');
       var map = {};
       links.forEach(function (l) {
         var id = l.getAttribute('href').slice(1);
         var sec = document.getElementById(id);
         if (sec) map[id] = l;
       });
+      // scroll the active link into view WITHIN the sidebar only (never the window)
+      function revealInSidebar(el) {
+        if (!sidebar) return;
+        var top = el.offsetTop;
+        var bottom = top + el.offsetHeight;
+        var viewTop = sidebar.scrollTop;
+        var viewBottom = viewTop + sidebar.clientHeight;
+        if (top < viewTop) {
+          sidebar.scrollTop = top - 12;
+        } else if (bottom > viewBottom) {
+          sidebar.scrollTop = bottom - sidebar.clientHeight + 12;
+        }
+      }
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) {
             links.forEach(function (l) { l.classList.remove('active'); });
             var active = map[e.target.id];
-            if (active) active.classList.add('active');
+            if (active) {
+              active.classList.add('active');
+              revealInSidebar(active);
+            }
           }
         });
       }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });

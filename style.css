@@ -3170,23 +3170,37 @@ html:has(.minimal) {
 /* Sidebar */
 .docs-sidebar {
   position: sticky;
-  top: 96px;
+  top: 88px;
   align-self: start;
-  padding-right: 8px;
+  max-height: calc(100vh - 104px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.docs-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
 }
 
 .docs-brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-bottom: 22px;
-  margin-bottom: 22px;
+  padding-bottom: 16px;
+  margin-bottom: 14px;
   border-bottom: 1px solid var(--line-soft);
 }
 
 .docs-brand img {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   flex: 0 0 auto;
 }
 
@@ -3218,10 +3232,10 @@ html:has(.minimal) {
 }
 
 .docs-nav-label {
-  margin: 18px 0 6px;
+  margin: 14px 0 4px;
   padding-left: 12px;
   color: var(--quiet);
-  font-size: 10.5px;
+  font-size: 9.5px;
   font-weight: 650;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -3233,11 +3247,12 @@ html:has(.minimal) {
 
 .docs-nav-link {
   position: relative;
-  padding: 8px 12px;
+  padding: 5px 12px;
   border-left: 2px solid transparent;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 520;
+  line-height: 1.3;
   transition: color 160ms ease, border-color 160ms ease;
 }
 
@@ -3398,37 +3413,6 @@ html:has(.minimal) {
 /* =====================================================================
    DOCS — production tab-by-tab guide components
    ===================================================================== */
-
-/* Meta bar under the intro (version / updated / edition) */
-.docs-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line-soft);
-}
-
-.docs-meta div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.docs-meta dt {
-  color: var(--quiet);
-  font-size: 10.5px;
-  font-weight: 650;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.docs-meta dd {
-  margin: 0;
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 640;
-}
 
 /* Steps (getting started / moving around) */
 .docs-steps {
@@ -3710,8 +3694,5 @@ html:has(.minimal) {
   .docs-subgrid,
   .docs-gallery {
     grid-template-columns: 1fr;
-  }
-  .docs-meta {
-    gap: 20px;
   }
 }
