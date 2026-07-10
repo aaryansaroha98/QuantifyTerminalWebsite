@@ -130,6 +130,43 @@
     );
   }
 
+  function setupTypewriter() {
+    var el = document.querySelector(".hero-solo-inner h1");
+    if (!el) return;
+    var full = (el.textContent || "").trim();
+    if (!full) return;
+
+    // No-JS / reduced-motion users keep the full title as-is.
+    if (prefersReducedMotion()) return;
+
+    el.setAttribute("aria-label", full);
+    var text = document.createElement("span");
+    text.className = "type-text";
+    text.setAttribute("aria-hidden", "true");
+    var caret = document.createElement("span");
+    caret.className = "type-caret";
+    caret.setAttribute("aria-hidden", "true");
+
+    el.textContent = "";
+    el.classList.add("is-typing");
+    el.appendChild(text);
+    el.appendChild(caret);
+
+    var i = 0;
+    function tick() {
+      text.textContent = full.slice(0, i);
+      if (i < full.length) {
+        i++;
+        // slight natural variation in typing cadence
+        setTimeout(tick, 70 + (full.charAt(i - 1) === " " ? 120 : 0));
+      } else {
+        el.classList.add("type-done");
+      }
+    }
+    // small delay so the reveal fade-in has started first
+    setTimeout(tick, 260);
+  }
+
   function setupHeader() {
     var header = document.querySelector(".site-header");
     if (!header) return;
@@ -165,6 +202,7 @@
     setupHeader();
     setupMenu();
     setupReveal();
+    setupTypewriter();
     setupLightbox();
   });
 })();

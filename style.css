@@ -3083,6 +3083,42 @@ html:has(.minimal) {
   letter-spacing: -0.04em;
 }
 
+/* Typewriter caret for the hero title */
+.hero-solo-inner h1.is-typing {
+  white-space: nowrap;
+}
+
+.hero-solo-inner h1 .type-caret {
+  display: inline-block;
+  width: 0.055em;
+  min-width: 2px;
+  height: 0.82em;
+  margin-left: 0.04em;
+  background: currentColor;
+  vertical-align: -0.06em;
+  animation: type-caret-blink 1.05s steps(1) infinite;
+}
+
+.hero-solo-inner h1.type-done .type-caret {
+  animation: type-caret-blink 1.05s steps(1) 6, type-caret-fade 0.4s ease 6.3s forwards;
+}
+
+@keyframes type-caret-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@keyframes type-caret-fade {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-solo-inner h1 .type-caret {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 /* tighten spacing so the buttons sit higher, closer to the subtitle */
 .minimal .hero-solo-inner .lead {
   margin-top: 18px;
@@ -3199,8 +3235,8 @@ html:has(.minimal) {
 }
 
 .docs-brand img {
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
 }
 
