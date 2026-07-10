@@ -3507,9 +3507,9 @@ html:has(.minimal) {
 
 .docs-tab-head {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 6px 12px;
   margin-bottom: 10px;
 }
 
@@ -3521,9 +3521,11 @@ html:has(.minimal) {
 }
 
 .docs-tab-head .docs-num {
+  min-width: 22px;
   color: var(--quiet);
   font-size: 13px;
   font-weight: 640;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
@@ -3559,6 +3561,10 @@ html:has(.minimal) {
   font-weight: 680;
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
+}
+
+.docs-tab-head .docs-fkey {
+  align-self: center;
 }
 
 /* Sub-view grid (e.g. Equity Research's ten views) */
