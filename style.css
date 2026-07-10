@@ -469,7 +469,7 @@ h3 {
 
 .section-head {
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: space-between;
   gap: 28px;
   margin-bottom: 30px;
@@ -478,7 +478,6 @@ h3 {
 .section-head p {
   max-width: 520px;
   margin-bottom: 0;
-  margin-top: 8px;
   color: var(--muted);
 }
 
@@ -536,42 +535,21 @@ h3 {
   gap: 12px;
 }
 
-/* "And much more" closing tile in the screenshot library */
+/* "and much more" closing text in the screenshot library */
 .more-card {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  align-items: center;
   min-height: 0;
-  padding: 22px 20px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--panel);
-  text-align: left;
-}
-
-.more-card-dots {
-  font-size: 34px;
-  line-height: 0.6;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.more-card h3 {
-  margin: 0;
-  font-size: 18px;
+  border: none;
+  background: none;
+  padding: 4px 2px;
 }
 
 .more-card p {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.5;
-}
-
-.more-card .btn {
-  margin-top: 6px;
-  align-self: flex-start;
+  font-style: italic;
 }
 
 .image-card,
@@ -2829,11 +2807,6 @@ html:has(.minimal) {
 
 .minimal .career-soon::before {
   background: var(--text);
-}
-
-/* features: "And much more" closing tile — black outline */
-.minimal .more-card {
-  border-color: var(--text);
 }
 
 /* --- KPI strip: white, hairline-divided --- */
