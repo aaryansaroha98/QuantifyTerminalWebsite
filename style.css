@@ -3900,18 +3900,18 @@ html:has(.minimal) {
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 12px;
-    left: 14px;
+    top: 10px;
+    left: 12px;
     z-index: 70;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 12px;
     background: transparent;
   }
 
   .nav-logo img {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     object-fit: contain;
   }
 
