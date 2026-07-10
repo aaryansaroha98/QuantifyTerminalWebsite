@@ -1038,7 +1038,50 @@ ul.terminal-list {
 }
 
 .note-card {
-  padding: 20px;
+  padding: 26px 24px;
+}
+
+.focus-eyebrow {
+  display: block;
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.focus-list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.focus-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 15px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.focus-list li:first-child {
+  border-top: 0;
+}
+
+.focus-index {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 640;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.focus-label {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 560;
+  letter-spacing: 0.005em;
 }
 
 .founder-grid {
@@ -1097,25 +1140,10 @@ ul.terminal-list {
   border-color: var(--accent-soft);
 }
 
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.focus-grid span,
 .timeline-item {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0;
   background: rgba(255, 255, 255, 0.028);
-}
-
-.focus-grid span {
-  padding: 12px;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 760;
 }
 
 .timeline {
@@ -2351,10 +2379,6 @@ ul.terminal-list {
   .social-card h3 {
     margin-top: 14px;
     font-size: 15px;
-  }
-
-  .focus-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .prose {
