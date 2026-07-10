@@ -3878,19 +3878,8 @@ html:has(.minimal) {
 .nav-logo { display: none; }
 
 @media (max-width: 760px) {
-  /* solid fixed top bar behind the logo + hamburger (covers the notch safe area) */
-  body.minimal::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: calc(58px + env(safe-area-inset-top));
-    background: #ffffff;
-    border-bottom: 1px solid var(--line-soft);
-    box-shadow: 0 2px 12px rgba(11, 14, 23, 0.05);
-    z-index: 60;
-  }
+  /* no background bar — logo + hamburger float directly over the page */
+  body.minimal::before { content: none; }
 
   /* hide the inline top links, show the hamburger */
   .minimal .site-header .hero-topnav { display: none; }
