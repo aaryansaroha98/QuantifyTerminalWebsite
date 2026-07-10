@@ -2739,6 +2739,22 @@ html:has(.minimal) {
   --brand: 11, 14, 23;
 }
 
+/* --- Careers: same crisp black-outlined boxes as connect --- */
+.minimal .career-card,
+.minimal .benefit-card {
+  border-color: var(--text);
+}
+
+.minimal .career-card:hover,
+.minimal .benefit-card:hover {
+  border-color: var(--text);
+}
+
+.minimal .benefit-icon {
+  border-color: var(--text);
+  color: var(--text);
+}
+
 /* --- KPI strip: white, hairline-divided --- */
 .minimal .kpi-strip {
   margin-top: 52px;
