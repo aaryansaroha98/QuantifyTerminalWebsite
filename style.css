@@ -2868,7 +2868,7 @@ html:has(.minimal) {
 }
 
 .minimal .page-topbar + main .hero.compact {
-  padding-top: 32px;
+  padding-top: 14px;
 }
 
 /* --- Footer --- */
