@@ -3020,6 +3020,7 @@ html:has(.minimal) {
   margin: 40px auto 64px;
   aspect-ratio: 3.6 / 1;
   overflow: hidden;
+  background: #ffffff url("data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBACdASogABgAPuFeqE2opSQiMAwBEBwJaQAAW+thyCnVyqIA4WudIkgAAP70ybn+5UGstqv+h7+kZyOo8ApuIEKgxOkrQBixU+qh/+fzvnzxKlidOS+JX6rJdYpGoCkblH8m4TKzh6d/K6wTYy29o8AAAA==") center / cover no-repeat;
 }
 
 .minimal .hero-solo-shot img {
@@ -3027,6 +3028,15 @@ html:has(.minimal) {
   height: 100%;
   object-fit: cover;
   object-position: center 56%;
+}
+
+.js .minimal .hero-solo-shot img {
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.js .minimal .hero-solo-shot img.is-loaded {
+  opacity: 1;
 }
 
 @media (max-width: 720px) {

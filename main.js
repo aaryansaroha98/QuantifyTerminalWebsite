@@ -167,6 +167,20 @@
     setTimeout(tick, 260);
   }
 
+  function setupHeroImage() {
+    var img = document.querySelector(".hero-solo-shot img");
+    if (!img) return;
+    function reveal() {
+      img.classList.add("is-loaded");
+    }
+    if (img.complete && img.naturalWidth) {
+      reveal();
+    } else {
+      img.addEventListener("load", reveal, { once: true });
+      img.addEventListener("error", reveal, { once: true });
+    }
+  }
+
   function setupHeader() {
     var header = document.querySelector(".site-header");
     if (!header) return;
@@ -200,6 +214,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
     setupHeader();
+    setupHeroImage();
     setupMenu();
     setupReveal();
     setupTypewriter();
