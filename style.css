@@ -3304,6 +3304,9 @@ html:has(.minimal) {
 }
 
 .docs-section h1 {
+  max-width: none;
+  margin: 0;
+  text-align: left;
   font-size: clamp(30px, 4vw, 44px);
   line-height: 1.08;
   letter-spacing: -0.02em;
