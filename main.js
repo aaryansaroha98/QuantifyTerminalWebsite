@@ -133,37 +133,58 @@
   function setupTypewriter() {
     var el = document.querySelector(".hero-solo-inner h1");
     if (!el) return;
-    var full = (el.textContent || "").trim();
+    var spec = el.getAttribute("data-type");
+    // words to type; "|" marks a line break in the rendered title
+    var parts = spec ? spec.split("|") : [(el.textContent || "").trim()];
+    var full = parts.join(" ").trim();
     if (!full) return;
 
-    // No-JS / reduced-motion users keep the full title as-is.
-    if (prefersReducedMotion()) return;
-
     el.setAttribute("aria-label", full);
-    var text = document.createElement("span");
-    text.className = "type-text";
-    text.setAttribute("aria-hidden", "true");
-    var caret = document.createElement("span");
-    caret.className = "type-caret";
-    caret.setAttribute("aria-hidden", "true");
+
+    // No-JS / reduced-motion users keep the full (line-split) title as-is.
+    if (prefersReducedMotion()) {
+      el.textContent = "";
+      parts.forEach(function (p, idx) {
+        var line = document.createElement("span");
+        line.className = "type-line";
+        line.textContent = p;
+        el.appendChild(line);
+      });
+      el.classList.add("is-typing", "type-done");
+      return;
+    }
 
     el.textContent = "";
     el.classList.add("is-typing");
-    el.appendChild(text);
-    el.appendChild(caret);
 
-    var i = 0;
+    // one .type-line per part; caret lives at the end of the last line
+    var lines = parts.map(function () {
+      var line = document.createElement("span");
+      line.className = "type-line";
+      line.setAttribute("aria-hidden", "true");
+      el.appendChild(line);
+      return line;
+    });
+    var caret = document.createElement("span");
+    caret.className = "type-caret";
+    caret.setAttribute("aria-hidden", "true");
+    lines[0].appendChild(caret);
+
+    var li = 0, ci = 0;
     function tick() {
-      text.textContent = full.slice(0, i);
-      if (i < full.length) {
-        i++;
-        // slight natural variation in typing cadence
-        setTimeout(tick, 70 + (full.charAt(i - 1) === " " ? 120 : 0));
+      var part = parts[li];
+      lines[li].textContent = part.slice(0, ci);
+      lines[li].appendChild(caret);
+      if (ci < part.length) {
+        ci++;
+        setTimeout(tick, 72);
+      } else if (li < parts.length - 1) {
+        li++; ci = 0;
+        setTimeout(tick, 150);
       } else {
         el.classList.add("type-done");
       }
     }
-    // small delay so the reveal fade-in has started first
     setTimeout(tick, 260);
   }
 

@@ -3058,6 +3058,16 @@ html:has(.minimal) {
     line-height: 0.98;
     letter-spacing: -0.03em;
   }
+  /* stack the two words, nudge "Terminal" just below and to the right */
+  .minimal .hero-solo .hero-solo-inner h1 .type-line {
+    display: block;
+  }
+  .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line {
+    padding-left: 0.5em;
+  }
+  .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line::before {
+    content: none;
+  }
   .minimal .hero-solo .hero-solo-inner .lead {
     margin-top: 16px;
   }
@@ -3124,6 +3134,15 @@ html:has(.minimal) {
 /* Typewriter caret for the hero title */
 .hero-solo-inner h1.is-typing {
   white-space: nowrap;
+}
+
+/* each typed word inline on desktop (single line), stacked on mobile */
+.hero-solo-inner h1 .type-line {
+  display: inline;
+}
+
+.hero-solo-inner h1 .type-line + .type-line::before {
+  content: " ";
 }
 
 .hero-solo-inner h1 .type-caret {
@@ -3884,19 +3903,16 @@ html:has(.minimal) {
     top: 12px;
     left: 14px;
     z-index: 70;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 6px 18px rgba(11, 14, 23, 0.08);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: transparent;
   }
 
   .nav-logo img {
-    width: 30px;
-    height: 30px;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
   }
 
   .nav-burger {
