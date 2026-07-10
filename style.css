@@ -3090,26 +3090,22 @@ html:has(.minimal) {
 
 .hero-solo-inner h1 .type-caret {
   display: inline-block;
-  width: 0.035em;
-  min-width: 2px;
-  height: 0.6em;
-  margin-left: 0.03em;
+  width: 0.5em;
+  height: 0.07em;
+  min-height: 3px;
+  margin-left: 0.06em;
   background: currentColor;
-  vertical-align: -0.02em;
-  animation: type-caret-blink 1.05s steps(1) infinite;
+  vertical-align: baseline;
+  animation: type-caret-blink 0.7s steps(1) infinite;
 }
 
 .hero-solo-inner h1.type-done .type-caret {
-  animation: type-caret-blink 1.05s steps(1) 6, type-caret-fade 0.4s ease 6.3s forwards;
+  animation: type-caret-blink 0.7s steps(1) infinite;
 }
 
 @keyframes type-caret-blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
-}
-
-@keyframes type-caret-fade {
-  to { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
