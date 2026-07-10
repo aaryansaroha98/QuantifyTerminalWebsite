@@ -3215,6 +3215,7 @@ html:has(.minimal) {
   font-size: 14px;
   font-weight: 720;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .docs-brand small {
@@ -3330,6 +3331,10 @@ html:has(.minimal) {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 24px;
+}
+
+.docs-actions-center {
+  justify-content: center;
 }
 
 .docs-section .pill-row {
