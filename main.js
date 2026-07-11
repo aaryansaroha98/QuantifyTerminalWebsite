@@ -263,6 +263,51 @@
     );
   }
 
+  function setupDownloadButtons() {
+    var buttons = document.querySelectorAll(".download-btn");
+    if (!buttons.length) return;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function (event) {
+        if (btn.classList.contains("is-downloading")) return;
+
+        // ripple originating from the click point
+        var rect = btn.getBoundingClientRect();
+        var ripple = document.createElement("span");
+        ripple.className = "btn-ripple";
+        var size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + "px";
+        ripple.style.left = (event.clientX - rect.left - size / 2) + "px";
+        ripple.style.top = (event.clientY - rect.top - size / 2) + "px";
+        btn.appendChild(ripple);
+        ripple.addEventListener("animationend", function () {
+          ripple.remove();
+        });
+
+        // pressed feedback
+        btn.classList.add("is-clicked");
+        window.setTimeout(function () {
+          btn.classList.remove("is-clicked");
+        }, 260);
+
+        // brief "downloading" state so the click clearly registers
+        var label = btn.querySelector("span");
+        if (label && !label.dataset.original) {
+          label.dataset.original = label.textContent;
+        }
+        btn.classList.add("is-downloading");
+        if (label) label.textContent = "Starting download…";
+
+        window.setTimeout(function () {
+          btn.classList.remove("is-downloading");
+          if (label && label.dataset.original) {
+            label.textContent = label.dataset.original;
+          }
+        }, 2200);
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
     setupHeader();
@@ -272,5 +317,6 @@
     setupReveal();
     setupTypewriter();
     setupLightbox();
+    setupDownloadButtons();
   });
 })();
