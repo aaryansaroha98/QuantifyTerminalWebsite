@@ -1544,13 +1544,14 @@ ul.terminal-list {
 
 .footer-copy {
   color: var(--quiet);
-  margin-left: 40px;
+  text-align: center;
 }
 
 .footer-legal {
   display: inline-flex;
   align-items: center;
   gap: 16px;
+  margin-left: auto;
 }
 
 .footer-legal a {
