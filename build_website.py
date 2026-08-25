@@ -506,7 +506,8 @@ HTML_NAV = """
       <a href="/features">Features</a>
       <a href="/documentation">Documentation</a>
       <a href="/download">Downloads</a>
-      <a href="/about">Founder</a>
+      <a href="/about">About</a>
+      <a href="/founder">Founder</a>
       <a href="/connect">Contact</a>
       <a href="/download" class="btn btn-primary" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">Download Terminal</a>
     </div>
@@ -521,7 +522,7 @@ HTML_FOOTER = """
         QUANTIFY TERMINAL
       </div>
       <div class="footer-text">
-        &copy; 2026 Quantify Terminal. All rights reserved. <br>Built for professional market participants.
+        &copy; 2026 Quantify Terminal. All rights reserved. <br>Built for institutional desks and quantitative professionals.
       </div>
       <div class="footer-links">
         <a href="https://x.com/QuantifTerm" target="_blank">X (Twitter)</a>
@@ -540,7 +541,7 @@ HTML_HEAD = lambda title: f"""
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} | Quantify Terminal</title>
-  <meta name="description" content="A powerful next-generation financial platform designed for serious investors, analysts, and market participants. Featuring over 22+ professional modules.">
+  <meta name="description" content="An institutional-grade market intelligence platform with 35+ workspace tabs, 450+ panels, and coverage across 500M+ instruments, built for quantitative analysts, hedge funds, portfolio managers, risk teams, and algorithmic traders.">
   <meta name="theme-color" content="#030303">
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="image/png" href="/Public/logo.PNG">
@@ -555,7 +556,7 @@ index_html = HTML_HEAD("The Professional Market Desktop") + """
     <p class="subtitle" style="text-align: center; margin: 1.5rem auto 3rem auto;">A powerful, native desktop environment engineered exclusively for quantitative research, algorithmic logic mapping, and unparalleled global market intelligence.</p>
     <div class="hero-actions">
       <a href="/download" class="btn btn-primary">Download Terminal</a>
-      <a href="/features" class="btn btn-secondary">Explore 22+ Modules</a>
+      <a href="/features" class="btn btn-secondary">Explore 35+ Workspace Tabs</a>
     </div>
 
     <!-- USING REAL SHOT FROM THE qt_images FOLDER -->
@@ -581,8 +582,8 @@ index_html = HTML_HEAD("The Professional Market Desktop") + """
         <img src="/Public/qt_images/image_09.png" class="grid-image" alt="Broker Integration">
       </div>
       <div class="feature-card fade-in">
-        <h3 style="color: var(--accent);">22+ Workspace Modules</h3>
-        <p>Command Deep Equity Research, Live Portfolios, Market Scanners, and sophisticated Relationship Maps through a modular layout.</p>
+        <h3 style="color: var(--accent);">35+ Workspace Tabs &amp; 450+ Panels</h3>
+        <p>Command deep equity research, live portfolios, risk analytics, market scanners, and relationship maps across 500M+ instruments in one modular layout.</p>
         <img src="/Public/qt_images/image_16.png" class="grid-image" alt="Workspaces">
       </div>
     </div>
@@ -593,7 +594,7 @@ features_html = HTML_HEAD("Features") + """
   <section class="container" style="padding-top: 10rem;">
     <div class="fade-in" style="text-align: center;">
       <h1 style="margin: 0 auto; max-width: 800px;">Infinite Workflows.<br>One Native Terminal.</h1>
-      <p class="subtitle" style="margin: 1.5rem auto 4rem auto;">Engineered with 22+ deeply integrated applications to replace fragmented, browser-based systems with a rigorous, high-performance desktop framework.</p>
+      <p class="subtitle" style="margin: 1.5rem auto 4rem auto;">Engineered with 35+ workspace tabs, 450+ analytical panels, and coverage across 500M+ instruments to replace fragmented, browser-based systems with a rigorous, high-performance desktop framework for quantitative analysts, hedge funds, portfolio managers, risk teams, and algorithmic traders.</p>
     </div>
 
     <div class="showcase-container fade-in" style="margin: 0 auto 6rem auto;">
@@ -673,31 +674,31 @@ about_html = HTML_HEAD("Founder") + """
       
       <h1 style="margin-top: 0; font-size: 2.5rem; letter-spacing: -0.5px;">About the Founder</h1>
       
-      <p style="font-size: 1.15rem; color: #fff; font-weight: 500;">Aaryan Saroha is a young entrepreneur, builder, and finance enthusiast from Haryana, India, currently pursuing Electrical Engineering at Indian Institute of Technology Jammu.</p>
+      <p style="font-size: 1.15rem; color: #fff; font-weight: 500;">Aaryan Saroha is the Founder and Chief Executive Officer of Quantify Terminal, an institutional-grade market intelligence platform used for research, portfolio construction, risk management, and systematic execution. Electrical Engineering, Indian Institute of Technology Jammu.</p>
 
-      <p>From an early stage, Aaryan developed a deep interest in financial markets, quantitative finance, technology, and business. His passion for finance was never limited to simply watching markets — he became deeply interested in understanding how global financial systems work, how quantitative analysis drives decision-making, and how technology can transform the future of finance.</p>
+      <p>His work sits at the intersection of quantitative finance and financial engineering: pricing and valuation frameworks, factor and risk models, market microstructure, and the data infrastructure required to run them at production scale.</p>
 
-      <p>Driven by this passion, he founded Quantify Terminal with the vision of building a powerful next-generation financial platform designed for serious investors, analysts, and market participants.</p>
+      <p>He founded Quantify Terminal to consolidate infrastructure that most institutions assemble from separate, expensive, and poorly integrated systems. The platform delivers 35+ workspace tabs, 450+ analytical panels, and coverage across 500M+ instruments, serving quantitative analysts, hedge funds, portfolio managers, risk and compliance teams, algorithmic traders, and institutional investors.</p>
 
-      <h3 style="margin-top: 3rem; font-size: 1.4rem;">Aaryan is deeply passionate about:</h3>
+      <h3 style="margin-top: 3rem; font-size: 1.4rem;">Areas of focus:</h3>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
         <ul style="margin:0;">
-          <li>Quantitative Finance</li>
-          <li>Financial Markets</li>
-          <li>Financial Technology</li>
+          <li>Quantitative Research</li>
+          <li>Risk &amp; Portfolio Analytics</li>
+          <li>Market Microstructure</li>
         </ul>
         <ul style="margin:0;">
-          <li>Data Analytics</li>
-          <li>System Design</li>
-          <li>Entrepreneurship</li>
+          <li>Algorithmic Execution</li>
+          <li>Market Data Infrastructure</li>
+          <li>Financial Technology</li>
         </ul>
       </div>
 
-      <p style="margin-top: 3rem;">What makes his journey unique is the combination of engineering and finance. While studying Electrical Engineering, he simultaneously focused on developing advanced financial systems, real-time analytics infrastructure, and data-driven market intelligence tools.</p>
+      <p style="margin-top: 3rem;">His engineering background shapes the technical direction of the product: real-time streaming market data, low-latency analytics, systematic backtesting, and execution tooling engineered for reliability under load. He leads architecture and product strategy directly, from data ingestion through to the analytics surfaced on the desk.</p>
 
-      <p>He believes that the future of finance belongs to technology-driven platforms that are fast, intelligent, and data-focused. This belief became the foundation behind Quantify Terminal.</p>
+      <p>He is building Quantify Terminal on the view that institutional market infrastructure should be fast, transparent, and quantitatively rigorous, and that the economics of professional-grade tooling should not restrict access to firms of a certain size.</p>
 
-      <p>Beyond academics and business, Aaryan is someone who enjoys building things from scratch, learning continuously, and turning ambitious ideas into real products. His goal is to create technology that helps people understand markets better and make smarter financial decisions.</p>
+      <p>He is building Quantify Terminal as long-term financial infrastructure: a platform engineered to institutional standards of accuracy, performance, and operational discipline.</p>
 
       <p style="font-weight: 500; font-style: italic; color: #fff; margin-top: 2rem;">For Aaryan, Quantify Terminal is not just a project — it is a long-term vision built from passion, curiosity, and a deep interest in the world of finance.</p>
 
