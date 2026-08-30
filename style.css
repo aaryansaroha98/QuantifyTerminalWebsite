@@ -4441,3 +4441,16 @@ html:has(.minimal) {
   font-size: 12.5px;
   font-style: italic;
 }
+
+/* --- Temporary "everything is free" state ---
+   Hides the full pricing experience without deleting it. To restore paid
+   plans, remove the .pricing-notice section and the .pricing-hidden wrapper
+   in pricing.html; this block can then be deleted too. */
+.pricing-hidden {
+  display: none !important;
+}
+
+.minimal .page-topbar + main .pricing-notice.hero.compact {
+  padding-top: 52px;
+  padding-bottom: 92px;
+}
