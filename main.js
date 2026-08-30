@@ -308,38 +308,6 @@
     });
   }
 
-  function setupPricingToggle() {
-    var toggle = document.querySelector("[data-billing-toggle]");
-    if (!toggle) return;
-    var buttons = Array.prototype.slice.call(toggle.querySelectorAll("button"));
-    var targets = Array.prototype.slice.call(
-      document.querySelectorAll("[data-monthly]")
-    );
-
-    function apply(mode) {
-      buttons.forEach(function (b) {
-        b.classList.toggle("is-active", b.getAttribute("data-billing") === mode);
-      });
-      targets.forEach(function (el) {
-        var val = el.getAttribute("data-" + mode);
-        if (val === null) return;
-        if (el.classList.contains("price-note")) {
-          el.innerHTML = val;
-        } else {
-          el.textContent = val;
-        }
-      });
-    }
-
-    buttons.forEach(function (b) {
-      b.addEventListener("click", function () {
-        apply(b.getAttribute("data-billing"));
-      });
-    });
-
-    apply("monthly");
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
     setupHeader();
@@ -350,6 +318,5 @@
     setupTypewriter();
     setupLightbox();
     setupDownloadButtons();
-    setupPricingToggle();
   });
 })();
