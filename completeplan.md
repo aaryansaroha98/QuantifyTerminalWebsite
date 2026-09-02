@@ -2,7 +2,7 @@
 
 **Canonical working plan**  
 **Last updated:** 2026-09-02  
-**Current source task:** Task 7 — user security settings and verified account changes  
+**Current source task:** Task 8 — versioned Azure Account API and canonical RBAC  
 **Production status:** **NO-GO / locked**  
 **Staging status:** **Not yet evidenced**  
 
@@ -118,8 +118,8 @@ After verified web parity, remove the desktop Admin Control Center, user directo
 | 4 | ✅ Source complete and independently approved | Review: `Quantify Terminal/semantic-review/2026-09-02-105710-pr-4.md`. Eight migration source contract exists. No cloud/PostgreSQL claim. |
 | 5 | ✅ Source complete, independently approved, committed, pushed | Review: `Quantify Terminal Account Portal/semantic-review/2026-09-02-125249-pr-local.md`. Portal commit `4908e06de0d36757488b542ea66328f88f8b79a3`; `origin/main` matched after push. |
 | 6 | ✅ Source complete, independently approved | Profile/preferences versioned CAS contract. Photo feature removed by decision: the product stores no user images. Reviews: `Quantify Terminal/semantic-review/2026-09-02-task-6-photo-removal-desktop-followup.md`, `Quantify Terminal Account Portal/semantic-review/2026-09-02-task-6-photo-removal-portal-final.md`. No cloud/PostgreSQL claim. |
-| 7 | ⏳ Next | Begin now that Task 6 is approved and published. |
-| 8 | ⏳ Not started | Azure Account API/RBAC source and staging IaC. |
+| 7 | ✅ Source complete, independently approved | `/account/security`: reauthenticated password and verified email change, TOTP enrollment/challenge/removal, assurance-gated account mutations. Reviews: `Quantify Terminal Account Portal/semantic-review/2026-09-02-task-7-security-settings.md` (round 1), `…task-7-remediation.md` (round 2), `…task-7-remediation-2.md` (round 3, APPROVED plus a delta confirmation). No cloud/PostgreSQL claim. |
+| 8 | ⏳ Next | Azure Account API/RBAC source and staging IaC. Begin now that Task 7 is approved and published. |
 | 9 | ⏳ Not started | Role-aware shell and AAL2. |
 | 10 | ⏳ Not started | Unified web sessions/events. |
 | 11 | ⏳ Not started | Desktop signup/UUID/session/local-PIN migration. |
@@ -259,11 +259,40 @@ Portal:
 PostgreSQL 15 and pgTAP are unavailable locally, so **no SQL runtime evidence exists**: the 11 migrations, 4 pgTAP suites, and 16 harness scenarios are unexecuted. Managed staging remains mandatory for provider catalog capture, both read-only preflights, ordered mutations, strict TAP, and portal/desktop interoperability. The two authenticated account routes ship without an end-to-end accessibility scan or a live save. **Production remains NO-GO.**
 
 
+## 9a. Task 7 execution record — COMPLETE IN SOURCE
+
+`/account/security` ships four surfaces — password change, verified email change, TOTP enrollment/removal, recovery guidance — plus a second-factor step at sign-in and assurance enforcement on both route rendering and every account mutation. Portal only; no desktop change, no migration, no cloud contact.
+
+### Decisions that shaped it
+
+1. **Every credential or factor change reauthenticates with the current password**, enrollment included. Verifying a factor raises the required level for every session of the account, so it is not a self-authorizing operation.
+2. **Reauthentication runs on a session-isolated client** (`persistSession`, `autoRefreshToken`, `detectSessionInUrl` all false, no cookie adapter). Running the verification sign-in on the request-bound client would overwrite the caller's session and could downgrade a verified AAL2 session to AAL1. Its outcome is three-valued — `verified` / `rejected` / `unavailable` — so an outage can never read as a wrong password or as success.
+3. **MFA state is derived only from provider-verified factors.** `app_profiles.two_factor_enabled` is desktop-owned legacy data and is never read or written by the portal, so there is no second source of truth to disagree with the provider.
+4. **The challenge decision uses only inputs the caller cannot bend.** The required level is computed from `mfa.listFactors`, which the pinned client answers through `getUser()` — a network call the provider authenticates. The client's own `nextLevel` is discarded: it derives from `session.user.factors`, which on the server comes from the unsigned request cookie, so trusting it would let a caller switch the whole second-factor requirement off by deleting one key from their own cookie. The reached level comes from the signed token's `aal` claim, and every mutation re-presents that token to the provider.
+5. **Assurance is enforced on mutations, not only on rendering.** A Server Action is its own endpoint and the proxy knows nothing about assurance levels, so all five security actions plus `updateProfile` and `updatePreferences` take a non-redirecting decision from `requireMutationAssurance` before any password check or write. The gate runs first so a refused action cannot be used as a password oracle.
+6. **Mutations fail closed, rendering fails open.** A mutation refuses unless both the factor inventory and the level were readable; page rendering redirects only on a positive challenge requirement, because a transport blip must not lock an owner out of their own account.
+7. **The AAL1 cookie written by the password step deliberately survives an `mfa-required` response**: the provider's challenge and verify calls act on that session. It is a ticket to finish signing in — every protected route redirects it and every account mutation refuses it.
+8. **Callback destinations are bound to the redirect type the pinned client actually emits.** `@supabase/auth-js` reads that value back from the stored PKCE verifier and appends a type only for password recovery, so signup and `updateUser({ email })` confirmations exchange to `null`. Both non-recovery flows are bound to `null` and refuse `"recovery"`; `/reset-password`, the only destination that authorizes a password change without the current password, stays reachable only from a recovery exchange. This is pinned by a contract test that drives the real client with an in-memory storage adapter and a stubbed fetch — no project, no network.
+9. **Enrollment is capped at one verified authenticator through the portal**, with a per-factor removal control so factors enrolled elsewhere can still all be removed, and a sign-in challenge that tries each verified factor.
+10. **Password recovery is the one deliberate exception to the mutation gate.** Gating it would leave an owner who lost their password unable to recover. What prevents it from becoming account access is that `resetPassword` clears the portal's auth cookies and redirects to sign-in, so the recovery exchange leaves no usable session behind.
+11. **No printable recovery codes and no portal-originated notification email.** A lost authenticator needs identity-verified support review; portal-sent mail waits for Task 8, because no mail credential may exist in this repository.
+
+### Preflight additions
+
+`PortalAuthLifecycleEvidence` gained three relationships and one was widened, all blocking: `securityActionsRequireAssurance` and `accountActionsRequireAssurance` require each action to obtain the decision *and* refuse on it — covering the unreadable case, not only an owed factor — before its first mutation or password check; `enrollmentBindsProviderIssuedFactor` requires the submitted factor id to be checked against the provider's pending list before any challenge; and `securityReauthenticatesBeforeMutation` now includes enrollment.
+
+### Gates executed (offline only)
+
+- prettier, eslint, `tsc --noEmit` clean; **48 test files / 484 tests**; `next build` succeeds
+- preflight **20 pass / 9 warning / 0 blocked**, `sourceReady: true`, `stagingReady: false`, `productionReady: false`
+- Playwright 14 passed; `npm run preflight:strict` exits 1; `VERCEL_ENV=production npm run build` exits 1 on the production lock
+- `git diff --check` clean; `next-env.d.ts`, `package.json`, `package-lock.json` unmodified; `next.config.ts` and the eleven pinned desktop migration digests untouched
+
+### Boundary that remains after Task 7
+
+No Supabase project was contacted, so the whole surface is source-verified only. Unverified provider behavior: that a secure email change emails both addresses, that `mfa.enroll` returns a usable QR payload, that `signOut({ scope: "others" })` and `scope: "local"` revoke what they claim, that `mfa.verify` persists the upgraded AAL2 session through the SSR cookie adapter, that every access token carries an `aal` claim, and the rate limits on password verification and TOTP challenges. `/account/security` has no authenticated end-to-end accessibility scan or live journey. A failed assurance read is silent by design and turns every account mutation into "temporarily unavailable" while routes still render; a degradation signal waits for Task 8. **Production remains NO-GO.**
+
 ## 10. Remaining task definitions
-
-### Task 7 — User security settings and verified account changes
-
-Implement current-password reauthentication, password change, secure verified email change, TOTP enrollment/challenge/unenrollment, recovery guidance, and security notifications. Derive MFA state from verified Supabase factors, not `two_factor_enabled`. Test password policy, old/new email confirmation, expiry, AAL changes, failed challenges, factor removal, and session behavior.
 
 ### Task 8 — Versioned Azure Account API and canonical RBAC
 
