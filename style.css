@@ -4741,3 +4741,59 @@ html:has(.minimal) {
     padding: 18px;
   }
 }
+
+/* =====================================================================
+   NAV HIRING SIGNAL — blinking green dot on the Careers link
+   Matched on the href so every page picks it up with no markup change.
+   ===================================================================== */
+.hero-topnav a[href="/careers"],
+.mobile-menu a[href="/careers"] {
+  position: relative;
+}
+
+.hero-topnav a[href="/careers"]::after,
+.mobile-menu a[href="/careers"]::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--live);
+  animation: nav-live-blink 1.6s ease-in-out infinite;
+}
+
+/* desktop bar: link padding is 8px 14px, so this sits just past the word */
+.hero-topnav a[href="/careers"]::after {
+  top: 5px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+}
+
+/* full-screen mobile menu: bigger type, link padding is 12px 18px */
+.mobile-menu a[href="/careers"]::after {
+  top: 9px;
+  right: 11px;
+  width: 7px;
+  height: 7px;
+}
+
+/* Holds solid, dips briefly, returns. A deeper dip on a 6px dot on white
+   reads as a rendering glitch rather than a deliberate pulse. */
+@keyframes nav-live-blink {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-topnav a[href="/careers"]::after,
+  .mobile-menu a[href="/careers"]::after {
+    animation: none;
+  }
+}
