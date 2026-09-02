@@ -4248,17 +4248,7 @@ html:has(.minimal) {
   color: var(--live);
 }
 
-/* Stated plainly rather than buried: ink text against the quieter badges,
-   so nobody applies expecting a salary. */
-.career-meta span.career-unpaid {
-  border-color: var(--line);
-  color: var(--text);
-}
 
-.minimal .career-meta span.career-unpaid {
-  border-color: var(--text);
-  color: var(--text);
-}
 
 .career-apply {
   margin-top: auto;
