@@ -4203,59 +4203,6 @@ html:has(.minimal) {
   letter-spacing: 0.06em;
 }
 
-/* vertical variant, for narrow columns like the application sidebar */
-.status-strip.status-stack {
-  width: 100%;
-  margin: 0;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.status-stack .status-cell {
-  justify-content: flex-start;
-  min-height: 42px;
-  padding: 0 14px;
-  border-right: 0;
-  border-bottom: 1px solid var(--line-soft);
-}
-
-.status-stack .status-cell:last-child {
-  border-bottom: 0;
-}
-
-/* inline live pill, e.g. next to a section heading */
-.live-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 28px;
-  padding: 0 11px;
-  border: 1px solid var(--live);
-  color: var(--live);
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.live-pill.is-closed {
-  border-color: var(--closed);
-  color: var(--closed);
-}
-
-/* pill sitting on the same line as an eyebrow label */
-.section-head .live-pill,
-.cta-panel .live-pill,
-.hero .live-pill {
-  margin: 0 0 18px 10px;
-  vertical-align: middle;
-}
-
-.hero .live-pill {
-  margin-left: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .live-dot::after {
     animation: none;

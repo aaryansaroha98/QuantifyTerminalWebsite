@@ -421,27 +421,28 @@
     name: "Please add your full name.",
     email: "Please add an email address we can reply to.",
     location: "Please add your city and country.",
-    role: "Please choose the role you are applying for.",
     track: "Please choose the field you want to work in.",
     experience: "Please choose your experience level.",
     skills: "Please list a few core skills.",
     project: "Please describe one project you have shipped.",
     start: "Please pick your earliest start date.",
-    hours: "Please choose how many hours a week you can commit.",
-    duration: "Please choose a preferred duration.",
     note: "Please tell us why Quantify Terminal.",
     consent: "Please confirm this before sending."
   };
 
-  var ROLE_TRACKS = {
-    "python-backtester-engineer": "Software engineering",
-    "quant-researcher": "Quantitative research",
-    "ml-engineer": "Machine learning and AI",
-    "frontend-engineer": "Frontend and design",
-    "data-engineer": "Data engineering",
-    "marketing-intern": "Marketing and growth",
-    "content-writer": "Content and research writing",
-    "qa-engineer": "Quality and testing"
+  // The listings on /careers deep-link in as /application?role=<slug>. The form
+  // does not ask for the role again; it is read from the URL so the email still
+  // names the exact listing, and the matching field is preselected.
+  var ROLE_LISTINGS = {
+    "python-backtester-engineer": { label: "Python Backtester Engineer", track: "Software engineering" },
+    "quant-researcher": { label: "Quant Researcher", track: "Quantitative research" },
+    "ml-engineer": { label: "ML Engineer", track: "Machine learning and AI" },
+    "frontend-engineer": { label: "Frontend Engineer", track: "Frontend and design" },
+    "data-engineer": { label: "Data Engineer", track: "Data engineering" },
+    "sales-intern": { label: "Sales Intern", track: "Sales and business development" },
+    "marketing-intern": { label: "Marketing Intern", track: "Marketing and growth" },
+    "content-writer": { label: "Content Writer", track: "Content and research writing" },
+    "qa-engineer": { label: "QA Engineer", track: "Quality and testing" }
   };
 
   function queryParam(name) {
@@ -470,7 +471,7 @@
 
     var feedback = form.querySelector("[data-feedback]");
     var feedbackText = form.querySelector("[data-feedback-text]");
-    var roleSelect = form.elements.role;
+    var roleField = form.querySelector("[data-role-from-url]");
     var trackSelect = form.elements.track;
 
     function fieldWrap(control) {
@@ -502,36 +503,25 @@
       feedback.classList.add("is-visible");
     }
 
-    /* --- prefill: role from the careers page, plus a sensible field --- */
+    /* --- read the listing from ?role= and preselect its field --- */
     function applyRolePrefill() {
-      var slug = queryParam("role");
-      if (!slug || !roleSelect) return;
-      var i;
-      for (i = 0; i < roleSelect.options.length; i++) {
-        if (roleSelect.options[i].value === slug) {
-          roleSelect.selectedIndex = i;
-          break;
-        }
-      }
-    }
+      var listing = ROLE_LISTINGS[queryParam("role")];
+      if (!listing) return;
 
-    function syncTrack() {
-      if (!roleSelect || !trackSelect) return;
-      if (trackSelect.value) return;
-      var wanted = ROLE_TRACKS[roleSelect.value];
-      if (!wanted) return;
-      var i;
-      for (i = 0; i < trackSelect.options.length; i++) {
-        if (trackSelect.options[i].text === wanted) {
-          trackSelect.selectedIndex = i;
-          break;
+      if (roleField) roleField.value = listing.label;
+
+      if (trackSelect && !trackSelect.value) {
+        var i;
+        for (i = 0; i < trackSelect.options.length; i++) {
+          if (trackSelect.options[i].text === listing.track) {
+            trackSelect.selectedIndex = i;
+            break;
+          }
         }
       }
     }
 
     applyRolePrefill();
-    syncTrack();
-    if (roleSelect) roleSelect.addEventListener("change", syncTrack);
 
     /* --- prefill: time zone + earliest selectable start date --- */
     var tzField = form.querySelector("[data-fill-timezone]");
@@ -621,14 +611,15 @@
         lines.push(title);
       }
 
-      var role = selectedLabel(roleSelect) || "Not specified";
+      var listing = roleField ? String(roleField.value || "").trim() : "";
+      var field = selectedLabel(trackSelect);
       var name = value("name");
 
       lines.push("QUANTIFY TERMINAL - INTERNSHIP APPLICATION");
 
       block("ROLE");
-      add("Role applied for", role);
-      add("Field", selectedLabel(trackSelect));
+      add("Applied via listing", listing);
+      add("Field", field);
       add("Experience level", selectedLabel(form.elements.experience));
 
       block("ABOUT");
@@ -639,7 +630,6 @@
       add("Time zone", value("timezone"));
       add("LinkedIn", normalizeLink(value("linkedin")));
       add("GitHub or portfolio", normalizeLink(value("portfolio")));
-      add("Institution and course", value("education"));
 
       block("SKILLS");
       add("Core skills", value("skills"));
@@ -651,28 +641,24 @@
 
       block("AVAILABILITY");
       add("Earliest start date", value("start"));
-      add("Hours per week", selectedLabel(form.elements.hours));
-      add("Preferred duration", selectedLabel(form.elements.duration));
 
       if (value("note")) {
         block("WHY QUANTIFY TERMINAL");
         lines.push(value("note"));
       }
 
-      var cv = normalizeLink(value("cv"));
       var source = selectedLabel(form.elements.source);
-      if (cv || source) {
+      if (source) {
         block("OTHER");
-        add("CV link", cv);
         add("Heard about us via", source);
       }
 
       lines.push("");
       lines.push("Sent from quantifyterminal.com/application");
-      if (!cv) lines.push("CV attached to this email.");
+      lines.push("CV attached to this email.");
 
       return {
-        subject: "Internship Application - " + role + (name ? " - " + name : ""),
+        subject: "Internship Application - " + (listing || field || "General") + (name ? " - " + name : ""),
         body: lines.join("\n")
       };
     }

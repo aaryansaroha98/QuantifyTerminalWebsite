@@ -15,7 +15,7 @@
   <meta name="description" content="Apply for a remote internship at Quantify Terminal. Fill the application form and send it through, or email your CV and application to careers@quantifyterminal.com.">
   <meta name="theme-color" content="#030404">
   <meta property="og:title" content="Apply | Quantify Terminal">
-  <meta property="og:description" content="Applications open. Send your internship application to Quantify Terminal across quant research, engineering, data, machine learning, marketing, and content.">
+  <meta property="og:description" content="Applications open. Send your internship application to Quantify Terminal across quant research, engineering, data, machine learning, sales, marketing, and content.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_06.jpg?v=2">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.quantifyterminal.com/application">
@@ -76,7 +76,7 @@
       <p class="lead reveal">One form, a few minutes. Share your background, the role you want, and the work you are proud of. Every application is read by the founder, and you will hear back either way.</p>
       <div class="status-strip reveal">
         <span class="status-cell"><i class="live-dot" aria-hidden="true"></i><b>Applications open</b></span>
-        <span class="status-cell">8 roles live</span>
+        <span class="status-cell">9 roles live</span>
         <span class="status-cell">Reply in 5&ndash;7 days</span>
         <span class="status-cell">Updated <span class="status-clock" data-live-clock aria-hidden="true">--:--:--</span> IST</span>
       </div>
@@ -86,6 +86,9 @@
       <div class="container">
         <div class="apply-layout">
           <form class="apply-form reveal" data-apply-form novalidate aria-label="Internship application form">
+            <!-- Set from ?role= when arriving from a listing on /careers, so the
+                 email names the exact role without asking for it twice. -->
+            <input type="hidden" name="role" data-role-from-url value="">
 
             <div class="form-block">
               <div class="form-block-head">
@@ -98,7 +101,7 @@
               <div class="field-grid">
                 <div class="field">
                   <label for="ap-name">Full name <span class="req" aria-hidden="true">*</span></label>
-                  <input id="ap-name" name="name" type="text" autocomplete="name" placeholder="Aditi Sharma" required>
+                  <input id="ap-name" name="name" type="text" autocomplete="name" placeholder="Kabir Deshmukh" required>
                   <span class="field-error" data-error></span>
                 </div>
                 <div class="field">
@@ -134,26 +137,10 @@
                 <span class="form-block-num" aria-hidden="true">02</span>
                 <div>
                   <h3>Role and skills</h3>
-                  <p>Pick the role you are aiming at and show us the ground you already cover.</p>
+                  <p>Tell us where you want to work and show us the ground you already cover.</p>
                 </div>
               </div>
               <div class="field-grid">
-                <div class="field">
-                  <label for="ap-role">Role applying for <span class="req" aria-hidden="true">*</span></label>
-                  <select id="ap-role" name="role" required>
-                    <option value="" selected>Select a role</option>
-                    <option value="python-backtester-engineer">Python Backtester Engineer</option>
-                    <option value="quant-researcher">Quant Researcher</option>
-                    <option value="ml-engineer">ML Engineer</option>
-                    <option value="frontend-engineer">Frontend Engineer</option>
-                    <option value="data-engineer">Data Engineer</option>
-                    <option value="marketing-intern">Marketing Intern</option>
-                    <option value="content-writer">Content Writer</option>
-                    <option value="qa-engineer">QA Engineer</option>
-                    <option value="open-application">Open application &mdash; role not listed</option>
-                  </select>
-                  <span class="field-error" data-error></span>
-                </div>
                 <div class="field">
                   <label for="ap-track">Field you want to work in <span class="req" aria-hidden="true">*</span></label>
                   <select id="ap-track" name="track" required>
@@ -164,6 +151,7 @@
                     <option>Data engineering</option>
                     <option>Frontend and design</option>
                     <option>Quality and testing</option>
+                    <option>Sales and business development</option>
                     <option>Marketing and growth</option>
                     <option>Content and research writing</option>
                     <option>Product</option>
@@ -181,11 +169,6 @@
                     <option>1 to 3 years of work</option>
                     <option>3 or more years of work</option>
                   </select>
-                  <span class="field-error" data-error></span>
-                </div>
-                <div class="field">
-                  <label for="ap-education">Institution and course <span class="opt">Optional</span></label>
-                  <input id="ap-education" name="education" type="text" placeholder="BTech Computer Science, IIT Delhi">
                   <span class="field-error" data-error></span>
                 </div>
                 <div class="field full">
@@ -216,7 +199,7 @@
                 <span class="form-block-num" aria-hidden="true">03</span>
                 <div>
                   <h3>Availability</h3>
-                  <p>All roles are remote with flexible hours. Tell us what you can realistically commit.</p>
+                  <p>All roles are remote with flexible hours. Just let us know when you could start.</p>
                 </div>
               </div>
               <div class="field-grid">
@@ -228,28 +211,6 @@
                 <div class="field">
                   <label for="ap-timezone">Time zone <span class="opt">Optional</span></label>
                   <input id="ap-timezone" name="timezone" type="text" placeholder="Asia/Kolkata" data-fill-timezone>
-                  <span class="field-error" data-error></span>
-                </div>
-                <div class="field">
-                  <label for="ap-hours">Hours per week <span class="req" aria-hidden="true">*</span></label>
-                  <select id="ap-hours" name="hours" required>
-                    <option value="" selected>Select hours</option>
-                    <option>10 to 15 hours</option>
-                    <option>15 to 25 hours</option>
-                    <option>25 to 35 hours</option>
-                    <option>35 hours or more</option>
-                  </select>
-                  <span class="field-error" data-error></span>
-                </div>
-                <div class="field">
-                  <label for="ap-duration">Preferred duration <span class="req" aria-hidden="true">*</span></label>
-                  <select id="ap-duration" name="duration" required>
-                    <option value="" selected>Select duration</option>
-                    <option>2 months</option>
-                    <option>3 months</option>
-                    <option>6 months</option>
-                    <option>Flexible or longer</option>
-                  </select>
                   <span class="field-error" data-error></span>
                 </div>
               </div>
@@ -271,12 +232,6 @@
                     <span class="field-hint">Plain and specific beats polished and generic.</span>
                     <span class="field-count" data-count-for="ap-note" aria-hidden="true">0 / 900</span>
                   </div>
-                  <span class="field-error" data-error></span>
-                </div>
-                <div class="field">
-                  <label for="ap-cv">CV link <span class="opt">Optional</span></label>
-                  <input id="ap-cv" name="cv" type="url" inputmode="url" placeholder="Drive or Dropbox link" aria-describedby="ap-cv-hint">
-                  <span class="field-hint" id="ap-cv-hint">A link means nothing gets lost. You can also attach the file in the mail draft.</span>
                   <span class="field-error" data-error></span>
                 </div>
                 <div class="field">
@@ -322,22 +277,11 @@
 
           <aside class="apply-aside" aria-label="Application guidance">
             <div class="aside-card reveal">
-              <span class="aside-label">Hiring status</span>
-              <div class="status-strip status-stack">
-                <span class="status-cell"><i class="live-dot" aria-hidden="true"></i><b>Open and reviewing</b></span>
-                <span class="status-cell">8 roles live</span>
-                <span class="status-cell">Remote worldwide</span>
-                <span class="status-cell"><span class="status-clock" data-live-clock aria-hidden="true">--:--:--</span> IST</span>
-              </div>
-            </div>
-
-            <div class="aside-card reveal">
               <span class="aside-label">How it works</span>
               <ol class="aside-steps">
                 <li><b>Send it through</b>Form or email, both land in the same inbox.</li>
                 <li><b>First read</b>We go through applications in batches, usually within 5 to 7 days.</li>
                 <li><b>A short call</b>Thirty minutes on your background, the role, and what you want to build.</li>
-                <li><b>Small paid task</b>A scoped piece of real work, so both sides see the fit before committing.</li>
               </ol>
             </div>
 
@@ -354,7 +298,7 @@
             <div class="aside-card reveal">
               <span class="aside-label">Worth knowing</span>
               <h3>What gets our attention.</h3>
-              <p>Shipped work over long CVs. One project you genuinely owned, explained clearly, tells us more than a list of courses. Unsure which role fits? Choose open application and say what you are drawn to.</p>
+              <p>Shipped work over long CVs. One project you genuinely owned, explained clearly, tells us more than a list of courses. Unsure which role fits? Pick the closest field and say what you are drawn to in your note.</p>
             </div>
           </aside>
         </div>
@@ -366,7 +310,7 @@
         <div class="cta-panel reveal">
           <div class="eyebrow">Still deciding</div>
           <h2>Have a look at the roles first.</h2>
-          <p class="lead" style="margin-left: 0;">Eight remote internships across quant research, engineering, data, machine learning, marketing, and content. Read what each one involves, then come back and apply.</p>
+          <p class="lead" style="margin-left: 0;">Nine remote internships across quant research, engineering, data, machine learning, sales, marketing, and content. Read what each one involves, then come back and apply.</p>
           <div class="actions" style="justify-content: flex-start;">
             <a class="btn primary" href="/careers">View Openings</a>
             <a class="btn" href="/founder">Meet the Founder</a>
