@@ -410,11 +410,28 @@
      ------------------------------------------------------------------ */
   var APPLY_MAILBOX = "careers@quantifyterminal.com";
 
-  // Conservative ceiling: a few mail clients truncate mailto links past ~2000 chars.
+  // Conservative ceiling: a few mail clients truncate mailto links past ~2000
+  // chars, and Gmail rejects very long compose URLs outright.
   var SAFE_MAILTO_LENGTH = 1900;
 
   function plainTextFor(application) {
     return "To: " + APPLY_MAILBOX + "\nSubject: " + application.subject + "\n\n" + application.body;
+  }
+
+  // Compose links for the mail routes people actually have. Desktop clients get
+  // mailto:; the webmail ones exist so that "no mail app configured" is never a
+  // dead end. Gmail uses su= for the subject, the others use subject=.
+  function composeLinks(application) {
+    var to = encodeURIComponent(APPLY_MAILBOX);
+    var subject = encodeURIComponent(application.subject);
+    var body = encodeURIComponent(application.body.replace(/\n/g, "\r\n"));
+
+    return {
+      mailto: "mailto:" + APPLY_MAILBOX + "?subject=" + subject + "&body=" + body,
+      gmail: "https://mail.google.com/mail/?view=cm&fs=1&to=" + to + "&su=" + subject + "&body=" + body,
+      outlook: "https://outlook.live.com/mail/0/deeplink/compose?to=" + to + "&subject=" + subject + "&body=" + body,
+      yahoo: "https://compose.mail.yahoo.com/?to=" + to + "&subject=" + subject + "&body=" + body
+    };
   }
 
   var APPLY_MESSAGES = {
@@ -501,6 +518,11 @@
       feedbackText.innerHTML = message;
       feedback.classList.toggle("is-error", !!isError);
       feedback.classList.add("is-visible");
+    }
+
+    function hideFeedback() {
+      if (!feedback) return;
+      feedback.classList.remove("is-visible", "is-error");
     }
 
     /* --- read the listing from ?role= and preselect its field --- */
@@ -663,6 +685,134 @@
       };
     }
 
+    /* ----------------------------------------------------------------
+       Send modal — pick a mail route once the form is valid
+       ---------------------------------------------------------------- */
+    var modal = document.querySelector("[data-send-modal]");
+    var modalPanel = modal ? modal.querySelector(".send-modal-panel") : null;
+    var modalNote = modal ? modal.querySelector("[data-send-note]") : null;
+    var returnFocusTo = null;
+
+    function setNote(html) {
+      if (!modalNote) return;
+      if (!html) {
+        modalNote.setAttribute("hidden", "");
+        modalNote.innerHTML = "";
+        return;
+      }
+      modalNote.innerHTML = html;
+      modalNote.removeAttribute("hidden");
+    }
+
+    function modalFocusables() {
+      if (!modal) return [];
+      return Array.prototype.slice
+        .call(modal.querySelectorAll("a[href], button:not([disabled])"))
+        .filter(function (el) {
+          return el.offsetParent !== null || el === document.activeElement;
+        });
+    }
+
+    function closeModal() {
+      if (!modal || modal.hasAttribute("hidden")) return;
+      modal.setAttribute("hidden", "");
+      document.body.classList.remove("menu-open");
+      if (returnFocusTo && returnFocusTo.focus) returnFocusTo.focus();
+      returnFocusTo = null;
+    }
+
+    function openModal(application) {
+      if (!modal) return;
+
+      var links = composeLinks(application);
+      var map = {
+        "[data-send-mailto]": links.mailto,
+        "[data-send-gmail]": links.gmail,
+        "[data-send-outlook]": links.outlook,
+        "[data-send-yahoo]": links.yahoo
+      };
+      Object.keys(map).forEach(function (sel) {
+        var el = modal.querySelector(sel);
+        if (el) el.setAttribute("href", map[sel]);
+      });
+
+      setNote("");
+
+      // A long application can exceed what mailto and Gmail will carry, so put
+      // the full text on the clipboard up front and say so.
+      if (links.mailto.length > SAFE_MAILTO_LENGTH) {
+        copyText(plainTextFor(application)).then(
+          function () {
+            setNote(
+              "<strong>Long application.</strong> Some mail apps trim a draft this size, so we copied the full text to your clipboard too. " +
+                "If the draft looks short, clear the message body and paste."
+            );
+          },
+          function () {
+            setNote(
+              "<strong>Long application.</strong> Some mail apps trim a draft this size. Check the draft kept everything before you send."
+            );
+          }
+        );
+      }
+
+      returnFocusTo = document.activeElement;
+      modal.removeAttribute("hidden");
+      document.body.classList.add("menu-open");
+      if (modalPanel) modalPanel.focus();
+    }
+
+    if (modal) {
+      Array.prototype.slice.call(modal.querySelectorAll("[data-send-close]")).forEach(function (el) {
+        el.addEventListener("click", closeModal);
+      });
+
+      // Keep the modal open after a route is picked. If that provider turns out
+      // to be the wrong one, the others are still one click away.
+      Array.prototype.slice.call(modal.querySelectorAll("[data-send-provider]")).forEach(function (el) {
+        el.addEventListener("click", function () {
+          setNote(
+            "<strong>" +
+              el.getAttribute("data-send-provider") +
+              " opened in a new tab.</strong> Attach your CV there, then send. Nothing happened? Try another option above."
+          );
+        });
+      });
+
+      var mailtoBtn = modal.querySelector("[data-send-mailto]");
+      if (mailtoBtn) {
+        mailtoBtn.addEventListener("click", function () {
+          setNote(
+            "<strong>Opening your mail app.</strong> Attach your CV in the draft, then send. " +
+              "If nothing opened, you probably have no mail app set up, so use Gmail, Outlook, or Yahoo above."
+          );
+        });
+      }
+
+      // Esc lives on the document: clicking the scrim moves focus off the
+      // panel, and a keydown bound to the modal would never fire after that.
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !modal.hasAttribute("hidden")) closeModal();
+      });
+
+      modal.addEventListener("keydown", function (event) {
+        if (event.key !== "Tab") return;
+
+        var items = modalFocusables();
+        if (!items.length) return;
+        var first = items[0];
+        var last = items[items.length - 1];
+
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === modalPanel)) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    }
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -682,79 +832,40 @@
         return;
       }
 
-      var application = buildApplication();
-      var mailto =
-        "mailto:" +
-        APPLY_MAILBOX +
-        "?subject=" +
-        encodeURIComponent(application.subject) +
-        "&body=" +
-        encodeURIComponent(application.body.replace(/\n/g, "\r\n"));
-
-      // Some mail clients quietly truncate long mailto links. For a long
-      // application we also drop the full text on the clipboard, so nothing
-      // the applicant wrote can get lost on the way to the draft.
-      if (mailto.length > SAFE_MAILTO_LENGTH) {
-        var longBase =
-          "<strong>Your mail draft is ready.</strong> This is a long application, so check the draft kept everything before you send it. " +
-          "Attach your CV and hit send.";
-
-        // shown straight away, then upgraded once the clipboard write settles
-        showFeedback(longBase, false);
-
-        copyText(plainTextFor(application)).then(
-          function () {
-            showFeedback(
-              "<strong>Your mail draft is ready.</strong> This is a long application, so we also copied the full text to your clipboard. " +
-                "Check the draft has everything, attach your CV, and hit send. If anything looks trimmed, clear the message body and paste.",
-              false
-            );
-          },
-          function () {
-            showFeedback(
-              longBase + " If your mail app trimmed it, use <strong>Copy as text</strong> and paste the full application in.",
-              false
-            );
-          }
-        );
-      } else {
-        showFeedback(
-          "<strong>Your mail draft is ready.</strong> It is addressed to " +
-            APPLY_MAILBOX +
-            " with every answer written out. Attach your CV in the draft and hit send. " +
-            "If your mail app opened empty, use <strong>Copy as text</strong> and paste it in instead.",
-          false
-        );
-      }
-
-      window.location.href = mailto;
+      hideFeedback();
+      openModal(buildApplication());
     });
 
-    var copyBtn = form.querySelector("[data-copy-application]");
-    if (copyBtn) {
+    /* --- "Copy as text", in the form footer and inside the modal --- */
+    Array.prototype.slice.call(document.querySelectorAll("[data-copy-application]")).forEach(function (copyBtn) {
       copyBtn.addEventListener("click", function () {
-        var application = buildApplication();
-        copyText(plainTextFor(application)).then(
+        var inModal = modal && modal.contains(copyBtn);
+        copyText(plainTextFor(buildApplication())).then(
           function () {
             flashCopied(copyBtn, "Copied");
-            showFeedback(
-              "<strong>Copied.</strong> Paste it into a new email to " +
-                APPLY_MAILBOX +
-                ", attach your CV, and send.",
-              false
-            );
+            if (inModal) {
+              setNote(
+                "<strong>Copied.</strong> Paste it into a new email to " + APPLY_MAILBOX + ", attach your CV, and send."
+              );
+            } else {
+              showFeedback(
+                "<strong>Copied.</strong> Paste it into a new email to " +
+                  APPLY_MAILBOX +
+                  ", attach your CV, and send.",
+                false
+              );
+            }
           },
           function () {
-            showFeedback(
+            var message =
               "<strong>Could not reach your clipboard.</strong> Email your application and CV straight to " +
-                APPLY_MAILBOX +
-                " instead.",
-              true
-            );
+              APPLY_MAILBOX +
+              " instead.";
+            inModal ? setNote(message) : showFeedback(message, true);
           }
         );
       });
-    }
+    });
   }
 
   document.addEventListener("DOMContentLoaded", function () {

@@ -261,12 +261,11 @@
 
             <div class="form-foot">
               <p class="form-note">
-                <strong>Two ways to send this.</strong> Hit <strong>Send Application</strong> and your mail app opens with every answer already written out, addressed to <a class="mail-link" href="mailto:careers@quantifyterminal.com?subject=Internship%20Application">careers@quantifyterminal.com</a> &mdash; attach your CV there and send. Or skip the form entirely and email your CV and application straight to <a class="mail-link" href="mailto:careers@quantifyterminal.com?subject=Internship%20Application">careers@quantifyterminal.com</a>.
+                <strong>How sending works.</strong> Hit <strong>Send Application</strong> and we will write every answer into an email for you, then let you pick where to send it from &mdash; your own mail app, or Gmail, Outlook, or Yahoo in the browser. <strong>Attach your CV</strong> in that draft and send it to <a class="mail-link" href="mailto:careers@quantifyterminal.com?subject=Internship%20Application">careers@quantifyterminal.com</a>.
               </p>
               <div class="form-actions">
                 <button class="btn primary" type="submit">Send Application</button>
                 <button class="btn" type="button" data-copy-application>Copy as text</button>
-                <a class="btn" href="mailto:careers@quantifyterminal.com?subject=Internship%20Application">Email Directly</a>
               </div>
               <div class="form-feedback" data-feedback role="status" aria-live="polite">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-feedback-icon><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-5"/></svg>
@@ -319,6 +318,34 @@
       </div>
     </section>
   </main>
+
+  <!-- Shown after the form validates. Lets the applicant pick where to send
+       from, so a missing desktop mail client is never a dead end. -->
+  <div class="send-modal" data-send-modal hidden>
+    <div class="send-modal-scrim" data-send-close></div>
+    <div class="send-modal-panel" role="dialog" aria-modal="true" aria-labelledby="send-modal-title" tabindex="-1">
+      <button class="send-modal-x" type="button" data-send-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <span class="aside-label">Last step</span>
+      <h2 id="send-modal-title">Your application is ready.</h2>
+      <p class="send-modal-lead">Pick where to send it from. Every answer is already written into the draft &mdash; <strong>attach your CV</strong> there, then hit send.</p>
+
+      <a class="btn primary send-primary" data-send-mailto href="mailto:careers@quantifyterminal.com">Open My Mail App</a>
+
+      <div class="send-divider"><span>or send from the browser</span></div>
+
+      <div class="send-web">
+        <a class="btn small" data-send-provider="Gmail" data-send-gmail href="https://mail.google.com/" target="_blank" rel="noopener">Gmail</a>
+        <a class="btn small" data-send-provider="Outlook" data-send-outlook href="https://outlook.live.com/" target="_blank" rel="noopener">Outlook</a>
+        <a class="btn small" data-send-provider="Yahoo" data-send-yahoo href="https://compose.mail.yahoo.com/" target="_blank" rel="noopener">Yahoo</a>
+      </div>
+
+      <div class="send-modal-note" data-send-note hidden></div>
+
+      <p class="send-modal-foot">Nothing opening? <button class="send-link" type="button" data-copy-application>Copy the application</button> and paste it into a new email to careers@quantifyterminal.com.</p>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-shell">
