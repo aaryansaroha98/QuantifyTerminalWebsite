@@ -4101,3 +4101,696 @@ html:has(.minimal) {
 
   .mobile-menu a:active { color: var(--muted); }
 }
+
+/* =====================================================================
+   LIVE STATUS — ticking green / red dot (careers + application)
+   ===================================================================== */
+:root {
+  --live: #2fd189;
+  --live-ring: rgba(47, 209, 137, 0.26);
+  --closed: #ff6565;
+  --closed-ring: rgba(255, 101, 101, 0.22);
+}
+
+.minimal {
+  --live: #15a34a;
+  --live-ring: rgba(21, 163, 74, 0.20);
+  --closed: #d92d20;
+  --closed-ring: rgba(217, 45, 32, 0.18);
+}
+
+.live-dot {
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 3px var(--live-ring);
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--live);
+  animation: live-ping 1.9s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+.live-dot.is-closed {
+  background: var(--closed);
+  box-shadow: 0 0 0 3px var(--closed-ring);
+}
+
+.live-dot.is-closed::after {
+  border-color: var(--closed);
+}
+
+@keyframes live-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+/* status strip — hairline cells with a ticking clock */
+.status-strip {
+  display: flex;
+  flex-wrap: wrap;
+  width: max-content;
+  max-width: 100%;
+  margin: 26px auto 0;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.status-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-right: 1px solid var(--line-soft);
+  color: var(--quiet);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-cell:last-child {
+  border-right: 0;
+}
+
+.status-cell b {
+  color: var(--text);
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+
+.status-clock {
+  color: var(--text);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+/* vertical variant, for narrow columns like the application sidebar */
+.status-strip.status-stack {
+  width: 100%;
+  margin: 0;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.status-stack .status-cell {
+  justify-content: flex-start;
+  min-height: 42px;
+  padding: 0 14px;
+  border-right: 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.status-stack .status-cell:last-child {
+  border-bottom: 0;
+}
+
+/* inline live pill, e.g. next to a section heading */
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  padding: 0 11px;
+  border: 1px solid var(--live);
+  color: var(--live);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.live-pill.is-closed {
+  border-color: var(--closed);
+  color: var(--closed);
+}
+
+/* pill sitting on the same line as an eyebrow label */
+.section-head .live-pill,
+.cta-panel .live-pill,
+.hero .live-pill {
+  margin: 0 0 18px 10px;
+  vertical-align: middle;
+}
+
+.hero .live-pill {
+  margin-left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .status-strip {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .status-cell {
+    justify-content: center;
+    border-right: 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .status-cell:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* =====================================================================
+   CAREERS — live badge + open "Apply" action
+   ===================================================================== */
+.career-meta span.career-live {
+  gap: 7px;
+  border-color: var(--live);
+  color: var(--live);
+}
+
+.minimal .career-meta span.career-live {
+  border-color: var(--live);
+  color: var(--live);
+}
+
+.career-apply {
+  margin-top: auto;
+  width: 100%;
+  max-width: none;
+  gap: 10px;
+}
+
+.career-apply .apply-arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.career-apply:hover .apply-arrow,
+.career-apply:focus-visible .apply-arrow {
+  transform: translateX(4px);
+}
+
+/* =====================================================================
+   APPLICATION PAGE — form shell
+   ===================================================================== */
+.apply-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 26px;
+  align-items: start;
+}
+
+.apply-form {
+  min-width: 0;
+  border: 1px solid var(--text);
+  background: var(--panel);
+}
+
+.form-block {
+  padding: 26px 26px 28px;
+  border-top: 1px solid var(--line);
+}
+
+.form-block:first-child {
+  border-top: 0;
+}
+
+.form-block-head {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.form-block-num {
+  flex: 0 0 auto;
+  padding-top: 3px;
+  color: var(--quiet);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.form-block-head h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+}
+
+.form-block-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field > label {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: var(--text);
+  font-size: 11.5px;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.field > label .req {
+  color: var(--closed);
+  font-weight: 700;
+}
+
+.field > label .opt {
+  color: var(--quiet);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--text);
+  background: var(--panel);
+  font-size: 14.5px;
+  font-weight: 450;
+  line-height: 1.45;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--quiet);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--muted);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px rgba(11, 14, 23, 0.07);
+}
+
+.field select {
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.6 6 6.4l5-4.8' fill='none' stroke='%230b0e17' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 11px 8px;
+  cursor: pointer;
+}
+
+.field textarea {
+  min-height: 128px;
+  resize: vertical;
+}
+
+.field textarea.tall {
+  min-height: 168px;
+}
+
+.field-hint {
+  color: var(--quiet);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.field-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.field-count {
+  flex: 0 0 auto;
+  color: var(--quiet);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.field-error {
+  display: none;
+  color: var(--closed);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea {
+  border-color: var(--closed);
+}
+
+.field.has-error .field-error {
+  display: block;
+}
+
+/* consent checkbox */
+.field-check {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.field-check input[type="checkbox"] {
+  position: relative;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  margin: 2px 0 0;
+  padding: 0;
+  border: 1px solid var(--text);
+  background: var(--panel);
+  cursor: pointer;
+}
+
+.field-check input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--panel);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 150ms ease;
+}
+
+.field-check input[type="checkbox"]:checked {
+  background: var(--text);
+}
+
+.field-check input[type="checkbox"]:checked::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.field-check label {
+  display: block;
+  flex: 1 1 240px;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.field-check.has-error input[type="checkbox"] {
+  border-color: var(--closed);
+}
+
+.field-check .field-error {
+  flex: 1 1 100%;
+}
+
+/* form footer + actions */
+.form-foot {
+  padding: 24px 26px 26px;
+  border-top: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+
+.form-foot .form-note {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.form-foot .form-note strong {
+  color: var(--text);
+  font-weight: 620;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.mail-link {
+  color: var(--text);
+  font-weight: 620;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 160ms ease;
+}
+
+.mail-link:hover {
+  border-bottom-color: var(--text);
+}
+
+.form-feedback {
+  display: none;
+  align-items: flex-start;
+  gap: 11px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--live);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.form-feedback.is-visible {
+  display: flex;
+}
+
+.form-feedback.is-error {
+  border-left-color: var(--closed);
+}
+
+.form-feedback strong {
+  color: var(--text);
+  font-weight: 620;
+}
+
+.form-feedback svg {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--live);
+}
+
+.form-feedback.is-error svg {
+  color: var(--closed);
+}
+
+/* =====================================================================
+   APPLICATION PAGE — sidebar
+   ===================================================================== */
+.apply-aside {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.aside-card {
+  padding: 20px;
+  border: 1px solid var(--text);
+  background: var(--panel);
+}
+
+.aside-label {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.aside-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.aside-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.aside-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+  counter-reset: aside-step;
+}
+
+.aside-steps li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+  counter-increment: aside-step;
+}
+
+.aside-steps li::before {
+  content: counter(aside-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--quiet);
+  font-size: 11.5px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.aside-steps li b {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 620;
+}
+
+.aside-mail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+
+.aside-mail span {
+  min-width: 0;
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 620;
+  letter-spacing: -0.005em;
+  word-break: break-all;
+}
+
+.copy-btn {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--muted);
+  background: var(--panel);
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.copy-btn:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.copy-btn.is-copied {
+  border-color: var(--live);
+  color: var(--live);
+}
+
+@media (max-width: 980px) {
+  .apply-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-aside {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-block {
+    padding: 22px 18px 24px;
+  }
+
+  .form-foot {
+    padding: 20px 18px 22px;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    max-width: none;
+  }
+
+  .aside-card {
+    padding: 18px;
+  }
+}
