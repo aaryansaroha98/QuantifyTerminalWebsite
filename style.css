@@ -4108,6 +4108,8 @@ html:has(.minimal) {
 :root {
   --live: #2fd189;
   --live-ring: rgba(47, 209, 137, 0.26);
+  --live-pulse: rgba(47, 209, 137, 0.5);
+  --live-pulse-out: rgba(47, 209, 137, 0);
   --closed: #ff6565;
   --closed-ring: rgba(255, 101, 101, 0.22);
 }
@@ -4115,6 +4117,8 @@ html:has(.minimal) {
 .minimal {
   --live: #15a34a;
   --live-ring: rgba(21, 163, 74, 0.20);
+  --live-pulse: rgba(21, 163, 74, 0.5);
+  --live-pulse-out: rgba(21, 163, 74, 0);
   --closed: #d92d20;
   --closed-ring: rgba(217, 45, 32, 0.18);
 }
@@ -4743,51 +4747,53 @@ html:has(.minimal) {
 }
 
 /* =====================================================================
-   NAV HIRING SIGNAL — blinking green dot on the Careers link
+   NAV HIRING SIGNAL — pulsing green dot after the Careers link
    Matched on the href so every page picks it up with no markup change.
+   Sits inline after the word and pulses like the dots on /careers.
    ===================================================================== */
-.hero-topnav a[href="/careers"],
-.mobile-menu a[href="/careers"] {
-  position: relative;
-}
-
 .hero-topnav a[href="/careers"]::after,
 .mobile-menu a[href="/careers"]::after {
   content: "";
-  position: absolute;
+  display: inline-block;
   border-radius: 50%;
   background: var(--live);
-  animation: nav-live-blink 1.6s ease-in-out infinite;
+  animation: nav-live-pulse 2.1s ease-out infinite;
 }
 
-/* desktop bar: link padding is 8px 14px, so this sits just past the word */
+/* desktop bar: 12px uppercase type */
 .hero-topnav a[href="/careers"]::after {
-  top: 5px;
-  right: 8px;
+  width: 5px;
+  height: 5px;
+  margin-left: 7px;
+  vertical-align: 0.3em;
+}
+
+/* full-screen mobile menu: 18px uppercase type */
+.mobile-menu a[href="/careers"]::after {
   width: 6px;
   height: 6px;
+  margin-left: 9px;
+  vertical-align: 0.32em;
 }
 
-/* full-screen mobile menu: bigger type, link padding is 12px 18px */
-.mobile-menu a[href="/careers"]::after {
-  top: 9px;
-  right: 11px;
-  width: 7px;
-  height: 7px;
+/* The mobile menu is a centred column, so the dot's 15px of inline width would
+   drag the word off-centre against the other items. Pad the other side by the
+   same amount to keep the word centred and let only the dot sit outside it. */
+.mobile-menu a[href="/careers"] {
+  padding-left: 33px;
 }
 
-/* Holds solid, dips briefly, returns. A deeper dip on a 6px dot on white
-   reads as a rendering glitch rather than a deliberate pulse. */
-@keyframes nav-live-blink {
-  0%,
-  40% {
-    opacity: 1;
+/* A halo radiating out of the dot. Driven by box-shadow spread rather than a
+   second element, so it stays centred on the dot and never affects layout. */
+@keyframes nav-live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--live-pulse);
   }
-  65% {
-    opacity: 0.35;
+  70% {
+    box-shadow: 0 0 0 5px var(--live-pulse-out);
   }
   100% {
-    opacity: 1;
+    box-shadow: 0 0 0 0 var(--live-pulse-out);
   }
 }
 
@@ -4795,5 +4801,6 @@ html:has(.minimal) {
   .hero-topnav a[href="/careers"]::after,
   .mobile-menu a[href="/careers"]::after {
     animation: none;
+    box-shadow: 0 0 0 2px var(--live-ring);
   }
 }
