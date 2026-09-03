@@ -5227,3 +5227,385 @@ html:has(.minimal) {
     gap: 7px;
   }
 }
+
+/* =====================================================================
+   PRICING PAGE
+   Inherits the minimal (light) palette used across content pages.
+   ===================================================================== */
+
+/* --- Billing toggle (Monthly / Annual) --- */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  margin: 26px auto 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.pricing-toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.pricing-toggle button.is-active {
+  background: var(--text);
+  color: #fff;
+}
+
+.pricing-toggle .save-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(47, 209, 137, 0.16);
+  color: #16875a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.pricing-toggle button.is-active .save-badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+/* Pricing card grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 42px;
+  align-items: stretch;
+}
+
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 28px 24px;
+  border: 1px solid var(--text);
+  background: var(--panel);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.price-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(11, 14, 23, 0.08);
+}
+
+.price-card.featured {
+  border-width: 2px;
+  background: var(--panel-raised);
+}
+
+.price-flag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 12px;
+  background: var(--text);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.price-plan {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.price-audience {
+  margin: 9px 0 0;
+  min-height: 54px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-top: 22px;
+  color: var(--text);
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.price-amount .cur {
+  align-self: flex-start;
+  margin-top: 7px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.price-amount .num {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.price-amount .num.custom {
+  font-size: 34px;
+}
+
+.price-amount .price-period {
+  margin-left: 3px;
+  color: var(--quiet);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.price-note {
+  margin-top: 9px;
+  min-height: 20px;
+  color: var(--quiet);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.price-note .save {
+  color: #16875a;
+  font-weight: 700;
+}
+
+.price-cta {
+  width: 100%;
+  max-width: none;
+  margin-top: 22px;
+}
+
+.price-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--line-soft);
+  display: grid;
+  gap: 12px;
+}
+
+.price-list-head {
+  margin: 0 0 2px;
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.price-list li {
+  position: relative;
+  padding-left: 27px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.price-list li svg {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+  color: var(--text);
+}
+
+.price-list li strong {
+  color: var(--text);
+  font-weight: 640;
+}
+
+/* 7-day trial band */
+.trial-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 42px;
+  padding: 22px 26px;
+  border: 1px solid var(--text);
+  background: var(--panel-raised);
+  text-align: center;
+}
+
+.trial-band .trial-tag {
+  padding: 5px 13px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.trial-band p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.trial-band strong {
+  color: var(--text);
+  font-weight: 680;
+}
+
+/* Feature comparison table */
+.compare {
+  margin-top: 22px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 15px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+
+.compare-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--text);
+  z-index: 1;
+}
+
+.compare-table thead .col-plan {
+  text-align: center;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.compare-table thead .col-plan span {
+  display: block;
+  margin-top: 3px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.compare-table .col-feat {
+  width: 30%;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.compare-table td.cell {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.compare-table td.cell strong {
+  color: var(--text);
+  font-weight: 640;
+}
+
+.compare-cat td {
+  padding: 26px 16px 8px;
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--text);
+  background: #fff;
+}
+
+.compare-table .yes {
+  color: var(--text);
+}
+
+.compare-table .no {
+  color: var(--quiet);
+  opacity: 0.45;
+}
+
+.compare-table .yes svg {
+  width: 17px;
+  height: 17px;
+  vertical-align: middle;
+}
+
+.compare-table th:nth-child(4),
+.compare-table tbody td:nth-child(4) {
+  background: var(--panel-soft);
+}
+
+.compare-hint {
+  display: none;
+  margin-top: 10px;
+  color: var(--quiet);
+  font-size: 12.5px;
+  font-style: italic;
+}
+
+/* Pricing responsive */
+@media (max-width: 980px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .price-card {
+    padding: 22px 18px;
+  }
+
+  .price-audience {
+    min-height: 0;
+  }
+
+  .trial-band {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .compare-hint {
+    display: block;
+  }
+}

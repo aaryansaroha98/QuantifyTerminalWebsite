@@ -308,6 +308,39 @@
     });
   }
 
+  function setupPricingToggle() {
+    var toggle = document.querySelector("[data-billing-toggle]");
+    if (!toggle) return;
+
+    var buttons = Array.prototype.slice.call(toggle.querySelectorAll("button"));
+    var targets = Array.prototype.slice.call(document.querySelectorAll("[data-monthly]"));
+
+    function apply(mode) {
+      buttons.forEach(function (button) {
+        button.classList.toggle("is-active", button.getAttribute("data-billing") === mode);
+      });
+
+      targets.forEach(function (el) {
+        var value = el.getAttribute("data-" + mode);
+        if (value === null) return;
+
+        if (el.classList.contains("price-note")) {
+          el.innerHTML = value;
+        } else {
+          el.textContent = value;
+        }
+      });
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        apply(button.getAttribute("data-billing"));
+      });
+    });
+
+    apply("monthly");
+  }
+
   /* ------------------------------------------------------------------
      Live status clock — ticking "we are live" indicator (IST)
      ------------------------------------------------------------------ */
@@ -878,6 +911,7 @@
     setupTypewriter();
     setupLightbox();
     setupDownloadButtons();
+    setupPricingToggle();
     setupLiveClock();
     setupCopyButtons();
     setupApplyForm();
