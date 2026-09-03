@@ -5284,41 +5284,6 @@ html:has(.minimal) {
   color: #fff;
 }
 
-.availability-band {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  width: min(820px, 100%);
-  margin: 26px auto 0;
-  padding: 18px 20px;
-  border: 1px solid var(--text);
-  background: var(--panel-raised);
-  text-align: left;
-}
-
-.availability-band div {
-  display: grid;
-  gap: 5px;
-  min-width: 0;
-}
-
-.availability-band strong {
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.availability-band span {
-  color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.5;
-}
-
-.availability-band .btn {
-  flex: 0 0 auto;
-}
-
 /* Pricing card grid */
 .pricing-grid {
   display: grid;
@@ -5420,6 +5385,8 @@ html:has(.minimal) {
   padding: 22px 0 0;
   border-top: 1px solid var(--line-soft);
   display: grid;
+  align-content: start;
+  flex: 1;
   gap: 12px;
 }
 
@@ -5598,17 +5565,6 @@ html:has(.minimal) {
 }
 
 @media (max-width: 720px) {
-  .availability-band {
-    align-items: stretch;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .availability-band .btn {
-    width: 100%;
-    max-width: none;
-  }
-
   .pricing-grid {
     grid-template-columns: 1fr;
     gap: 12px;
