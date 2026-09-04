@@ -3321,6 +3321,20 @@ html:has(.minimal) {
   margin: 0;
 }
 
+.minimal:not(.homepage) .footer-legal {
+  grid-template-areas:
+    "about connect"
+    "careers privacy"
+    "founder terms";
+}
+
+.minimal:not(.homepage) .footer-legal a[href="/about"] { grid-area: about; }
+.minimal:not(.homepage) .footer-legal a[href="/careers"] { grid-area: careers; }
+.minimal:not(.homepage) .footer-legal a[href="/founder"] { grid-area: founder; }
+.minimal:not(.homepage) .footer-legal a[href="/connect"] { grid-area: connect; }
+.minimal:not(.homepage) .footer-legal a[href="/privacy"] { grid-area: privacy; }
+.minimal:not(.homepage) .footer-legal a[href="/terms"] { grid-area: terms; }
+
 .minimal.pricing-page .footer-legal {
   grid-template-areas:
     "about connect"
