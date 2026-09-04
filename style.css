@@ -5466,7 +5466,7 @@ html:has(.minimal) {
 
 .compare-table {
   width: 100%;
-  min-width: 760px;
+  min-width: 1040px;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -5516,6 +5516,7 @@ html:has(.minimal) {
   text-align: center;
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.45;
 }
 
 .compare-table td.cell strong {
