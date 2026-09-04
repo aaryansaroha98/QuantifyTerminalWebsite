@@ -2733,10 +2733,15 @@ ul.terminal-list {
 
   .minimal:not(.homepage) .footer-legal {
     display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    width: min(100%, 320px);
-    gap: 11px 20px;
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+    width: min(100%, 240px);
+    gap: 10px;
     text-align: left;
+  }
+
+  .minimal:not(.homepage) .footer-legal a {
+    grid-area: auto !important;
   }
 }
 
