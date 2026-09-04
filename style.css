@@ -2719,26 +2719,14 @@ ul.terminal-list {
     display: none;
   }
 
-  .minimal:not(.homepage) .site-footer {
-    padding: 56px 0 48px;
-  }
-
   .minimal:not(.homepage) .footer-shell {
     display: flex;
-  .minimal.pricing-page .footer-legal {
-    grid-template-areas:
-      "about connect"
-      "careers privacy"
-      "founder terms";
   }
-  .minimal.pricing-page .footer-legal a[href="/about"] { grid-area: about; }
-  .minimal.pricing-page .footer-legal a[href="/careers"] { grid-area: careers; }
-  .minimal.pricing-page .footer-legal a[href="/founder"] { grid-area: founder; }
-  .minimal.pricing-page .footer-legal a[href="/connect"] { grid-area: connect; }
-  .minimal.pricing-page .footer-legal a[href="/privacy"] { grid-area: privacy; }
-  .minimal.pricing-page .footer-legal a[href="/terms"] { grid-area: terms; }
+
+  .minimal:not(.homepage) .site-footer {
+    padding: 44px 0 38px;
   }
-      padding: 44px 0 38px;
+
   .minimal:not(.homepage) .footer-copy {
     text-align: center;
   }
@@ -3297,7 +3285,7 @@ html:has(.minimal) {
 }
 
 .minimal:not(.homepage) .site-footer {
-  padding: 72px 0 64px;
+  padding: 56px 0 48px;
 }
 
 .minimal:not(.homepage) .footer-shell {
@@ -3332,6 +3320,20 @@ html:has(.minimal) {
   grid-area: social;
   margin: 0;
 }
+
+.minimal.pricing-page .footer-legal {
+  grid-template-areas:
+    "about connect"
+    "careers privacy"
+    "founder terms";
+}
+
+.minimal.pricing-page .footer-legal a[href="/about"] { grid-area: about; }
+.minimal.pricing-page .footer-legal a[href="/careers"] { grid-area: careers; }
+.minimal.pricing-page .footer-legal a[href="/founder"] { grid-area: founder; }
+.minimal.pricing-page .footer-legal a[href="/connect"] { grid-area: connect; }
+.minimal.pricing-page .footer-legal a[href="/privacy"] { grid-area: privacy; }
+.minimal.pricing-page .footer-legal a[href="/terms"] { grid-area: terms; }
 
 .minimal .footer-social a {
   border-color: var(--line);
