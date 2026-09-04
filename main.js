@@ -10,6 +10,14 @@
         link.classList.add("active");
       }
     });
+
+    document.querySelectorAll(".footer-legal a").forEach(function (link) {
+      var href = link.getAttribute("href") || "/";
+      var normalized = href.replace(/\/$/, "") || "/";
+      if (normalized === current) {
+        link.classList.add("current-page");
+      }
+    });
   }
 
   function setupMenu() {
