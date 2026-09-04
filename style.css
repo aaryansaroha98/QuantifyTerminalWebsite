@@ -1428,9 +1428,9 @@ ul.terminal-list {
 
 .contact-card:hover,
 .contact-card:focus-visible {
-  border-color: rgba(240, 160, 40, 0.55);
-  background: var(--panel-raised);
-  transform: translateY(-3px);
+  border-color: var(--line);
+  background: var(--panel);
+  transform: none;
 }
 
 .contact-card:focus-visible {
@@ -3256,6 +3256,12 @@ html:has(.minimal) {
 
 .minimal .footer-legal a:hover {
   color: var(--text);
+}
+
+.footer-legal a[href="/pricing"],
+.footer-legal a[href="/blog"],
+.connect-page .footer-legal a[href="/connect"] {
+  display: none;
 }
 
 .minimal .footer-social a {
