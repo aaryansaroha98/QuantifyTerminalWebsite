@@ -1265,8 +1265,8 @@ ul.terminal-list {
 
 .social-card {
   --brand: 255, 159, 28;
-  min-height: 154px;
-  padding: 18px;
+  min-height: 136px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1292,8 +1292,8 @@ ul.terminal-list {
 
 .social-mark {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1357,8 +1357,8 @@ ul.terminal-list {
 .social-card[data-brand="email"] { --brand: 47, 209, 137; }
 
 .social-card h3 {
-  margin: 18px 0 5px;
-  font-size: 18px;
+  margin: 14px 0 5px;
+  font-size: 16px;
 }
 
 .social-card p {
@@ -1382,33 +1382,6 @@ ul.terminal-list {
   opacity: 0.65;
 }
 
-.connect-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-top: 26px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.connect-status span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 4px rgba(47, 209, 137, 0.1);
-}
-
-.connect-status strong {
-  color: var(--text);
-  font-weight: 700;
-}
-
-.connect-status small {
-  color: var(--quiet);
-  font-size: inherit;
-}
-
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1428,9 +1401,9 @@ ul.terminal-list {
 
 .contact-card:hover,
 .contact-card:focus-visible {
-  border-color: rgba(240, 160, 40, 0.55);
-  background: var(--panel-raised);
-  transform: translateY(-3px);
+  border-color: var(--line);
+  background: var(--panel);
+  transform: none;
 }
 
 .contact-card:focus-visible {
