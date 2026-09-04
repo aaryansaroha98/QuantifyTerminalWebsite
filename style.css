@@ -53,6 +53,11 @@ a {
   text-decoration: none;
 }
 
+.hero-topnav a[href="/connect"],
+.mobile-menu a[href="/connect"] {
+  display: none;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -1360,6 +1365,173 @@ ul.terminal-list {
   overflow-wrap: anywhere;
 }
 
+/* Connect page */
+.connect-hero {
+  position: relative;
+  padding-bottom: 48px;
+}
+
+.connect-hero::after {
+  content: "";
+  position: absolute;
+  right: 4%;
+  bottom: 16px;
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+  opacity: 0.65;
+}
+
+.connect-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.connect-status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 4px rgba(47, 209, 137, 0.1);
+}
+
+.connect-status strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.connect-status small {
+  color: var(--quiet);
+  font-size: inherit;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.contact-card {
+  min-height: 248px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-soft);
+  background: var(--panel);
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.contact-card:hover,
+.contact-card:focus-visible {
+  border-color: rgba(240, 160, 40, 0.55);
+  background: var(--panel-raised);
+  transform: translateY(-3px);
+}
+
+.contact-card:focus-visible {
+  outline: none;
+}
+
+.contact-index {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.contact-card h3 {
+  margin: 38px 0 8px;
+  font-size: 20px;
+}
+
+.contact-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.52;
+}
+
+.contact-card strong {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 22px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.contact-card strong span {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.connect-network-section {
+  border-top: 1px solid var(--line-soft);
+}
+
+.connect-network {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.28fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.connect-network-copy .eyebrow {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.connect-network-copy h2 {
+  max-width: 360px;
+}
+
+.connect-network-copy p {
+  max-width: 380px;
+  color: var(--muted);
+}
+
+.connect-network .social-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0;
+}
+
+.contact-phone {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.contact-phone span {
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact-phone a {
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.contact-phone a:hover {
+  color: var(--accent);
+}
+
 /* Careers */
 .career-grid {
   display: grid;
@@ -1533,12 +1705,57 @@ ul.terminal-list {
 }
 
 @media (max-width: 980px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .connect-network {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
   .benefit-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 720px) {
+  .connect-hero {
+    padding-bottom: 30px;
+  }
+
+  .connect-hero .hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .connect-hero .hero-actions .btn {
+    width: 100%;
+  }
+
+  .connect-status {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .connect-status small {
+    width: 100%;
+    padding-left: 16px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contact-card {
+    min-height: 214px;
+  }
+
+  .connect-network .social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .benefit-grid {
     grid-template-columns: 1fr;
     gap: 10px;
