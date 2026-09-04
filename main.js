@@ -3,31 +3,11 @@
 
   function setActiveNav() {
     var current = window.location.pathname.replace(/\/$/, "") || "/";
-
-    var footerLegal = document.querySelector(".footer-legal");
-    if (footerLegal && !document.body.classList.contains("homepage")) {
-      footerLegal.innerHTML =
-        '<a href="/about">About</a>' +
-        '<a href="/careers">Careers</a>' +
-        '<a href="/founder">Founder</a>' +
-        '<a href="/connect">Connect</a>' +
-        '<a href="/privacy">Privacy Policy</a>' +
-        '<a href="/terms">Terms of Use</a>';
-    }
-
     document.querySelectorAll("[data-nav-link]").forEach(function (link) {
       var href = link.getAttribute("href") || "/";
       var normalized = href.replace(/\/$/, "") || "/";
       if (normalized === current) {
         link.classList.add("active");
-      }
-    });
-
-    document.querySelectorAll(".footer-legal a").forEach(function (link) {
-      var href = link.getAttribute("href") || "/";
-      var normalized = href.replace(/\/$/, "") || "/";
-      if (normalized === current) {
-        link.classList.add("current-page");
       }
     });
   }
