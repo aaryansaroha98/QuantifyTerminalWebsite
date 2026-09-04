@@ -2718,6 +2718,26 @@ ul.terminal-list {
   .footer-social-extra {
     display: none;
   }
+
+  .minimal:not(.homepage) .site-footer {
+    padding: 52px 0 44px;
+  }
+
+  .minimal:not(.homepage) .footer-shell {
+    display: flex;
+  }
+
+  .minimal:not(.homepage) .footer-copy {
+    text-align: center;
+  }
+
+  .minimal:not(.homepage) .footer-legal {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    width: min(100%, 320px);
+    gap: 11px 20px;
+    text-align: left;
+  }
 }
 
 @media (max-width: 420px) {
@@ -3262,6 +3282,43 @@ html:has(.minimal) {
 .footer-legal a[href="/blog"],
 .footer-legal a.current-page {
   display: none;
+}
+
+.minimal:not(.homepage) .site-footer {
+  padding: 72px 0 64px;
+}
+
+.minimal:not(.homepage) .footer-shell {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.8fr) minmax(260px, 1fr) minmax(180px, 0.7fr);
+  grid-template-areas:
+    "brand legal social"
+    "copy legal social";
+  align-items: start;
+  gap: 16px 48px;
+}
+
+.minimal:not(.homepage) .footer-brand {
+  grid-area: brand;
+}
+
+.minimal:not(.homepage) .footer-copy {
+  grid-area: copy;
+  text-align: left;
+  font-size: 12px;
+}
+
+.minimal:not(.homepage) .footer-legal {
+  grid-area: legal;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(110px, 1fr));
+  gap: 11px 28px;
+  margin: 0;
+}
+
+.minimal:not(.homepage) .footer-social {
+  grid-area: social;
+  margin: 0;
 }
 
 .minimal .footer-social a {
