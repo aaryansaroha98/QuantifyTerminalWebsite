@@ -53,11 +53,6 @@ a {
   text-decoration: none;
 }
 
-.hero-topnav a[href="/connect"],
-.mobile-menu a[href="/connect"] {
-  display: none;
-}
-
 img {
   display: block;
   max-width: 100%;
