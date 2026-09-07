@@ -1936,6 +1936,15 @@ ul.terminal-list {
   transform: none;
 }
 
+/* Blog content must be available immediately, including long articles on mobile. */
+.js .blog-page .reveal,
+.js .blog-page .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
 .image-card {
   transition: none;
 }
