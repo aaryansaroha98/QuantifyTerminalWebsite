@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command -v python3)",
+      "Bash(echo \"python3: $\\(command -v python3\\)\")",
+      "Bash(command -v pip3)",
+      "Bash(echo \"pip3: $\\(command -v pip3\\)\")",
+      "Bash(command -v claude)",
+      "Read(//tmp/claude-seo/**)",
+      "Read(//private/tmp/claude-seo/**)",
+      "Bash(CLAUDE_SEO_TAG=v2.2.5 bash /tmp/claude-seo/install.sh)",
+      "Bash(python3 -c ' *)",
+      "Read(//Users/aaryansaroha/.claude/skills/**)",
+      "Read(//Users/aaryansaroha/.claude/skills/seo/bin/**)",
+      "Bash(~/.claude/skills/seo/bin/claude-seo --help)",
+      "Bash(~/.claude/skills/seo/bin/claude-seo doctor *)",
+      "Bash(~/.claude/skills/seo/bin/claude-seo run *)",
+      "Bash([ -f \"$MEM\" ])",
+      "Bash(git commit -q -m 'SEO: add og/twitter images to privacy & terms, refresh sitemap lastmod *)",
+      "Bash(grep -niE '.{0,80}crypto.{0,80}' features.html)",
+      "Bash(grep -niE '.{0,80}crypto.{0,80}' documentation.html)",
+      "Bash(git commit -q -m 'SEO: target download-intent + crypto keywords from Search Console data *)",
+      "Bash(grep -nE \"^h1|^h2|^h3|^a \\\\{|^a\\\\{|^a,|^ul|^li|^\\\\.reveal|body\\\\s*\\\\{|:root\" \"/Users/aaryansaroha/Documents/Projects/Quantify Terminal Website/style.css\")",
+      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('sitemap.xml'\\); print\\('sitemap.xml: valid XML'\\)\")",
+      "Bash(./bin/claude-seo run *)",
+      "Bash(awk '/<style>/,/<\\\\/style>/' blog/best-bloomberg-terminal-alternatives-2026.html)",
+      "Bash(awk '/<article class=\"prose/,/<\\\\/article>/' about.html)",
+      "Bash(awk '/<article class=\"prose/,/<\\\\/article>/' founder.html)",
+      "Bash(python3 -c \"import xml.dom.minidom,sys; xml.dom.minidom.parse\\('sitemap.xml'\\); print\\('valid XML'\\)\")",
+      "Bash(git commit -q -m ' *)",
+      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('sitemap.xml'\\); print\\('valid XML'\\)\")",
+      "Bash(grep -oE '\\\\$[0-9,]+' pricing.html)",
+      "Bash(cd \"/Users/aaryansaroha/Documents/Projects/Quantify Terminal Website\" && git show 8603983:pricing.html > /tmp/pricing_149.html && wc -l /tmp/pricing_149.html && echo \"=== DIFF 8603983 -> abc01a7 \\(pricing.html\\) ===\" && git diff 8603983 abc01a7 -- pricing.html | head -120)",
+      "Read(//tmp/**)",
+      "Bash(awk '/\\\\.price-card\\\\.featured|\\\\.price-flag/,/^}/' /tmp/old_style.css)",
+      "Bash(grep -oE '^\\\\.[a-z0-9-]+[^,{ ]*' /tmp/pricing_css.txt)",
+      "Bash(awk 'NR>=4665 && NR<=4890' style.css)",
+      "Bash(grep -niE 'free|pricing|\\\\$[0-9]' index.html)"
+    ]
+  }
+}

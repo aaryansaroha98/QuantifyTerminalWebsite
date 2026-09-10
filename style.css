@@ -3391,6 +3391,18 @@ html:has(.minimal) {
   color: var(--muted);
 }
 
+.minimal .hero-topnav a.nav-console-link {
+  margin-left: 10px;
+  border: 1px solid rgba(240, 160, 40, 0.62);
+  color: var(--accent);
+  background: rgba(240, 160, 40, 0.1);
+}
+
+.minimal .hero-topnav a.nav-console-link:hover {
+  color: #0b0803;
+  background: var(--accent);
+}
+
 /* bigger headline, always on a single line */
 .minimal .hero-solo-inner h1 {
   max-width: none;
@@ -4280,7 +4292,16 @@ html:has(.minimal) {
     padding: 8px 18px;
   }
 
-  .mobile-menu a[href="/privacy"] { margin-top: 14px; }
+  .mobile-menu a.nav-console-link {
+    min-width: 168px;
+    margin-top: 14px;
+    border: 1px solid var(--accent);
+    color: #0b0803;
+    background: var(--accent);
+    text-align: center;
+  }
+
+  .mobile-menu a[href="/privacy"] { margin-top: 6px; }
 
   .mobile-menu a:active { color: var(--muted); }
 }
