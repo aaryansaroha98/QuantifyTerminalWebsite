@@ -93,22 +93,31 @@
           </div>
           <p>Every terminal tells you what happened. The work that matters starts after that, and today it is still done by hand: what it affects, and what to do about it. Quantify carries all three, automatically and with provenance.</p>
         </div>
-        <div class="release-grid" aria-label="What happened, what it affects, what to do">
-          <article class="release-card reveal">
-            <span>01 &middot; What happened</span>
-            <strong>Terminals stop here.</strong>
-            <p>A filing lands, guidance moves, a supplier warns, a rate decision prints, a headline accelerates. Every terminal reports it, ranks it and summarises it. None of them know that it is your position, your assumption, your exposure.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>02 &middot; What it affects</span>
-            <strong>Worked out by hand.</strong>
-            <p>Which cell in your model. Which assumption in your thesis. Which exposure two suppliers deep in the portfolio. Whether the market has already priced it. Today that is a spreadsheet, a memory and an afternoon, and it goes stale by the next print.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>03 &middot; What to do</span>
-            <strong>Decided from memory.</strong>
-            <p>Resize, hedge, review or exit, inside the mandate, with the reasoning and the evidence recorded so it can be replayed. Today the rationale lives in a chat thread, the constitution lives in someone's head, and the audit trail is a calendar entry.</p>
-          </article>
+        <div class="coverage reveal" role="table" aria-label="Who covers what happened, what it affects and what to do">
+          <div class="cov-head cov-corner" role="columnheader"></div>
+          <div class="cov-head" role="columnheader"><b>01 &middot; What happened</b><span>A filing lands, guidance moves, a supplier warns, a rate decision prints, a headline accelerates.</span></div>
+          <div class="cov-head" role="columnheader"><b>02 &middot; What it affects</b><span>Which cell in the model, which assumption in the thesis, which exposure two suppliers deep, and whether it is already priced.</span></div>
+          <div class="cov-head" role="columnheader"><b>03 &middot; What to do</b><span>Resize, hedge, review or exit, inside the mandate, with the reasoning and evidence recorded.</span></div>
+
+          <div class="cov-label" role="rowheader">Any terminal</div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Reported, ranked, summarised</span></div>
+          <div class="cov-cell" role="cell"><i class="cov-bar" aria-hidden="true"></i><span>Does not know it is your position</span></div>
+          <div class="cov-cell" role="cell"><i class="cov-bar" aria-hidden="true"></i><span>Out of scope</span></div>
+
+          <div class="cov-label" role="rowheader">Analyst, by hand</div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Read and re-read</span></div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-manual" aria-hidden="true"></i><span>A spreadsheet, a memory and an afternoon; stale by the next print</span></div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-manual" aria-hidden="true"></i><span>Rationale in a chat thread, mandate in someone's head, audit trail in a calendar</span></div>
+
+          <div class="cov-label" role="rowheader">Quantify</div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Compiled into facts, claims and evidence with provenance</span></div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Propagated through the model, the thesis graph and the Portfolio Twin</span></div>
+          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Decided inside the constitution, recorded in the ledger, replayable</span></div>
+        </div>
+        <div class="cov-legend reveal" aria-hidden="true">
+          <span><i class="cov-bar is-on"></i>Automatic, with provenance</span>
+          <span><i class="cov-bar is-manual"></i>Manual, unrecorded</span>
+          <span><i class="cov-bar"></i>Not covered</span>
         </div>
       </div>
     </section>
@@ -150,6 +159,7 @@
           </div>
           <p>Each stage has an exit criterion. Nothing downstream is built on a foundation that has not passed its own, and the first production slice proves the whole thesis on one market and one sector with real users.</p>
         </div>
+        <div class="spec-grid" style="margin-top: 0;">
         <ol class="docs-steps reveal" aria-label="Order of construction">
           <li><strong>Data Fabric and rights.</strong> Canonical identifiers, universal fields, source records, point-in-time versioning, entitlements and raw storage. Exit: every terminal field passes through one canonical read API.</li>
           <li><strong>World Model and Pulse.</strong> Entity edges, event schema, signal pipeline, personalised ranking. Exit: portfolio and watchlist users receive explainable, ranked changes.</li>
@@ -161,6 +171,45 @@
           <li><strong>Financial Git and Research CI/CD.</strong> Dependency invalidation, financial unit tests, research QA. Exit: an amended source automatically marks downstream work stale.</li>
           <li><strong>Institutional hardening.</strong> Private Brain connectors, enterprise auth and audit, Agent Runtime, private deployment. Exit: a fund's research team measures analyst hours saved.</li>
         </ol>
+        <aside class="note-card reveal seq-card">
+          <span class="focus-eyebrow">Build sequence across layers</span>
+          <svg class="seq-chart" viewBox="0 0 440 372" role="img" aria-label="Step chart: the nine build stages plotted against the six system layers. The sequence starts in the foundation, rises through intelligence, jumps to decision systems for the model compiler and portfolio twin, returns to action and network, then decision systems again for research CI, and ends in institutional hardening." xmlns="http://www.w3.org/2000/svg">
+            <g class="seq-grid">
+              <line x1="122" y1="34" x2="432" y2="34"/>
+              <line x1="122" y1="90" x2="432" y2="90"/>
+              <line x1="122" y1="146" x2="432" y2="146"/>
+              <line x1="122" y1="202" x2="432" y2="202"/>
+              <line x1="122" y1="258" x2="432" y2="258"/>
+              <line x1="122" y1="314" x2="432" y2="314"/>
+            </g>
+            <g class="seq-ylab">
+              <text x="0" y="38">P5 &middot; Decision systems</text>
+              <text x="0" y="94">P4 &middot; Institutional</text>
+              <text x="0" y="150">P3 &middot; Network</text>
+              <text x="0" y="206">P2 &middot; Action</text>
+              <text x="0" y="262">P1 &middot; Intelligence</text>
+              <text x="0" y="318">P0 &middot; Foundation</text>
+            </g>
+            <polyline class="seq-path" points="140,314 176,258 212,258 248,34 284,34 320,202 356,146 392,34 428,90"/>
+            <g class="seq-nodes">
+              <g style="--d:0.10s"><rect x="131" y="305" width="18" height="18"/><text x="140" y="317">01</text></g>
+              <g style="--d:0.35s"><rect x="167" y="249" width="18" height="18"/><text x="176" y="261">02</text></g>
+              <g style="--d:0.60s"><rect x="203" y="249" width="18" height="18"/><text x="212" y="261">03</text></g>
+              <g style="--d:0.85s"><rect x="239" y="25" width="18" height="18"/><text x="248" y="37">04</text></g>
+              <g style="--d:1.10s"><rect x="275" y="25" width="18" height="18"/><text x="284" y="37">05</text></g>
+              <g style="--d:1.35s"><rect x="311" y="193" width="18" height="18"/><text x="320" y="205">06</text></g>
+              <g style="--d:1.60s"><rect x="347" y="137" width="18" height="18"/><text x="356" y="149">07</text></g>
+              <g style="--d:1.85s"><rect x="383" y="25" width="18" height="18"/><text x="392" y="37">08</text></g>
+              <g style="--d:2.10s"><rect x="419" y="81" width="18" height="18"/><text x="428" y="93">09</text></g>
+            </g>
+            <g class="seq-xlab">
+              <text x="140" y="352">01</text><text x="176" y="352">02</text><text x="212" y="352">03</text><text x="248" y="352">04</text><text x="284" y="352">05</text><text x="320" y="352">06</text><text x="356" y="352">07</text><text x="392" y="352">08</text><text x="428" y="352">09</text>
+              <text class="seq-axis" x="432" y="370">BUILD ORDER &rarr;</text>
+            </g>
+          </svg>
+          <p class="seq-note">The sequence is dependency-first, not layer-by-layer. The Model Compiler and Portfolio Twin are built directly on the foundation and intelligence layers because they are the shortest path to the analyst outcome; action, network and institutional systems follow once that outcome is proven.</p>
+        </aside>
+        </div>
       </div>
     </section>
 
@@ -173,37 +222,22 @@
           </div>
           <p>Success is an analyst saying: this used to take several hours after earnings; Quantify updated the model, showed exactly what changed in the thesis, and quantified the portfolio impact in minutes. These are the engineering targets underneath that sentence, each tested against golden sets before a capability is enabled.</p>
         </div>
-        <div class="release-grid" aria-label="Engineering targets">
-          <article class="release-card reveal">
-            <span>Analyst time</span>
-            <strong>Hours after earnings become minutes</strong>
-            <p>The model updates, the thesis re-scores and the portfolio impact is quantified before the analyst opens a spreadsheet. Measured per analyst against the same workflow done by hand.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>Citation coverage</span>
-            <strong>95% of material claims carry evidence IDs</strong>
-            <p>Every factual claim in a research output links to the span that supports it. Anything below the bar is returned to the verifier, not shipped as a report.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>Model compiler precision</span>
-            <strong>99% on analyst-reviewed cells</strong>
-            <p>Compiler output is scored against golden models by sector. Automatic proposals are enabled for a sector only once it clears the bar there.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>Permission leakage</span>
-            <strong>Zero, enforced by adversarial tests</strong>
-            <p>Restricted rooms and documents are attacked continuously by automated ACL tests across retrieval and post-retrieval. A single leak blocks a release.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>Point-in-time leakage</span>
-            <strong>Zero future-data reads in benchmarks</strong>
-            <p>Backtests and historical research are audited for any access to data that was not available at the time, including restated fundamentals.</p>
-          </article>
-          <article class="release-card reveal">
-            <span>Reproducibility</span>
-            <strong>Same snapshot, same result</strong>
-            <p>Every report stores dataset versions, source IDs, query plan, calculation, model and prompt versions and permissions. Reproduce regenerates it exactly.</p>
-          </article>
+        <div class="slo-wrap reveal">
+          <table class="slo-table" aria-label="Engineering targets">
+            <thead>
+              <tr><th>Measure</th><th>Target</th><th>How it is tested</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Analyst time after earnings</td><td>Hours become minutes</td><td>The model updates, the thesis re-scores and the portfolio impact is quantified before a spreadsheet is opened. Measured per analyst against the same workflow done by hand.</td></tr>
+              <tr><td>Citation coverage</td><td>&ge; 95% of material claims</td><td>Every factual claim links to the evidence span that supports it. Below the bar, the output returns to the verifier instead of shipping as a report.</td></tr>
+              <tr><td>Model compiler precision</td><td>&ge; 99% on reviewed cells</td><td>Compiler output is scored against analyst-reviewed golden models by sector. Automatic proposals are enabled for a sector only once it clears the bar there.</td></tr>
+              <tr><td>Permission leakage</td><td>0</td><td>Restricted rooms and documents are attacked continuously by automated ACL tests at retrieval and after retrieval. A single leak blocks a release.</td></tr>
+              <tr><td>Point-in-time leakage</td><td>0 future-data reads</td><td>Backtests and historical research are audited for any access to data unavailable at the time, including restated fundamentals.</td></tr>
+              <tr><td>Workflow reproducibility</td><td>Same snapshot, same result</td><td>Dataset versions, source IDs, query plan, calculation, model and prompt versions and permissions are stored with every report. Reproduce regenerates it exactly.</td></tr>
+              <tr><td>Market-stream availability</td><td>99.9% at launch</td><td>Raised with redundant feeds. Canonical quote freshness is alerted on p95 lag against the vendor contract.</td></tr>
+              <tr><td>Incident tracing</td><td>100% of external calls</td><td>Every external call carries a request and correlation ID, so any number on the desk can be traced to the call that produced it.</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -237,12 +271,12 @@
     <section class="section">
       <div class="container split-panel">
         <div class="cta-panel reveal">
-          <div class="eyebrow">Company</div>
-          <h2>Who builds it.</h2>
-          <p class="lead" style="margin-left: 0;">Quantify Terminal is led by founder and Chief Executive Officer Aaryan Saroha, who directs architecture and product across the Data Fabric, the finance engine, the desktop terminal and the systems that connect them.</p>
+          <div class="eyebrow">Leadership</div>
+          <h2>Founder-led, engineering-first.</h2>
+          <p class="lead" style="margin-left: 0;">Quantify Terminal is led by founder and Chief Executive Officer Aaryan Saroha, who directs architecture and product across the Data Fabric, the finance engine, the desktop terminal and the systems that connect them. The company is building institutional financial infrastructure with engineering across quantitative research, data infrastructure and desktop systems.</p>
           <div class="actions" style="justify-content: flex-start;">
-            <a class="btn primary" href="/about">About Quantify</a>
-            <a class="btn" href="/careers">Careers</a>
+            <a class="btn primary" href="/founder">Leadership</a>
+            <a class="btn" href="/careers">Join the Team</a>
           </div>
         </div>
         <div class="cta-panel reveal">

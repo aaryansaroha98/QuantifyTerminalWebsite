@@ -5974,3 +5974,234 @@ html:has(.minimal) {
 @media (prefers-reduced-motion: reduce) {
   .arch-intake { animation: none; }
 }
+
+/* --- Coverage matrix (vision page) --- */
+.coverage {
+  display: grid;
+  grid-template-columns: 132px repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 30px;
+  border: 1px solid var(--line-soft);
+  background: var(--line-soft);
+}
+
+.cov-head,
+.cov-label,
+.cov-cell {
+  background: var(--panel);
+  padding: 14px 16px;
+  min-width: 0;
+}
+
+.cov-head b {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cov-head span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cov-label {
+  align-self: stretch;
+  color: var(--quiet);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.cov-cell span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cov-bar {
+  display: block;
+  height: 8px;
+  width: 100%;
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.cov-bar.is-on {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+.cov-bar.is-manual {
+  border-color: var(--quiet);
+  background: repeating-linear-gradient(135deg, var(--quiet) 0 2px, transparent 2px 6px);
+}
+
+.cov-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 12px;
+  color: var(--quiet);
+  font-size: 11.5px;
+}
+
+.cov-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cov-legend .cov-bar {
+  width: 26px;
+}
+
+@media (max-width: 720px) {
+  .coverage { grid-template-columns: 84px repeat(3, minmax(0, 1fr)); }
+  .cov-head, .cov-label, .cov-cell { padding: 10px 8px; }
+  .cov-head span, .cov-cell span { font-size: 10.5px; }
+  .cov-head b { font-size: 11.5px; }
+  .cov-corner { display: none; }
+  .coverage .cov-head:nth-child(2) { grid-column: 1 / 3; }
+}
+
+/* --- Build-sequence step chart (vision page) --- */
+.seq-card {
+  padding: 22px 22px 18px;
+}
+
+.seq-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+}
+
+.seq-grid line {
+  stroke: var(--line-soft);
+  stroke-width: 1;
+}
+
+.seq-ylab text {
+  fill: var(--muted);
+  font-size: 10.5px;
+}
+
+.seq-xlab text {
+  fill: var(--quiet);
+  font-size: 9.5px;
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+}
+
+.seq-xlab .seq-axis {
+  fill: var(--quiet);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-anchor: end;
+}
+
+.seq-path {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: seqDraw 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.seq-nodes g {
+  opacity: 0;
+  animation: seqNode 320ms ease-out forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.seq-nodes rect {
+  fill: var(--text);
+}
+
+.seq-nodes text {
+  fill: #ffffff;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+}
+
+.seq-note {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+@keyframes seqDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes seqNode {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seq-path { animation: none; stroke-dashoffset: 0; }
+  .seq-nodes g { animation: none; opacity: 1; }
+}
+
+/* --- Engineering-targets table (vision page) --- */
+.slo-wrap {
+  margin-top: 30px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slo-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line);
+}
+
+.slo-table th {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--quiet);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.slo-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.slo-table td:first-child {
+  width: 22%;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.slo-table td:nth-child(2) {
+  width: 22%;
+  color: var(--text);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
