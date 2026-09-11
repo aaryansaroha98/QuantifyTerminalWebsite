@@ -5894,186 +5894,87 @@ html:has(.minimal) {
   grid-template-columns: minmax(0, 640px);
 }
 
-/* --- Flow diagram: animated event-to-desk pipeline (features page) --- */
-.flow {
-  --flow-step: 1.3s;
-  --flow-cycle: 9.1s; /* 7 stages x --flow-step */
-  display: flex;
-  align-items: stretch;
+/* --- System architecture diagram (features page) --- */
+.arch {
   margin-top: 30px;
 }
 
-.flow-stage {
-  position: relative;
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 14px 12px 13px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  animation: flowStage var(--flow-cycle) linear infinite;
-  animation-delay: calc(var(--i) * var(--flow-step));
+.arch-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.flow-stage::after {
-  content: "";
-  position: absolute;
-  left: -1px;
-  right: -1px;
-  top: -1px;
-  height: 2px;
-  background: var(--text);
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: flowBar var(--flow-cycle) linear infinite;
-  animation-delay: calc(var(--i) * var(--flow-step));
-}
-
-.flow-index {
+.arch-svg {
   display: block;
-  margin-bottom: 9px;
-  color: var(--quiet);
+  width: 100%;
+  height: auto;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+}
+
+.arch-col {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-variant-numeric: tabular-nums;
+  fill: #8b909c;
 }
 
-.flow-stage b {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--text);
-  font-size: 13px;
+.arch-title {
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1.2;
   letter-spacing: -0.01em;
+  fill: #0b0e17;
 }
 
-.flow-sub {
-  display: block;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.45;
+.arch-title-dark {
+  fill: #ffffff;
 }
 
-.flow-stage.is-terminal {
-  background: var(--text);
-  border-color: var(--text);
-  animation-name: flowTerminal;
+.arch-sub {
+  font-size: 10.5px;
+  fill: #5c6270;
 }
 
-.flow-stage.is-terminal b {
-  color: #ffffff;
+.arch-row {
+  font-size: 10.5px;
+  fill: #0b0e17;
 }
 
-.flow-stage.is-terminal .flow-sub {
-  color: rgba(255, 255, 255, 0.72);
+.arch-row-dark {
+  fill: rgba(255, 255, 255, 0.82);
 }
 
-.flow-stage.is-terminal .flow-index {
-  color: rgba(255, 255, 255, 0.6);
+.arch-edge {
+  fill: none;
+  stroke: #d7dae0;
+  stroke-width: 1;
 }
 
-.flow-stage.is-terminal::after {
-  background: #2fd189;
+.arch-intake {
+  stroke-dasharray: 2 5;
+  animation: archIntake 1.6s linear infinite;
 }
 
-.flow-live {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 7px;
-  border-radius: 50%;
-  background: #2fd189;
-  vertical-align: 1px;
-  animation: flowLive 1.8s ease-out infinite;
+.arch-packet {
+  fill: #0b0e17;
 }
 
-.flow-link {
-  position: relative;
-  flex: 0 0 26px;
+.arch-hint {
+  display: none;
+  margin: 10px 0 0;
+  color: var(--quiet);
+  font-size: 12px;
+  font-style: italic;
 }
 
-.flow-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background: var(--line);
+@keyframes archIntake {
+  to { stroke-dashoffset: -14; }
 }
 
-.flow-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 9px;
-  height: 3px;
-  margin-top: -1px;
-  background: var(--text);
-  opacity: 0;
-  animation: flowPacket var(--flow-cycle) linear infinite;
-  animation-delay: calc(var(--i) * var(--flow-step) + var(--flow-step) * 0.68);
-}
-
-@keyframes flowStage {
-  0% { border-color: var(--line); }
-  1%, 9.5% { border-color: var(--text); }
-  11%, 100% { border-color: var(--line); }
-}
-
-@keyframes flowTerminal {
-  0% { box-shadow: 0 0 0 0 rgba(47, 209, 137, 0); }
-  1%, 9.5% { box-shadow: 0 0 0 3px rgba(47, 209, 137, 0.35); }
-  12%, 100% { box-shadow: 0 0 0 0 rgba(47, 209, 137, 0); }
-}
-
-@keyframes flowBar {
-  0% { transform: scaleX(0); opacity: 1; }
-  9.5% { transform: scaleX(1); opacity: 1; }
-  12%, 100% { transform: scaleX(1); opacity: 0; }
-}
-
-@keyframes flowPacket {
-  0% { transform: translateX(0); opacity: 0; }
-  1% { opacity: 1; }
-  4.4% { transform: translateX(17px); opacity: 1; }
-  5%, 100% { transform: translateX(17px); opacity: 0; }
-}
-
-@keyframes flowPacketV {
-  0% { transform: translateY(0); opacity: 0; }
-  1% { opacity: 1; }
-  4.4% { transform: translateY(15px); opacity: 1; }
-  5%, 100% { transform: translateY(15px); opacity: 0; }
-}
-
-@keyframes flowLive {
-  0% { box-shadow: 0 0 0 0 rgba(47, 209, 137, 0.55); }
-  70% { box-shadow: 0 0 0 6px rgba(47, 209, 137, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(47, 209, 137, 0); }
-}
-
-@media (max-width: 1040px) {
-  .flow-stage { padding: 12px 10px 11px; }
-  .flow-stage b { font-size: 12px; }
-  .flow-sub { font-size: 10px; }
-  .flow-link { flex-basis: 18px; }
-}
-
-@media (max-width: 760px) {
-  .flow { flex-direction: column; }
-  .flow-stage { flex: none; padding: 14px 14px 13px; }
-  .flow-stage b { font-size: 14px; }
-  .flow-sub { font-size: 12px; }
-  .flow-link { flex: 0 0 24px; }
-  .flow-link::before { left: 50%; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
-  .flow-link::after { left: 50%; top: 0; width: 3px; height: 9px; margin: 0 0 0 -1px; animation-name: flowPacketV; }
+@media (max-width: 900px) {
+  .arch-svg { width: 1120px; max-width: none; }
+  .arch-hint { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flow-stage, .flow-stage::after, .flow-link::after, .flow-live { animation: none; }
-  .flow-stage::after, .flow-link::after { opacity: 0; }
+  .arch-intake { animation: none; }
 }
