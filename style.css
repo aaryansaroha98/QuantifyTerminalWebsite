@@ -3639,7 +3639,6 @@ html:has(.minimal) {
 .docs-nav-link {
   position: relative;
   padding: 5px 12px;
-  border-left: 2px solid transparent;
   color: var(--muted);
   font-size: 12.5px;
   font-weight: 520;
@@ -3653,7 +3652,7 @@ html:has(.minimal) {
 
 .docs-nav-link.active {
   color: var(--text);
-  border-left-color: var(--accent);
+  background: var(--panel-soft);
   font-weight: 620;
 }
 
@@ -4091,7 +4090,6 @@ html:has(.minimal) {
   margin: 22px 0 0;
   padding: 16px 18px;
   border: 1px solid var(--line-soft);
-  border-left: 3px solid var(--accent);
   background: var(--panel-soft);
   max-width: 720px;
 }
@@ -4779,8 +4777,7 @@ html:has(.minimal) {
   gap: 11px;
   margin-top: 18px;
   padding: 14px 16px;
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--live);
+  border: 1px solid var(--live);
   background: var(--panel);
   color: var(--muted);
   font-size: 13.5px;
@@ -4792,7 +4789,7 @@ html:has(.minimal) {
 }
 
 .form-feedback.is-error {
-  border-left-color: var(--closed);
+  border-color: var(--closed);
 }
 
 .form-feedback strong {
@@ -5362,7 +5359,6 @@ html:has(.minimal) {
   margin-top: 14px;
   padding: 11px 13px;
   border: 1px solid var(--line);
-  border-left: 3px solid var(--live);
   background: var(--panel-soft);
   color: var(--muted);
   font-size: 12.5px;
