@@ -3392,15 +3392,15 @@ html:has(.minimal) {
 }
 
 .minimal .hero-topnav a.nav-console-link {
-  margin-left: 10px;
-  border: 1px solid rgba(240, 160, 40, 0.62);
-  color: var(--accent);
-  background: rgba(240, 160, 40, 0.1);
+  margin-left: 8px;
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+  color: var(--text);
+  background: transparent;
 }
 
 .minimal .hero-topnav a.nav-console-link:hover {
-  color: #0b0803;
-  background: var(--accent);
+  color: var(--muted);
 }
 
 /* bigger headline, always on a single line */
@@ -4293,15 +4293,12 @@ html:has(.minimal) {
   }
 
   .mobile-menu a.nav-console-link {
-    min-width: 168px;
-    margin-top: 14px;
-    border: 1px solid var(--accent);
-    color: #0b0803;
-    background: var(--accent);
-    text-align: center;
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    color: var(--text);
   }
 
-  .mobile-menu a[href="/privacy"] { margin-top: 6px; }
+  .mobile-menu a[href="/privacy"] { margin-top: 4px; }
 
   .mobile-menu a:active { color: var(--muted); }
 }
