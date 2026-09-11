@@ -80,6 +80,61 @@
       </div>
     </section>
 
+    <section class="section tight" id="how-it-works">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">How it works</div>
+            <h2>From event to desk.</h2>
+          </div>
+          <p>New information enters on the left and reaches the desk on the right. Every hop stores provenance, point-in-time state, permissions, model version and an audit event.</p>
+        </div>
+        <div class="flow reveal" role="img" aria-label="How Quantify works: sources enter the Data Fabric, pass through the intelligence engines, models and theses, the Portfolio Twin and the decision gate, and reach the Quantify Terminal desk">
+          <div class="flow-stage" style="--i:0">
+            <span class="flow-index">01</span>
+            <b>Sources</b>
+            <span class="flow-sub">Filings, earnings, transcripts, news, macro prints, private documents</span>
+          </div>
+          <div class="flow-link" style="--i:0" aria-hidden="true"></div>
+          <div class="flow-stage" style="--i:1">
+            <span class="flow-index">02</span>
+            <b>Data Fabric</b>
+            <span class="flow-sub">Canonical IDs, point-in-time timestamps, data rights, World Model</span>
+          </div>
+          <div class="flow-link" style="--i:1" aria-hidden="true"></div>
+          <div class="flow-stage" style="--i:2">
+            <span class="flow-index">03</span>
+            <b>Intelligence engines</b>
+            <span class="flow-sub">Knowledge Compiler, causal and expectation engines, Pulse</span>
+          </div>
+          <div class="flow-link" style="--i:2" aria-hidden="true"></div>
+          <div class="flow-stage" style="--i:3">
+            <span class="flow-index">04</span>
+            <b>Models and theses</b>
+            <span class="flow-sub">Financial Model Compiler, thesis graph, thesis health</span>
+          </div>
+          <div class="flow-link" style="--i:3" aria-hidden="true"></div>
+          <div class="flow-stage" style="--i:4">
+            <span class="flow-index">05</span>
+            <b>Portfolio Twin</b>
+            <span class="flow-sub">Look-through exposure, failure search, hedge design, liquidity</span>
+          </div>
+          <div class="flow-link" style="--i:4" aria-hidden="true"></div>
+          <div class="flow-stage" style="--i:5">
+            <span class="flow-index">06</span>
+            <b>Decision and execution</b>
+            <span class="flow-sub">Constitution check, Decision Ledger, human gate, broker routing</span>
+          </div>
+          <div class="flow-link" style="--i:5" aria-hidden="true"></div>
+          <div class="flow-stage is-terminal" style="--i:6">
+            <span class="flow-index"><i class="flow-live" aria-hidden="true"></i>07 &middot; Live</span>
+            <b>Quantify Terminal</b>
+            <span class="flow-sub">Desk, Pulse feed, Investor Chat, Agent Runtime and API</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section tight" id="systems">
       <div class="container">
         <div class="section-head reveal">
@@ -165,7 +220,7 @@
           <span class="pill">Private Brain connectors</span>
           <span class="pill">Data Guardian</span>
         </div>
-        <div class="spec-grid">
+        <div class="spec-grid single">
           <div class="reveal">
             <span class="spec-label">Thesis graph &middot; machine-readable thesis</span>
 <pre class="spec-block">THESIS: NVDA LONG
@@ -176,20 +231,6 @@
   assumption C: HBM supply constraint eases
       depends_on: supplier events + lead-time signal
   invalidation: two assumptions FAIL for 2 consecutive updates</pre>
-          </div>
-          <div class="reveal">
-            <span class="spec-label">Decision Ledger &middot; immutable record</span>
-<pre class="spec-block">DECISION
-  asset: NVDA
-  intent: INCREASE
-  position: 3.2% -&gt; 4.5%
-  why: [demand revision, supply improvement, expected return]
-  conditions: [GM &gt; 70%, cloud capex &gt; 20%]
-  kill_conditions: [GM &lt; 68%, capex revision &lt; -15%]
-  evidence: [17 immutable evidence IDs]
-  model_version: nvda@v41
-  constitution_check: PASS
-  approved_by: user</pre>
           </div>
         </div>
       </div>

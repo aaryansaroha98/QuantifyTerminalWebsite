@@ -178,7 +178,7 @@
             <p>Filings compile into versioned models with cell-level lineage. Theses carry dependencies, health and invalidation. The Portfolio Digital Twin runs failure search, hedge design and liquidity stress. Research runs through Financial Git and CI/CD, and every decision is recorded and replayable.</p>
           </article>
         </div>
-        <div class="spec-grid">
+        <div class="spec-grid single">
           <div class="reveal">
             <span class="spec-label">Investment Constitution &middot; executable mandate</span>
 <pre class="spec-block">max_single_position          = 0.07
@@ -188,15 +188,6 @@ require_thesis               = true
 require_bull_base_bear       = true
 reject_if_accounting_risk    &gt; 70
 reject_if_liquidity_days_to_exit &gt; 5</pre>
-          </div>
-          <div class="reveal">
-            <span class="spec-label">Research CI/CD &middot; financial unit tests</span>
-<pre class="spec-block">assert revenue_growth_FY1 &gt; 0.10
-assert net_debt_to_ebitda &lt; 2.0
-assert thesis.health &gt;= 60
-assert effective_china_exposure &lt; 0.25
-assert model.source_coverage &gt;= 0.95
-assert backtest.lookahead_violations == 0</pre>
           </div>
         </div>
       </div>
