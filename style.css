@@ -5975,101 +5975,255 @@ html:has(.minimal) {
   .arch-intake { animation: none; }
 }
 
-/* --- Coverage matrix (vision page) --- */
-.coverage {
+/* --- Coverage reach chart (vision page) --- */
+.reach {
+  margin-top: 34px;
+}
+
+.reach-head,
+.reach-row {
   display: grid;
-  grid-template-columns: 132px repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 30px;
-  border: 1px solid var(--line-soft);
-  background: var(--line-soft);
+  grid-template-columns: 176px repeat(3, minmax(0, 1fr));
+  align-items: start;
 }
 
-.cov-head,
-.cov-label,
-.cov-cell {
-  background: var(--panel);
-  padding: 14px 16px;
-  min-width: 0;
+.reach-head {
+  padding-bottom: 20px;
 }
 
-.cov-head b {
+.reach-corner span,
+.reach-num {
   display: block;
-  margin-bottom: 6px;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.cov-head span {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.cov-label {
-  align-self: stretch;
   color: var(--quiet);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
 }
 
-.cov-cell span {
+.reach-phase {
+  padding-right: 30px;
+}
+
+.reach-num {
+  margin-bottom: 9px;
+}
+
+.reach-phase b {
   display: block;
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
+  margin-bottom: 7px;
+  color: var(--text);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
-.cov-bar {
+.reach-desc {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.reach-row {
+  padding: 22px 0 24px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.reach-row:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.reach-label {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  padding-right: 30px;
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.reach-label span {
+  display: block;
+  margin-top: 6px;
+  color: var(--quiet);
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.reach-bar {
+  grid-column: 2 / -1;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  height: 8px;
+  margin-bottom: 18px;
+}
+
+.reach-bar .seg,
+.reach-legend .seg {
+  position: relative;
   display: block;
   height: 8px;
-  width: 100%;
-  border: 1px solid var(--line);
-  background: transparent;
 }
 
-.cov-bar.is-on {
+.seg.is-auto {
   background: var(--text);
-  border-color: var(--text);
 }
 
-.cov-bar.is-manual {
-  border-color: var(--quiet);
-  background: repeating-linear-gradient(135deg, var(--quiet) 0 2px, transparent 2px 6px);
+.seg.is-manual {
+  background: repeating-linear-gradient(135deg, var(--muted) 0 1.5px, transparent 1.5px 4.5px);
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 
-.cov-legend {
+.seg.is-none::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px dotted var(--line);
+}
+
+.seg.is-end::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  background: var(--text);
+}
+
+.seg.is-arrow::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: -3px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 9px solid var(--text);
+}
+
+.reach-row.is-live .reach-bar {
+  position: relative;
+}
+
+.reach-row.is-live .reach-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 13%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  animation: reachSweep 4.2s linear infinite;
+}
+
+.reach-cell {
+  grid-row: 2;
+  padding-right: 30px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.reach-cell.is-none {
+  color: var(--quiet);
+}
+
+.reach-row.is-live .reach-cell {
+  color: var(--text);
+}
+
+.reach-cellphase {
+  display: none;
+}
+
+.reach-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 22px;
-  margin-top: 12px;
+  gap: 9px 28px;
+  margin-top: 16px;
   color: var(--quiet);
   font-size: 11.5px;
 }
 
-.cov-legend span {
+.reach-legend span {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.cov-legend .cov-bar {
-  width: 26px;
+.reach-legend .seg {
+  flex: 0 0 28px;
+  width: 28px;
 }
 
-@media (max-width: 720px) {
-  .coverage { grid-template-columns: 84px repeat(3, minmax(0, 1fr)); }
-  .cov-head, .cov-label, .cov-cell { padding: 10px 8px; }
-  .cov-head span, .cov-cell span { font-size: 10.5px; }
-  .cov-head b { font-size: 11.5px; }
-  .cov-corner { display: none; }
-  .coverage .cov-head:nth-child(2) { grid-column: 1 / 3; }
+@keyframes reachSweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(556%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-row.is-live .reach-bar::after { animation: none; opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .reach-head { display: none; }
+
+  .reach-row {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 0 22px;
+  }
+
+  .reach-label {
+    grid-row: auto;
+    padding-right: 0;
+  }
+
+  .reach-bar { display: none; }
+
+  .reach-cell {
+    grid-row: auto;
+    padding-right: 0;
+    margin-top: 18px;
+  }
+
+  .reach-cell::before {
+    content: "";
+    display: block;
+    height: 8px;
+    margin-bottom: 10px;
+  }
+
+  .reach-cell.is-auto::before {
+    background: var(--text);
+  }
+
+  .reach-cell.is-manual::before {
+    background: repeating-linear-gradient(135deg, var(--muted) 0 1.5px, transparent 1.5px 4.5px);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .reach-cell.is-none::before {
+    height: 0;
+    margin: 4px 0 12px;
+    border-top: 1px dotted var(--line);
+  }
+
+  .reach-cellphase {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--quiet);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
 }
 
 /* --- Build-sequence step chart (vision page) --- */

@@ -93,31 +93,51 @@
           </div>
           <p>Every terminal tells you what happened. The work that matters starts after that, and today it is still done by hand: what it affects, and what to do about it. Quantify carries all three, automatically and with provenance.</p>
         </div>
-        <div class="coverage reveal" role="table" aria-label="Who covers what happened, what it affects and what to do">
-          <div class="cov-head cov-corner" role="columnheader"></div>
-          <div class="cov-head" role="columnheader"><b>01 &middot; What happened</b><span>A filing lands, guidance moves, a supplier warns, a rate decision prints, a headline accelerates.</span></div>
-          <div class="cov-head" role="columnheader"><b>02 &middot; What it affects</b><span>Which cell in the model, which assumption in the thesis, which exposure two suppliers deep, and whether it is already priced.</span></div>
-          <div class="cov-head" role="columnheader"><b>03 &middot; What to do</b><span>Resize, hedge, review or exit, inside the mandate, with the reasoning and evidence recorded.</span></div>
-
-          <div class="cov-label" role="rowheader">Any terminal</div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Reported, ranked, summarised</span></div>
-          <div class="cov-cell" role="cell"><i class="cov-bar" aria-hidden="true"></i><span>Does not know it is your position</span></div>
-          <div class="cov-cell" role="cell"><i class="cov-bar" aria-hidden="true"></i><span>Out of scope</span></div>
-
-          <div class="cov-label" role="rowheader">Analyst, by hand</div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Read and re-read</span></div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-manual" aria-hidden="true"></i><span>A spreadsheet, a memory and an afternoon; stale by the next print</span></div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-manual" aria-hidden="true"></i><span>Rationale in a chat thread, mandate in someone's head, audit trail in a calendar</span></div>
-
-          <div class="cov-label" role="rowheader">Quantify</div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Compiled into facts, claims and evidence with provenance</span></div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Propagated through the model, the thesis graph and the Portfolio Twin</span></div>
-          <div class="cov-cell" role="cell"><i class="cov-bar is-on" aria-hidden="true"></i><span>Decided inside the constitution, recorded in the ledger, replayable</span></div>
+        <div class="reach reveal" role="table" aria-label="How far each approach reaches across what happened, what it affects and what to do">
+          <div class="reach-head" role="row">
+            <div class="reach-corner" role="columnheader"><span>Coverage</span></div>
+            <div class="reach-phase" role="columnheader">
+              <span class="reach-num">01</span>
+              <b>What happened</b>
+              <span class="reach-desc">A filing lands, guidance moves, a supplier warns, a rate decision prints.</span>
+            </div>
+            <div class="reach-phase" role="columnheader">
+              <span class="reach-num">02</span>
+              <b>What it affects</b>
+              <span class="reach-desc">Which cell in the model, which assumption in the thesis, which exposure two suppliers deep.</span>
+            </div>
+            <div class="reach-phase" role="columnheader">
+              <span class="reach-num">03</span>
+              <b>What to do</b>
+              <span class="reach-desc">Resize, hedge, review or exit, inside the mandate, with the reasoning recorded.</span>
+            </div>
+          </div>
+          <div class="reach-row" role="row">
+            <div class="reach-label" role="rowheader">Any terminal<span>Stops at the headline</span></div>
+            <div class="reach-bar" aria-hidden="true"><i class="seg is-auto is-end"></i><i class="seg is-none"></i><i class="seg is-none"></i></div>
+            <div class="reach-cell is-auto" role="cell"><span class="reach-cellphase">01 &middot; What happened</span>Reported, ranked and summarised.</div>
+            <div class="reach-cell is-none" role="cell"><span class="reach-cellphase">02 &middot; What it affects</span>Does not know it is your position.</div>
+            <div class="reach-cell is-none" role="cell"><span class="reach-cellphase">03 &middot; What to do</span>Out of scope.</div>
+          </div>
+          <div class="reach-row" role="row">
+            <div class="reach-label" role="rowheader">Analyst, by hand<span>Reaches the end, slowly</span></div>
+            <div class="reach-bar" aria-hidden="true"><i class="seg is-auto"></i><i class="seg is-manual"></i><i class="seg is-manual"></i></div>
+            <div class="reach-cell is-auto" role="cell"><span class="reach-cellphase">01 &middot; What happened</span>Read and re-read.</div>
+            <div class="reach-cell is-manual" role="cell"><span class="reach-cellphase">02 &middot; What it affects</span>A spreadsheet, a memory and an afternoon. Stale by the next print.</div>
+            <div class="reach-cell is-manual" role="cell"><span class="reach-cellphase">03 &middot; What to do</span>Rationale in a chat thread, mandate in someone&rsquo;s head, audit trail in a calendar.</div>
+          </div>
+          <div class="reach-row is-live" role="row">
+            <div class="reach-label" role="rowheader">Quantify<span>One continuous path</span></div>
+            <div class="reach-bar" aria-hidden="true"><i class="seg is-auto"></i><i class="seg is-auto"></i><i class="seg is-auto is-arrow"></i></div>
+            <div class="reach-cell is-auto" role="cell"><span class="reach-cellphase">01 &middot; What happened</span>Compiled into facts, claims and evidence with provenance.</div>
+            <div class="reach-cell is-auto" role="cell"><span class="reach-cellphase">02 &middot; What it affects</span>Propagated through the model, the thesis graph and the Portfolio Twin.</div>
+            <div class="reach-cell is-auto" role="cell"><span class="reach-cellphase">03 &middot; What to do</span>Decided inside the constitution, recorded in the ledger, replayable.</div>
+          </div>
         </div>
-        <div class="cov-legend reveal" aria-hidden="true">
-          <span><i class="cov-bar is-on"></i>Automatic, with provenance</span>
-          <span><i class="cov-bar is-manual"></i>Manual, unrecorded</span>
-          <span><i class="cov-bar"></i>Not covered</span>
+        <div class="reach-legend reveal" aria-hidden="true">
+          <span><i class="seg is-auto"></i>Automatic, with provenance</span>
+          <span><i class="seg is-manual"></i>Manual, unrecorded</span>
+          <span><i class="seg is-none"></i>Not covered</span>
         </div>
       </div>
     </section>
