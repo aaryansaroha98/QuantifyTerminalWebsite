@@ -901,6 +901,114 @@
     });
   }
 
+  /* ------------------------------------------------------------------
+     Early access — four fields on /download. Validated here, then handed
+     to the visitor's mail client, with a copy-as-text route for anyone
+     whose browser has no mail handler.
+     ------------------------------------------------------------------ */
+  function setupEarlyAccessForm() {
+    var form = document.querySelector("[data-early-form]");
+    if (!form) return;
+
+    var MAILBOX = "sales@mail.quantifyterminal.com";
+    var NAMES = ["email", "role", "where", "use"];
+    var feedback = form.querySelector("[data-ea-feedback]");
+    var feedbackText = form.querySelector("[data-ea-feedback-text]");
+
+    function setError(control, message) {
+      var field = control.closest(".field");
+      if (!field) return;
+      var slot = field.querySelector("[data-error]");
+      field.classList.toggle("has-error", !!message);
+      if (slot) slot.textContent = message || "";
+    }
+
+    function say(message, isError) {
+      if (!feedback) return;
+      if (feedbackText) feedbackText.textContent = message;
+      feedback.classList.add("is-visible");
+      feedback.classList.toggle("is-error", !!isError);
+    }
+
+    NAMES.forEach(function (name) {
+      var control = form.elements[name];
+      if (!control) return;
+      control.addEventListener("input", function () { setError(control, ""); });
+      control.addEventListener("change", function () { setError(control, ""); });
+    });
+
+    function validate() {
+      var first = null;
+      NAMES.forEach(function (name) {
+        var control = form.elements[name];
+        if (!control) return;
+        var value = (control.value || "").trim();
+        var message = "";
+        if (!value) message = "Required.";
+        else if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+          message = "That does not look like an email address.";
+        }
+        setError(control, message);
+        if (message && !first) first = control;
+      });
+      if (first) first.focus();
+      return !first;
+    }
+
+    function compose() {
+      return [
+        "Email:        " + form.elements.email.value.trim(),
+        "Role:         " + form.elements.role.value,
+        "Where I work: " + form.elements.where.value,
+        "Use:          " + form.elements.use.value.trim()
+      ].join("\n");
+    }
+
+    function copyText(text, onDone) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onDone, function () { legacyCopy(text, onDone); });
+      } else {
+        legacyCopy(text, onDone);
+      }
+    }
+
+    function legacyCopy(text, onDone) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+      document.body.removeChild(area);
+      if (ok) onDone();
+      else say("Copying is blocked here. Email the four lines to " + MAILBOX + ".", true);
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!validate()) {
+        say("Four fields, and one of them still needs you.", true);
+        return;
+      }
+      window.location.href = "mailto:" + MAILBOX +
+        "?subject=" + encodeURIComponent("Early access \u2014 Quantify Terminal") +
+        "&body=" + encodeURIComponent(compose());
+      say("Your mail client is opening with the request written out. If nothing happens, " +
+          "use Copy as text and send it to " + MAILBOX + ".");
+    });
+
+    var copyBtn = form.querySelector("[data-ea-copy]");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        if (!validate()) { say("Fill the four fields first, then copy.", true); return; }
+        copyText(compose(), function () { say("Copied. Send it to " + MAILBOX + "."); });
+      });
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
     setupHeader();
@@ -915,5 +1023,6 @@
     setupLiveClock();
     setupCopyButtons();
     setupApplyForm();
+    setupEarlyAccessForm();
   });
 })();

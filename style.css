@@ -6495,3 +6495,32 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .section.tight { padding-top: 14px; }
   .section-head { margin-bottom: 18px; }
 }
+
+
+/* ---- early access form on /download ---- */
+.ea-form {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 30px 32px 28px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.ea-form .form-actions { margin-top: 24px; }
+.minimal .hero.compact .hero-note {
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.hero-note a {
+  color: var(--text);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 160ms ease;
+}
+.hero-note a:hover { border-bottom-color: var(--text); }
+.minimal .hero.compact .lead + .lead { margin-top: 16px; }
+@media (max-width: 640px) {
+  .ea-form { padding: 22px 20px 20px; }
+  .ea-form .field-grid { grid-template-columns: 1fr; }
+}
