@@ -472,8 +472,11 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
 }
+
+/* A section that is only a heading has nothing to space away from. */
+.section-head:last-child { margin-bottom: 0; }
 
 .section-head p {
   max-width: 520px;
@@ -3136,11 +3139,11 @@ html:has(.minimal) {
 
 /* --- Section rhythm --- */
 .minimal .section {
-  padding: 40px 0;
+  padding: 26px 0;
 }
 
 .minimal .section.tight {
-  padding-top: 24px;
+  padding-top: 16px;
 }
 
 .minimal .section-head h2 {
@@ -6380,9 +6383,9 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   max-width: 900px;
   margin: 20px auto 0;
   font-family: inherit;
-  font-size: clamp(18px, 1.9vw, 25px);
+  font-size: clamp(17px, 1.6vw, 22px);
   font-weight: 450;
-  line-height: 1.6;
+  line-height: 1.58;
   letter-spacing: -0.015em;
   color: var(--muted);
   text-wrap: balance;
@@ -6397,8 +6400,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @media (max-width: 720px) {
   .minimal .hero-solo-inner .hero-claim {
     margin-top: 14px;
-    font-size: 17px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.52;
   }
 }
 
@@ -6479,4 +6482,16 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   color: var(--quiet);
 }
 @media (max-width: 720px) {
+}
+
+
+/* ---- 2026-09-15: tighter vertical rhythm ---- */
+.minimal .benefit-grid { margin-top: 24px; }
+.minimal .desk-row { margin: 22px 0 18px; }
+.minimal .role-list li { padding: 14px 0; }
+.minimal .hero-solo-inner { padding-top: 56px; }
+@media (max-width: 720px) {
+  .minimal .section { padding: 20px 0; }
+  .minimal .section.tight { padding-top: 14px; }
+  .section-head { margin-bottom: 18px; }
 }
