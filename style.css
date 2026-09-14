@@ -2833,7 +2833,7 @@ ul.terminal-list {
    all of it, so only the overscroll edges ever show. */
 html:has(.minimal) {
   color-scheme: light;
-  background: #9810fa;
+  background: #c42b1c;
 }
 /* the body has to cover the canvas even on a page shorter than the window */
 body.minimal {
@@ -6771,14 +6771,18 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    ignores theme-color and tints its tab bar from sticky or fixed elements
    that sit within 4px of the top and span at least 90% of the width,
    falling back to the body's background. A static strip is never sampled,
-   which is why declaring the colour three other ways did nothing. */
+   which is why declaring the colour three other ways did nothing.
+
+   The colour is the accent the brand's film work already uses. White on it
+   measures 5.7:1, so the strip's text clears AA. Change it in the two
+   places below and in each page's theme-color meta. */
 .topbar { position: relative; }
 .topbar-bar {
   position: sticky;
   top: 0;
   padding: 6px 16px;
   padding-top: calc(6px + env(safe-area-inset-top));
-  background-color: #9810fa;
+  background-color: #c42b1c;
   color: #ffffff;
   text-align: center;
 }
