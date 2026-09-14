@@ -104,62 +104,38 @@
     );
   }
 
-  function setupTypewriter() {
+  /* The hero title is static. The caret stays -- it is the one piece of
+     motion in the hero and it reads as a terminal prompt -- but the words
+     are there on first paint rather than typed in one character at a time.
+     Reduced-motion users get no caret at all; the stylesheet handles that. */
+  function setupHeroTitle() {
     var el = document.querySelector(".hero-solo-inner h1");
     if (!el) return;
     var spec = el.getAttribute("data-type");
-    // words to type; "|" marks a line break in the rendered title
+    // "|" marks where the title prefers to break; each part is its own span
     var parts = spec ? spec.split("|") : [(el.textContent || "").trim()];
-    var full = parts.join(" ").trim();
-    if (!full) return;
-
-    el.setAttribute("aria-label", full);
-
-    // No-JS / reduced-motion users keep the full (line-split) title as-is.
-    if (prefersReducedMotion()) {
-      el.textContent = "";
-      parts.forEach(function (p, idx) {
-        var line = document.createElement("span");
-        line.className = "type-line";
-        line.textContent = p;
-        el.appendChild(line);
-      });
-      el.classList.add("is-typing", "type-done");
-      return;
-    }
+    if (!parts.join(" ").trim()) return;
 
     el.textContent = "";
-    el.classList.add("is-typing");
-
-    // one .type-line per part; caret lives at the end of the last line
-    var lines = parts.map(function () {
+    var last = null;
+    parts.forEach(function (part, idx) {
+      // a real space, not a ::before one: the pseudo-element drew the gap but
+      // left the accessible text and any copied selection reading "turnsinformation"
+      if (idx) el.appendChild(document.createTextNode(" "));
       var line = document.createElement("span");
       line.className = "type-line";
-      line.setAttribute("aria-hidden", "true");
+      line.textContent = part;
       el.appendChild(line);
-      return line;
+      last = line;
     });
+
     var caret = document.createElement("span");
     caret.className = "type-caret";
     caret.setAttribute("aria-hidden", "true");
-    lines[0].appendChild(caret);
+    if (last) last.appendChild(caret);
 
-    var li = 0, ci = 0;
-    function tick() {
-      var part = parts[li];
-      lines[li].textContent = part.slice(0, ci);
-      lines[li].appendChild(caret);
-      if (ci < part.length) {
-        ci++;
-        setTimeout(tick, 34);
-      } else if (li < parts.length - 1) {
-        li++; ci = 0;
-        setTimeout(tick, 150);
-      } else {
-        el.classList.add("type-done");
-      }
-    }
-    setTimeout(tick, 260);
+    // both classes are what the hero's type rules key off
+    el.classList.add("is-typing", "type-done");
   }
 
   function setupHeader() {
@@ -1097,7 +1073,7 @@
     setupDocsNav();
     setupMenu();
     setupReveal();
-    setupTypewriter();
+    setupHeroTitle();
     setupLightbox();
     setupDownloadButtons();
     setupPricingToggle();

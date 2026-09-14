@@ -3353,9 +3353,7 @@ body.minimal {
   display: inline;
 }
 
-.hero-solo-inner h1 .type-line + .type-line::before {
-  content: " ";
-}
+
 
 .hero-solo-inner h1 .type-caret {
   display: inline-block;
@@ -6285,7 +6283,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   letter-spacing: -0.034em;
 }
 .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
-.hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: " "; }
 .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
 .minimal .hero-solo-inner h1.hero-contrast + .lead { max-width: 820px; }
 
@@ -6685,7 +6682,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
-  .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: " "; }
 }
 
 /* The hero frame needs air inside it. The uprights sit on the column edges;
