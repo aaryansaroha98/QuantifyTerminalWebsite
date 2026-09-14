@@ -2822,8 +2822,23 @@ ul.terminal-list {
    MINIMAL — white, whitespace-led, Markov-style theme (homepage only)
    Scoped to body.minimal so other pages are untouched.
    ===================================================================== */
+/* Safari reads the ROOT element to decide what to do with its own chrome:
+   its colour scheme, and the canvas colour behind the page. The light site
+   sets color-scheme on .minimal, which is the body and never reaches the
+   root, so the root was still declaring dark on a white page -- and Safari
+   will not tint its tab bar from a page it has been told is dark.
+
+   The canvas is the strip's purple so the strip reads as bleeding off the
+   top of the page rather than starting at it. The body paints white over
+   all of it, so only the overscroll edges ever show. */
 html:has(.minimal) {
-  background: #ffffff;
+  color-scheme: light;
+  background: #9810fa;
+}
+/* the body has to cover the canvas even on a page shorter than the window */
+body.minimal {
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 .minimal {
@@ -6751,8 +6766,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    are reading. The purple is the reference's own, sampled off their bar.
    ========================================================================== */
 .topbar {
-  position: relative;
-  z-index: 61;
   padding: 6px 16px;
   padding-top: calc(6px + env(safe-area-inset-top));
   background: #9810fa;
