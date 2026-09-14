@@ -6496,7 +6496,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal .benefit-grid { margin-top: 24px; }
 .minimal .desk-row { margin: 22px 0 18px; }
 .minimal .role-list li { padding: 14px 0; }
-@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 56px; } }
+@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 122px; } }
 @media (max-width: 720px) {
   .minimal .section { padding: 20px 0; }
   .minimal .section.tight { padding-top: 14px; }
@@ -6553,5 +6553,48 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
     width: 100%;
     max-width: none;          /* .btn is capped at max-content by default */
     justify-content: center;
+  }
+}
+
+
+/* ---- hero: the wordmark small above, the contrast sentence as the headline ---- */
+.minimal .hero-solo-inner .hero-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 26px;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.minimal .hero-solo-inner .hero-brand::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: #2fd189;
+}
+.minimal .hero-solo .hero-solo-inner h1.hero-contrast,
+.minimal .hero-solo-inner h1.hero-contrast,
+.hero-solo-inner h1.hero-contrast.is-typing {
+  white-space: normal;
+  max-width: 1120px;
+  font-size: clamp(30px, 4.4vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+}
+.hero-solo-inner h1.hero-contrast .type-line { display: block; }
+.hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: none; }
+.hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
+.minimal .hero-solo-inner h1.hero-contrast + .hero-claim { max-width: 820px; }
+
+@media (max-width: 720px) {
+  .minimal .hero-solo-inner .hero-brand { font-size: 13px; letter-spacing: 0.2em; margin-bottom: 18px; }
+  .minimal .hero-solo .hero-solo-inner h1.hero-contrast {
+    font-size: clamp(27px, 7.8vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 }
