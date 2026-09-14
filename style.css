@@ -6072,9 +6072,9 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   max-width: 900px;
   margin: 20px auto 0;
   font-family: inherit;
-  font-size: clamp(17px, 1.6vw, 22px);
+  font-size: clamp(16px, 1.36vw, 19px);
   font-weight: 450;
-  line-height: 1.58;
+  line-height: 1.55;
   letter-spacing: -0.015em;
   color: var(--muted);
   text-wrap: balance;
@@ -6258,12 +6258,15 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .hero-solo-inner h1.hero-contrast.is-typing {
   white-space: normal;
   max-width: 1120px;
-  font-size: clamp(30px, 4.4vw, 62px);
-  line-height: 1.08;
-  letter-spacing: -0.028em;
+  /* The reference sets a display headline against small grey body copy. Its
+     headline is 46 characters and ours is 97, so the same three-line shape
+     lands at 68 in this 1120px column — one notch larger and it takes four. */
+  font-size: clamp(30px, 4.72vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.034em;
 }
-.hero-solo-inner h1.hero-contrast .type-line { display: block; }
-.hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: none; }
+.hero-solo-inner h1.hero-contrast .type-line { display: inline; }
+.hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: " "; }
 .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
 .minimal .hero-solo-inner h1.hero-contrast + .lead { max-width: 820px; }
 
@@ -6651,13 +6654,13 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .btn { min-height: 44px; }
 
   /* The headline reads as one sentence on a phone rather than two fixed
-     lines, so it can use the full column and stay inside three lines. */
+     lines, so it can use the full column. It stays display-sized here: the
+     reference keeps its headline large on a phone and lets it run long,
+     rather than shrinking it until it reads like body copy. */
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast {
-    /* Sized so the headline holds three lines at 320, 375 and 430. Its
-       85 characters are what caps it here: 22px tips 375 into four. */
-    font-size: clamp(16px, 5.2vw, 24px);
-    line-height: 1.24;
-    letter-spacing: -0.018em;
+    font-size: clamp(25px, 7.5vw, 33px);
+    line-height: 1.14;
+    letter-spacing: -0.026em;
   }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
@@ -6717,7 +6720,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   border-top: 1px solid var(--rule-line);
   text-wrap: initial;
 }
-.minimal .hero-solo-inner .hero-claim span { max-width: 620px; }
+.minimal .hero-solo-inner .hero-claim span { max-width: 700px; }
 
 .minimal .hero-solo-inner .hero-desk {
   max-width: 660px;
