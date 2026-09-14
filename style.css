@@ -6387,15 +6387,15 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    single-line nowrap rule the two-word hero used. */
 /* The claim, directly under the title: the argument, at sub-headline size. */
 .minimal .hero-solo-inner .hero-claim {
-  max-width: 900px;
-  margin: 20px auto 0;
+  max-width: 1140px;
+  margin: 28px auto 0;
   font-family: inherit;
   font-size: clamp(17px, 1.6vw, 22px);
   font-weight: 450;
-  line-height: 1.58;
+  line-height: 1.5;
   letter-spacing: -0.015em;
   color: var(--muted);
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 /* One sentence per line, so the break lands between them and never inside one. */
 .minimal .hero-solo-inner .hero-claim span { display: block; }
@@ -6496,7 +6496,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal .benefit-grid { margin-top: 24px; }
 .minimal .desk-row { margin: 22px 0 18px; }
 .minimal .role-list li { padding: 14px 0; }
-.minimal .hero-solo-inner { padding-top: 56px; }
+@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 56px; } }
 @media (max-width: 720px) {
   .minimal .section { padding: 20px 0; }
   .minimal .section.tight { padding-top: 14px; }
@@ -6547,3 +6547,13 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .section-head { flex-direction: column; gap: 14px; }
   .section-head > p { flex: 1 1 auto; max-width: none; padding-top: 0; }
 }
+
+
+/* Two complete button labels, one shown at a time. */
+.wide-only { display: inline; }
+.narrow-only { display: none; }
+@media (max-width: 720px) {
+  .wide-only { display: none; }
+  .narrow-only { display: inline; }
+}
+.hero-actions .btn { white-space: nowrap; }
