@@ -469,10 +469,18 @@ h3 {
 
 .section-head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 28px;
+  gap: 48px;
   margin-bottom: 22px;
+}
+
+.section-head > div { flex: 1 1 auto; }
+
+.section-head > p {
+  flex: 0 1 460px;
+  max-width: 460px;
+  padding-top: 8px;
 }
 
 /* A section that is only a heading has nothing to space away from. */
@@ -3326,22 +3334,21 @@ html:has(.minimal) {
     padding-top: calc(84px + env(safe-area-inset-top));
     padding-bottom: 4px;
   }
-  /* bigger, wrapping headline on phones */
+  /* The wordmark is one thing, so it stays on one line at every width. */
   .minimal .hero-solo .hero-solo-inner h1 {
-    white-space: normal;
-    font-size: clamp(46px, 15vw, 84px);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
+    white-space: nowrap;
+    font-size: clamp(27px, 8.6vw, 52px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
   }
-  /* stack the two words, nudge "Terminal" just below and to the right */
   .minimal .hero-solo .hero-solo-inner h1 .type-line {
-    display: block;
+    display: inline;
   }
   .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line {
-    padding-left: 0.5em;
+    padding-left: 0;
   }
   .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line::before {
-    content: none;
+    content: " ";
   }
   .minimal .hero-solo .hero-solo-inner .lead {
     margin-top: 16px;
@@ -6523,4 +6530,20 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @media (max-width: 640px) {
   .ea-form { padding: 22px 20px 20px; }
   .ea-form .field-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ---- 2026-09-15: give the page structure instead of drift ----
+   A hairline where one idea ends and the next begins. It reads as a
+   considered rhythm rather than as sections that happen to follow. */
+.minimal main.page > .section + .section,
+.minimal main.page > .hero-solo-shot + .section {
+  border-top: 1px solid var(--line-soft);
+}
+.minimal main.page > .section + .section { padding-top: 34px; }
+.minimal main.page > .section.tight + .section.tight { padding-top: 30px; }
+
+@media (max-width: 860px) {
+  .section-head { flex-direction: column; gap: 14px; }
+  .section-head > p { flex: 1 1 auto; max-width: none; padding-top: 0; }
 }
