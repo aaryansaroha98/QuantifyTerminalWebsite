@@ -2833,7 +2833,7 @@ ul.terminal-list {
    all of it, so only the overscroll edges ever show. */
 html:has(.minimal) {
   color-scheme: light;
-  background: #7e0eee;
+  background: #9810fa;
 }
 /* the body has to cover the canvas even on a page shorter than the window */
 body.minimal {
@@ -6773,10 +6773,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    falling back to the body's background. A static strip is never sampled,
    which is why declaring the colour three other ways did nothing.
 
-   The purple is a shade deeper and more violet than the reference's own,
-   so the site is not carrying another company's exact brand colour across
-   the top of every page. White on it measures 6.3:1, comfortably past AA.
-   The value lives in three places: the canvas, the strip, and each page's
+   White on this purple measures 5.5:1, so the strip's text clears AA. The
+   value lives in three places: the canvas, the strip, and each page's
    theme-color meta. */
 .topbar { position: relative; }
 .topbar-bar {
@@ -6784,7 +6782,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   top: 0;
   padding: 6px 16px;
   padding-top: calc(6px + env(safe-area-inset-top));
-  background-color: #7e0eee;
+  background-color: #9810fa;
   color: #ffffff;
   text-align: center;
 }
