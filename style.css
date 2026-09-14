@@ -6558,7 +6558,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    width: min(90%, 340px);
+    width: min(78%, 292px);
     margin-left: auto;
     margin-right: auto;
   }
