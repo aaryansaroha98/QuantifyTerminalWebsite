@@ -6752,20 +6752,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   margin-top: 34px;
 }
 
-/* The hero runs two rows of two. The break is a zero-height flex item that
-   takes a whole line, so the rows are where the copy wants them rather than
-   wherever the buttons happen to run out of width. Below 721 the row
-   becomes a column and the break has no line to take, so it goes. */
-.hero-actions-break {
-  flex-basis: 100%;
-  width: 100%;
-  height: 0;
-  margin: 0;
-}
-@media (max-width: 720px) {
-  .hero-actions-break { display: none; }
-}
-
 @media (max-width: 1023.98px) {
   .minimal .hero-solo-inner .hero-claim { margin-top: 26px; padding-top: 20px; }
   .minimal .hero-solo-inner .hero-claim span { max-width: none; }
