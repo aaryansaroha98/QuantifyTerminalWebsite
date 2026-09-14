@@ -6,7 +6,7 @@ For analysts and portfolio managers who maintain their own models. Desktop termi
 
 ## Main pages
 
-- [Home](https://www.quantifyterminal.com/): what it does, how it works in five steps, the thesis object, provenance, the Data Fabric, proof.
+- [Home](https://www.quantifyterminal.com/): what it does, how it works in five steps, the thesis object, provenance, the desk, role templates, agents, the Data Fabric, proof.
 - [What changed today](https://www.quantifyterminal.com/what-changed-today): the daily public brief from primary sources, and the ninety-second walkthrough.
 - [Product](https://www.quantifyterminal.com/features): the eight systems: Pulse, Deep Research, Financial Model Compiler, Thesis Compiler and Health, Portfolio Digital Twin, Decision Ledger and Replay, Scenario Lab and Red Team, agent access.
 - [Vision](https://www.quantifyterminal.com/vision): the system that maintains conviction, not just information; what it is, the order it is built in, what it is not.
