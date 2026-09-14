@@ -6176,7 +6176,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal .benefit-grid { margin-top: 24px; }
 .minimal .desk-row { margin: 24px 0 16px; }
 .minimal .role-list li { padding: 14px 0; }
-@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 120px; } }
+@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 84px; } }
 @media (max-width: 720px) {
   .minimal .section { padding: 20px 0; }
   .minimal .section.tight { padding-top: 14px; }
@@ -6262,10 +6262,10 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   white-space: normal;
   max-width: 1120px;
   /* A display headline against small grey body copy, as the reference sets
-     it. Three lines in this 1120px column from 92px up to 128px, so 116
+     it. Three lines in this 1120px column from 92px up to 128px, so 104
      sits well inside the band rather than on its edge, where a font that
      loads a hair wide would drop it to four. */
-  font-size: clamp(34px, 8.06vw, 116px);
+  font-size: clamp(34px, 8.06vw, 104px);
   line-height: 1.02;
   letter-spacing: -0.034em;
 }
@@ -6720,8 +6720,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal .hero-solo-inner .hero-claim {
   width: 100%;
   max-width: none;
-  margin: 34px 0 0;
-  padding-top: 26px;
+  margin: 24px 0 0;
+  padding-top: 20px;
   border-top: 1px solid var(--rule-line);
   text-wrap: initial;
 }
