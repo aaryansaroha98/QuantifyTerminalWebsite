@@ -404,18 +404,6 @@ h3 {
   opacity: 0.45;
 }
 
-.mac-shot {
-  width: min(1080px, 94vw);
-  margin: 30px auto 0;
-}
-
-.mac-shot img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.55));
-}
-
 /* MacBook hero mockup: shown only on mobile (desktop keeps the iMac mockup) */
 .hero-mac {
   display: none;
@@ -2365,15 +2353,6 @@ ul.terminal-list {
     margin-top: 18px;
   }
 
-  .mac-shot {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .mac-shot img {
-    filter: drop-shadow(0 20px 44px rgba(0, 0, 0, 0.5));
-  }
-
   /* Mobile: swap the iMac mockup for the MacBook mockup */
   .hero-mockup-desktop {
     display: none;
@@ -3000,15 +2979,6 @@ body.minimal {
   margin-top: 18px;
 }
 
-/* clean product mockups — no grey glow box on white */
-.minimal .mac-shot {
-  margin-top: 20px;
-}
-
-.minimal .mac-shot img {
-  filter: none;
-}
-
 /* dark product screenshots sit in a soft light frame */
 .minimal .screen-shot {
   border-color: var(--line);
@@ -3268,37 +3238,6 @@ body.minimal {
   color: var(--text);
 }
 
-/* full-width triple-monitor mockup — cropped to the screen band, blends into white */
-.minimal .hero-solo-shot {
-  width: min(1360px, 96vw);
-  margin: 40px auto 64px;
-  aspect-ratio: 3.6 / 1;
-  overflow: hidden;
-  background: #ffffff url("data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABQBACdASogABgAPuFeqE2opSQiMAwBEBwJaQAAW+thyCnVyqIA4WudIkgAAP70ybn+5UGstqv+h7+kZyOo8ApuIEKgxOkrQBixU+qh/+fzvnzxKlidOS+JX6rJdYpGoCkblH8m4TKzh6d/K6wTYy29o8AAAA==") center / cover no-repeat;
-}
-
-.minimal .hero-solo-shot picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.minimal .hero-solo-shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 56%;
-}
-
-.js .minimal .hero-solo-shot img {
-  opacity: 0;
-  transition: opacity 500ms ease;
-}
-
-.js .minimal .hero-solo-shot img.is-loaded {
-  opacity: 1;
-}
-
 @media (max-width: 720px) {
   .minimal .hero-solo-inner {
     min-height: auto;
@@ -3309,22 +3248,6 @@ body.minimal {
      and it is sized and reflowed in the MOBILE block at the end of this file. */
   .minimal .hero-solo .hero-solo-inner .lead {
     margin-top: 16px;
-  }
-  .minimal .hero-solo-shot {
-    width: 100vw;
-    aspect-ratio: 1600 / 1055;
-    margin-top: 28px;
-    margin-bottom: 32px;
-    background: #ffffff;
-  }
-  .minimal .hero-solo-shot picture,
-  .minimal .hero-solo-shot picture img {
-    width: 100%;
-    height: 100%;
-  }
-  .minimal .hero-solo-shot img {
-    object-fit: contain;
-    object-position: center;
   }
 }/* --- Hero-only homepage: top-bar is just the links, no logo/title/button --- */
 /* Console sign-in: a proper control pinned to the right edge of the bar, not one more
@@ -6348,8 +6271,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 }
 
 /* one quiet rule between bands */
-.minimal main.page > .section + .section,
-.minimal main.page > .hero-solo-shot + .section {
+.minimal main.page > .section + .section {
   border-top: 1px solid var(--rule-line);
 }
 
@@ -6635,7 +6557,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .hero { overflow: visible; }
 
   /* product shots run edge to edge, breaking the gutter rather than sitting in it */
-  .minimal .mac-shot,
   .minimal .media-panel,
   .minimal .shot-full {
     width: 100vw;
@@ -6644,7 +6565,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
     margin-right: calc(50% - 50vw);
     border-radius: 0;
   }
-  .minimal .mac-shot img,
   .minimal .media-panel img { width: 100%; height: auto; display: block; }
 
   /* the workspace library becomes a swipe strip with snap points */

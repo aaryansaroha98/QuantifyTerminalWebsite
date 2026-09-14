@@ -240,20 +240,6 @@
     });
   }
 
-  function setupHeroImage() {
-    var img = document.querySelector(".hero-solo-shot img");
-    if (!img) return;
-    function reveal() {
-      img.classList.add("is-loaded");
-    }
-    if (img.complete && img.naturalWidth) {
-      reveal();
-    } else {
-      img.addEventListener("load", reveal, { once: true });
-      img.addEventListener("error", reveal, { once: true });
-    }
-  }
-
   function setupDocsNav() {
     var sidebar = document.getElementById("docs-sidebar");
     var openBtn = document.querySelector("[data-docs-nav-open]");
@@ -1069,7 +1055,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
     setupHeader();
-    setupHeroImage();
     setupDocsNav();
     setupMenu();
     setupReveal();
