@@ -177,7 +177,7 @@
       lines[li].appendChild(caret);
       if (ci < part.length) {
         ci++;
-        setTimeout(tick, 72);
+        setTimeout(tick, 34);
       } else if (li < parts.length - 1) {
         li++; ci = 0;
         setTimeout(tick, 150);

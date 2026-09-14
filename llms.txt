@@ -1,0 +1,31 @@
+# Quantify Terminal
+
+> Terminals tell you what happened. Quantify tells you what changed because it happened. When a filing, earnings call or macro print lands, your model updates with the source attached to every changed number, the assumptions behind your thesis move, and your portfolio exposure is recomputed and recorded.
+
+For analysts and portfolio managers who maintain their own models. Desktop terminal for macOS, Windows and Linux.
+
+## Main pages
+
+- [Home](https://www.quantifyterminal.com/): what it does, how it works in five steps, the thesis object, provenance, the Data Fabric, proof.
+- [What changed today](https://www.quantifyterminal.com/what-changed-today): the daily public brief from primary sources, and the ninety-second walkthrough.
+- [Product](https://www.quantifyterminal.com/features): the eight systems: Pulse, Deep Research, Financial Model Compiler, Thesis Compiler and Health, Portfolio Digital Twin, Decision Ledger and Replay, Scenario Lab and Red Team, agent access.
+- [Vision](https://www.quantifyterminal.com/vision): the system that maintains conviction, not just information; what it is, the order it is built in, what it is not.
+- [Pricing](https://www.quantifyterminal.com/pricing): free is available now; paid plans open with the next release.
+- [Download](https://www.quantifyterminal.com/download): desktop builds.
+- [Agents](https://www.quantifyterminal.com/agents): Excel and Google Sheets today; API, Python and MCP with the paid tiers.
+
+## Proof and trust
+
+- [Accuracy](https://www.quantifyterminal.com/accuracy): what is measured, on how many companies, how often it is right, when it abstains.
+- [Changelog](https://www.quantifyterminal.com/changelog): every release, dated and plain.
+- [Trust](https://www.quantifyterminal.com/trust): security, data handling, export formats, escrow.
+- [Data rights](https://www.quantifyterminal.com/data-rights): display versus non-display, what the free tier is licensed for, how entitlements are enforced.
+
+## Company
+
+- [About](https://www.quantifyterminal.com/about)
+- [Founder](https://www.quantifyterminal.com/founder): Aaryan Saroha.
+- [Careers](https://www.quantifyterminal.com/careers)
+- [Contact](https://www.quantifyterminal.com/connect)
+- [Blog](https://www.quantifyterminal.com/blog)
+- [Privacy](https://www.quantifyterminal.com/privacy) · [Terms](https://www.quantifyterminal.com/terms)

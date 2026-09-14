@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLHEB50F0J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DLHEB50F0J');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>How we handle data rights | Quantify Terminal</title>
+  <meta name="description" content="Display versus non-display use, what the free tier is licensed for, why some data is delayed, and how entitlements are enforced at retrieval in Quantify Terminal.">
+  <meta name="theme-color" content="#030404">
+  <meta property="og:title" content="How we handle data rights | Quantify Terminal">
+  <meta property="og:description" content="Display versus non-display use, what the free tier is licensed for, why some data is delayed, and how entitlements are enforced at retrieval in Quantify Terminal.">
+  <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.quantifyterminal.com/data-rights">
+  <link rel="icon" type="image/png" href="/Public/favicon.png">
+  <link rel="apple-touch-icon" href="/Public/favicon.png">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta property="og:url" content="https://www.quantifyterminal.com/data-rights">
+  <meta property="og:site_name" content="Quantify Terminal">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How we handle data rights | Quantify Terminal">
+  <meta name="twitter:description" content="Display versus non-display use, what the free tier is licensed for, why some data is delayed, and how entitlements are enforced at retrieval in Quantify Terminal.">
+  <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.quantifyterminal.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Data rights", "item": "https://www.quantifyterminal.com/data-rights" }
+    ]
+  }
+  </script>
+</head>
+<body class="minimal">
+  <a class="nav-logo" href="/" aria-label="Quantify Terminal home"><img src="/Public/brand-logo.webp" alt="Quantify Terminal" width="200" height="200" decoding="async"></a>
+  <button class="nav-burger" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+  <div class="mobile-menu" id="mobile-menu" data-menu aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/features">Product</a>
+        <a href="/vision">Vision</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/download">Download</a>
+        <a href="/about">Company</a>
+        <a class="nav-console-link" href="https://console.quantifyterminal.com/login" target="_blank" rel="noopener">Console</a>
+    </div>
+
+  <header class="site-header page-topbar">
+    <nav class="hero-topnav" aria-label="Primary navigation">
+      <a href="/features">Product</a>
+      <a href="/vision">Vision</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/download">Download</a>
+      <a href="/about">Company</a>
+      <a class="nav-console-link" href="https://console.quantifyterminal.com/login" target="_blank" rel="noopener">Console</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <section class="hero compact container">
+      <div class="eyebrow reveal">Trust</div>
+      <h1 class="reveal">How we handle data rights.</h1>
+      <p class="lead reveal">The institutional buyer's second question, answered in public: what you may see, what you may feed into a model, and how the system stops you from doing anything else.</p>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <article class="prose doc reveal">
+          <h2>Every source carries a licence profile</h2>
+          <p>Every market observation, corporate fact, filing claim, event and private document in Quantify Terminal is stored with the source it came from and a machine-readable licence profile for that source. The profile records what is permitted: display, non-display, derived use, caching, redistribution and AI retrieval. Those permissions are enforced at the gateway, at retrieval time, for every caller. The desk never depends on which vendor supplied a field, and no caller can read past what the licence allows.</p>
+
+          <h2>Display versus non-display</h2>
+          <p><strong>Display use</strong> is a person looking at data on a screen: a quote panel, a chart, a filing viewer. <strong>Non-display use</strong> is data consumed by a process rather than a person: fed into a model, a screen, a backtest, a risk calculation or an agent. Exchanges and data providers license the two differently, and many licence display use but restrict non-display use to separately entitled users. Quantify Terminal records which of the two each source permits and applies it. A field licensed for display only can be shown, but it will not be fed into a model, a screen or an agent.</p>
+
+          <h2>What the free tier is licensed for</h2>
+          <p>The free desktop terminal ships with delayed market data, core research, charting and portfolio tools. Delayed data is licensed for display and for the research and portfolio work that runs on the desk. Real-time and low-latency feeds carry per-user entitlement and reporting obligations, and they are part of the paid plans that open with the next release.</p>
+
+          <h2>Why some data is delayed</h2>
+          <p>Real-time redistribution of exchange data requires per-user entitlement, reporting back to the exchange, and in most cases a fee per user per month. Delayed data does not. Keeping the free tier on delayed data keeps it licence-clean for everyone who installs it, without a registration step that the data does not justify. When you move to a paid plan, the entitlement is recorded against your account and the real-time feed is switched on for you, not for the software in general.</p>
+
+          <h2>How entitlements are enforced</h2>
+          <p>Enforcement is not a setting in the client. It happens at the gateway, once, for every request, whether the request comes from the desktop, a spreadsheet, a notebook or an autonomous agent.</p>
+          <ul>
+            <li>Each request is checked against the licence profile of every source it would touch.</li>
+            <li>Derived, cached and AI-retrieved data inherits the rights of the source it was derived from. A model cell built from a display-only field cannot be exported to a process the source would not permit.</li>
+            <li>When a feed fails, Data Guardian fails over only to an alternate provider you are entitled to. It never borrows from one you are not.</li>
+            <li>For private documents, embedding access is document access. Vector indexes carry the same permissions as the documents they index, so nothing surfaces through an AI answer that a user could not open directly.</li>
+            <li>Every read and write records an audit event with the permissions in force at the time.</li>
+          </ul>
+
+          <h2>What the system will not do</h2>
+          <ul>
+            <li>Show you data you are not licensed to see.</li>
+            <li>Feed display-only data into a model, screen, backtest or agent.</li>
+            <li>Retrieve a source for an AI answer where the licence forbids AI retrieval.</li>
+            <li>Cache or redistribute beyond what the licence permits.</li>
+          </ul>
+
+          <h2>Licensing conversations</h2>
+          <p>If you are evaluating for a firm, bringing your own data licences, or need a specific feed entitled, write to <a href="mailto:sales@mail.quantifyterminal.com">sales@mail.quantifyterminal.com</a>. For how the rest of the system handles security, data and exports, see <a href="/trust">Trust</a>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-brand">
+        <span>QUANTIFY TERMINAL</span>
+      </div>
+      <div class="footer-copy">&copy; 2026 Quantify Terminal &middot; Jammu, India. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/careers">Careers</a>
+        <a href="/connect">Contact</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="footer-social" aria-label="Social links">
+        <a href="https://x.com/QuantifTerm" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a>
+        <a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://www.youtube.com/@QuantifyTerminal" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>

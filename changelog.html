@@ -11,22 +11,22 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Privacy Policy | Quantify Terminal</title>
-  <meta name="description" content="Privacy Policy for Quantify Terminal — how we handle information, data, and communication across the platform and website.">
+  <title>Changelog | Quantify Terminal</title>
+  <meta name="description" content="Every Quantify Terminal release, dated and plain.">
   <meta name="theme-color" content="#030404">
-  <meta property="og:title" content="Privacy Policy | Quantify Terminal">
-  <meta property="og:description" content="How Quantify Terminal handles information and data.">
+  <meta property="og:title" content="Changelog | Quantify Terminal">
+  <meta property="og:description" content="Every Quantify Terminal release, dated and plain.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://www.quantifyterminal.com/privacy">
+  <link rel="canonical" href="https://www.quantifyterminal.com/changelog">
   <link rel="icon" type="image/png" href="/Public/favicon.png">
   <link rel="apple-touch-icon" href="/Public/favicon.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta property="og:url" content="https://www.quantifyterminal.com/privacy">
+  <meta property="og:url" content="https://www.quantifyterminal.com/changelog">
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Privacy Policy | Quantify Terminal">
-  <meta name="twitter:description" content="How Quantify Terminal handles information and data.">
+  <meta name="twitter:title" content="Changelog | Quantify Terminal">
+  <meta name="twitter:description" content="Every Quantify Terminal release, dated and plain.">
   <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.quantifyterminal.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Privacy", "item": "https://www.quantifyterminal.com/privacy" }
+      { "@type": "ListItem", "position": 2, "name": "Changelog", "item": "https://www.quantifyterminal.com/changelog" }
     ]
   }
   </script>
@@ -69,46 +69,50 @@
   </header>
 
   <main class="page">
+
     <section class="hero compact container">
-      <div class="eyebrow reveal">Legal</div>
-      <h1 class="reveal">Privacy Policy</h1>
-      <p class="lead reveal">How Quantify Terminal handles information, data, and communication across the website and platform.</p>
+      <div class="eyebrow reveal">Releases</div>
+      <h1 class="reveal">Changelog.</h1>
+      <p class="lead reveal">Dated, plain, every release. Every release manifest is signed and every installer is checked against its checksum before it installs.</p>
     </section>
 
     <section class="section tight">
       <div class="container">
-        <article class="prose legal reveal">
-          <p class="updated">Last updated: June 9, 2026</p>
+        <article class="prose doc reveal">
+          <p class="updated">Last updated: 14 September 2026</p>
 
-          <p class="strong">Quantify Terminal respects your privacy and is committed to protecting any information you share with us.</p>
+          <h2>In progress &middot; the next release</h2>
+          <p><em>Desktop downloads are paused while this release is prepared. Work landed so far, most recent first:</em></p>
+          <ul>
+            <li>Chart header rebuilt as a live quote line; the red command strip is retired.</li>
+            <li>Comparisons moved into a Compare popup, with the trace drawn on the price line.</li>
+            <li>Plot legend rebuilt as a table; the bar readout appears on hover and packs its columns.</li>
+            <li>Reset View added to the chart's drawing rail.</li>
+            <li>A chart that no tab owns can run its own comparisons, and the manager stays in view.</li>
+            <li>Dashboard loads its economic calendar at startup rather than with the first full snapshot.</li>
+            <li>Headlines are fetched on their own thread, so the first ones do not wait for the first market sweep.</li>
+            <li>A refused index price is kept out of the Dashboard's rows.</li>
+            <li>Pulse and Deep Research tables wrap prose columns instead of eliding them.</li>
+            <li>The shipped Default watchlist grows to nineteen names; untouched copies are upgraded.</li>
+            <li>A Keychain failure can no longer carry a secret out of the store.</li>
+          </ul>
 
-          <h2>1. Information we collect</h2>
-          <p>Quantify Terminal is designed as a focused desktop market workstation. When you visit this website or contact us, we may collect limited information such as your email address (when you choose to contact us), and standard, anonymous technical data such as browser type, device type, and general usage patterns used to keep the site reliable.</p>
+          <h2>1.0.1 &middot; 3 July 2026</h2>
+          <ul>
+            <li>Linux: the .deb and .AppImage builds launch correctly. Qt xcb runtime dependencies are bundled.</li>
+          </ul>
 
-          <h2>2. How we use information</h2>
-          <p>Any information you provide is used only to respond to your inquiries, deliver requested downloads or release access, provide support, and improve the platform. We do not sell, rent, or trade your personal information to third parties.</p>
+          <h2>1.0.0 &middot; 3 July 2026</h2>
+          <ul>
+            <li>First public release.</li>
+            <li>macOS: universal DMG for Apple Silicon and Intel.</li>
+            <li>Windows: installer.</li>
+            <li>Linux: AppImage and .deb.</li>
+          </ul>
 
-          <h2>3. Communication</h2>
-          <p>When you email us or reach out through our official channels, we use your contact details solely to reply and assist you. We may keep a record of correspondence for support and quality purposes.</p>
-
-          <h2>4. Cookies and analytics</h2>
-          <p>This website may use minimal cookies or privacy-respecting analytics to understand aggregate traffic and improve the experience. These do not personally identify you and can be controlled through your browser settings.</p>
-
-          <h2>5. Data security</h2>
-          <p>We take reasonable technical and organizational measures to protect information against unauthorized access, alteration, or disclosure. No method of transmission over the internet is fully secure, but we work to safeguard your data with care.</p>
-
-          <h2>6. Third-party links</h2>
-          <p>Our website and channels may link to external services such as social platforms. We are not responsible for the privacy practices of those third parties, and we encourage you to review their policies.</p>
-
-          <h2>7. Your rights</h2>
-          <p>You may request access to, correction of, or deletion of any personal information you have shared with us by contacting our official email below.</p>
-
-          <h2>8. Changes to this policy</h2>
-          <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
-
-          <h2>9. Contact</h2>
-          <p>For any privacy questions or requests, contact us at <a href="mailto:sales@mail.quantifyterminal.com">sales@mail.quantifyterminal.com</a>.</p>
-          <p><strong>Registered Address:</strong> NH-44 Near IIT Jammu, 181221, Jammu, Jammu &amp; Kashmir</p>
+          <h2>How updates are verified</h2>
+          <p>Each release manifest is signed with an Ed25519 key held in a key vault and used only by the deployment function. Every installed desktop embeds the matching public key and verifies the signature on every update check. A missing or wrong signature means the update is rejected: not offered, not downloaded. On download, the installer is additionally checked against its SHA-256 checksum.</p>
+          <p>See also <a href="/download">Download</a> and <a href="/trust">Trust</a>.</p>
         </article>
       </div>
     </section>
