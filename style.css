@@ -6675,3 +6675,62 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
     padding-bottom: 30px;
   }
 }
+
+/* ---- the page opens and closes the header with a rule, as the reference does ---- */
+.hdr::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-image: var(--dash-h);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   HERO, LEFT ALIGNED
+   Flush left, the headline given the full column, a rule closing it, and the
+   subtitle held to a reading measure beneath. Centred type reads as a landing
+   page; left-aligned type reads as a document, which is the register here.
+   ========================================================================== */
+.minimal .hero-solo-inner {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.minimal .hero-solo .hero-solo-inner h1.hero-contrast,
+.minimal .hero-solo-inner h1.hero-contrast {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.minimal .hero-solo-inner .hero-claim {
+  width: 100%;
+  max-width: none;
+  margin: 34px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--rule-line);
+  text-wrap: initial;
+}
+.minimal .hero-solo-inner .hero-claim span { max-width: 620px; }
+
+.minimal .hero-solo-inner .hero-desk {
+  max-width: 660px;
+  margin: 14px 0 0;
+}
+
+.minimal .hero-solo-inner .hero-actions {
+  justify-content: flex-start;
+  margin-top: 34px;
+}
+
+@media (max-width: 1023.98px) {
+  .minimal .hero-solo-inner .hero-claim { margin-top: 26px; padding-top: 20px; }
+  .minimal .hero-solo-inner .hero-claim span { max-width: none; }
+  .minimal .hero-solo-inner .hero-actions { width: 100%; }
+}
