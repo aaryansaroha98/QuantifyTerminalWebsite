@@ -3334,21 +3334,21 @@ html:has(.minimal) {
     padding-top: calc(84px + env(safe-area-inset-top));
     padding-bottom: 4px;
   }
-  /* The wordmark is one thing, so it stays on one line at every width. */
+  /* Two rows on a phone, and big enough to be the first thing you see. */
   .minimal .hero-solo .hero-solo-inner h1 {
-    white-space: nowrap;
-    font-size: clamp(27px, 8.6vw, 52px);
-    line-height: 1.04;
+    white-space: normal;
+    font-size: clamp(50px, 16.5vw, 92px);
+    line-height: 0.96;
     letter-spacing: -0.035em;
   }
   .minimal .hero-solo .hero-solo-inner h1 .type-line {
-    display: inline;
+    display: block;
   }
   .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line {
-    padding-left: 0;
+    padding-left: 0.5em;
   }
   .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line::before {
-    content: " ";
+    content: none;
   }
   .minimal .hero-solo .hero-solo-inner .lead {
     margin-top: 16px;
@@ -6549,11 +6549,22 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 }
 
 
-/* Two complete button labels, one shown at a time. */
-.wide-only { display: inline; }
-.narrow-only { display: none; }
-@media (max-width: 720px) {
-  .wide-only { display: none; }
-  .narrow-only { display: inline; }
-}
 .hero-actions .btn { white-space: nowrap; }
+
+/* On a phone the two hero buttons stack and share one width, so neither
+   looks like the afterthought of the other. */
+@media (max-width: 720px) {
+  .minimal .hero-solo-inner .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: min(100%, 420px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .minimal .hero-solo-inner .hero-actions .btn {
+    width: 100%;
+    max-width: none;          /* .btn is capped at max-content by default */
+    justify-content: center;
+  }
+}
