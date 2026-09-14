@@ -6380,9 +6380,9 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   min-height: 44px;
   margin-right: auto;
   font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  font-size: 23px;
+  font-size: 29px;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.034em;
   color: var(--text);
   white-space: nowrap;
 }
@@ -6454,12 +6454,12 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .hdr-cta-long { display: none; }
   .hdr-cta-short { display: inline; }
   .hdr-cta { padding: 0 12px; }
-  .hdr-mark { font-size: 21px; }
+  .hdr-mark { font-size: 25px; }
 }
 
 @media (min-width: 1024px) {
   .hdr-in { height: 80px; padding: 0 40px; }
-  .hdr-mark { font-size: 27px; }
+  .hdr-mark { font-size: 35px; }
   .hdr-nav {
     display: flex;
     align-items: center;
