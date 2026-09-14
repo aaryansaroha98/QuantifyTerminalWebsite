@@ -166,10 +166,17 @@
     var header = document.querySelector("[data-hdr]");
     if (!header) return;
     var ticking = false;
+    /* The header is "stuck" once whatever sits above it has scrolled past --
+       the top strip when there is one, otherwise a short nominal distance. */
+    var strip = document.querySelector(".topbar");
+    function trigger() {
+      return strip ? Math.max(strip.offsetHeight - 1, 1) : 40;
+    }
     function update() {
-      header.classList.toggle("is-stuck", window.scrollY > 40);
+      header.classList.toggle("is-stuck", window.scrollY > trigger());
       ticking = false;
     }
+    window.addEventListener("resize", update, { passive: true });
     window.addEventListener("scroll", function () {
       if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
@@ -947,21 +954,40 @@
      to the visitor's mail client, with a copy-as-text route for anyone
      whose browser has no mail handler.
      ------------------------------------------------------------------ */
+  /* The early access request. Every field is read off the form itself, so the
+     email that gets composed follows the markup: add a field to the page and
+     it appears in the message, in the order it is asked. */
   function setupEarlyAccessForm() {
     var form = document.querySelector("[data-early-form]");
     if (!form) return;
 
     var MAILBOX = "sales@mail.quantifyterminal.com";
-    var NAMES = ["email", "role", "where", "use"];
     var feedback = form.querySelector("[data-ea-feedback]");
     var feedbackText = form.querySelector("[data-ea-feedback-text]");
 
+    function controls() {
+      return Array.prototype.slice
+        .call(form.querySelectorAll("input[name], select[name], textarea[name]"))
+        .filter(function (control) { return control.type !== "hidden"; });
+    }
+
+    function labelFor(control) {
+      if (control.getAttribute("data-label")) return control.getAttribute("data-label");
+      var wrap = control.closest(".field");
+      var label = wrap && wrap.querySelector("label");
+      if (!label) return control.name;
+      // strip the "*" and the "Optional" chip out of the visible label
+      return label.textContent.replace(/[*]|Optional/g, "").replace(/\s+/g, " ").trim();
+    }
+
     function setError(control, message) {
-      var field = control.closest(".field");
-      if (!field) return;
-      var slot = field.querySelector("[data-error]");
-      field.classList.toggle("has-error", !!message);
+      var wrap = control.closest(".field");
+      if (!wrap) return;
+      var slot = wrap.querySelector("[data-error]");
+      wrap.classList.toggle("has-error", !!message);
       if (slot) slot.textContent = message || "";
+      if (message) control.setAttribute("aria-invalid", "true");
+      else control.removeAttribute("aria-invalid");
     }
 
     function say(message, isError) {
@@ -971,23 +997,19 @@
       feedback.classList.toggle("is-error", !!isError);
     }
 
-    NAMES.forEach(function (name) {
-      var control = form.elements[name];
-      if (!control) return;
-      control.addEventListener("input", function () { setError(control, ""); });
-      control.addEventListener("change", function () { setError(control, ""); });
+    controls().forEach(function (control) {
+      var event = control.tagName === "SELECT" ? "change" : "input";
+      control.addEventListener(event, function () { setError(control, ""); });
     });
 
     function validate() {
       var first = null;
-      NAMES.forEach(function (name) {
-        var control = form.elements[name];
-        if (!control) return;
-        var value = (control.value || "").trim();
+      controls().forEach(function (control) {
+        var value = String(control.value || "").trim();
         var message = "";
-        if (!value) message = "Required.";
-        else if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
-          message = "That does not look like an email address.";
+        if (control.hasAttribute("required") && !value) message = "This one is required.";
+        else if (value && control.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+          message = "That email does not look right. Check it once.";
         }
         setError(control, message);
         if (message && !first) first = control;
@@ -997,12 +1019,30 @@
     }
 
     function compose() {
-      return [
-        "Email:        " + form.elements.email.value.trim(),
-        "Role:         " + form.elements.role.value,
-        "Where I work: " + form.elements.where.value,
-        "Use:          " + form.elements.use.value.trim()
-      ].join("\n");
+      var lines = ["QUANTIFY TERMINAL - EARLY ACCESS REQUEST", ""];
+      controls().forEach(function (control) {
+        var value = String(control.value || "").trim();
+        if (!value) return;
+        // a label that already ends in "?" does not want a colon after it
+        var label = labelFor(control);
+        var colon = /[?:]$/.test(label) ? "" : ":";
+        if (control.tagName === "TEXTAREA" || value.length > 60) {
+          lines.push(label + colon);
+          lines.push(value);
+          lines.push("");
+        } else {
+          lines.push(label + colon + " " + value);
+        }
+      });
+      lines.push("");
+      lines.push("Sent from quantifyterminal.com/early-access");
+      return lines.join("\n");
+    }
+
+    function subject() {
+      var name = form.elements.name;
+      var who = name ? String(name.value || "").trim() : "";
+      return "Early access \u2014 Quantify Terminal" + (who ? " \u2014 " + who : "");
     }
 
     function copyText(text, onDone) {
@@ -1025,26 +1065,26 @@
       try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
       document.body.removeChild(area);
       if (ok) onDone();
-      else say("Copying is blocked here. Email the four lines to " + MAILBOX + ".", true);
+      else say("Copying is blocked here. Write to " + MAILBOX + " instead.", true);
     }
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       if (!validate()) {
-        say("Four fields, and one of them still needs you.", true);
+        say("One of the fields still needs you.", true);
         return;
       }
       window.location.href = "mailto:" + MAILBOX +
-        "?subject=" + encodeURIComponent("Early access \u2014 Quantify Terminal") +
+        "?subject=" + encodeURIComponent(subject()) +
         "&body=" + encodeURIComponent(compose());
-      say("Your mail client is opening with the request written out. If nothing happens, " +
-          "use Copy as text and send it to " + MAILBOX + ".");
+      say("Your mail client is opening with the request written out. Send it and we will " +
+          "come back to you. If nothing opened, use Copy as text and send it to " + MAILBOX + ".");
     });
 
     var copyBtn = form.querySelector("[data-ea-copy]");
     if (copyBtn) {
       copyBtn.addEventListener("click", function () {
-        if (!validate()) { say("Fill the four fields first, then copy.", true); return; }
+        if (!validate()) { say("Fill the form first, then copy.", true); return; }
         copyText(compose(), function () { say("Copied. Send it to " + MAILBOX + "."); });
       });
     }
