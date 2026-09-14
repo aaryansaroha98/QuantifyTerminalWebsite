@@ -6675,6 +6675,14 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .hero-solo-inner .hero-actions { width: max-content; max-width: 100%; }
 }
 
+/* Everything below 1024 carried a 30px floor under the buttons; above it the
+   hero had none, so the closing rule was drawn along the bottom edge of the
+   primary button rather than under the row. Same 30px, so the gap under the
+   buttons is one measurement at every width. */
+@media (min-width: 1024px) {
+  .minimal .hero-solo-inner { padding-bottom: 30px; }
+}
+
 /* ============================================================================
    TOP BAR
    One full-bleed coloured strip above the header, set the way the reference
