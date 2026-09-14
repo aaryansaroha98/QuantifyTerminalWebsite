@@ -100,29 +100,36 @@
   </script>
 </head>
 <body class="minimal blog-page">
-  <a class="nav-logo" href="/" aria-label="Quantify Terminal home"><img src="/Public/brand-logo.webp" alt="Quantify Terminal" width="200" height="200" decoding="async"></a>
-  <button class="nav-burger" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
-  <div class="mobile-menu" id="mobile-menu" data-menu aria-label="Mobile navigation">
-        <a href="/">Home</a>
+  <header class="hdr" data-hdr>
+    <div class="hdr-in">
+      <a class="hdr-mark" href="/">Quantify Terminal</a>
+      <nav class="hdr-nav" aria-label="Primary">
         <a href="/features">Product</a>
         <a href="/vision">Vision</a>
         <a href="/pricing">Pricing</a>
-        <a href="/download">Download</a>
         <a href="/about">Company</a>
-        <a class="nav-cta" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bgtmQ5K_1eIkHAGPxAsiL6CfQIcGP59pbL7S6eczc90J622K7vXzTKD653jwS1h9AZWvi9rFu" target="_blank" rel="noopener">Book a call</a>
+      </nav>
+      <div class="hdr-end">
+        <a class="hdr-console" href="https://console.quantifyterminal.com/login" target="_blank" rel="noopener">Console</a>
+        <a class="hdr-cta" data-cta href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bgtmQ5K_1eIkHAGPxAsiL6CfQIcGP59pbL7S6eczc90J622K7vXzTKD653jwS1h9AZWvi9rFu" target="_blank" rel="noopener"><span class="hdr-cta-long">Book a call</span><span class="hdr-cta-short">Book</span></a>
+        <button class="hdr-burger" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span></button>
+      </div>
     </div>
-
-  <header class="site-header page-topbar">
-    <nav class="hero-topnav" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/features">Product</a>
-      <a href="/vision">Vision</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/download">Download</a>
-      <a href="/about">Company</a>
-      <a class="nav-cta" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bgtmQ5K_1eIkHAGPxAsiL6CfQIcGP59pbL7S6eczc90J622K7vXzTKD653jwS1h9AZWvi9rFu" target="_blank" rel="noopener">Book a call</a>
-    </nav>
   </header>
+
+  <div class="menu" id="site-menu" data-menu hidden>
+    <div class="menu-in">
+      <nav class="menu-nav" aria-label="Menu">
+        <a href="/features">Product</a>
+        <a href="/vision">Vision</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/about">Company</a>
+      </nav>
+      <div class="menu-rule"></div>
+      <a class="menu-console" href="https://console.quantifyterminal.com/login" target="_blank" rel="noopener">Console</a>
+      <a class="menu-cta" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bgtmQ5K_1eIkHAGPxAsiL6CfQIcGP59pbL7S6eczc90J622K7vXzTKD653jwS1h9AZWvi9rFu" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
 
   <main class="page">
     <section class="hero compact container">

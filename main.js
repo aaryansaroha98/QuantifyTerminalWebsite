@@ -12,33 +12,7 @@
     });
   }
 
-  function setupMenu() {
-    var toggle = document.querySelector("[data-menu-toggle]");
-    var menu = document.querySelector("[data-menu]");
-    if (!toggle || !menu) return;
-
-    function closeMenu() {
-      toggle.classList.remove("is-open");
-      menu.classList.remove("is-open");
-      document.body.classList.remove("menu-open");
-      toggle.setAttribute("aria-expanded", "false");
-    }
-
-    toggle.addEventListener("click", function () {
-      var isOpen = menu.classList.toggle("is-open");
-      toggle.classList.toggle("is-open", isOpen);
-      document.body.classList.toggle("menu-open", isOpen);
-      toggle.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    menu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", closeMenu);
-    });
-
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 1040) closeMenu();
-    });
-  }
+  
 
   function setupReveal() {
     var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
@@ -188,6 +162,101 @@
     setTimeout(tick, 260);
   }
 
+  function setupHeader() {
+    var header = document.querySelector("[data-hdr]");
+    if (!header) return;
+    var ticking = false;
+    function update() {
+      header.classList.toggle("is-stuck", window.scrollY > 40);
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  }
+
+  /* ------------------------------------------------------------------
+     The menu is a screen of its own. Opening it pins the body at the
+     current offset rather than just hiding overflow, because iOS ignores
+     overflow: hidden on body; closing restores the exact offset. A history
+     entry is pushed so the hardware back button closes the menu instead of
+     leaving the page.
+     ------------------------------------------------------------------ */
+  function setupMenu() {
+    var toggle = document.querySelector("[data-menu-toggle]");
+    var menu = document.querySelector("[data-menu]");
+    if (!toggle || !menu) return;
+
+    var open = false;
+    var savedY = 0;
+
+    function lock() {
+      savedY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = -savedY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    }
+
+    function unlock() {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      // The page sets scroll-behavior: smooth, which would animate this and
+      // land short. Restore instantly, then confirm on the next frame once the
+      // document has its full height back.
+      var jump = function () {
+        try { window.scrollTo({ top: savedY, left: 0, behavior: "instant" }); }
+        catch (err) { window.scrollTo(0, savedY); }
+      };
+      jump();
+      window.requestAnimationFrame(jump);
+    }
+
+    function setOpen(next, fromHistory) {
+      if (next === open) return;
+      open = next;
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      if (open) {
+        menu.hidden = false;
+        lock();
+        if (!fromHistory && window.history && window.history.pushState) {
+          window.history.pushState({ menu: true }, "");
+        }
+      } else {
+        menu.hidden = true;
+        unlock();
+        if (!fromHistory && window.history && window.history.state &&
+            window.history.state.menu) {
+          window.history.back();
+        }
+      }
+    }
+
+    toggle.addEventListener("click", function () { setOpen(!open); });
+
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && open) setOpen(false);
+    });
+
+    window.addEventListener("popstate", function () {
+      if (open) setOpen(false, true);
+    });
+
+    window.addEventListener("resize", function () {
+      if (open && window.innerWidth >= 1024) setOpen(false);
+    });
+  }
+
   function setupHeroImage() {
     var img = document.querySelector(".hero-solo-shot img");
     if (!img) return;
@@ -233,35 +302,7 @@
     });
   }
 
-  function setupHeader() {
-    var header = document.querySelector(".site-header");
-    if (!header) return;
-
-    var lastY = window.scrollY;
-    var ticking = false;
-
-    function update() {
-      var y = window.scrollY;
-      if (y > lastY && y > 220 && !document.body.classList.contains("menu-open")) {
-        header.classList.add("hide");
-      } else {
-        header.classList.remove("hide");
-      }
-      lastY = y;
-      ticking = false;
-    }
-
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (!ticking) {
-          window.requestAnimationFrame(update);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-  }
+  
 
   function setupDownloadButtons() {
     var buttons = document.querySelectorAll(".download-btn");

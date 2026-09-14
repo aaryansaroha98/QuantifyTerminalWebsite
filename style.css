@@ -44,10 +44,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body.menu-open {
-  overflow: hidden;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -67,29 +63,6 @@ textarea {
 
 button {
   color: inherit;
-}
-
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  border-bottom: 1px solid var(--line-soft);
-  background: rgba(3, 4, 4, 0.72);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  transition: transform 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.site-header.hide {
-  transform: translateY(-100%);
-}
-
-body.menu-open .site-header {
-  background: rgba(3, 4, 4, 0.94);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
 }
 
 .nav-shell {
@@ -2869,19 +2842,12 @@ html:has(.minimal) {
   --accent-soft: #000000;
   background: #ffffff;
   color: var(--text);
-}
-
-/* faint Markov-style guide grid down the page */
+}/* faint Markov-style guide grid down the page */
 /* The viewport-edge hairlines are gone: the grid layer's rails mark the
    content column instead, which is the edge that actually means something. */
 
 /* --- Header: white, hairline underline --- */
-.minimal .site-header {
-  border-bottom: 1px solid var(--line-soft);
-  background: rgba(255, 255, 255, 0.82);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-}
+
 
 .minimal .brand strong {
   color: var(--text);
@@ -3209,10 +3175,6 @@ html:has(.minimal) {
   padding-bottom: 14px;
 }
 
-.minimal .page-topbar + main .hero.compact {
-  padding-top: 14px;
-}
-
 /* --- Footer --- */
 .minimal .site-footer {
   border-top: 1px solid var(--line-soft);
@@ -3328,22 +3290,8 @@ html:has(.minimal) {
     padding-top: calc(84px + env(safe-area-inset-top));
     padding-bottom: 4px;
   }
-  /* Two rows on a phone, and big enough to be the first thing you see. */
-  .minimal .hero-solo .hero-solo-inner h1 {
-    white-space: normal;
-    font-size: clamp(50px, 16.5vw, 92px);
-    line-height: 0.96;
-    letter-spacing: -0.035em;
-  }
-  .minimal .hero-solo .hero-solo-inner h1 .type-line {
-    display: block;
-  }
-  .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line {
-    padding-left: 0.5em;
-  }
-  .minimal .hero-solo .hero-solo-inner h1 .type-line + .type-line::before {
-    content: none;
-  }
+  /* The wordmark-era hero rules are gone: the h1 is the contrast sentence now,
+     and it is sized and reflowed in the MOBILE block at the end of this file. */
   .minimal .hero-solo .hero-solo-inner .lead {
     margin-top: 16px;
   }
@@ -3363,73 +3311,13 @@ html:has(.minimal) {
     object-fit: contain;
     object-position: center;
   }
-}
-
-/* --- Hero-only homepage: top-bar is just the links, no logo/title/button --- */
-.minimal .hero-topbar {
-  position: absolute;
-  border-bottom: 0;
-  background: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
-.minimal .hero-topnav {
-  position: relative;
-  width: min(var(--max), calc(100% - 40px));
-  min-height: 78px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 6px 10px;
-}
-
-.minimal .hero-topnav a {
-  padding: 8px 14px;
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  transition: color 160ms ease;
-}
-
-.minimal .hero-topnav a:hover {
-  color: var(--muted);
-}
-
+}/* --- Hero-only homepage: top-bar is just the links, no logo/title/button --- */
 /* Console sign-in: a proper control pinned to the right edge of the bar, not one more
    link in the centred group. */
-.minimal .hero-topnav a.nav-cta {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0;
-  padding: 10px 20px;
-  border: 1px solid var(--text);
-  color: var(--bg);
-  background: var(--text);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  transition: color 160ms ease, background 160ms ease;
-}
 
-.minimal .hero-topnav a.nav-cta:hover {
-  color: var(--text);
-  background: transparent;
-}
 
-@media (max-width: 980px) {
-  /* Narrow bars: keep it in flow at the end of the group so nothing overlaps. */
-  .minimal .hero-topnav a.nav-cta {
-    position: static;
-    transform: none;
-    margin-left: 8px;
-  }
+@media (max-width: 980px) {/* Narrow bars: keep it in flow at the end of the group so nothing overlaps. */
+
 }
 
 /* bigger headline, always on a single line */
@@ -3488,35 +3376,9 @@ html:has(.minimal) {
 
 .minimal .hero-solo .hero-actions {
   margin-top: 22px;
-}
-
-@media (max-width: 720px) {
-  .minimal .hero-topnav {
-    min-height: 60px;
-    gap: 2px 4px;
-  }
-  .minimal .hero-topnav a {
-    padding: 6px 8px;
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-  }
-}
-
-/* --- Content pages: same links top-bar, sticky white (in-flow so nothing is hidden) --- */
-.minimal .page-topbar {
-  position: sticky;
-  top: 0;
-  border-bottom: 0;
-  background: rgba(255, 255, 255, 0.85);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-}
-
+}/* --- Content pages: same links top-bar, sticky white (in-flow so nothing is hidden) --- */
 /* content pages carry generous but not excessive top whitespace under the bar */
-.minimal .page-topbar + main .hero,
-.minimal .page-topbar + main > .section:first-of-type {
-  padding-top: 40px;
-}
+
 
 /* --- Minimal theme: phone sizing so headlines never overflow --- */
 @media (max-width: 720px) {
@@ -3536,9 +3398,7 @@ html:has(.minimal) {
     padding-top: 40px;
     padding-bottom: 12px;
   }
-  .minimal .page-topbar + main .hero.compact {
-    padding-top: 8px;
-  }
+
   .minimal .section {
     padding: 40px 0;
   }
@@ -4175,159 +4035,22 @@ html:has(.minimal) {
   .docs-gallery {
     grid-template-columns: 1fr;
   }
-}
-
-/* =====================================================================
+}/* =====================================================================
    MOBILE NAV — hamburger button + full-screen menu (all pages)
    ===================================================================== */
-.nav-burger { display: none; }
-.mobile-menu { display: none; }
-.nav-logo { display: none; }
+
 
 @media (max-width: 760px) {
   /* no background bar — logo + hamburger float directly over the page */
-  body.minimal::before { content: none; }
-
-  /* hide the inline top links, show the hamburger */
-  .minimal .site-header .hero-topnav { display: none; }
-  .minimal .site-header.page-topbar { min-height: 0; padding: 0; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
-
-  /* Never let the header become a containing block (backdrop-filter / transform)
+  body.minimal::before { content: none; }/* hide the inline top links, show the hamburger */
+/* Never let the header become a containing block (backdrop-filter / transform)
      or the fixed mobile menu would shrink to the header instead of the viewport. */
-  .minimal .site-header,
-  .minimal .site-header.hide,
-  body.menu-open .site-header {
-    transform: none !important;
-    background: transparent !important;
-    border: 0 !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
+/* fixed logo (far left) + burger (far right) — pinned in the top bar, centered under the notch */
+/* keep content clear of the fixed top bar on content pages */
 
-  /* fixed logo (far left) + burger (far right) — pinned in the top bar, centered under the notch */
-  .nav-logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: calc(env(safe-area-inset-top) + 5px);
-    left: 12px;
-    z-index: 70;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: transparent;
-  }
-
-  .nav-logo img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-  }
-
-  .nav-burger {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: calc(env(safe-area-inset-top) + 8px);
-    right: 14px;
-    z-index: 70;
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(11, 14, 23, 0.08);
-    cursor: pointer;
-  }
-
-  /* keep content clear of the fixed top bar on content pages */
-  .minimal .page-topbar + main.page {
-    padding-top: calc(52px + env(safe-area-inset-top));
-  }
   .minimal .docs-page {
     padding-top: calc(52px + env(safe-area-inset-top));
   }
-
-  .nav-burger span {
-    position: relative;
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: background 160ms ease;
-  }
-
-  .nav-burger span::before,
-  .nav-burger span::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 20px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: transform 220ms ease, top 220ms ease;
-  }
-
-  .nav-burger span::before { top: -6px; }
-  .nav-burger span::after { top: 6px; }
-
-  .nav-burger.is-open span { background: transparent; }
-  .nav-burger.is-open span::before { top: 0; transform: rotate(45deg); }
-  .nav-burger.is-open span::after { top: 0; transform: rotate(-45deg); }
-
-  .mobile-menu {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    z-index: 65;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    padding: 72px 24px 48px;
-    background: #ffffff;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 220ms ease, visibility 220ms ease;
-  }
-
-  .mobile-menu.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .mobile-menu a {
-    padding: 12px 18px;
-    color: var(--text);
-    font-size: 18px;
-    font-weight: 650;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .mobile-menu a[href="/privacy"],
-  .mobile-menu a[href="/terms"] {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--quiet);
-    padding: 8px 18px;
-  }
-
-  .mobile-menu a.nav-cta {
-    margin-top: 8px;
-    border-top: 1px solid var(--line);
-    color: var(--text);
-  }
-
-  .mobile-menu a[href="/privacy"] { margin-top: 4px; }
-
-  .mobile-menu a:active { color: var(--muted); }
 }
 
 /* =====================================================================
@@ -5172,44 +4895,17 @@ html:has(.minimal) {
   .aside-card {
     padding: 18px;
   }
-}
-
-/* =====================================================================
+}/* =====================================================================
    NAV HIRING SIGNAL — pulsing green dot after the Careers link
    Matched on the href so every page picks it up with no markup change.
    Sits inline after the word and pulses like the dots on /careers.
    ===================================================================== */
-.hero-topnav a[href="/careers"]::after,
-.mobile-menu a[href="/careers"]::after {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  background: var(--live);
-  animation: nav-live-pulse 2.1s ease-out infinite;
-}
-
 /* desktop bar: 12px uppercase type */
-.hero-topnav a[href="/careers"]::after {
-  width: 5px;
-  height: 5px;
-  margin-left: 7px;
-  vertical-align: 0.3em;
-}
-
 /* full-screen mobile menu: 18px uppercase type */
-.mobile-menu a[href="/careers"]::after {
-  width: 6px;
-  height: 6px;
-  margin-left: 9px;
-  vertical-align: 0.32em;
-}
-
 /* The mobile menu is a centred column, so the dot's 15px of inline width would
    drag the word off-centre against the other items. Pad the other side by the
    same amount to keep the word centred and let only the dot sit outside it. */
-.mobile-menu a[href="/careers"] {
-  padding-left: 33px;
-}
+
 
 /* A halo radiating out of the dot. Driven by box-shadow spread rather than a
    second element, so it stays centred on the dot and never affects layout. */
@@ -5222,14 +4918,6 @@ html:has(.minimal) {
   }
   100% {
     box-shadow: 0 0 0 0 var(--live-pulse-out);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-topnav a[href="/careers"]::after,
-  .mobile-menu a[href="/careers"]::after {
-    animation: none;
-    box-shadow: 0 0 0 2px var(--live-ring);
   }
 }
 
@@ -6482,8 +6170,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   letter-spacing: 0.12em;
   color: var(--quiet);
 }
-@media (max-width: 720px) {
-}
 
 
 /* ---- 2026-09-15: tighter vertical rhythm ---- */
@@ -6604,13 +6290,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal {
   --rule-dash: #c9ccd2;
   --rule-line: #dadde2;
-}
+}/* the line under the nav, edge to edge */
 
-/* the line under the nav, edge to edge */
-.minimal .hero-topbar,
-.minimal .page-topbar {
-  border-bottom: 1px dashed var(--rule-dash);
-}
 
 /* the hero frame: two uprights on the content column, closed underneath */
 .minimal .hero-solo-inner { position: relative; }
@@ -6647,4 +6328,317 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @media (max-width: 720px) {
   /* the uprights crowd a phone; the horizontals carry the structure alone */
   .minimal .hero-solo-inner::before { display: none; }
+}
+
+/* ============================================================================
+   HEADER
+   One header at both breakpoints. Sticky and in flow, so it reserves its own
+   height and nothing shifts when it gains a background. Transparent over the
+   hero, solid past 40px of scroll. The dashed rule under it is always there:
+   it is the top edge of the page's line work, not a scroll affordance.
+   ========================================================================== */
+.hdr {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: transparent;
+  border-bottom: 1px dashed var(--rule-dash);
+  transition: background 150ms ease;
+  padding-top: env(safe-area-inset-top);
+}
+.hdr.is-stuck { background: var(--bg); }
+
+.hdr-in {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+  padding: 0 20px;
+}
+
+.hdr-mark {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-right: auto;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  color: var(--text);
+  white-space: nowrap;
+}
+.hdr-mark:hover { color: var(--text); }
+
+.hdr-nav { display: none; }
+
+.hdr-end {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hdr-console { display: none; }
+
+.hdr-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--text);
+  color: var(--bg);
+  background: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: color 150ms ease, background 150ms ease;
+}
+.hdr-cta:hover { color: var(--text); background: transparent; }
+
+/* three 1px lines, 20px wide, 5px apart, in a 44px target */
+.hdr-burger {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.hdr-burger span,
+.hdr-burger span::before,
+.hdr-burger span::after {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 1px;
+  background: var(--text);
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+.hdr-burger span { top: 50%; margin-top: -0.5px; }
+.hdr-burger span::before { content: ""; left: 0; top: -5px; }
+.hdr-burger span::after { content: ""; left: 0; top: 5px; }
+.hdr-burger[aria-expanded="true"] span { background: transparent; }
+.hdr-burger[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+.hdr-burger[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+
+/* The button carries its whole label until the screen is genuinely too
+   narrow, at which point it drops to one word so the wordmark never gives
+   ground. Two complete labels, because .hdr-cta is a flex container. */
+.hdr-cta-short { display: none; }
+@media (max-width: 359.98px) {
+  .hdr-cta-long { display: none; }
+  .hdr-cta-short { display: inline; }
+  .hdr-cta { padding: 0 12px; }
+  .hdr-mark { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .hdr-in { height: 80px; padding: 0 40px; }
+  .hdr-mark { font-size: 19px; }
+  .hdr-nav {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    margin-right: 36px;
+  }
+  .hdr-nav a {
+    padding: 8px 0;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    transition: color 150ms ease;
+  }
+  .hdr-nav a:hover { color: var(--muted); }
+  .hdr-console {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    transition: color 150ms ease;
+  }
+  .hdr-console:hover { color: var(--text); }
+  .hdr-cta { height: 40px; padding: 0 20px; font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .hdr-burger { display: none; }
+}
+
+/* ============================================================================
+   MENU
+   A full screen of its own, not a dropdown. The panel does not move; only its
+   contents fade. The header stays above it so the X is always reachable.
+   ========================================================================== */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: calc(64px + env(safe-area-inset-top) + 40px) 20px calc(24px + env(safe-area-inset-bottom));
+  background: var(--bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.menu[hidden] { display: none; }
+
+.menu-in {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  animation: menu-fade 120ms ease both;
+}
+@keyframes menu-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.menu-nav { display: flex; flex-direction: column; }
+.menu-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 24px;
+  color: var(--text);
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.026em;
+}
+.menu-nav a:last-child { margin-bottom: 0; }
+.menu-nav a:active { color: var(--muted); }
+
+.menu-rule {
+  margin: 36px 0 20px;
+  border-top: 1px dashed var(--rule-dash);
+}
+
+.menu-console {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.menu-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  min-height: 52px;
+  border: 1px solid var(--text);
+  color: var(--bg);
+  background: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1024px) { .menu { display: none !important; } }
+
+/* ============================================================================
+   MOBILE
+   The phone is not a narrow desktop. One column, a single side gutter set on
+   the wrapper, the same breathing room the desktop gets rather than less, and
+   the product shots running to the edges instead of sitting in a margin.
+   ========================================================================== */
+@media (max-width: 1023.98px) {
+  /* the legal row wraps rather than running off the screen */
+  .footer-legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 18px;
+    margin-left: 0;
+  }
+  .footer-legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;   /* tap target, not just text */
+  }
+  .footer-social a { min-width: 44px; min-height: 44px; }
+}
+
+@media (max-width: 767.98px) {
+  /* One gutter, set once. The margins are reset too: an older rule pinned
+     them at 14px, which left the column off-centre and broke the break-out
+     maths for anything trying to reach the edges. */
+  .minimal .container,
+  .minimal .footer-shell {
+    width: calc(100% - 40px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* the bands keep their air instead of being squeezed */
+  .minimal .section { padding: 40px 0; }
+  .minimal .section.tight { padding-top: 32px; }
+  .minimal main.page > .section + .section { padding-top: 40px; }
+  .minimal main.page > .section.tight + .section.tight { padding-top: 40px; }
+
+  /* body copy never drops below 14px */
+  .minimal p, .minimal li { font-size: 15px; }
+  .minimal .lead { font-size: 16px; }
+
+  /* the hero clips its children by default, which would cut the break-out off */
+  .minimal .hero { overflow: visible; }
+
+  /* product shots run edge to edge, breaking the gutter rather than sitting in it */
+  .minimal .mac-shot,
+  .minimal .media-panel,
+  .minimal .shot-full {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    border-radius: 0;
+  }
+  .minimal .mac-shot img,
+  .minimal .media-panel img { width: 100%; height: auto; display: block; }
+
+  /* the workspace library becomes a swipe strip with snap points */
+  .minimal .library-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0 20px 4px;
+  }
+  .minimal .library-grid::-webkit-scrollbar { display: none; }
+  .minimal .library-grid > * { scroll-snap-align: start; }
+
+  /* every link that acts as a control gets a real target */
+  .minimal .btn { min-height: 44px; }
+
+  /* The headline reads as one sentence on a phone rather than two fixed
+     lines, so it can use the full column and stay inside three lines. */
+  .minimal .hero-solo .hero-solo-inner h1.hero-contrast {
+    /* Sized so the headline holds three lines at 320, 375 and 430. Its
+       85 characters are what caps it here: 22px tips 375 into four. */
+    font-size: clamp(16px, 5.2vw, 24px);
+    line-height: 1.24;
+    letter-spacing: -0.018em;
+  }
+  .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
+  .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
+  .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: " "; }
 }
