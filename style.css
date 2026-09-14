@@ -6299,7 +6299,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal .hero-solo-inner::before {
   content: "";
   position: absolute;
-  top: 79px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -6325,10 +6325,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   border-top: 1px solid var(--rule-line);
 }
 
-@media (max-width: 720px) {
-  /* the uprights crowd a phone; the horizontals carry the structure alone */
-  .minimal .hero-solo-inner::before { display: none; }
-}
+/* The uprights stay on a phone. They are the frame, and dropping them left
+   the hero floating between two horizontals with nothing holding its sides. */
 
 /* ============================================================================
    HEADER
@@ -6641,4 +6639,16 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: " "; }
+}
+
+/* The hero frame needs air inside it. The uprights sit on the column edges;
+   the content is inset from them, so nothing grows into the line. Padding on
+   an absolutely positioned child's containing block moves the content, not
+   the frame, which is exactly the behaviour wanted here. */
+@media (max-width: 1023.98px) {
+  .minimal .hero-solo-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 30px;
+  }
 }
