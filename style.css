@@ -6765,10 +6765,20 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    away and the header does not, so it stops competing with the nav once you
    are reading. The purple is the reference's own, sampled off their bar.
    ========================================================================== */
-.topbar {
+/* The strip is a sticky element inside a slot exactly its own height, so it
+   has nowhere to travel and scrolls away like an ordinary block. The sticky
+   is not for the layout -- it is what makes Safari sample it. Safari 26
+   ignores theme-color and tints its tab bar from sticky or fixed elements
+   that sit within 4px of the top and span at least 90% of the width,
+   falling back to the body's background. A static strip is never sampled,
+   which is why declaring the colour three other ways did nothing. */
+.topbar { position: relative; }
+.topbar-bar {
+  position: sticky;
+  top: 0;
   padding: 6px 16px;
   padding-top: calc(6px + env(safe-area-inset-top));
-  background: #9810fa;
+  background-color: #9810fa;
   color: #ffffff;
   text-align: center;
 }
@@ -6801,6 +6811,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .topbar + .hdr.is-stuck { padding-top: env(safe-area-inset-top); }
 
 @media (max-width: 767.98px) {
-  .topbar { padding: 7px 14px; padding-top: calc(7px + env(safe-area-inset-top)); }
+  .topbar-bar { padding: 7px 14px; padding-top: calc(7px + env(safe-area-inset-top)); }
   .topbar .topbar-in { font-size: 13.5px; line-height: 1.5; }
 }
