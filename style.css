@@ -6377,14 +6377,14 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    single-line nowrap rule the two-word hero used. */
 /* The claim, directly under the title: the argument, at sub-headline size. */
 .minimal .hero-solo-inner .hero-claim {
-  max-width: 960px;
-  margin: 18px auto 0;
-  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(21px, 2.5vw, 34px);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.022em;
-  color: var(--text);
+  max-width: 900px;
+  margin: 20px auto 0;
+  font-family: inherit;
+  font-size: clamp(18px, 1.9vw, 25px);
+  font-weight: 450;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+  color: var(--muted);
   text-wrap: balance;
 }
 /* One sentence per line, so the break lands between them and never inside one. */
@@ -6397,8 +6397,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @media (max-width: 720px) {
   .minimal .hero-solo-inner .hero-claim {
     margin-top: 14px;
-    font-size: clamp(19px, 5.4vw, 26px);
-    line-height: 1.22;
+    font-size: 17px;
+    line-height: 1.55;
   }
 }
 
