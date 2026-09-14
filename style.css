@@ -472,7 +472,7 @@ h3 {
   align-items: flex-start;
   justify-content: space-between;
   gap: 48px;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .section-head > div { flex: 1 1 auto; }
@@ -2872,14 +2872,8 @@ html:has(.minimal) {
 }
 
 /* faint Markov-style guide grid down the page */
-.minimal .page {
-  background-image:
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-position: left top, right top;
-  background-size: 1px 100%, 1px 100%;
-  background-repeat: no-repeat;
-}
+/* The viewport-edge hairlines are gone: the grid layer's rails mark the
+   content column instead, which is the edge that actually means something. */
 
 /* --- Header: white, hairline underline --- */
 .minimal .site-header {
@@ -3147,7 +3141,7 @@ html:has(.minimal) {
 
 /* --- Section rhythm --- */
 .minimal .section {
-  padding: 26px 0;
+  padding: 24px 0;
 }
 
 .minimal .section.tight {
@@ -6494,9 +6488,9 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 
 /* ---- 2026-09-15: tighter vertical rhythm ---- */
 .minimal .benefit-grid { margin-top: 24px; }
-.minimal .desk-row { margin: 22px 0 18px; }
+.minimal .desk-row { margin: 24px 0 16px; }
 .minimal .role-list li { padding: 14px 0; }
-@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 122px; } }
+@media (min-width: 721px) { .minimal .hero-solo-inner { padding-top: 120px; } }
 @media (max-width: 720px) {
   .minimal .section { padding: 20px 0; }
   .minimal .section.tight { padding-top: 14px; }
@@ -6523,12 +6517,9 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 /* ---- 2026-09-15: give the page structure instead of drift ----
    A hairline where one idea ends and the next begins. It reads as a
    considered rhythm rather than as sections that happen to follow. */
-.minimal main.page > .section + .section,
-.minimal main.page > .hero-solo-shot + .section {
-  border-top: 1px solid var(--line-soft);
-}
-.minimal main.page > .section + .section { padding-top: 34px; }
-.minimal main.page > .section.tight + .section.tight { padding-top: 30px; }
+/* section boundaries are drawn by the grid layer, not by borders */
+.minimal main.page > .section + .section { padding-top: 32px; }
+.minimal main.page > .section.tight + .section.tight { padding-top: 32px; }
 
 @media (max-width: 860px) {
   .section-head { flex-direction: column; gap: 14px; }
@@ -6597,4 +6588,122 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
     line-height: 1.12;
     letter-spacing: -0.02em;
   }
+}
+
+/* ============================================================================
+   TECHNICAL GRID LAYER
+   One overlay draws the whole system: vertical rails on the content column
+   edges, dotted rules between sections, a crosshair at every intersection,
+   and a numeral pinned outside the left rail. It is absolutely positioned and
+   pointer-events: none, so removing it changes no layout and no reading order.
+   Rails and rules are gradients with an explicit background-size rather than
+   border-style: dotted, which rounds differently per browser and per DPR.
+   ========================================================================== */
+.minimal {
+  --grid-dot: rgba(11, 14, 23, 0.10);   /* foreground at 10% */
+  --grid-line: rgba(11, 14, 23, 0.20);  /* foreground at 20% */
+}
+
+.grid-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+  contain: strict;
+}
+.no-grid .grid-layer { display: none; }
+
+/* content sits above the layer; neither rule moves anything */
+.minimal .page-topbar,
+.minimal .hero-topbar,
+.minimal main,
+.minimal .site-footer { position: relative; z-index: 1; }
+
+/* ---- rails: 1px dot, 4px gap, repeating down ---- */
+.grid-rails {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 132px,
+                      #000 calc(100% - 180px), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 132px,
+                      #000 calc(100% - 180px), transparent 100%);
+}
+.grid-rails i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: linear-gradient(to bottom, var(--grid-dot) 0 1px, transparent 1px);
+  background-size: 1px 5px;
+  background-repeat: repeat-y;
+}
+
+/* ---- rules: full bleed, crossing the rails rather than stopping at them ---- */
+.grid-rules i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--grid-dot) 0 1px, transparent 1px);
+  background-size: 5px 1px;
+  background-repeat: repeat-x;
+}
+
+/* ---- crosshairs: two solid 9px lines centred on the intersection ---- */
+.grid-crosses i {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background-image:
+    linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line));
+  background-size: 9px 1px, 1px 9px;
+  background-position: 0 4px, 4px 0;
+  background-repeat: no-repeat;
+}
+
+/* ---- section numerals, outside the left rail ---- */
+.grid-labels b {
+  position: absolute;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--grid-dot);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---- corner ticks: an L at each corner, 8px outside the image ---- */
+.shot-ticks { position: relative; }
+.shot-ticks::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-line), var(--grid-line)), linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line)), linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line)), linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line)), linear-gradient(var(--grid-line), var(--grid-line));
+  background-size: 8px 1px, 1px 8px, 8px 1px, 1px 8px, 8px 1px, 1px 8px, 8px 1px, 1px 8px;
+  background-position:
+    left top, left top, right top, right top,
+    left bottom, left bottom, right bottom, right bottom;
+  background-repeat: no-repeat;
+}
+.no-grid .shot-ticks::after { display: none; }
+
+/* ---- responsive: rails thin out, then go; rules and ticks stay ---- */
+@media (max-width: 1023.98px) {
+  .grid-rails i[data-inner] { display: none; }
+  .grid-crosses i[data-inner] { display: none; }
+  .grid-labels { display: none; }
+}
+@media (max-width: 767.98px) {
+  .grid-rails { display: none; }
+  .grid-crosses { display: none; }
 }

@@ -1009,6 +1009,125 @@
     }
   }
 
+  /* ------------------------------------------------------------------
+     Technical grid layer.
+
+     One absolutely positioned overlay draws rails, rules, crosshairs and
+     section numerals for the whole page. Positions are measured from the
+     live layout rather than assumed, so the rails land on the content
+     column's real edges at any width, and the rules land on the real
+     boundary between one section and the next.
+
+     The layer never participates in layout: it is position: absolute with
+     pointer-events: none, so hiding it moves nothing.
+     ------------------------------------------------------------------ */
+  function setupGridLayer() {
+    var main = document.querySelector("main");
+    if (!main) return;
+
+    var layer = document.createElement("div");
+    layer.className = "grid-layer";
+    layer.setAttribute("aria-hidden", "true");
+    var rails = document.createElement("div"); rails.className = "grid-rails";
+    var rules = document.createElement("div"); rules.className = "grid-rules";
+    var cross = document.createElement("div"); cross.className = "grid-crosses";
+    var labels = document.createElement("div"); labels.className = "grid-labels";
+    layer.appendChild(rails); layer.appendChild(rules);
+    layer.appendChild(cross); layer.appendChild(labels);
+    document.body.insertBefore(layer, document.body.firstChild);
+
+    // Only the big product shots carry corner ticks. Every thumbnail in the
+    // screen library is a screenshot too, and fifty sets of ticks would read
+    // as noise rather than as a system.
+    ["\u002ehero-solo-shot", ".mac-shot", ".media-panel", ".what-changed-film"]
+      .forEach(function (sel) {
+        Array.prototype.forEach.call(document.querySelectorAll(sel), function (el) {
+          el.classList.add("shot-ticks");
+        });
+      });
+
+    function px(n) { return Math.round(n); }
+
+    function draw() {
+      var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      layer.style.height = docH + "px";
+
+      var col = main.querySelector(".container");
+      if (!col) { rails.innerHTML = rules.innerHTML = cross.innerHTML = labels.innerHTML = ""; return; }
+      var box = col.getBoundingClientRect();
+      var left = px(box.left + window.scrollX);
+      var right = px(box.right + window.scrollX);
+      var width = right - left;
+
+      // outer rails on the column edges, inner rails on its thirds
+      var xs = [
+        { x: left, inner: false },
+        { x: px(left + width / 3), inner: true },
+        { x: px(left + (width * 2) / 3), inner: true },
+        { x: right - 1, inner: false }
+      ];
+
+      // a rule wherever one top-level block of the page meets the next
+      var blocks = Array.prototype.filter.call(main.children, function (el) {
+        var r = el.getBoundingClientRect();
+        return r.height > 4;
+      });
+      var ys = [];
+      blocks.forEach(function (el, i) {
+        if (i === 0) return;                       // nothing above the first block
+        ys.push(px(el.getBoundingClientRect().top + window.scrollY));
+      });
+      var mainBottom = px(main.getBoundingClientRect().bottom + window.scrollY);
+      ys.push(mainBottom);
+      ys = ys.filter(function (v, i, a) { return a.indexOf(v) === i; });
+
+      rails.innerHTML = xs.map(function (r) {
+        return '<i style="left:' + r.x + 'px"' + (r.inner ? ' data-inner' : '') + '></i>';
+      }).join("");
+
+      rules.innerHTML = ys.map(function (y) {
+        return '<i style="top:' + y + 'px"></i>';
+      }).join("");
+
+      // a crosshair centred on every rail-and-rule intersection
+      var marks = [];
+      ys.forEach(function (y) {
+        xs.forEach(function (r) {
+          marks.push('<i style="left:' + (r.x - 4) + 'px;top:' + (y - 4) + 'px"' +
+                     (r.inner ? ' data-inner' : '') + '></i>');
+        });
+      });
+      cross.innerHTML = marks.join("");
+
+      // numerals sit outside the left rail, level with each section heading
+      var n = 0, out = [];
+      blocks.forEach(function (el) {
+        var head = el.querySelector("h1, h2");
+        if (!head) return;
+        n += 1;
+        var hb = head.getBoundingClientRect();
+        out.push('<b style="right:' + px(document.documentElement.clientWidth - left + 14) +
+                 'px;top:' + px(hb.top + window.scrollY + 2) + 'px">' +
+                 (n < 10 ? "0" + n : String(n)) + "</b>");
+      });
+      labels.innerHTML = out.join("");
+    }
+
+    var pending = null;
+    function schedule() {
+      if (pending) cancelAnimationFrame(pending);
+      pending = requestAnimationFrame(function () { pending = null; draw(); });
+    }
+
+    draw();
+    window.addEventListener("resize", schedule);
+    window.addEventListener("load", schedule);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    if (window.ResizeObserver) new ResizeObserver(schedule).observe(document.body);
+    // sections reveal on scroll and change height as they do
+    window.addEventListener("scroll", schedule, { passive: true });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     setActiveNav();
     setupHeader();
@@ -1024,5 +1143,6 @@
     setupCopyButtons();
     setupApplyForm();
     setupEarlyAccessForm();
+    setupGridLayer();
   });
 })();
