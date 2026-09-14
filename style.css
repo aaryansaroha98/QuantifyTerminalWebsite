@@ -6734,11 +6734,3 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .hero-solo-inner .hero-claim span { max-width: none; }
   .minimal .hero-solo-inner .hero-actions { width: 100%; }
 }
-
-/* On a wide screen the bar sits a little below the top edge, with the upper
-   rule dropping with it, so the header reads as a framed band rather than as
-   something pinned flush against the browser chrome. */
-@media (min-width: 1024px) {
-  .hdr { padding-top: calc(30px + env(safe-area-inset-top)); }
-  .hdr::before { top: calc(30px + env(safe-area-inset-top)); }
-}
