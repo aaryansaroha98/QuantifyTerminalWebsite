@@ -3408,30 +3408,30 @@ html:has(.minimal) {
 
 /* Console sign-in: a proper control pinned to the right edge of the bar, not one more
    link in the centred group. */
-.minimal .hero-topnav a.nav-console-link {
+.minimal .hero-topnav a.nav-cta {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   margin: 0;
-  padding: 9px 18px;
+  padding: 10px 20px;
   border: 1px solid var(--text);
-  color: var(--text);
-  background: transparent;
+  color: var(--bg);
+  background: var(--text);
   font-size: 11px;
   letter-spacing: 0.1em;
   line-height: 1;
   transition: color 160ms ease, background 160ms ease;
 }
 
-.minimal .hero-topnav a.nav-console-link:hover {
-  color: var(--bg);
-  background: var(--text);
+.minimal .hero-topnav a.nav-cta:hover {
+  color: var(--text);
+  background: transparent;
 }
 
 @media (max-width: 980px) {
   /* Narrow bars: keep it in flow at the end of the group so nothing overlaps. */
-  .minimal .hero-topnav a.nav-console-link {
+  .minimal .hero-topnav a.nav-cta {
     position: static;
     transform: none;
     margin-left: 8px;
@@ -4325,7 +4325,7 @@ html:has(.minimal) {
     padding: 8px 18px;
   }
 
-  .mobile-menu a.nav-console-link {
+  .mobile-menu a.nav-cta {
     margin-top: 8px;
     border-top: 1px solid var(--line);
     color: var(--text);
