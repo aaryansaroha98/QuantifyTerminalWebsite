@@ -6258,11 +6258,11 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .hero-solo-inner h1.hero-contrast.is-typing {
   white-space: normal;
   max-width: 1120px;
-  /* The reference sets a display headline against small grey body copy. Its
-     headline is 46 characters and ours is 97, so the same three-line shape
-     lands at 68 in this 1120px column — one notch larger and it takes four. */
-  font-size: clamp(30px, 4.72vw, 68px);
-  line-height: 1.05;
+  /* A display headline against small grey body copy, as the reference sets
+     it. 53 characters close in two lines at 88 in this 1120px column; 92
+     tips them into three, which loses the shape. */
+  font-size: clamp(34px, 6.11vw, 88px);
+  line-height: 1.04;
   letter-spacing: -0.034em;
 }
 .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
@@ -6654,13 +6654,14 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .btn { min-height: 44px; }
 
   /* The headline reads as one sentence on a phone rather than two fixed
-     lines, so it can use the full column. It stays display-sized here: the
-     reference keeps its headline large on a phone and lets it run long,
-     rather than shrinking it until it reads like body copy. */
+     lines, so it can use the full column. It stays display-sized here, as
+     the reference keeps its headline large on a phone. The ramp is set from
+     the narrowest case: 248px of column holds three lines up to 28px, which
+     is 8.75vw at 320, and 29px tips it into four. */
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast {
-    font-size: clamp(25px, 7.5vw, 33px);
-    line-height: 1.14;
-    letter-spacing: -0.026em;
+    font-size: clamp(28px, 8.75vw, 38px);
+    line-height: 1.12;
+    letter-spacing: -0.028em;
   }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line { display: inline; }
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
