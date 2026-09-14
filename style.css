@@ -6588,7 +6588,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .hero-solo-inner h1.hero-contrast .type-line { display: block; }
 .hero-solo-inner h1.hero-contrast .type-line + .type-line::before { content: none; }
 .hero-solo-inner h1.hero-contrast .type-line + .type-line { padding-left: 0; }
-.minimal .hero-solo-inner h1.hero-contrast + .hero-claim { max-width: 820px; }
+.minimal .hero-solo-inner h1.hero-contrast + .lead { max-width: 820px; }
 
 @media (max-width: 720px) {
   .minimal .hero-solo-inner .hero-brand { font-size: 13px; letter-spacing: 0.2em; margin-bottom: 18px; }
