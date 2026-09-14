@@ -6675,10 +6675,11 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   /* The headline reads as one sentence on a phone rather than two fixed
      lines, so it can use the full column. It stays display-sized here, as
      the reference keeps its headline large on a phone. Four lines across
-     every phone width: 320 holds them from 30px to 34px and 430 from 42px
-     to 48px, and 10vw runs down the middle of both bands. */
+     every phone width, and as large as that allows: the ceiling is 34px at
+     320, 40px at 375 and 48px at 430, and 10.5vw is the steepest ramp that
+     clears none of them. A hair more and 320 breaks to five. */
   .minimal .hero-solo .hero-solo-inner h1.hero-contrast {
-    font-size: clamp(30px, 10vw, 48px);
+    font-size: clamp(30px, 10.5vw, 48px);
     line-height: 1.12;
     letter-spacing: -0.028em;
   }
