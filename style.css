@@ -6598,10 +6598,18 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    below that. Nothing is added to the DOM and nothing overlays the content.
    ========================================================================== */
 
+/* Two weights, measured off the references: the dashed work sits at grey 204
+   and the solid band rules at 218, which is what makes them visible without
+   ever competing with body text. */
+.minimal {
+  --rule-dash: #c9ccd2;
+  --rule-line: #dadde2;
+}
+
 /* the line under the nav, edge to edge */
 .minimal .hero-topbar,
 .minimal .page-topbar {
-  border-bottom: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--rule-dash);
 }
 
 /* the hero frame: two uprights on the content column, closed underneath */
@@ -6614,8 +6622,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   right: 0;
   bottom: 0;
   left: 0;
-  border-left: 1px dashed var(--line);
-  border-right: 1px dashed var(--line);
+  border-left: 1px dashed var(--rule-dash);
+  border-right: 1px dashed var(--rule-dash);
   pointer-events: none;
 }
 
@@ -6626,14 +6634,14 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   bottom: 0;
   width: 100vw;
   transform: translateX(-50%);
-  border-top: 1px dashed var(--line);
+  border-top: 1px dashed var(--rule-dash);
   pointer-events: none;
 }
 
 /* one quiet rule between bands */
 .minimal main.page > .section + .section,
 .minimal main.page > .hero-solo-shot + .section {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--rule-line);
 }
 
 @media (max-width: 720px) {
