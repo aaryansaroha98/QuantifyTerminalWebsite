@@ -122,6 +122,304 @@ function setupFilm() {
   if (mq.addEventListener) mq.addEventListener("change", apply);
 }
 
+/* The live terminal on the homepage.
+ *
+ * Not a video: the same chain the film runs, running. The clock ticks, the prices move,
+ * the tape scrolls, the highlighter sweeps, the chart draws itself, the figures count up
+ * and the cursor arcs to what it is about to click. Twelve screens, the same order and
+ * roughly the same beat as the film.
+ *
+ * Three rules it obeys: nothing runs while it is off screen or the tab is hidden, it
+ * holds still on the first screen for anyone who has asked for reduced motion, and it
+ * animates only opacity and transform so it never costs the page a layout.
+ */
+function setupLiveTerminal() {
+  var root = document.querySelector("[data-term]");
+  if (!root) return;
+  var $  = function (s) { return root.querySelector(s); };
+  var $$ = function (s) { return [].slice.call(root.querySelectorAll(s)); };
+
+  var clockEl = $("[data-term-clock]"), sysEl = $("[data-term-sys]"),
+      msgEl   = $("[data-term-msg]"),   rightEl = $("[data-term-right]"),
+      progEl  = $("[data-term-prog]");
+  var tabs = $$("[data-tab]"), panels = $$("[data-panel]");
+  var pxEls = $$("[data-px]"), tapeEl = $("[data-tape]");
+
+  /* seeded, so every device draws the same shapes */
+  function rnd(seed) { var a = seed; return function () {
+    a = (a * 1664525 + 1013904223) % 4294967296; return a / 4294967296; }; }
+
+  $$("[data-spark]").forEach(function (cell, i) {
+    var r = rnd(7 + i * 131), v = 0, pts = [];
+    for (var k = 0; k < 36; k++) { v += r() * 2 - 1; pts.push(v); }
+    var lo = Math.min.apply(null, pts), sp = (Math.max.apply(null, pts) - lo) || 1, d = "";
+    pts.forEach(function (y, k) {
+      d += (k ? "L" : "M") + (k / 35 * 100).toFixed(1) + " " + (16 - (y - lo) / sp * 14).toFixed(1);
+    });
+    cell.innerHTML = '<svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="' + d +
+      '" fill="none" stroke="#7C838D" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>';
+  });
+
+  /* sector heat: up is accent, down is grey, magnitude is opacity — red stays reserved
+     for the one thing that broke */
+  var heatEl = $("[data-heat]");
+  if (heatEl) {
+    var hr = rnd(4242), html = "";
+    for (var h = 0; h < 70; h++) {
+      var v = hr() * 2 - 1;
+      html += '<i style="background:' + (v > 0 ? "#4F7CFF" : "#7C838D") +
+              ';--v:' + (0.14 + Math.abs(v) * 0.6).toFixed(2) + '"></i>';
+    }
+    heatEl.innerHTML = html;
+  }
+
+  var TAPE = [["NRTH","1,842.50","▼4.81"],["ARDN","612.05","▲2.14"],
+              ["KSTL","289.70","▲1.06"],["VLLR","1,104.20","▼0.62"],
+              ["ORMX","748.35","▲3.42"],["HLDN","2,260.80","▼1.18"],
+              ["SBPT","437.15","▲0.88"],["MRDN","955.60","▼2.05"],
+              ["CLDR","1,388.90","▲5.07"],["TSSR","176.45","▼0.34"]];
+  if (tapeEl) {
+    var tp = "";
+    for (var c = 0; c < 3; c++) TAPE.forEach(function (x) {
+      tp += "<span><b>" + x[0] + "</b><span>" + x[1] + "</span><i>" + x[2] + "</i></span>";
+    });
+    tapeEl.innerHTML = tp;
+  }
+
+  var TYPED = "mix decel is channel, not demand";
+
+  /* the sequence: panel, which tab is lit, how long it holds, what is running
+     underneath, and the cues that fire inside it */
+  function on(sel, stagger) { return function () {
+    $$(sel).forEach(function (el, i) { setTimeout(function () { el.classList.add("is-on"); }, i * (stagger || 0)); });
+  }; }
+  var SEQ = [
+    { p:0, tab:1, ms:4600, sys:"DATA FABRIC", msg:"streaming 10 instruments · 5 venues", right:"live",
+      cues:[[2700, function(){ $("[data-toast]").classList.add("is-on"); }]] },
+    { p:1, tab:0, ms:4600, sys:"WORLD MODEL", msg:"overnight diff · 5 changes in your book", right:"06:14",
+      cues:[[120, on("[data-br]", 170)],
+            [2300, function(){ var c=$("[data-cur]"); c.classList.add("is-on"); cursor(c, 1); }]] },
+    { p:2, tab:6, ms:5400, sys:"DATA FABRIC", msg:"extracting facts · 34 of 34 sourced", right:"04:12",
+      cues:[[350, function(){ $("[data-lit]").classList.add("is-lit"); }],
+            [1200, function(){ $("[data-link]").classList.add("is-on"); }],
+            [1500, on("[data-fact]", 190)],
+            [2700, function(){ $("[data-note]").classList.add("is-on"); }]] },
+    { p:3, tab:11, ms:4600, sys:"MODEL COMPILER", msg:"NRTH v14 · recomputing 5 cells", right:"proposed",
+      cues:[[900, function(){ $("[data-flip]").classList.add("is-flipped"); }],
+            [1500, on("[data-down]", 150)],
+            [2600, function(){ $(".tp-prop").classList.add("is-on"); }]] },
+    { p:4, tab:4, ms:6200, sys:"WORLD MODEL", msg:"testing 5 assumptions against new facts", right:"06:17",
+      cues:[[300, function(){ $("[data-thr]").classList.add("is-on"); $("[data-thrlbl]").classList.add("is-on"); }],
+            [1400, function(){ $("[data-line]").classList.add("is-drawn"); }],
+            [3600, function(){ $("[data-dot]").classList.add("is-on"); $("[data-dotlbl]").classList.add("is-on"); }]] },
+    { p:5, tab:7, ms:4600, sys:"WORLD MODEL", msg:"1 assumption breached · 4 holding", right:"06:17",
+      cues:[[120, on("[data-as]", 170)]] },
+    { p:6, tab:12, ms:4800, sys:"PORTFOLIO TWIN", msg:"tracing dependencies · 2 indirect found", right:"5 positions",
+      cues:[[120, function(){ $("[data-hub]").classList.add("is-on"); }],
+            [320, on("[data-edge]", 240)],
+            [520, on("[data-dep]", 240)]] },
+    { p:7, tab:13, ms:5200, sys:"PORTFOLIO TWIN", msg:"re-pricing book · 1-day VaR 1.94 → 2.36", right:"06:18",
+      cues:[[120, on("[data-fig]", 130)],
+            [180, function(){ count(); }],
+            [1900, function(){ $("[data-figline]").classList.add("is-on"); }],
+            [2400, on("[data-rc]", 170)]] },
+    { p:8, tab:12, ms:6000, sys:"PORTFOLIO TWIN", msg:"costing 4 courses of action", right:"ready",
+      cues:[[120, on("[data-opt]", 150)],
+            [1200, function(){ var c=$("[data-cur2]"); c.classList.add("is-on"); cursor(c, 8); }],
+            [2000, function(){ $$("[data-opt]")[0].classList.add("is-hot"); }],
+            [2300, function(){ $("[data-field]").classList.add("is-on"); }],
+            [2700, function(){ type(); }]] },
+    { p:9, tab:12, ms:4600, sys:"DECISION RECORD", msg:"sealing evidence, model v15, thesis v4", right:"06:19",
+      cues:[[120, on("[data-rf]", 150)]] },
+    { p:10, tab:0, ms:5200, sys:"DECISION RECORD", msg:"replaying everything known at 06:19", right:"complete",
+      cues:[[120, on("[data-mk]", 90)], [500, function(){ replay(); }],
+            [3600, function(){ $("[data-tlnote]").classList.add("is-on"); }]] },
+    { p:11, tab:0, ms:4400, sys:"WORLD MODEL", msg:"1 of 5 resolved · 4 open", right:"06:19", cues:[] }
+  ];
+
+  /* ---- the moving parts inside a beat ---- */
+  var subTimers = [];
+  function later(fn, ms) { subTimers.push(setTimeout(fn, ms)); }
+
+  function cursor(el, panelIdx) {
+    /* an arc with a 6px overshoot that settles — pointers never travel in straight lines */
+    var host = panels[panelIdx].getBoundingClientRect();
+    var target = panels[panelIdx].querySelector(panelIdx === 1 ? "[data-br]" : "[data-opt]");
+    if (!target) return;
+    var tb = target.getBoundingClientRect();
+    var x0 = host.width * 0.82, y0 = host.height * 0.78;
+    var x1 = tb.left - host.left + 46, y1 = tb.top - host.top + tb.height / 2;
+    var t0 = performance.now(), dur = 820;
+    (function step(now) {
+      var k = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+      var mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
+      var dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy) || 1, bow = -70;
+      var cx = mx - dy / L * bow, cy = my + dx / L * bow, u = 1 - e;
+      var x = u * u * x0 + 2 * u * e * cx + e * e * x1;
+      var y = u * u * y0 + 2 * u * e * cy + e * e * y1;
+      var over = k > 0.86 ? 6 * (1 - (k - 0.86) / 0.14) : (k > 0.7 ? 6 * ((k - 0.7) / 0.16) : 0);
+      el.style.transform = "translate(" + (x - over).toFixed(1) + "px," + (y + over * 0.4).toFixed(1) + "px)";
+      if (k < 1 && running) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  function count() {
+    $$("[data-count]").forEach(function (el) {
+      var to = parseFloat(el.getAttribute("data-count")),
+          dp = +el.getAttribute("data-dp"),
+          sign = el.getAttribute("data-sign") || "",
+          t0 = performance.now();
+      (function step(now) {
+        var k = Math.min((now - t0) / 800, 1), e = 1 - Math.pow(1 - k, 3);  /* ease out only */
+        el.innerHTML = sign + (to * e).toFixed(dp);
+        if (k < 1 && running) requestAnimationFrame(step);
+      })(t0);
+    });
+    later(function () { $("[data-var]").classList.add("is-moved"); $("[data-var]").textContent = "2.36%"; }, 900);
+  }
+
+  function type() {
+    var out = $("[data-typed]"), i = 0;
+    (function tick() {
+      if (!running) return;
+      out.textContent = TYPED.slice(0, ++i);
+      /* a beat after the third word, the way a person types */
+      if (i < TYPED.length) later(tick, i === 13 ? 320 : 42 + Math.random() * 46);
+    })();
+  }
+
+  function replay() {
+    var head = $("[data-play]"), marks = $$("[data-mk]");
+    head.classList.add("is-on");
+    var t0 = performance.now(), dur = 3000;
+    (function step(now) {
+      var k = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+      head.style.transform = "translateX(" + (e * headSpan()).toFixed(1) + "px)";
+      marks.forEach(function (m, i) { m.classList.toggle("is-past", e >= i / (marks.length - 1) - 0.02); });
+      if (k < 1 && running) requestAnimationFrame(step);
+    })(t0);
+  }
+  function headSpan() {
+    var tl = $(".tp-tl-line");
+    return tl ? tl.getBoundingClientRect().width : 0;
+  }
+  function layoutMarks() {
+    var marks = $$("[data-mk]");
+    marks.forEach(function (m, i) { m.style.left = (4 + i * (92 / (marks.length - 1))) + "%"; });
+  }
+  layoutMarks();
+  window.addEventListener("resize", layoutMarks, { passive: true });
+
+  /* ---- the loop ---- */
+  var CLASSES = ["is-on","is-lit","is-flipped","is-moved","is-drawn","is-hot","is-past"];
+  var step = -1, stepAt = 0, raf = 0, running = false, reduced = false, timers = [];
+
+  var CUE_SEL = "[data-fact],[data-dep],[data-toast],[data-br],[data-as],[data-fig],[data-rc]," +
+    "[data-opt],[data-rf],[data-mk],[data-lit],[data-flip],[data-down],[data-thr],[data-thrlbl]," +
+    "[data-line],[data-dot],[data-dotlbl],[data-field],[data-cur],[data-cur2],[data-play]," +
+    "[data-var],[data-hub],[data-edge],[data-link],.tp-prop,.tp-figline,.tp-tlnote,.tp-note";
+  var tidyTimer = 0;
+
+  /* Rewind the screens we are NOT on, once the one we just left has finished fading.
+     Deliberately skips the live panel: an earlier version cleared everything on a timer
+     that also held the incoming panel's own cues, so each screen wiped its own content
+     a fraction of a second before it was due to appear. */
+  function tidy(keep) {
+    $$(CUE_SEL).forEach(function (el) {
+      if (keep && keep.contains(el)) return;
+      CLASSES.forEach(function (c) { el.classList.remove(c); });
+    });
+    if (!keep || !keep.contains($("[data-typed]"))) { var ty = $("[data-typed]"); if (ty) ty.textContent = ""; }
+    $$("[data-count]").forEach(function (el) {
+      if (keep && keep.contains(el)) return;
+      el.innerHTML = (0).toFixed(+el.getAttribute("data-dp"));
+    });
+    var v = $("[data-var]");
+    if (v && !(keep && keep.contains(v))) v.textContent = "1.94%";
+  }
+  function reset() { clearTimeout(tidyTimer); tidy(null); }
+
+  function enter(i) {
+    timers.forEach(clearTimeout); timers = [];
+    subTimers.forEach(clearTimeout); subTimers = [];
+    clearTimeout(tidyTimer);
+    var s = SEQ[i], live = panels[s.p];
+    panels.forEach(function (p, k) { p.classList.toggle("is-on", k === s.p); });
+    tabs.forEach(function (tb, k) { tb.classList.toggle("is-on", k === s.tab); });
+    sysEl.textContent = s.sys; msgEl.innerHTML = s.msg; rightEl.textContent = s.right;
+    tidy(live);                                    /* start from a clean screen */
+    tidyTimer = setTimeout(function () { tidy(live); }, 420);   /* and rewind the one we left */
+    s.cues.forEach(function (c) { timers.push(setTimeout(c[1], c[0])); });
+    step = i; stepAt = performance.now();
+  }
+
+  /* Text is rewritten ten times a second; only transforms run every frame. Writing six
+     prices and a clock into the DOM at 60Hz is work nobody can see, and it is the
+     difference between this being smooth and it being a tax on the page. */
+  var clockT0 = 0, lastText = 0;
+  function frame(now) {
+    if (!running) return;
+    var s = SEQ[step], el = now - stepAt;
+
+    /* every frame: the two things the eye actually tracks */
+    progEl.style.transform = "scaleX(" + Math.min(el / (s.ms * 0.72), 1).toFixed(4) + ")";
+    if (tapeEl) tapeEl.style.transform =
+      "translate3d(" + (-((now - clockT0) / 1000 * 58) % 1400).toFixed(1) + "px,0,0)";
+
+    /* ten times a second: the things you read */
+    if (now - lastText > 100) {
+      lastText = now;
+      /* one second per second, which is the speed clocks run at. It used to advance five
+         minutes across one turn of the loop and read as a stopwatch on fast-forward. */
+      var secs = 6 * 3600 + 14 * 60 + Math.floor((now - clockT0) / 1000);
+      var p2 = function (n) { return String(n).padStart(2, "0"); };
+      clockEl.textContent = p2(Math.floor(secs / 3600) % 24) + ":" +
+                            p2(Math.floor(secs / 60) % 60) + ":" + p2(secs % 60) + " IST";
+      var t = now / 1000;
+      for (var i = 0; i < pxEls.length; i++) {
+        var base = parseFloat(pxEls[i].getAttribute("data-px"));
+        var w = Math.sin(t * 0.9 + i * 2.1) * 0.0009 + Math.sin(t * 0.31 + i) * 0.0005;
+        pxEls[i].textContent =
+          (base * (1 + w)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    }
+    if (el >= s.ms) enter((step + 1) % SEQ.length);
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start() {
+    if (running || reduced) return;
+    running = true;
+    var now = performance.now();
+    if (!clockT0) clockT0 = now;
+    if (step < 0) enter(0); else stepAt = now;
+    raf = requestAnimationFrame(frame);
+  }
+  function stop() { running = false; cancelAnimationFrame(raf); timers.forEach(clearTimeout); subTimers.forEach(clearTimeout); }
+
+  var mq = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  function applyMotion() {
+    reduced = !!(mq && mq.matches);
+    if (reduced) {
+      stop(); reset();
+      panels.forEach(function (p, k) { p.classList.toggle("is-on", k === 0); });
+      tabs.forEach(function (tb, k) { tb.classList.toggle("is-on", k === 0); });
+      progEl.style.width = "0%";
+    } else if (step < 0) {
+      panels.forEach(function (p, k) { p.classList.toggle("is-on", k === 0); });
+      tabs.forEach(function (tb, k) { tb.classList.toggle("is-on", k === 0); });
+    }
+  }
+  applyMotion();
+  if (mq && mq.addEventListener) mq.addEventListener("change", applyMotion);
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { e[0].isIntersecting ? start() : stop(); },
+      { threshold: 0.15 }).observe(root);
+  } else { start(); }
+  document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+}
+
 function setupHeroTitle() {
     var el = document.querySelector(".hero-solo-inner h1");
     if (!el) return;
@@ -1074,6 +1372,7 @@ function setupHeroTitle() {
     setupReveal();
     setupHeroTitle();
     setupFilm();
+    setupLiveTerminal();
     setupLightbox();
     setupDownloadButtons();
     setupPricingToggle();

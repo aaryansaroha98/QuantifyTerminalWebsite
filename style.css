@@ -6790,3 +6790,447 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @container (max-width: 560px) {
   .minimal .term-tabs span:nth-child(n+5) { display: none; }
 }
+
+/* ---------- the live terminal on the homepage -------------------------------
+   Not a video. The clock runs, the prices move, the panels advance and the chart
+   draws itself, because a page arguing that the machine does real work should not
+   prove it with a recording. Nine values, the same ones the product uses.
+   Everything animates on transform and opacity only, the whole thing pauses when
+   it is off screen, and it holds still for anyone who has asked for reduced motion. */
+.minimal .term {
+  --t-void:#0A0B0D; --t-surf:#131519; --t-rule:#2A2E35; --t-prim:#E8EAED;
+  --t-sec:#7C838D;  --t-acc:#4F7CFF;  --t-breach:#E5484D; --t-hover:#181B20;
+  position: relative;
+  background: var(--t-void);
+  border: 1px solid var(--rule-line);
+  color: var(--t-prim);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  container-type: inline-size;
+}
+.minimal .term * { box-sizing: border-box; }
+
+.minimal .term-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px 12px;
+  border-bottom: 1px solid var(--t-rule);
+}
+.minimal .term-mark {
+  font-size: 12px; font-weight: 500; letter-spacing: .16em; color: var(--t-prim);
+}
+.minimal .term-clock { font-size: 11px; color: var(--t-sec); }
+
+.minimal .term-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--t-rule); }
+.minimal .term-tabs { overflow: hidden; }
+.minimal .term-tabs span {
+  flex: 0 1 auto; min-width: 0;
+  padding: 9px clamp(7px, 0.95cqi, 15px);
+  font-size: clamp(8.5px, 0.78cqi, 10px); font-weight: 500; letter-spacing: .1em;
+  color: var(--t-sec); border-bottom: 2px solid transparent; white-space: nowrap;
+  transition: color .3s ease, border-color .3s ease, background-color .3s ease;
+}
+.minimal .term-tabs span.is-on {
+  color: var(--t-prim); background: var(--t-hover); border-bottom-color: var(--t-acc);
+}
+
+/* the stage keeps its own height so panels can cross-fade without the page moving */
+.minimal .term-stage { position: relative; height: 396px; }
+.minimal .term-panel {
+  position: absolute; inset: 0; padding: 18px 20px;
+  background: var(--t-void);           /* its own ground, so it covers the screen it replaces */
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .34s ease, transform .34s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+/* the arriving screen sits above the one it is replacing. Without this the two
+   cross-fade through each other and both sets of words are legible at once. */
+.minimal .term-panel.is-on { opacity: 1; transform: none; z-index: 2; }
+
+.minimal .tp-head {
+  font-size: 9.5px; font-weight: 500; letter-spacing: .18em; color: var(--t-sec);
+  padding-bottom: 8px; margin-bottom: 10px; border-bottom: 1px solid var(--t-rule);
+}
+
+/* ---- 0 the book ---- */
+.minimal .tp-row {
+  display: grid; grid-template-columns: 1.45fr .55fr .8fr .7fr 1.1fr .45fr;
+  align-items: center; gap: 10px;
+  padding: 7px 0; border-bottom: 1px solid var(--t-rule);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.minimal .term-panel.is-on .tp-row { opacity: 1; transform: none; }
+.minimal .tp-row b { font-size: 12px; font-weight: 500; }
+.minimal .tp-row i { font-size: 11px; font-style: normal; color: var(--t-sec); }
+.minimal .tp-row u { font-size: 12px; text-decoration: none; text-align: right; }
+.minimal .tp-row s { font-size: 11px; text-decoration: none; text-align: right; color: var(--t-sec); }
+.minimal .tp-row q { font-size: 11px; color: var(--t-sec); text-align: right; }
+.minimal .tp-row q::before, .minimal .tp-row q::after { content: ""; }
+.minimal .tp-row em svg { display: block; width: 100%; height: 18px; overflow: visible; }
+
+.minimal .tp-toast {
+  position: absolute; right: 20px; top: 54px; width: min(330px, 62%);
+  background: var(--t-surf); border: 1px solid var(--t-acc); border-left-width: 3px;
+  padding: 11px 14px;
+  opacity: 0; transform: translateX(24px);
+  transition: opacity .34s ease, transform .34s ease;
+}
+.minimal .tp-toast.is-on { opacity: 1; transform: none; }
+.minimal .tp-toast-k { font-size: 9px; letter-spacing: .18em; font-weight: 500; color: var(--t-acc); }
+.minimal .tp-toast-v { font-size: 13px; font-weight: 500; margin-top: 5px; }
+
+/* ---- 1 the filing ---- */
+.minimal .tp-split { display: grid; grid-template-columns: 1.35fr 1fr; gap: 24px; height: 100%; }
+.minimal .tp-doc p {
+  font-size: 12px; line-height: 1.75; color: var(--t-sec); margin: 0 0 6px;
+  position: relative;
+}
+.minimal .tp-doc p.tp-lit { color: var(--t-prim); }
+/* the highlighter sweeps rather than appears */
+.minimal .tp-lit::before {
+  content: ""; position: absolute; left: -6px; top: -2px; bottom: -2px; width: 0;
+  background: var(--t-acc); opacity: .18;
+  transition: width .7s cubic-bezier(.2,0,0,1);
+}
+.minimal .term-panel.is-on .tp-lit.is-lit::before { width: calc(100% + 12px); }
+.minimal .tp-fact {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 9px 0; border-bottom: 1px solid var(--t-rule);
+  opacity: 0; transform: translateX(14px);
+  transition: opacity .34s ease, transform .34s ease;
+}
+.minimal .tp-fact.is-on { opacity: 1; transform: none; }
+.minimal .tp-fact span { font-size: 11px; color: var(--t-sec); }
+.minimal .tp-fact b { font-size: 16px; font-weight: 600; }
+.minimal .tp-note { font-size: 10.5px; color: var(--t-sec); margin-top: 12px; }
+
+/* ---- 2 the model ---- */
+.minimal .tp-grid { width: 100%; border-collapse: collapse; }
+.minimal .tp-grid th, .minimal .tp-grid td {
+  padding: 9px 6px; font-size: 12px; font-weight: 400; text-align: right;
+  border-bottom: 1px solid var(--t-rule); white-space: nowrap;
+}
+.minimal .tp-grid thead th {
+  font-size: 9.5px; letter-spacing: .1em; color: var(--t-sec); font-weight: 500;
+}
+.minimal .tp-grid tbody th { text-align: left; color: var(--t-sec); }
+.minimal .tp-grid td[data-down] { transition: color .4s ease; }
+.minimal .tp-grid td[data-down].is-moved { color: var(--t-acc); }
+/* the cell that moves keeps the old value struck through above the new one */
+.minimal .tp-flip { position: relative; }
+.minimal .tp-flip s {
+  position: absolute; right: 6px; top: -5px;
+  font-size: 10.5px; color: var(--t-breach); text-decoration: line-through;
+  opacity: 0; transition: opacity .3s ease;
+}
+.minimal .tp-flip b { font-weight: 400; transition: color .3s ease; }
+.minimal .tp-flip.is-flipped s { opacity: 1; }
+.minimal .tp-flip.is-flipped b { color: var(--t-acc); font-weight: 600; }
+.minimal .tp-prop {
+  margin-top: 14px; text-align: right; font-size: 11px; font-weight: 500; color: var(--t-acc);
+  opacity: 0; transition: opacity .4s ease;
+}
+.minimal .tp-prop.is-on { opacity: 1; }
+
+/* ---- 3 the chart ---- */
+.minimal .tp-chart { display: block; width: 100%; height: 296px; }
+.minimal .tp-ax { stroke: var(--t-sec); stroke-width: 1; vector-effect: non-scaling-stroke; }
+/* the rule is drawn, and held, before any data exists */
+.minimal .tp-thr {
+  stroke: var(--t-acc); stroke-width: 2; stroke-dasharray: 9 9; vector-effect: non-scaling-stroke;
+  stroke-dashoffset: 0; opacity: 0; transition: opacity .4s ease;
+}
+.minimal .tp-thr.is-on { opacity: 1; }
+.minimal .tp-thrlbl { fill: var(--t-acc); font-size: 13px; font-weight: 600; opacity: 0; transition: opacity .4s ease .15s; }
+.minimal .tp-thrlbl.is-on { opacity: 1; }
+.minimal .tp-line {
+  fill: none; stroke: var(--t-prim); stroke-width: 3; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1700; stroke-dashoffset: 1700;
+  transition: stroke-dashoffset 2.1s linear;
+}
+.minimal .tp-line.is-drawn { stroke-dashoffset: 0; }
+.minimal .tp-dot { fill: var(--t-breach); opacity: 0; transform-origin: 1010px 135px; transition: opacity .2s ease; }
+.minimal .tp-dot.is-on { opacity: 1; animation: tpPop .34s cubic-bezier(.2,0,0,1); }
+@keyframes tpPop { 0% { transform: scale(0); } 60% { transform: scale(1.14); } 100% { transform: scale(1); } }
+.minimal .tp-dotlbl { fill: var(--t-breach); font-size: 15px; font-weight: 600; opacity: 0; transition: opacity .3s ease .1s; }
+.minimal .tp-dotlbl.is-on { opacity: 1; }
+.minimal .tp-breach {
+  margin-top: 6px; font-size: 12px; color: var(--t-sec);
+  border-left: 3px solid var(--t-breach); padding-left: 11px;
+  opacity: 0; transition: opacity .4s ease;
+}
+.minimal .tp-breach.is-on { opacity: 1; }
+.minimal .tp-breach b { color: var(--t-breach); font-weight: 600; }
+
+/* ---- 4 what depended on it ---- */
+.minimal .tp-dep {
+  display: grid; grid-template-columns: 1.1fr 1.3fr .5fr; align-items: center; gap: 12px;
+  padding: 11px 13px; margin-bottom: 7px;
+  background: var(--t-surf); border: 1px solid var(--t-rule);
+  opacity: 0; transform: translateX(20px);
+  transition: opacity .36s ease, transform .36s ease;
+}
+.minimal .tp-dep.is-on { opacity: 1; transform: none; }
+.minimal .tp-dep-x { border-color: var(--t-acc); }
+.minimal .tp-dep span { font-size: 12.5px; font-weight: 500; }
+.minimal .tp-dep i { font-size: 11px; font-style: normal; color: var(--t-sec); }
+.minimal .tp-dep b { font-size: 15px; font-weight: 600; text-align: right; }
+.minimal .tp-dep em {
+  grid-column: 3; font-size: 9.5px; font-style: normal; color: var(--t-acc); text-align: right;
+}
+.minimal .tp-rec {
+  margin-top: 12px; font-size: 11.5px; color: var(--t-sec);
+  opacity: 0; transition: opacity .45s ease;
+}
+.minimal .tp-rec.is-on { opacity: 1; }
+
+/* ---- the status strip: what is running underneath ---- */
+.minimal .term-status {
+  display: flex; align-items: center; gap: 16px;
+  padding: 11px 20px; border-top: 1px solid var(--t-rule);
+}
+.minimal .term-sys { font-size: 9.5px; font-weight: 500; letter-spacing: .18em; color: var(--t-acc); flex: 0 0 auto; }
+.minimal .term-msg { font-size: 11px; color: var(--t-sec); flex: 1 1 auto; }
+.minimal .term-track { flex: 0 0 120px; height: 3px; background: var(--t-rule); }
+.minimal .term-track i {
+  display: block; height: 100%; width: 100%; background: var(--t-acc);
+  transform: scaleX(0); transform-origin: left center;   /* scaled, not resized: no layout per frame */
+}
+.minimal .term-right { font-size: 10.5px; color: var(--t-sec); flex: 0 0 auto; }
+
+/* ---- narrow: drop the columns that stop being legible rather than shrink them ---- */
+@container (max-width: 700px) {
+  .minimal .term-stage { height: 400px; }
+  .minimal .tp-row { grid-template-columns: 1.5fr .7fr .8fr .7fr; }
+  .minimal .tp-row em, .minimal .tp-row q { display: none; }
+  .minimal .tp-split { grid-template-columns: 1fr; gap: 14px; }
+  .minimal .tp-doc p:nth-of-type(n+4) { display: none; }
+  .minimal .tp-fact:nth-of-type(n+4) { display: none; }
+  .minimal .tp-grid th:nth-child(2), .minimal .tp-grid td:nth-child(2),
+  .minimal .tp-grid th:nth-child(3), .minimal .tp-grid td:nth-child(3) { display: none; }
+  .minimal .tp-dep { grid-template-columns: 1fr .4fr; }
+  .minimal .tp-dep i { grid-column: 1; }
+  .minimal .tp-dep b { grid-row: 1; grid-column: 2; }
+  .minimal .term-msg { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* hold on the first panel: the book, with nothing moving */
+  .minimal .term-panel, .minimal .tp-row, .minimal .tp-fact, .minimal .tp-dep,
+  .minimal .tp-toast, .minimal .tp-line, .minimal .tp-dot { transition: none; }
+  .minimal .tp-dot.is-on { animation: none; }
+}
+
+
+/* ---------- the terminal's remaining screens --------------------------------
+   Same content, same order and same beats as the film, running live. */
+
+/* the wall: book on the left, sector heat and risk on the right, tape underneath */
+.minimal .tp-wall { display: grid; grid-template-columns: 1.85fr 1fr; gap: 22px; }
+.minimal .tp-heat { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+.minimal .tp-heat i { display: block; height: 11px; opacity: 0; transition: opacity .3s ease; }
+.minimal .term-panel.is-on .tp-heat i { opacity: var(--v, .4); }
+.minimal .tp-risk {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; border-bottom: 1px solid var(--t-rule); font-size: 11px; color: var(--t-sec);
+}
+.minimal .tp-risk b { font-size: 13px; font-weight: 600; color: var(--t-prim); transition: color .4s ease; }
+.minimal .tp-risk b.is-moved { color: var(--t-breach); }
+.minimal .tp-tape {
+  position: absolute; left: 20px; right: 20px; bottom: 16px; height: 34px;
+  background: var(--t-surf); border: 1px solid var(--t-rule); overflow: hidden;
+}
+.minimal .tp-tape-in {
+  display: flex; gap: 34px; white-space: nowrap; padding: 9px 0 0 14px;
+  font-size: 11px; will-change: transform;
+}
+.minimal .tp-tape-in b { font-weight: 600; margin-right: 7px; }
+.minimal .tp-tape-in span { color: var(--t-sec); margin-right: 7px; }
+.minimal .tp-tape-in i { font-style: normal; color: var(--t-sec); }
+
+/* the brief */
+.minimal .tp-brief-h {
+  font-size: clamp(15px, 1.5vw, 21px); font-weight: 500; letter-spacing: -.02em;
+  text-align: center; margin: 2px 0 14px;
+}
+.minimal .tp-br {
+  display: grid; grid-template-columns: 1.15fr 1fr .7fr; align-items: center; gap: 10px;
+  padding: 10px 0 10px 13px; border-bottom: 1px solid var(--t-rule);
+  border-left: 2px solid var(--t-rule);
+  opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease;
+}
+.minimal .tp-br.is-on, .minimal .tp-br-done { opacity: 1; transform: none; }
+.minimal .tp-br-x { border-left-color: var(--t-breach); }
+.minimal .tp-br span { font-size: 12.5px; font-weight: 500; }
+.minimal .tp-br i { font-size: 11px; font-style: normal; color: var(--t-sec); }
+.minimal .tp-br b { font-size: 11.5px; font-weight: 400; text-align: right; color: var(--t-sec); }
+.minimal .tp-br-x b { color: var(--t-breach); }
+.minimal .tp-br-done { opacity: .45; }
+.minimal .tp-br-done span { color: var(--t-sec); text-decoration: line-through; }
+
+/* the cursor: the only sign a person is here */
+.minimal .tp-cur {
+  position: absolute; left: 0; top: 0; width: 12px; height: 17px;
+  background: var(--t-acc);
+  clip-path: polygon(0 0, 0 100%, 29% 74%, 52% 100%, 72% 90%, 52% 62%, 92% 62%);
+  opacity: 0; transition: opacity .2s ease;
+  will-change: transform;
+}
+.minimal .tp-cur.is-on { opacity: 1; }
+
+/* the thesis */
+.minimal .tp-thesis {
+  font-size: clamp(13px, 1.25vw, 17px); font-weight: 500; letter-spacing: -.015em;
+  padding-bottom: 11px; margin-bottom: 11px; border-bottom: 1px solid var(--t-rule);
+}
+.minimal .tp-as {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
+  padding: 9px 0 9px 12px; border-left: 2px solid var(--t-rule);
+  opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease;
+}
+.minimal .tp-as.is-on { opacity: 1; transform: none; }
+.minimal .tp-as-x { border-left-color: var(--t-breach); }
+.minimal .tp-as span { font-size: 12.5px; color: var(--t-sec); }
+.minimal .tp-as-x span { color: var(--t-prim); }
+.minimal .tp-as b { font-size: 11.5px; font-weight: 400; color: var(--t-sec); white-space: nowrap; }
+.minimal .tp-as-x b { color: var(--t-breach); font-weight: 600; }
+
+/* what it costs */
+.minimal .tp-figs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.minimal .tp-fig {
+  border-top: 1px solid var(--t-rule); padding-top: 11px;
+  opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease;
+}
+.minimal .tp-fig.is-on { opacity: 1; transform: none; }
+.minimal .tp-fig span { display: block; font-size: 9px; letter-spacing: .16em; color: var(--t-sec); }
+.minimal .tp-fig b { display: block; font-size: clamp(19px, 2.1vw, 30px); font-weight: 600; letter-spacing: -.02em; margin: 7px 0 3px; }
+.minimal .tp-fig i { font-size: 10.5px; font-style: normal; color: var(--t-sec); }
+.minimal .tp-figline {
+  margin-top: 14px; font-size: 12px; font-style: italic; color: var(--t-sec);
+  opacity: 0; transition: opacity .4s ease;
+}
+.minimal .tp-figline.is-on { opacity: 1; }
+.minimal .tp-rc {
+  display: flex; justify-content: space-between; padding: 7px 0;
+  border-bottom: 1px solid var(--t-rule); font-size: 11.5px;
+  opacity: 0; transition: opacity .3s ease;
+}
+.minimal .tp-rc.is-on { opacity: 1; }
+.minimal .tp-rc span { font-weight: 500; }
+.minimal .tp-rc b { font-weight: 400; color: var(--t-sec); }
+
+/* what to do, and the note */
+.minimal .tp-opt {
+  padding: 11px 15px; margin-bottom: 7px;
+  border: 1px solid var(--t-rule);
+  opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease, background-color .3s ease;
+}
+.minimal .tp-opt.is-on { opacity: 1; transform: none; }
+.minimal .tp-opt.is-hot { background: var(--t-hover); }
+.minimal .tp-opt span { display: block; font-size: 13px; font-weight: 500; }
+.minimal .tp-opt i { display: block; font-size: 11px; font-style: normal; color: var(--t-sec); margin-top: 4px; }
+.minimal .tp-field {
+  display: flex; align-items: center; gap: 2px;
+  height: 0; margin: 0 0 0; padding: 0 15px; overflow: hidden;
+  border: 1px solid var(--t-acc); border-width: 0 1px;
+  font-size: 13px;
+  transition: height .28s cubic-bezier(.2,0,0,1), margin .28s ease, border-width .1s linear .1s;
+}
+.minimal .tp-field.is-on { height: 42px; margin: 0 0 7px; border-width: 1px; }
+.minimal .tp-caret { width: 2px; height: 17px; background: var(--t-acc); animation: tpBlink 1s steps(1) infinite; }
+@keyframes tpBlink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+
+/* the record */
+.minimal .tp-rf {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding: 9px 0; border-bottom: 1px solid var(--t-rule);
+  opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease;
+}
+.minimal .tp-rf.is-on { opacity: 1; transform: none; }
+.minimal .tp-rf span { font-size: 9px; letter-spacing: .16em; color: var(--t-sec); flex: 0 0 auto; }
+.minimal .tp-rf b { font-size: 12.5px; font-weight: 400; text-align: right; }
+
+/* the replay */
+.minimal .tp-tl { position: relative; height: 120px; margin-top: 34px; }
+.minimal .tp-tl-line { position: absolute; left: 4%; right: 4%; top: 52px; height: 1px; background: var(--t-rule); }
+.minimal .tp-tl-head {
+  position: absolute; top: 20px; width: 2px; height: 64px; background: var(--t-acc);
+  left: 4%; opacity: 0; will-change: transform;
+}
+.minimal .tp-tl-head.is-on { opacity: 1; }
+.minimal .tp-mk {
+  position: absolute; top: 14px; transform: translateX(-50%); text-align: center;
+  opacity: 0; transition: opacity .3s ease;
+}
+.minimal .tp-mk.is-on { opacity: 1; }
+.minimal .tp-mk b { display: block; font-size: 12px; font-weight: 600; }
+.minimal .tp-mk::after {
+  content: ""; display: block; width: 7px; height: 7px; margin: 12px auto;
+  border: 1px solid var(--t-rule); border-radius: 50%; background: var(--t-void);
+  transition: background-color .25s ease, border-color .25s ease;
+}
+.minimal .tp-mk.is-past::after { background: var(--t-acc); border-color: var(--t-acc); }
+.minimal .tp-mk span { display: block; font-size: 10px; color: var(--t-sec); }
+.minimal .tp-tlnote {
+  text-align: center; margin-top: 18px; font-size: 13px; color: var(--t-sec);
+  opacity: 0; transition: opacity .4s ease;
+}
+.minimal .tp-tlnote.is-on { opacity: 1; }
+
+@container (max-width: 700px) {
+  .minimal .term-stage { height: 430px; }
+  .minimal .tp-wall { grid-template-columns: 1fr; }
+  .minimal .tp-side { display: none; }
+  .minimal .tp-br { grid-template-columns: 1fr .6fr; }
+  .minimal .tp-br i { grid-column: 1; }
+  .minimal .tp-br b { grid-row: 1; grid-column: 2; }
+  .minimal .tp-figs { grid-template-columns: repeat(2, 1fr); }
+  .minimal .tp-mk span { display: none; }
+  .minimal .tp-opt:nth-of-type(n+4) { display: none; }
+}
+
+
+/* ---------- the pieces the film has that the first pass did not ---------- */
+.minimal .tp-axl, .minimal .tp-axq { fill: var(--t-sec); font-size: 15px; }
+.minimal .tp-axq { font-size: 14px; }
+
+/* the line back from a figure to the sentence it was taken out of */
+.minimal .tp-link {
+  position: absolute; left: 58%; top: 96px; height: 1px; width: 0;
+  background: var(--t-acc);
+  transition: width .5s cubic-bezier(.2,0,0,1);
+}
+.minimal .tp-link.is-on { width: 8%; }
+
+/* the broken assumption, and the edges fanning out of it */
+.minimal .tp-hub {
+  position: absolute; left: 20px; top: 46%; width: 27%;
+  transform: translateY(-50%);
+  background: var(--t-surf); border: 1px solid var(--t-breach); border-left-width: 3px;
+  padding: 12px 14px; z-index: 2;
+  opacity: 0; transition: opacity .34s ease;
+}
+.minimal .tp-hub.is-on { opacity: 1; }
+.minimal .tp-hub span { display: block; font-size: 12.5px; font-weight: 500; }
+.minimal .tp-hub b { display: block; font-size: 11px; font-weight: 600; color: var(--t-breach); margin-top: 3px; }
+.minimal .tp-edges {
+  position: absolute; left: 27%; top: 62px; width: 22%; height: 260px;
+  pointer-events: none;
+}
+.minimal .tp-edges path {
+  fill: none; stroke: var(--t-rule); stroke-width: 1; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 460; stroke-dashoffset: 460;
+  transition: stroke-dashoffset .6s cubic-bezier(.2,0,0,1);
+}
+.minimal .tp-edges path.is-on { stroke-dashoffset: 0; }
+.minimal .tp-edges path:nth-child(3), .minimal .tp-edges path:nth-child(4) { stroke: var(--t-acc); }
+/* the dependency rows move right to leave room for the hub and its edges */
+.minimal .term-panel[data-panel="6"] .tp-dep { margin-left: 50%; }
+
+@container (max-width: 700px) {
+  .minimal .tp-hub, .minimal .tp-edges, .minimal .tp-link { display: none; }
+  .minimal .term-panel[data-panel="6"] .tp-dep { margin-left: 0; }
+}
+
+
