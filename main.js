@@ -108,7 +108,21 @@
      motion in the hero and it reads as a terminal prompt -- but the words
      are there on first paint rather than typed in one character at a time.
      Reduced-motion users get no caret at all; the stylesheet handles that. */
-  function setupHeroTitle() {
+  /* Somebody who has asked their machine not to animate things should not be handed a
+   looping film. The poster frame stays, and it still says what the film says. */
+function setupFilm() {
+  var v = document.querySelector("video[data-film]");
+  if (!v) return;
+  var mq = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!mq) return;
+  var apply = function () {
+    if (mq.matches) { v.pause(); v.removeAttribute("autoplay"); v.setAttribute("controls", ""); }
+  };
+  apply();
+  if (mq.addEventListener) mq.addEventListener("change", apply);
+}
+
+function setupHeroTitle() {
     var el = document.querySelector(".hero-solo-inner h1");
     if (!el) return;
     var spec = el.getAttribute("data-type");
@@ -1059,6 +1073,7 @@
     setupMenu();
     setupReveal();
     setupHeroTitle();
+    setupFilm();
     setupLightbox();
     setupDownloadButtons();
     setupPricingToggle();

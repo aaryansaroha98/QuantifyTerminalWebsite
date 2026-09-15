@@ -6749,3 +6749,26 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .topbar-bar { padding: 7px 14px; padding-top: calc(7px + env(safe-area-inset-top)); }
   .topbar .topbar-in { font-size: 13.5px; line-height: 1.5; }
 }
+
+
+/* ---------- the film on the homepage ----------------------------------------
+   It plays on the product's own ground, which is near-black, so the plate is left
+   to be itself and given the same hairline every other bordered thing on the page
+   has rather than a heavier frame that would argue with it. Muted and looping: it
+   is a demonstration, not something you are asked to sit through. */
+.minimal .film-frame {
+  margin: 0;
+  border: 1px solid var(--rule-line);
+  background: #0A0B0D;
+  line-height: 0;
+}
+.minimal .film-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0A0B0D;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* the poster still carries the idea; main.js pauses playback to match */
+  .minimal .film-frame video { opacity: 1; }
+}
