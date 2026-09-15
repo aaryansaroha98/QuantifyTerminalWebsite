@@ -6270,9 +6270,15 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   pointer-events: none;
 }
 
-/* one quiet rule between bands */
+/* One quiet rule between bands, drawn dashed like every other horizontal on
+   the page. It is a background rather than a border because a dashed border
+   lets the browser pick the rhythm, and it picks 2 and 2 instead of 4 and 4.
+   Sections set no background of their own, so nothing is painted over. */
 .minimal main.page > .section + .section {
-  border-top: 1px solid var(--rule-line);
+  background-image: var(--dash-h);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 8px 1px;
 }
 
 /* The uprights stay on a phone. They are the frame, and dropping them left
