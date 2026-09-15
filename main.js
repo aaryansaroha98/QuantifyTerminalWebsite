@@ -180,39 +180,42 @@ function setupLiveTerminal() {
     $$(sel).forEach(function (el, i) { setTimeout(function () { el.classList.add("is-on"); }, i * (stagger || 0)); });
   }; }
   var SEQ = [
-    { p:0, tab:0, ms:4600, sys:"DATA FABRIC", msg:"streaming 10 instruments · 5 venues", right:"live",
+    { p:0, tab:1, ms:4600, sys:"DATA FABRIC", msg:"streaming 10 instruments · 5 venues", right:"live",
       cues:[[2700, function(){ $("[data-toast]").classList.add("is-on"); }]] },
     { p:1, tab:0, ms:4600, sys:"WORLD MODEL", msg:"overnight diff · 5 changes in your book", right:"06:14",
       cues:[[120, on("[data-br]", 170)],
             [2300, function(){ var c=$("[data-cur]"); c.classList.add("is-on"); cursor(c, 1); }]] },
-    { p:2, tab:1, ms:5400, sys:"DATA FABRIC", msg:"extracting facts · 34 of 34 sourced", right:"04:12",
+    { p:2, tab:2, ms:5400, sys:"DATA FABRIC", msg:"extracting facts · 34 of 34 sourced", right:"04:12",
       cues:[[350, function(){ $("[data-lit]").classList.add("is-lit"); }],
+            [1200, function(){ $("[data-link]").classList.add("is-on"); }],
             [1500, on("[data-fact]", 190)],
             [2700, function(){ $("[data-note]").classList.add("is-on"); }]] },
-    { p:3, tab:2, ms:4600, sys:"MODEL COMPILER", msg:"NRTH v14 · recomputing 5 cells", right:"proposed",
+    { p:3, tab:5, ms:4600, sys:"MODEL COMPILER", msg:"NRTH v14 · recomputing 5 cells", right:"proposed",
       cues:[[900, function(){ $("[data-flip]").classList.add("is-flipped"); }],
             [1500, on("[data-down]", 150)],
             [2600, function(){ $(".tp-prop").classList.add("is-on"); }]] },
-    { p:4, tab:1, ms:6200, sys:"WORLD MODEL", msg:"testing 5 assumptions against new facts", right:"06:17",
+    { p:4, tab:2, ms:6200, sys:"WORLD MODEL", msg:"testing 5 assumptions against new facts", right:"06:17",
       cues:[[300, function(){ $("[data-thr]").classList.add("is-on"); $("[data-thrlbl]").classList.add("is-on"); }],
             [1400, function(){ $("[data-line]").classList.add("is-drawn"); }],
             [3600, function(){ $("[data-dot]").classList.add("is-on"); $("[data-dotlbl]").classList.add("is-on"); }]] },
-    { p:5, tab:1, ms:4600, sys:"WORLD MODEL", msg:"1 assumption breached · 4 holding", right:"06:17",
+    { p:5, tab:2, ms:4600, sys:"WORLD MODEL", msg:"1 assumption breached · 4 holding", right:"06:17",
       cues:[[120, on("[data-as]", 170)]] },
-    { p:6, tab:3, ms:4800, sys:"PORTFOLIO TWIN", msg:"tracing dependencies · 2 indirect found", right:"5 positions",
-      cues:[[150, on("[data-dep]", 260)]] },
-    { p:7, tab:4, ms:5200, sys:"PORTFOLIO TWIN", msg:"re-pricing book · 1-day VaR 1.94 → 2.36", right:"06:18",
+    { p:6, tab:6, ms:4800, sys:"PORTFOLIO TWIN", msg:"tracing dependencies · 2 indirect found", right:"5 positions",
+      cues:[[120, function(){ $("[data-hub]").classList.add("is-on"); }],
+            [320, on("[data-edge]", 240)],
+            [520, on("[data-dep]", 240)]] },
+    { p:7, tab:7, ms:5200, sys:"PORTFOLIO TWIN", msg:"re-pricing book · 1-day VaR 1.94 → 2.36", right:"06:18",
       cues:[[120, on("[data-fig]", 130)],
             [180, function(){ count(); }],
             [1900, function(){ $("[data-figline]").classList.add("is-on"); }],
             [2400, on("[data-rc]", 170)]] },
-    { p:8, tab:3, ms:6000, sys:"PORTFOLIO TWIN", msg:"costing 4 courses of action", right:"ready",
+    { p:8, tab:6, ms:6000, sys:"PORTFOLIO TWIN", msg:"costing 4 courses of action", right:"ready",
       cues:[[120, on("[data-opt]", 150)],
             [1200, function(){ var c=$("[data-cur2]"); c.classList.add("is-on"); cursor(c, 8); }],
             [2000, function(){ $$("[data-opt]")[0].classList.add("is-hot"); }],
             [2300, function(){ $("[data-field]").classList.add("is-on"); }],
             [2700, function(){ type(); }]] },
-    { p:9, tab:3, ms:4600, sys:"DECISION RECORD", msg:"sealing evidence, model v15, thesis v4", right:"06:19",
+    { p:9, tab:6, ms:4600, sys:"DECISION RECORD", msg:"sealing evidence, model v15, thesis v4", right:"06:19",
       cues:[[120, on("[data-rf]", 150)]] },
     { p:10, tab:0, ms:5200, sys:"DECISION RECORD", msg:"replaying everything known at 06:19", right:"complete",
       cues:[[120, on("[data-mk]", 90)], [500, function(){ replay(); }],
@@ -300,7 +303,7 @@ function setupLiveTerminal() {
   var CUE_SEL = "[data-fact],[data-dep],[data-toast],[data-br],[data-as],[data-fig],[data-rc]," +
     "[data-opt],[data-rf],[data-mk],[data-lit],[data-flip],[data-down],[data-thr],[data-thrlbl]," +
     "[data-line],[data-dot],[data-dotlbl],[data-field],[data-cur],[data-cur2],[data-play]," +
-    "[data-var],.tp-prop,.tp-figline,.tp-tlnote,.tp-note";
+    "[data-var],[data-hub],[data-edge],[data-link],.tp-prop,.tp-figline,.tp-tlnote,.tp-note";
   var tidyTimer = 0;
 
   /* Rewind the screens we are NOT on, once the one we just left has finished fading.
@@ -336,23 +339,36 @@ function setupLiveTerminal() {
     step = i; stepAt = performance.now();
   }
 
-  var TOTAL = SEQ.reduce(function (a, x) { return a + x.ms; }, 0);
+  /* Text is rewritten ten times a second; only transforms run every frame. Writing six
+     prices and a clock into the DOM at 60Hz is work nobody can see, and it is the
+     difference between this being smooth and it being a tax on the page. */
+  var clockT0 = 0, lastText = 0;
   function frame(now) {
     if (!running) return;
     var s = SEQ[step], el = now - stepAt;
-    progEl.style.width = Math.min(el / (s.ms * 0.72), 1) * 100 + "%";
-    var into = SEQ.slice(0, step).reduce(function (a, x) { return a + x.ms; }, 0) + el;
-    var secs = 6 * 3600 + 14 * 60 + Math.floor(into / TOTAL * 300);
-    var p2 = function (n) { return String(n).padStart(2, "0"); };
-    clockEl.textContent = p2(Math.floor(secs / 3600)) + ":" + p2(Math.floor(secs / 60) % 60) +
-                          ":" + p2(secs % 60) + " IST";
-    var t = now / 1000;
-    pxEls.forEach(function (e2, i) {
-      var base = parseFloat(e2.getAttribute("data-px"));
-      var w = Math.sin(t * 1.7 + i * 2.1) * 0.0012 + Math.sin(t * 0.53 + i) * 0.0007;
-      e2.textContent = (base * (1 + w)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    });
-    if (tapeEl) tapeEl.style.transform = "translateX(" + (-(t * 62) % 1400).toFixed(1) + "px)";
+
+    /* every frame: the two things the eye actually tracks */
+    progEl.style.transform = "scaleX(" + Math.min(el / (s.ms * 0.72), 1).toFixed(4) + ")";
+    if (tapeEl) tapeEl.style.transform =
+      "translate3d(" + (-((now - clockT0) / 1000 * 58) % 1400).toFixed(1) + "px,0,0)";
+
+    /* ten times a second: the things you read */
+    if (now - lastText > 100) {
+      lastText = now;
+      /* one second per second, which is the speed clocks run at. It used to advance five
+         minutes across one turn of the loop and read as a stopwatch on fast-forward. */
+      var secs = 6 * 3600 + 14 * 60 + Math.floor((now - clockT0) / 1000);
+      var p2 = function (n) { return String(n).padStart(2, "0"); };
+      clockEl.textContent = p2(Math.floor(secs / 3600) % 24) + ":" +
+                            p2(Math.floor(secs / 60) % 60) + ":" + p2(secs % 60) + " IST";
+      var t = now / 1000;
+      for (var i = 0; i < pxEls.length; i++) {
+        var base = parseFloat(pxEls[i].getAttribute("data-px"));
+        var w = Math.sin(t * 0.9 + i * 2.1) * 0.0009 + Math.sin(t * 0.31 + i) * 0.0005;
+        pxEls[i].textContent =
+          (base * (1 + w)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    }
     if (el >= s.ms) enter((step + 1) % SEQ.length);
     raf = requestAnimationFrame(frame);
   }
@@ -360,7 +376,9 @@ function setupLiveTerminal() {
   function start() {
     if (running || reduced) return;
     running = true;
-    if (step < 0) enter(0); else stepAt = performance.now();
+    var now = performance.now();
+    if (!clockT0) clockT0 = now;
+    if (step < 0) enter(0); else stepAt = now;
     raf = requestAnimationFrame(frame);
   }
   function stop() { running = false; cancelAnimationFrame(raf); timers.forEach(clearTimeout); subTimers.forEach(clearTimeout); }

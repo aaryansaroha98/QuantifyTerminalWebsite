@@ -6953,7 +6953,10 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .minimal .term-sys { font-size: 9.5px; font-weight: 500; letter-spacing: .18em; color: var(--t-acc); flex: 0 0 auto; }
 .minimal .term-msg { font-size: 11px; color: var(--t-sec); flex: 1 1 auto; }
 .minimal .term-track { flex: 0 0 120px; height: 3px; background: var(--t-rule); }
-.minimal .term-track i { display: block; height: 100%; width: 0; background: var(--t-acc); }
+.minimal .term-track i {
+  display: block; height: 100%; width: 100%; background: var(--t-acc);
+  transform: scaleX(0); transform-origin: left center;   /* scaled, not resized: no layout per frame */
+}
 .minimal .term-right { font-size: 10.5px; color: var(--t-sec); flex: 0 0 auto; }
 
 /* ---- narrow: drop the columns that stop being legible rather than shrink them ---- */
@@ -7145,4 +7148,48 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .minimal .tp-figs { grid-template-columns: repeat(2, 1fr); }
   .minimal .tp-mk span { display: none; }
   .minimal .tp-opt:nth-of-type(n+4) { display: none; }
+}
+
+
+/* ---------- the pieces the film has that the first pass did not ---------- */
+.minimal .tp-axl, .minimal .tp-axq { fill: var(--t-sec); font-size: 15px; }
+.minimal .tp-axq { font-size: 14px; }
+
+/* the line back from a figure to the sentence it was taken out of */
+.minimal .tp-link {
+  position: absolute; left: 58%; top: 96px; height: 1px; width: 0;
+  background: var(--t-acc);
+  transition: width .5s cubic-bezier(.2,0,0,1);
+}
+.minimal .tp-link.is-on { width: 8%; }
+
+/* the broken assumption, and the edges fanning out of it */
+.minimal .tp-hub {
+  position: absolute; left: 20px; top: 46%; width: 27%;
+  transform: translateY(-50%);
+  background: var(--t-surf); border: 1px solid var(--t-breach); border-left-width: 3px;
+  padding: 12px 14px; z-index: 2;
+  opacity: 0; transition: opacity .34s ease;
+}
+.minimal .tp-hub.is-on { opacity: 1; }
+.minimal .tp-hub span { display: block; font-size: 12.5px; font-weight: 500; }
+.minimal .tp-hub b { display: block; font-size: 11px; font-weight: 600; color: var(--t-breach); margin-top: 3px; }
+.minimal .tp-edges {
+  position: absolute; left: 27%; top: 62px; width: 22%; height: 260px;
+  pointer-events: none;
+}
+.minimal .tp-edges path {
+  fill: none; stroke: var(--t-rule); stroke-width: 1; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 460; stroke-dashoffset: 460;
+  transition: stroke-dashoffset .6s cubic-bezier(.2,0,0,1);
+}
+.minimal .tp-edges path.is-on { stroke-dashoffset: 0; }
+.minimal .tp-edges path:nth-child(3), .minimal .tp-edges path:nth-child(4) { stroke: var(--t-acc); }
+/* the dependency rows move right to leave room for the hub and its edges */
+.minimal .term-panel[data-panel="6"] .tp-dep { margin-left: 50%; }
+
+@container (max-width: 700px) {
+  .minimal .tp-hub, .minimal .tp-edges, .minimal .tp-link { display: none; }
+  .minimal .term-panel[data-panel="6"] .tp-dep { margin-left: 0; }
+  .minimal .term-tabs span:nth-child(n+5) { display: none; }
 }
