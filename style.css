@@ -6749,3 +6749,111 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .topbar-bar { padding: 7px 14px; padding-top: calc(7px + env(safe-area-inset-top)); }
   .topbar .topbar-in { font-size: 13.5px; line-height: 1.5; }
 }
+
+/* ---------- section heads, set properly -----------------------------------
+   Three things were wrong with these.
+
+   The headline ran at 44px/700 capped to 18ch, so every one of them wrapped to
+   two or three lines and shouted at a paragraph set in 15px beside it. A section
+   heading is not a page title; at 34px/600 on 22ch it holds one or two lines and
+   sits at the same volume as the text it introduces.
+
+   The two columns were laid out with space-between, so the gutter was whatever
+   was left over — 147px on a 1120px container, wider than most of the paragraphs
+   were tall. It is a grid now with a gutter that is chosen.
+
+   And the columns started at the same y, which is not the same as looking
+   aligned: a 34px cap-height and a 16px one begin in different places. The
+   paragraph is nudged so the two first baselines actually sit on the same line. */
+.minimal .section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: 76px;
+  align-items: start;
+  margin-bottom: 30px;
+}
+.minimal .section-head > div { min-width: 0; }
+.minimal .section-head > p {
+  flex: none;
+  max-width: 48ch;
+  /* 53px puts the paragraph's first baseline on the headline's first baseline.
+     The headline sits below an eyebrow, so aligning the two column tops is not the
+     same as aligning what a reader sees; every head on the site has one. */
+  padding-top: 53px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.68;
+  color: var(--muted);
+}
+.minimal .section-head h2 {
+  /* the grid column is the constraint; a second cap inside it only left slack
+     that read as a wider gutter than the one that was chosen */
+  max-width: none;
+  font-size: clamp(24px, 2.45vw, 34px);
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.022em;
+}
+/* the eyebrow sat tight under nothing and loose over the headline */
+.minimal .section-head .eyebrow { margin-bottom: 14px; }
+
+@media (max-width: 900px) {
+  .minimal .section-head {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+    margin-bottom: 24px;
+  }
+  .minimal .section-head > p { padding-top: 0; max-width: 62ch; font-size: 15px; }
+  .minimal .section-head h2 { max-width: 26ch; }
+}
+
+/* ---------- the capability list ------------------------------------------
+   These four were four separate sections: four heads, four dashed rules, four
+   thin bands in a row saying the same kind of thing at the same volume. They are
+   one list now, on the same two columns as the head above them so the page has a
+   spine, with a hairline between rows instead of a full band break. */
+.minimal .cap-list { margin-top: 34px; }
+.minimal .cap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: 76px;
+  align-items: start;
+  padding: 26px 0;
+  background-image: var(--dash-h);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 8px 1px;
+}
+.minimal .cap > div { min-width: 0; }
+.minimal .cap-k {
+  margin-bottom: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+.minimal .cap h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.018em;
+  color: var(--text);
+}
+.minimal .cap > p {
+  margin: 0;
+  max-width: 48ch;
+  padding-top: 26px;          /* first baselines on one line, as in the head above */
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+@media (max-width: 900px) {
+  .minimal .cap {
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    padding: 20px 0;
+  }
+  .minimal .cap > p { padding-top: 0; max-width: 62ch; font-size: 15px; }
+}
