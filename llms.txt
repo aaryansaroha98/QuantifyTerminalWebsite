@@ -24,9 +24,9 @@ For analysts and portfolio managers who maintain their own models. Desktop termi
 
 ## Company
 
-- [About](https://www.quantifyterminal.com/about)
+- [About](https://www.quantifyterminal.com/company)
 - [Founder](https://www.quantifyterminal.com/founder): Aaryan Saroha.
 - [Careers](https://www.quantifyterminal.com/careers)
-- [Contact](https://www.quantifyterminal.com/connect)
+- [Contact](https://www.quantifyterminal.com/contact)
 - [Blog](https://www.quantifyterminal.com/blog)
 - [Privacy](https://www.quantifyterminal.com/privacy) · [Terms](https://www.quantifyterminal.com/terms)
