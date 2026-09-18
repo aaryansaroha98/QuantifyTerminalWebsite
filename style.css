@@ -6050,6 +6050,7 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @media (min-width: 981px) {
   .benefit-grid.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .benefit-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .benefit-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .hero-desk {
