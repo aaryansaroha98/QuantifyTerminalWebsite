@@ -92,7 +92,7 @@
       <div class="container">
         <article class="prose doc reveal">
           <h2>Every source carries a licence profile</h2>
-          <p>Every market observation, corporate fact, filing claim, event and private document in Quantify Terminal is stored with the source it came from and a machine-readable licence profile for that source. The profile records what is permitted: display, non-display, derived use, caching, redistribution and AI retrieval. Those permissions are enforced at the gateway, at retrieval time, for every caller. The desk never depends on which vendor supplied a field, and no caller can read past what the licence allows.</p>
+          <p>Every market observation, corporate fact, filing claim, event and private document in Quantify Terminal is stored with the source it came from and a machine-readable licence profile for that source. The profile records what is permitted: display, non-display, derived use, caching, redistribution and AI retrieval. Those permissions are enforced by the read layer itself, at retrieval time: the licence profile travels with the value, so every caller that reads a field &mdash; the panels, the research engine, the exporters, the MCP server an agent talks to &mdash; is answered through the same check. The desk never depends on which vendor supplied a field, and no caller can read past what the licence allows.</p>
 
           <h2>Display versus non-display</h2>
           <p><strong>Display use</strong> is a person looking at data on a screen: a quote panel, a chart, a filing viewer. <strong>Non-display use</strong> is data consumed by a process rather than a person: fed into a model, a screen, a backtest, a risk calculation or an agent. Exchanges and data providers license the two differently, and many licence display use but restrict non-display use to separately entitled users. Quantify Terminal records which of the two each source permits and applies it. A field licensed for display only can be shown, but it will not be fed into a model, a screen or an agent.</p>
@@ -104,13 +104,13 @@
           <p>Real-time redistribution of exchange data requires per-user entitlement, reporting back to the exchange, and in most cases a fee per user per month. Delayed data does not. Keeping an early-access licence on delayed data keeps it licence-clean for everyone who installs it, without a registration step that the data does not justify. When you move to a paid plan, the entitlement is recorded against your account and the real-time feed is switched on for you, not for the software in general.</p>
 
           <h2>How entitlements are enforced</h2>
-          <p>Enforcement is not a setting in the client. It happens at the gateway, once, for every request, whether the request comes from the desktop, a spreadsheet, a notebook or an autonomous agent.</p>
+          <p>Enforcement is not a setting. It sits in the layer every read goes through, so the desktop, a research run, an export and an agent calling the terminal as a tool are all answered by the same rules, and the rules are the source's own. The profiles are published: the page below is generated from the ones the software applies, so it cannot describe a policy the product is not keeping.</p>
           <ul>
             <li>Each request is checked against the licence profile of every source it would touch.</li>
             <li>Derived, cached and AI-retrieved data inherits the rights of the source it was derived from. A model cell built from a display-only field cannot be exported to a process the source would not permit.</li>
             <li>When a feed fails, Data Guardian fails over only to an alternate provider you are entitled to. It never borrows from one you are not.</li>
             <li>For private documents, embedding access is document access. Vector indexes carry the same permissions as the documents they index, so nothing surfaces through an AI answer that a user could not open directly.</li>
-            <li>Every read and write records an audit event with the permissions in force at the time.</li>
+            <li>Every rights decision is recorded, allowed or refused, with the source, the use and the reason, in the terminal's own audit log.</li>
           </ul>
 
           <h2>What the system will not do</h2>

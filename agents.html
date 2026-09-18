@@ -100,7 +100,7 @@
           </ul>
           <p>The formula is the same everywhere:</p>
 <pre class="spec-block">=QT("AAPL","price")</pre>
-          <p>The connector carries its own protected settings. You never handle a cloud URL, a key or a deployment step; the terminal injects them into the module or script it generates for you.</p>
+          <p>The module and the script are generated for you, with the formulas and the connector address already in them. Pointing them at your own Quantify connector is two fields in the Workspace panel &mdash; its URL and the key it accepts &mdash; and the terminal writes both into every module it generates after that. The connector itself is yours: you deploy it once, from the folder the terminal hands you, and the desk that deployed it holds the key.</p>
 
           <h2>API, Python and MCP</h2>
           <p>The same capabilities are exposed to code and to agents: an HTTP API, a Python client, and an MCP server so an agent can call the terminal as a tool. Access opens with the paid tiers. Every call is entitled per source, recorded with an audit event, and bound to the same permission checks as a person at the desk. <a href="mailto:sales@mail.quantifyterminal.com?subject=Early%20access%20-%20Quantify%20Terminal">Request early access</a> and we will send the first configuration when it is ready.</p>
