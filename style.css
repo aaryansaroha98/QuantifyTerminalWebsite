@@ -6858,3 +6858,52 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   }
   .minimal .cap > p { padding-top: 0; max-width: 62ch; font-size: 15px; }
 }
+
+/* ---- the generated data-rights table -------------------------------------------------
+   Eight columns inside an 820px prose column is a table nobody can read, and the house
+   rule is that a table never truncates: every header and every value is shown in full.
+   So the wrapper breaks out to the container's full width, the two prose columns are given
+   room to hold a long provider name, and the six one-word permission columns never wrap.
+   Below that width the wrapper scrolls rather than squeezing a permission into two lines —
+   a permission read half is worse than a permission not read at all. */
+.rights-wrap {
+  margin-top: 30px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: min(var(--max), calc(100vw - 40px));
+  margin-inline: calc(50% - min(var(--max), calc(100vw - 40px)) / 2);
+}
+
+.rights-table {
+  min-width: 1000px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rights-table th:first-child,
+.rights-table td:first-child {
+  width: 20%;
+  white-space: normal;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.rights-table th:nth-child(2),
+.rights-table td:nth-child(2) {
+  width: 26%;
+  white-space: normal;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.rights-table th:nth-child(n + 3),
+.rights-table td:nth-child(n + 3) {
+  white-space: nowrap;
+}
+
+.rights-table td:nth-child(n + 3) { color: var(--text); }
+
+.rights-stamp {
+  margin: 14px 0 0;
+  color: var(--quiet);
+  font-size: 12px;
+}

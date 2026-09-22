@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Product | Quantify Terminal</title>
-  <meta name="description" content="Quantify Terminal: Pulse, Deep Research, Financial Model Compiler, Thesis Compiler and Health, Portfolio Digital Twin, Decision Ledger and Replay, Scenario Lab and Red Team, and agent access via API, Python, MCP and Excel.">
+  <meta name="description" content="Quantify Terminal: Pulse, Deep Research, Financial Model Compiler, Thesis and Health, Portfolio Digital Twin, Decision Ledger and Replay, Scenario Lab and Red Team, and agent access over MCP, Python and spreadsheets.">
   <meta name="theme-color" content="#9810fa">
   <meta property="og:title" content="Quantify Terminal · the product">
   <meta property="og:description" content="Eight systems on one event bus, from new information to a recorded decision.">
@@ -100,43 +100,50 @@
           <article class="release-card reveal">
             <span>01</span>
             <strong>Pulse</strong>
-            <p>The always-on anomaly and relevance engine. Abnormal price, volume and volatility, estimate revisions, guidance changes, narrative acceleration, positioning shifts, macro and geopolitical events and network attention are ranked against your portfolio, watchlists and thesis assumptions. It answers why it is moving and what changed since you last looked.</p>
+            <p>Pulse scores your holdings and watchlists every five minutes while the terminal is open: the move against its volatility, volume against its 20-day median, the opening gap, the range against its average true range, deduplicated headline count and its rate of change, earnings proximity or surprise, consensus FY1 EPS revisions, a change to filed guidance, and encyclopedia readership. Names you hold, watch or have a thesis on rank higher.</p>
+            <p>An index-wide move holds back the single-name move signals it explains. Each signal opens to what every measured input contributed, its evidence, and what changed since your last sign-in. Macro prints, unrest reported where your holdings operate and broken thesis assumptions are separate signals; month-end short interest is context, not a score.</p>
           </article>
           <article class="release-card reveal">
             <span>02</span>
             <strong>Deep Research</strong>
-            <p>A multi-step evidence engine. An orchestrator scopes the question, plans, calls deterministic tools for DCF, WACC, ROIC, CAGR and multiples, and builds an evidence graph. A verifier tests every claim against sources and conflicts before the report is produced with confidence and citations and saved to Memory.</p>
+            <p>You pick a question, a mode and the tickers. The mode's fixed plan collects quotes, fundamentals, filings, estimates, macro prints and your notes and documents as numbered evidence, then computes growth, margins, ROIC, leverage, accounting-quality scores, cost of equity, WACC, three DCF cases and the growth the price implies. Anything missing an input is skipped and says so; where two sources report a figure differently, both are shown, never averaged.</p>
+            <p>Every number must match a cited item; sentences whose numbers do not are removed and become open questions. The rest keeps its citations, calculations and a confidence figure, and is saved to Memory, where an amended filing marks it stale.</p>
           </article>
           <article class="release-card reveal">
             <span>03</span>
             <strong>Financial Model Compiler</strong>
-            <p>Filings, earnings releases and guidance compile into versioned financial models. Tables, XBRL and management commentary become proposed cell updates carrying source document, page, fact ID and transformation. Recalculation runs on a deterministic formula graph. The analyst approves, rejects or overrides, then commits a new model version.</p>
+            <p>The compiler proposes cells for thirteen statement lines from the figures a company tagged in its own filings, or from a data vendor's copy. It writes nothing. Each proposal names its source and filing version, and a changed cell shows both values. An amended filing is marked a restatement, not a change.</p>
+            <p>You approve or reject each cell; a rejection is remembered. Approving commits a new version, keeps the previous one readable, and re-checks any thesis reading the cells that moved. Eleven named calculations recompute margins, free cash flow, net debt, returns and growth; a missing input leaves no cell. Assumptions fill periods no filing reports, never a reported figure.</p>
           </article>
           <article class="release-card reveal">
             <span>04</span>
-            <strong>Thesis Compiler and Health</strong>
-            <p>Notes, PDFs, models and conversations compile into a machine-readable thesis. Each assumption depends on observable metrics, events or claims and carries invalidation conditions. Health is a transparent composite of assumption status, evidence freshness, contradiction strength and model sensitivity, never a number without its breakdown.</p>
+            <strong>Thesis and Health</strong>
+            <p>You write the thesis: title, direction, horizon and the assumptions under it. Each assumption is a numeric condition — threshold, weight, period — on any field the Data Fabric carries, or on a cell in a model you committed. Quantify re-checks them roughly daily, and again when a model commit moves a cell they read, marking each holding, warning, broken or unchecked. Health is the weighted score of the ones it could check, shown beside each assumption's status and last value, and left blank rather than zero when it could check none. A break reaches Pulse with the value that broke it; two broken on two checks running invalidate the thesis.</p>
           </article>
           <article class="release-card reveal">
             <span>05</span>
             <strong>Portfolio Digital Twin</strong>
-            <p>A living representation of holdings, derivatives, factors, currencies, suppliers, customers, geographies, theses and liquidity. Portfolio Failure Search finds the shock combinations that produce a &minus;10%, &minus;20% or &minus;30% loss. The Hedge Architect prices coverage for each path. The Liquidity Crisis Simulator reports liquidation loss, not only mark-to-market.</p>
+            <p>The book is positions with weights, sector, country and currency, held against what the strategy says. A filing on one holding carries the share of the book it reaches, counting the names measurably moving with it. Liquidity is days to exit at twenty per cent of twenty-day average volume. What it cannot classify or measure, it names.</p>
+            <p>A shock search cuts a company model's inputs by ten, twenty and thirty per cent, alone and in pairs, ranked by the fall in free cash flow — a model line, not a price — times the book that company reaches. Hedging prices puts, proxies and selling down for one holding against a fall you name, on cost, carry, coverage and basis risk. Nothing is ordered.</p>
           </article>
           <article class="release-card reveal">
             <span>06</span>
             <strong>Decision Ledger and Replay</strong>
-            <p>Every decision records asset, intent, sizing, rationale, conditions, kill conditions, evidence IDs, model version, constitution check, approver and the exact time it was known. Decision Replay reconstructs what was believed. Outcome attribution separates thesis correctness from multiple expansion, FX and market beta.</p>
+            <p>The decision form records the name, the action, the rationale, the evidence, report and calculation cited, the weight before and after, the expected return range, the risks named, and the model and thesis version on screen. A mandate written as rules is checked as you type, and a breach saves only with a signed override.</p>
+            <p>Replay reads back that model version, that thesis version and every field the thesis watched as it stood then, and names what was not kept. Any decision exports as a checksummed evidence pack. Outcome attribution splits a thesis's return into market beta and residual, and into multiple change and earnings, or says why it cannot. Currency is not separated.</p>
           </article>
           <article class="release-card reveal">
             <span>07</span>
             <strong>Scenario Lab and Red Team</strong>
-            <p>Forward shocks, rate moves and geopolitical disruptions propagate through supply relationships, cost bases, margins, EPS, multiples and portfolio risk with explicit causal paths and sensitivities. A Red Team continuously searches for evidence that invalidates the thesis: bull, bear, forensic, macro, industry, quant and risk agents argue from different evidence paths, must cite sources and deterministic calculations, and keep their disagreement visible.</p>
-            <p class="strong">It argues. It does not decide, and it never places an order.</p>
+            <p>Shock a model cell by a percentage; every derived cell rebuilds through the same named recipes — margins, free cash flow, growth — and nothing is saved. The World Model walks supplier, subsidiary, issuer and fund edges to the holdings reached, naming each route in words, each step filed or inferred; every model commit runs the same trace. A failure search ranks the single and paired shocks that break a line, not a price.</p>
+            <p>Convene seven seats, each on one evidence path: bull, bear, forensic, macro, industry, quant, risk. Each takes a side, or names what it could not read and takes none. Nothing is averaged.</p>
+            <p class="strong">It argues. It does not decide, it writes nothing, and it never places an order.</p>
           </article>
           <article class="release-card reveal">
             <span>08</span>
-            <strong>Agent access — API, Python, MCP and Excel</strong>
-            <p>Every capability is callable: company data, field queries, screens, model compilation, thesis health, portfolio risk, deep research, backtests, workflows and decision proposals. The same entitlement, audit and permission checks apply whether the caller is the desktop, Excel, a notebook or an autonomous agent. Excel and Google Sheets connect today from the Workspace tab. <a href="/agents">Agent access &rarr;</a></p>
+            <strong>Agent access — MCP, Python and spreadsheets</strong>
+            <p>Ten verbs answer over MCP, or from Python against the same server. Eight read: a company; canonical fields with their provenance; its filings, most material first, with the sentence to quote; a thesis scored; exposure through the book; what a recompile would propose; the seven seats; what hedging a fall costs. Two draft or check a plan and mark what needs a person; neither runs one. Nothing writes, and nothing is ordered. The same rights, point-in-time and audit checks apply whichever door you use.</p>
+            <p>The server is set up on request, not shipped in the download. The terminal has its own spreadsheet and the QT formulas answer in it with nothing deployed; for Excel and Google Sheets the connector is yours to deploy and key, and it returns market data, not canonical fields. <a href="/agents">Agent access &rarr;</a></p>
           </article>
         </div>
         <p class="lead reveal" style="margin: 34px 0 0; max-width: none;">The desk you would expect — markets, screeners, options, bonds, funds, macro, ownership and geopolitics — is included. <a href="#workspaces">See the workspaces &rarr;</a></p>

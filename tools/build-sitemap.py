@@ -35,7 +35,22 @@ PAGES = [
     ("careers",            "monthly", "0.5"),
     ("privacy",            "yearly",  "0.3"),
     ("terms",              "yearly",  "0.3"),
+    ("application",        "monthly", "0.6"),
+    ("what-changed-today", "weekly",  "0.6"),
+    ("blog",               "weekly",  "0.6"),
+    ("blog/best-bloomberg-terminal-alternatives-2026", "monthly", "0.5"),
+    ("blog/bloomberg-terminal-cost-2026",              "monthly", "0.5"),
+    ("blog/best-free-trading-terminal-software-2026",  "monthly", "0.5"),
+    ("blog/best-crypto-trading-terminal-2026",         "monthly", "0.5"),
+    ("blog/what-is-a-quant-trading-terminal",          "monthly", "0.5"),
+    ("blog/how-to-backtest-a-trading-strategy",        "monthly", "0.5"),
 ]
+
+# Pages that exist and are deliberately not submitted. A page is in one list or the other;
+# it cannot be in neither, which is the whole point of the check below.
+EXCLUDED = {
+    "404": "the error page, and noindex in its own head",
+}
 
 def lastmod(slug):
     d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", f"{slug}.html"],
@@ -45,6 +60,23 @@ def lastmod(slug):
 missing = [s for s, _, _ in PAGES if not os.path.exists(f"{s}.html")]
 if missing:
     sys.exit(f"listed in the sitemap but not on disk: {missing}")
+
+# The check that was not here, and the one that failed. Only the first half was checked —
+# a page listed but deleted — so the sitemap could never name a page that did not exist,
+# and it silently omitted nine that did: the whole blog, /application and
+# /what-changed-today, each of which asks to be indexed in its own head. A page list kept
+# by hand disagrees with the site the moment somebody adds a page, which is exactly what
+# the docstring says this file exists to prevent.
+on_disk = {
+    os.path.relpath(os.path.join(root, name), ".")[: -len(".html")]
+    for root, _dirs, names in os.walk(".")
+    for name in names
+    if name.endswith(".html") and ".git" not in root.split(os.sep)
+}
+unlisted = sorted(on_disk - {s for s, _, _ in PAGES} - set(EXCLUDED))
+if unlisted:
+    sys.exit("on disk but neither listed nor excluded — add a row to PAGES, or a reason to "
+             f"EXCLUDED: {unlisted}")
 
 lines = ['<?xml version="1.0" encoding="UTF-8"?>',
          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

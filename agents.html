@@ -11,11 +11,11 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Agents, API, Python, MCP and Excel | Quantify Terminal</title>
-  <meta name="description" content="Reach Quantify Terminal from Excel and Google Sheets today, and from an API, Python client and MCP server as the paid tiers open. Same entitlements and audit trail as the desktop.">
+  <title>Agents, MCP, Python and spreadsheets | Quantify Terminal</title>
+  <meta name="description" content="Ten read-only verbs an agent can call over MCP or from Python, plus Excel and Google Sheets formulas. The same rights, point-in-time and audit checks as the desktop. Nothing writes.">
   <meta name="theme-color" content="#9810fa">
-  <meta property="og:title" content="Agents, API, Python, MCP and Excel | Quantify Terminal">
-  <meta property="og:description" content="Reach Quantify Terminal from Excel and Google Sheets today, and from an API, Python client and MCP server as the paid tiers open. Same entitlements and audit trail as the desktop.">
+  <meta property="og:title" content="Agents, MCP, Python and spreadsheets | Quantify Terminal">
+  <meta property="og:description" content="Ten read-only verbs an agent can call over MCP or from Python, plus Excel and Google Sheets formulas. The same rights, point-in-time and audit checks as the desktop. Nothing writes.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.quantifyterminal.com/agents">
@@ -25,8 +25,8 @@
   <meta property="og:url" content="https://www.quantifyterminal.com/agents">
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Agents, API, Python, MCP and Excel | Quantify Terminal">
-  <meta name="twitter:description" content="Reach Quantify Terminal from Excel and Google Sheets today, and from an API, Python client and MCP server as the paid tiers open. Same entitlements and audit trail as the desktop.">
+  <meta name="twitter:title" content="Agents, MCP, Python and spreadsheets | Quantify Terminal">
+  <meta name="twitter:description" content="Ten read-only verbs an agent can call over MCP or from Python, plus Excel and Google Sheets formulas. The same rights, point-in-time and audit checks as the desktop. Nothing writes.">
   <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,8 +84,8 @@
 
     <section class="hero compact container">
       <div class="eyebrow reveal">Agent access</div>
-      <h1 class="reveal">Every capability is callable.</h1>
-      <p class="lead reveal">Company data, field queries, screens, model compilation, thesis health, portfolio risk, deep research, backtests, workflows and decision proposals. The same entitlement, audit and permission checks apply whether the caller is the desktop, Excel, a notebook or an autonomous agent.</p>
+      <h1 class="reveal">Ten verbs, and none of them write.</h1>
+      <p class="lead reveal">An agent can read a company, its canonical fields with their provenance, the filings a figure came from, a thesis scored, exposure through your book, what a recompile would propose, the seven Red Team seats and what hedging a fall would cost &mdash; and it can draft or check a plan for you to approve. The same rights, point-in-time and audit checks apply whichever door the caller comes through.</p>
     </section>
 
     <section class="section tight">
@@ -101,21 +101,33 @@
           <p>The formula is the same everywhere:</p>
 <pre class="spec-block">=QT("AAPL","price")</pre>
           <p>The module and the script are generated for you, with the formulas and the connector address already in them. Pointing them at your own Quantify connector is two fields in the Workspace panel &mdash; its URL and the key it accepts &mdash; and the terminal writes both into every module it generates after that. The connector itself is yours: you deploy it once, from the folder the terminal hands you, and the desk that deployed it holds the key.</p>
+          <p>Two things worth knowing before you plan around it. The Workspace spreadsheet inside the terminal answers these formulas with nothing deployed and no key &mdash; a deployment is only needed to reach them from Excel or Sheets. And the connector returns market data and portfolio figures, not the canonical fields with provenance that the verbs above return; for those, the door is MCP.</p>
 
-          <h2>API, Python and MCP</h2>
-          <p>The same capabilities are exposed to code and to agents: an HTTP API, a Python client, and an MCP server so an agent can call the terminal as a tool. Access opens with the paid tiers. Every call is entitled per source, recorded with an audit event, and bound to the same permission checks as a person at the desk. <a href="mailto:sales@mail.quantifyterminal.com?subject=Early%20access%20-%20Quantify%20Terminal">Request early access</a> and we will send the first configuration when it is ready.</p>
+          <h2>MCP and Python</h2>
+          <p>An MCP server exposes ten verbs over stdio, so an assistant can call the terminal as a tool. A Python client calls the same server, so a notebook and an agent get the same answers. There is no HTTP API today, and we would rather say so than let you plan around one.</p>
+          <p>The server is set up on request rather than shipped in the download: it runs against a checkout and the terminal's own environment, and we configure it with you. <a href="mailto:sales@mail.quantifyterminal.com?subject=Agent%20access%20-%20Quantify%20Terminal">Write to us</a> and we will send the configuration.</p>
 
-          <h2>What an agent can do</h2>
+          <h2>The ten verbs</h2>
+          <p>Eight read. Four of those read your own account &mdash; your theses, your committed models, your book &mdash; and answer &ldquo;not yet&rdquo; rather than inventing something when no account is signed in.</p>
           <ul>
-            <li>Read any field it is entitled to, at any point in time, with the source attached.</li>
-            <li>Run screens, compile models, compute thesis health and portfolio risk, run deep research and backtests.</li>
-            <li>Propose a decision, with its evidence, for a person to approve.</li>
+            <li><strong>resolve_company</strong> &mdash; a ticker, ISIN or name to one canonical id, with the identifiers and the fields known for it.</li>
+            <li><strong>get_facts</strong> &mdash; canonical fields with the source, the period, and when each first became knowable. A figure another source reports differently carries the disagreement; one that does not look like the same source&rsquo;s own history carries that too.</li>
+            <li><strong>get_evidence</strong> &mdash; that company&rsquo;s filings, most material first, each with the stored sentence and its offsets so a quote can be checked rather than trusted.</li>
+            <li><strong>thesis_health</strong> &mdash; a thesis scored, with every assumption&rsquo;s status, never a number without its breakdown.</li>
+            <li><strong>look_through_exposure</strong> &mdash; the routes from a company to what you hold, each step named.</li>
+            <li><strong>model_diff</strong> &mdash; what a recompile would propose against your committed model, cell by cell, with the sentence behind each change.</li>
+            <li><strong>red_team</strong> &mdash; the seven seats, each arguing from one evidence path, or naming what it could not read and taking no side.</li>
+            <li><strong>hedge_architect</strong> &mdash; what protecting a position against a fall you name would cost: puts, proxies and selling down, on cost, carry, coverage and basis risk.</li>
+            <li><strong>propose_plan</strong> and <strong>review_plan</strong> &mdash; a plan made only of steps this build declares, each marked with the permission it needs and whether it can run without a person. Neither executes one.</li>
           </ul>
+
           <h2>What an agent cannot do</h2>
           <ul>
-            <li>Place an order. Execution requires human confirmation, always.</li>
-            <li>See data the caller is not licensed to see, or feed display-only data into a process. See <a href="/data-rights">how we handle data rights</a>.</li>
-            <li>Act without an audit event.</li>
+            <li>Write anything. Every verb is a read; nothing is saved, refreshed or spent.</li>
+            <li>Place an order. Nothing here prepares one, let alone sends it.</li>
+            <li>See data the caller is not licensed to see. A value from a source that may be shown on your screen but not placed in someone else&rsquo;s prompt is withheld &mdash; named and counted, never silently dropped, so the assistant can tell you a number exists and cannot be shared. See <a href="/data-rights">how we handle data rights</a>.</li>
+            <li>Read the past on a plan that does not include point-in-time. An <em>as of</em> read is refused with the same sentence the desktop shows.</li>
+            <li>Act without an audit row. Every rights decision is recorded with the account that asked and the call it belonged to, allowed or refused, with the reason.</li>
           </ul>
         </article>
       </div>
