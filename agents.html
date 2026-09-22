@@ -104,7 +104,7 @@
           <p>Two things worth knowing before you plan around it. The Workspace spreadsheet inside the terminal answers these formulas with nothing deployed and no key &mdash; a deployment is only needed to reach them from Excel or Sheets. And the connector returns market data and portfolio figures, not the canonical fields with provenance that the verbs above return; for those, the door is MCP.</p>
 
           <h2>MCP and Python</h2>
-          <p>An MCP server exposes ten verbs over stdio, so an assistant can call the terminal as a tool. A Python client calls the same server, so a notebook and an agent get the same answers. There is no HTTP API today, and we would rather say so than let you plan around one.</p>
+          <p>An MCP server exposes ten verbs over stdio, so an assistant can call the terminal as a tool. A Python client calls the same server, so a notebook and an agent get the same answers. There is no HTTP API for any of this today &mdash; the one HTTP service we run carries model calls so that no desktop is handed a provider key, and it serves no Quantify data &mdash; and we would rather say so than let you plan around one.</p>
           <p>The server is set up on request rather than shipped in the download: it runs against a checkout and the terminal's own environment, and we configure it with you. <a href="mailto:sales@mail.quantifyterminal.com?subject=Agent%20access%20-%20Quantify%20Terminal">Write to us</a> and we will send the configuration.</p>
 
           <h2>The ten verbs</h2>
