@@ -12,10 +12,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Quantify Terminal</title>
-  <meta name="description" content="When a filing or earnings call lands, Quantify updates your model with sources attached, moves the assumptions behind your thesis, recomputes portfolio exposure, and records the decision.">
+  <meta name="description" content="When a filing or a macro print lands, Quantify proposes model changes with sources attached, moves the assumptions behind your thesis, recomputes portfolio exposure, and records the decision.">
   <meta name="theme-color" content="#9810fa">
   <meta property="og:title" content="Quantify Terminal">
-  <meta property="og:description" content="When a filing or earnings call lands, Quantify updates your model with sources attached, moves the assumptions behind your thesis, recomputes portfolio exposure, and records the decision.">
+  <meta property="og:description" content="When a filing or a macro print lands, Quantify proposes model changes with sources attached, moves the assumptions behind your thesis, recomputes portfolio exposure, and records the decision.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.quantifyterminal.com/">
@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Quantify Terminal">
-  <meta name="twitter:description" content="When a filing or earnings call lands, Quantify updates your model with sources attached, moves the assumptions behind your thesis, recomputes portfolio exposure, and records the decision.">
+  <meta name="twitter:description" content="When a filing or a macro print lands, Quantify proposes model changes with sources attached, moves the assumptions behind your thesis, recomputes portfolio exposure, and records the decision.">
   <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@
           "@type": "Person",
           "name": "Aaryan Saroha"
         },
-        "description": "Quantify Terminal builds event-to-decision infrastructure for investors: a Data Fabric with canonical identifiers, point-in-time observations and machine-readable data rights; a Knowledge Compiler that turns filings, earnings, news, macro and private documents into facts, claims and evidence; a Financial Model Compiler and thesis graph that propagate each change into versioned models and thesis health; a Portfolio Digital Twin that recomputes look-through risk; and a Decision Ledger that records every decision inside explicit mandates and human approval gates, all on an institutional desktop terminal for quantitative analysts, hedge funds, portfolio managers, risk teams and institutional investors."
+        "description": "Quantify Terminal builds event-to-decision infrastructure for investors: a Data Fabric with canonical identifiers, point-in-time observations and machine-readable data rights; a World Model and evidence graph that turn filings, news, macro prints and private documents into facts, claims and quoted sentences; a Financial Model Compiler and thesis graph that propagate each change into versioned models and thesis health; a Portfolio Digital Twin that recomputes look-through risk; and a Decision Ledger that records every decision inside explicit mandates and human approval gates, all on an institutional desktop terminal for quantitative analysts, hedge funds, portfolio managers, risk teams and institutional investors."
       },
       {
         "@type": "WebSite",
@@ -81,12 +81,12 @@
         "operatingSystem": "macOS, Windows, Linux",
         "applicationCategory": "FinanceApplication",
         "url": "https://www.quantifyterminal.com/",
-        "downloadUrl": "https://www.quantifyterminal.com/download",
-        "description": "Quantify Terminal is an institutional desktop terminal built on financial intelligence infrastructure. When a filing, earnings call or macro print lands, it updates the investor's model with the source attached to every changed number, moves the assumptions behind the thesis, recomputes portfolio exposure and records the decision so it can be replayed.",
+        "releaseNotes": "https://www.quantifyterminal.com/changelog",
+        "description": "Quantify Terminal is an institutional desktop terminal built on financial intelligence infrastructure. When a filing or macro print lands, it proposes model changes with the source attached to every changed number, moves the assumptions behind the thesis, recomputes portfolio exposure and records the decision so it can be replayed.",
         "offers": {
           "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+          "url": "https://www.quantifyterminal.com/pricing",
+          "availability": "https://schema.org/PreOrder"
         }
       }
     ]
@@ -145,13 +145,13 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="eyebrow">Every morning</div>
+            <div class="eyebrow">The brief format</div>
             <h2>What moved your book overnight, and which assumption it touched</h2>
           </div>
-          <p>Every morning we run the full chain on a handful of public companies, using only primary sources, and publish the result. No login. Click any number to see the sentence it came from.</p>
+          <p>This page holds the format: the full chain on a handful of public companies, primary sources only, every number traceable to the filing it came from. Briefs begin with the next release.</p>
         </div>
         <div class="hero-actions reveal" style="justify-content:flex-start;">
-          <a class="btn primary" href="/what-changed-today">Read this morning's brief</a>
+          <a class="btn primary" href="/what-changed-today">See what a brief contains</a>
         </div>
       </div>
     </section>
@@ -163,10 +163,10 @@
             <div class="eyebrow">How it works</div>
             <h2>Information to decision.</h2>
           </div>
-          <p>Five steps, in this order. Every hop stores provenance, point-in-time state, permissions, model version and an audit event.</p>
+          <p>Five steps, in this order. Every hop carries provenance and point-in-time state; rights are enforced at retrieval and approvals are recorded.</p>
         </div>
         <div class="benefit-grid five" aria-label="How it works, in five steps">
-          <div class="benefit-card reveal"><h3>Evidence</h3><p>The filing, the transcript, the release — parsed into facts, each with the sentence it came from.</p></div>
+          <div class="benefit-card reveal"><h3>Evidence</h3><p>The filing and the release — parsed into facts, and the changes worth reviewing carry their sentence.</p></div>
           <div class="benefit-card reveal"><h3>Model</h3><p>Proposed cell changes, previous value beside new. You approve them.</p></div>
           <div class="benefit-card reveal"><h3>Thesis</h3><p>The assumptions that depend on those cells move — stronger, weaker, or broken.</p></div>
           <div class="benefit-card reveal"><h3>Portfolio</h3><p>Direct and indirect exposure to the affected drivers is recomputed.</p></div>
@@ -236,9 +236,9 @@
             <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0225;0.0267;0.0933;0.1308;1" dur="12.0s" repeatCount="indefinite"/>
             <animateTransform attributeName="transform" type="scale" values="0 1;0 1;1 1;1 1;1 1;1 1" keyTimes="0;0.0225;0.0725;0.0933;0.1308;1" dur="12.0s" repeatCount="indefinite"/>
             </rect>
-            <text class="arch-title" x="12" y="154">Earnings & calls</text>
-            <text class="arch-sub" x="12" y="169">Releases, guidance,</text>
-            <text class="arch-sub" x="12" y="182">management language</text>
+            <text class="arch-title" x="12" y="154">Earnings & releases</text>
+            <text class="arch-sub" x="12" y="169">Releases, filed guidance,</text>
+            <text class="arch-sub" x="12" y="182">consensus estimates</text>
             </g>
             <g class="arch-node">
             <rect x="0" y="206" width="150" height="56" fill="#ffffff" stroke="#e5e7eb" stroke-width="1">
@@ -250,7 +250,7 @@
             </rect>
             <text class="arch-title" x="12" y="228">News & narrative</text>
             <text class="arch-sub" x="12" y="243">Global news, events,</text>
-            <text class="arch-sub" x="12" y="256">sentiment, themes</text>
+            <text class="arch-sub" x="12" y="256">sentiment, volume</text>
             </g>
             <g class="arch-node">
             <rect x="0" y="280" width="150" height="56" fill="#ffffff" stroke="#e5e7eb" stroke-width="1">
@@ -274,7 +274,7 @@
             </rect>
             <text class="arch-title" x="12" y="376">Market data</text>
             <text class="arch-sub" x="12" y="391">Prices, volume, options,</text>
-            <text class="arch-sub" x="12" y="404">positioning, flows</text>
+            <text class="arch-sub" x="12" y="404">open interest, short float</text>
             </g>
             <g class="arch-node">
             <rect x="0" y="428" width="150" height="56" fill="#ffffff" stroke="#e5e7eb" stroke-width="1">
@@ -285,8 +285,8 @@
             <animateTransform attributeName="transform" type="scale" values="0 1;0 1;1 1;1 1;1 1;1 1" keyTimes="0;0.0958;0.1458;0.1667;0.2042;1" dur="12.0s" repeatCount="indefinite"/>
             </rect>
             <text class="arch-title" x="12" y="450">Private documents</text>
-            <text class="arch-sub" x="12" y="465">Notes, models, decks,</text>
-            <text class="arch-sub" x="12" y="478">data rooms, calls</text>
+            <text class="arch-sub" x="12" y="465">Notes, memos, CSV and</text>
+            <text class="arch-sub" x="12" y="478">HTML the owner adds</text>
             </g>
             <g class="arch-node">
             <rect x="194" y="150" width="150" height="260" fill="#ffffff" stroke="#e5e7eb" stroke-width="1">
@@ -321,7 +321,7 @@
             <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2833;0.2875;0.4083;0.4458;1" dur="12.0s" repeatCount="indefinite"/>
             <animateTransform attributeName="transform" type="scale" values="0 1;0 1;1 1;1 1;1 1;1 1" keyTimes="0;0.2833;0.3333;0.4083;0.4458;1" dur="12.0s" repeatCount="indefinite"/>
             </rect>
-            <text class="arch-title" x="400" y="93">Knowledge Compiler</text>
+            <text class="arch-title" x="400" y="93">Facts &amp; evidence</text>
             <text class="arch-sub" x="400" y="108">Facts, claims, entities,</text>
             <text class="arch-sub" x="400" y="121">evidence spans</text>
             </g>
@@ -333,9 +333,9 @@
             <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2917;0.2958;0.4083;0.4458;1" dur="12.0s" repeatCount="indefinite"/>
             <animateTransform attributeName="transform" type="scale" values="0 1;0 1;1 1;1 1;1 1;1 1" keyTimes="0;0.2917;0.3417;0.4083;0.4458;1" dur="12.0s" repeatCount="indefinite"/>
             </rect>
-            <text class="arch-title" x="400" y="177">Causal Market Engine</text>
-            <text class="arch-sub" x="400" y="192">Mechanisms, competing</text>
-            <text class="arch-sub" x="400" y="205">explanations, confidence</text>
+            <text class="arch-title" x="400" y="177">Newsflow & anomalies</text>
+            <text class="arch-sub" x="400" y="192">News volume against the</text>
+            <text class="arch-sub" x="400" y="205">usual, source conflicts</text>
             </g>
             <g class="arch-node">
             <rect x="388" y="239" width="150" height="64" fill="#ffffff" stroke="#e5e7eb" stroke-width="1">
@@ -406,7 +406,7 @@
             <animateTransform attributeName="transform" type="scale" values="0 1;0 1;1 1;1 1;1 1;1 1" keyTimes="0;0.4750;0.5250;0.5833;0.6208;1" dur="12.0s" repeatCount="indefinite"/>
             </rect>
             <text class="arch-title" x="594" y="369">Scenario Lab</text>
-            <text class="arch-sub" x="594" y="384">Shocks, counterfactuals,</text>
+            <text class="arch-sub" x="594" y="384">Shocks through the model,</text>
             <text class="arch-sub" x="594" y="397">sensitivities</text>
             </g>
             <g class="arch-node">
@@ -442,7 +442,7 @@
             <animateTransform attributeName="transform" type="scale" values="0 1;0 1;1 1;1 1;1 1;1 1" keyTimes="0;0.6167;0.6667;0.7250;0.7625;1" dur="12.0s" repeatCount="indefinite"/>
             </rect>
             <text class="arch-title" x="788" y="369">Red Team</text>
-            <text class="arch-sub" x="788" y="384">AI investment committee:</text>
+            <text class="arch-sub" x="788" y="384">Seven evidence seats:</text>
             <text class="arch-sub" x="788" y="397">bull, bear, forensic, quant</text>
             </g>
             <g class="arch-node">
@@ -475,10 +475,10 @@
             <text class="arch-row arch-row-dark" x="994" y="288">Execution management</text>
             <line x1="982" y1="312" x2="1108" y2="312" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
             <rect x="982" y="320" width="5" height="5" fill="rgba(255,255,255,0.35)"><animate attributeName="fill" values="rgba(255,255,255,0.35);rgba(255,255,255,0.35);#2fd189;#2fd189;rgba(255,255,255,0.35);rgba(255,255,255,0.35)" keyTimes="0;0.9408;0.9475;0.9850;0.9992;1" dur="12.0s" repeatCount="indefinite"/></rect>
-            <text class="arch-row arch-row-dark" x="994" y="328">Investor Chat network</text>
+            <text class="arch-row arch-row-dark" x="994" y="328">Overnight brief, Pulse</text>
             <line x1="982" y1="352" x2="1108" y2="352" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
             <rect x="982" y="360" width="5" height="5" fill="rgba(255,255,255,0.35)"><animate attributeName="fill" values="rgba(255,255,255,0.35);rgba(255,255,255,0.35);#2fd189;#2fd189;rgba(255,255,255,0.35);rgba(255,255,255,0.35)" keyTimes="0;0.9600;0.9667;1.0042;0.9992;1" dur="12.0s" repeatCount="indefinite"/></rect>
-            <text class="arch-row arch-row-dark" x="994" y="368">API, Python SDK, MCP</text>
+            <text class="arch-row arch-row-dark" x="994" y="368">Python SDK, MCP</text>
             </g>
             <g class="arch-node">
             <rect x="970" y="438" width="150" height="64" fill="#ffffff" stroke="#e5e7eb" stroke-width="1">
@@ -640,7 +640,7 @@
           <p>Three pages that answer "is it real" without a sales call.</p>
         </div>
         <div class="benefit-grid three" aria-label="Proof">
-          <a class="benefit-card reveal" href="/accuracy"><h3>Accuracy &rarr;</h3><p>What we measure, on how many companies, how often it is right, and when it abstains.</p></a>
+          <a class="benefit-card reveal" href="/accuracy"><h3>Accuracy &rarr;</h3><p>What we measure, on how many companies, and when it abstains. The numbers publish with the first brief.</p></a>
           <a class="benefit-card reveal" href="/data-rights"><h3>Data rights &rarr;</h3><p>What each source licenses, and how entitlements are enforced at retrieval.</p></a>
           <a class="benefit-card reveal" href="/trust"><h3>Security &rarr;</h3><p>Signed updates, data handling, export formats, escrow.</p></a>
         </div>
@@ -652,7 +652,7 @@
         <div class="cta-panel reveal">
           <div class="eyebrow">Get started</div>
           <h2>Get in before the next release.</h2>
-          <p class="lead" style="margin-left: 0;">Early access is open to a small number of analysts and funds while the intelligence layer lands. Four fields, and a person reads every one.</p>
+          <p class="lead" style="margin-left: 0;">Early access is open to a small number of analysts and funds while the intelligence layer lands. Eight fields, and a person reads every one.</p>
           <div class="actions" style="justify-content: flex-start;">
             <a class="btn primary" href="/early-access">Request early access</a>
             <a class="btn" href="https://console.quantifyterminal.com/login" target="_blank" rel="noopener">Open the console</a>

@@ -12,10 +12,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Accuracy | Quantify Terminal</title>
-  <meta name="description" content="What Quantify Terminal measures, on how many companies, how often it is right, and when it abstains. Published with the daily briefs.">
+  <meta name="description" content="What Quantify Terminal measures, on how many companies, how often it is right, and when it abstains. The method is here; the numbers publish with the first briefs.">
   <meta name="theme-color" content="#9810fa">
   <meta property="og:title" content="Accuracy | Quantify Terminal">
-  <meta property="og:description" content="What Quantify Terminal measures, on how many companies, how often it is right, and when it abstains. Published with the daily briefs.">
+  <meta property="og:description" content="What Quantify Terminal measures, on how many companies, how often it is right, and when it abstains. The method is here; the numbers publish with the first briefs.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.quantifyterminal.com/accuracy">
@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accuracy | Quantify Terminal">
-  <meta name="twitter:description" content="What Quantify Terminal measures, on how many companies, how often it is right, and when it abstains. Published with the daily briefs.">
+  <meta name="twitter:description" content="What Quantify Terminal measures, on how many companies, how often it is right, and when it abstains. The method is here; the numbers publish with the first briefs.">
   <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,7 +85,7 @@
     <section class="hero compact container">
       <div class="eyebrow reveal">Proof</div>
       <h1 class="reveal">Accuracy.</h1>
-      <p class="lead reveal">What we measure, on how many companies, how often it is right, and when it abstains. No terminal publishes this. This page is where ours will be.</p>
+      <p class="lead reveal">What we measure, on how many companies, how often it is right, and when it abstains. We have not seen a terminal publish this. This page is where ours will be.</p>
     </section>
 
     <section class="section tight">
@@ -93,23 +93,22 @@
         <article class="prose doc reveal">
           <h2>What we measure</h2>
           <ul>
-            <li><strong>Extraction.</strong> For every fact taken from a filing, transcript or release: does it match the sentence it was taken from, exactly. Checked against the source span.</li>
-            <li><strong>Claim support.</strong> For every claim: is there an evidence span behind it, and does the span actually say what the claim says.</li>
-            <li><strong>Model proposals.</strong> For every proposed cell change: was it accepted, rejected or overridden by the analyst who reviewed it, and by how much.</li>
-            <li><strong>Thesis calls.</strong> When an assumption is marked weaker or broken, was it. Judged against what happened next, at the horizon the assumption named.</li>
-            <li><strong>Abstentions.</strong> How often the system declined to propose anything, and why.</li>
+            <li><strong>Extraction.</strong> For fifteen line items compiled from a filing: does that filing's own statement print the same number. Checked against the sentence that prints it.</li>
+            <li><strong>Claim support.</strong> For every claim: does it cite something this report collected, and does every number in it match the source it cites.</li>
+            <li><strong>Model proposals.</strong> For every proposed cell change: was it accepted or rejected by the analyst who reviewed it, counted per commit.</li>
+            <li><strong>Thesis calls.</strong> When an assumption breaks and the system says so, did the name then move by two percent, either way, by the close five days later.</li>
+            <li><strong>Abstentions.</strong> How many claims the verifier withheld, and how many reports were drafted without a language model.</li>
           </ul>
 
           <h2>On how many companies</h2>
-          <p>The daily brief runs the full chain on a handful of public companies every morning, from primary sources only. Every measurement above is taken on that set, and the set is listed with each brief. It grows with coverage, and the numbers are reported per brief and cumulatively, so a good week cannot hide a bad one.</p>
+          <p>The daily brief reports the filings of a handful of public companies, a line quoted from each and three headline figures, from primary sources only. Every measurement above is taken on the companies the terminal has models, reports or theses for, and that set is listed with the numbers. It grows with coverage, and the numbers are cumulative, with the count each one was taken over beside it.</p>
 
           <h2>When it abstains</h2>
           <p>The system does not fill gaps. It abstains, and says so, when any of these hold:</p>
           <ul>
-            <li>There is no primary source for the claim, only commentary about it.</li>
-            <li>Two primary sources conflict and neither supersedes the other.</li>
-            <li>A restatement is in flight and the earlier version has not yet closed.</li>
-            <li>Extraction confidence for the span is below the threshold set for that source type.</li>
+            <li>The claim cites nothing this report collected, or a number no cited source contains.</li>
+            <li>Two sources report the same figure for the same period and differ by more than two percent.</li>
+            <li>The filing a figure came from is not stored, or does not print it: it counts neither way.</li>
             <li>The assumption it would touch has no observable metric behind it.</li>
           </ul>
           <p>The abstention rate is published next to the hit rate. A high hit rate with a hidden abstention rate is not accuracy.</p>
@@ -118,7 +117,7 @@
           <p>First measurements publish alongside the first briefs, with the next release. Until there is a number, there is no number on this page. What you will find here is the method, so that when the number appears you can see what it means and what it leaves out.</p>
 
           <h2>What this is not</h2>
-          <p>A score without its breakdown. Every published figure carries the denominator, the company set, the horizon and the abstentions beside it.</p>
+          <p>A score without its breakdown. Every published figure carries the denominator, the company set and the abstentions beside it.</p>
           <p>See also <a href="/what-changed-today">What changed today</a> and <a href="/changelog">the changelog</a>.</p>
         </article>
       </div>

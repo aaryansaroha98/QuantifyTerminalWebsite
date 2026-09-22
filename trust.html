@@ -12,10 +12,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Trust | Quantify Terminal</title>
-  <meta name="description" content="Security, data handling, export formats and escrow for Quantify Terminal: signed updates, keychain-held credentials, entitlements enforced at retrieval, and an audit event on every transition.">
+  <meta name="description" content="Security, data handling, export formats and escrow for Quantify Terminal: signed updates, credentials in the keychain or an encrypted file, entitlements enforced at retrieval, and append-only audit logs.">
   <meta name="theme-color" content="#9810fa">
   <meta property="og:title" content="Trust | Quantify Terminal">
-  <meta property="og:description" content="Security, data handling, export formats and escrow for Quantify Terminal: signed updates, keychain-held credentials, entitlements enforced at retrieval, and an audit event on every transition.">
+  <meta property="og:description" content="Security, data handling, export formats and escrow for Quantify Terminal: signed updates, credentials in the keychain or an encrypted file, entitlements enforced at retrieval, and append-only audit logs.">
   <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.quantifyterminal.com/trust">
@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Trust | Quantify Terminal">
-  <meta name="twitter:description" content="Security, data handling, export formats and escrow for Quantify Terminal: signed updates, keychain-held credentials, entitlements enforced at retrieval, and an audit event on every transition.">
+  <meta name="twitter:description" content="Security, data handling, export formats and escrow for Quantify Terminal: signed updates, credentials in the keychain or an encrypted file, entitlements enforced at retrieval, and append-only audit logs.">
   <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,24 +94,24 @@
           <h2>Security</h2>
           <ul>
             <li><strong>Signed updates.</strong> Every release manifest is signed with an Ed25519 key held in a key vault. Each installed desktop embeds the public key and verifies the signature before it will install an update; a missing or wrong signature is rejected, not offered. Installers are additionally checked against a SHA-256 checksum on download. Details on the <a href="/changelog">changelog</a>.</li>
-            <li><strong>Credentials.</strong> Secrets on the desktop are held in the operating system keychain. A keychain failure cannot carry a secret out of the store.</li>
+            <li><strong>Credentials.</strong> Secrets on the desktop are held in the macOS keychain, and on Windows and Linux in an encrypted file in the app's data folder. A keychain failure cannot carry a secret out of the store.</li>
             <li><strong>Sign-in.</strong> Account sign-in runs through the console at <a href="https://console.quantifyterminal.com" target="_blank" rel="noopener">console.quantifyterminal.com</a>; the desktop completes sign-in through the browser and never holds your password.</li>
-            <li><strong>Audit.</strong> Every transition in the system stores provenance, point-in-time state, the permissions in force, the model version and an audit event.</li>
+            <li><strong>Audit.</strong> A recorded decision stores its evidence, the moment it was taken and the model version; rights decisions, private-library access and account events go to append-only logs.</li>
           </ul>
 
           <h2>Data handling</h2>
           <ul>
-            <li>We do not sell, rent or trade personal information. The website uses minimal, privacy-respecting analytics. The full statement is the <a href="/privacy">privacy policy</a>.</li>
-            <li>Every source carries a machine-readable licence profile, applied by the read layer on every request. See <a href="/data-rights">how we handle data rights</a>.</li>
-            <li>Private documents keep their own permissions. Embedding access is document access: nothing surfaces through an AI answer that a user could not open directly.</li>
-            <li>Every fact carries point-in-time timestamps and an immutable source fingerprint, so anything the system produced can be reproduced from the same snapshot.</li>
+            <li>We do not sell, rent or trade personal information. The website loads a third-party analytics script on every page. The full statement is the <a href="/privacy">privacy policy</a>.</li>
+            <li>Every source carries a machine-readable licence profile, applied on every read from the canonical store. See <a href="/data-rights">how we handle data rights</a>.</li>
+            <li>Private documents keep their own permissions. Retrieval access is document access: nothing surfaces through an AI answer that a user could not open directly.</li>
+            <li>A fact in the canonical store carries point-in-time timestamps and a source fingerprint, so the screens that read it can be reproduced from the same snapshot.</li>
           </ul>
 
           <h2>Export formats</h2>
-          <p>Nothing is locked in. Models, watchlists, reports and tables export as PDF, CSV, XLSX and JSON. Workspace sheets import and export CSV, JSON and XLSX. Excel and Google Sheets can read the terminal directly; see <a href="/agents">agent access</a>.</p>
+          <p>Exports are open formats, and every paid plan includes them. Tables export as CSV, JSON and PDF, watchlists as CSV, and reports as PDF or Markdown. Workspace sheets import and export CSV, JSON and XLSX. Excel and Google Sheets read quotes and indicators from Quantify Cloud, not the terminal's own store; see <a href="/agents">agent access</a>.</p>
 
           <h2>Private deployment</h2>
-          <p>For banks, funds and sensitive environments, private retrieval, the document store, the policy and entitlement engine, immutable audit export and optional local inference run as a containerised deployment inside your network, receiving licensed public-market and model updates from Quantify Cloud.</p>
+          <p>The document store, the rights engine and its audit log run on your own machine; the account and entitlement service is hosted by Quantify, and every AI answer is generated by a hosted service. A containerised deployment inside your own network is not built today; ask about it in the first conversation.</p>
 
           <h2>Escrow</h2>
           <p>Source escrow is agreed per institutional contract. Raise it in the first conversation and it will be in the paper.</p>
