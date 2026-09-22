@@ -1,1 +1,30 @@
+# What is in this repository but must not be served.
+#
+# Only `tools/` was listed here, so every other non-page file in the root was deployed and
+# fetchable: https://www.quantifyterminal.com/completeplan.md returned 200 and is the full
+# internal account architecture plan — production status, local filesystem paths, commit
+# hashes — and /build_website.py returned the generator's source. No credential is in
+# either, but neither is a page and neither should be on the public web.
+#
+# Nothing here is linked from any page: `grep -rn '\.md' --include='*.html'` finds nothing.
+# llms.txt, robots.txt and sitemap.xml are not .md and are still served.
 tools/
+
+# Internal planning and process notes.
+*.md
+
+# The stale site generator. Superseded by hand-edited HTML; kept in the repository as
+# history, not as something to serve.
+build_website.py
+
+# Mockup frames from an animation whose output path came out as the literal string
+# "undefined". Unreferenced by any page, and they show invented companies — a fabricated
+# screenshot on the public web is worse than no screenshot.
+undefined/
+
+# Editor and tool state.
+.claude/
+.qodo/
+.vscode/
+.DS_Store
+**/.DS_Store
