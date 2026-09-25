@@ -37,13 +37,6 @@ PAGES = [
     ("terms",              "yearly",  "0.3"),
     ("application",        "monthly", "0.6"),
     ("what-changed-today", "weekly",  "0.6"),
-    ("blog",               "weekly",  "0.6"),
-    ("blog/best-bloomberg-terminal-alternatives-2026", "monthly", "0.5"),
-    ("blog/bloomberg-terminal-cost-2026",              "monthly", "0.5"),
-    ("blog/best-free-trading-terminal-software-2026",  "monthly", "0.5"),
-    ("blog/best-crypto-trading-terminal-2026",         "monthly", "0.5"),
-    ("blog/what-is-a-quant-trading-terminal",          "monthly", "0.5"),
-    ("blog/how-to-backtest-a-trading-strategy",        "monthly", "0.5"),
 ]
 
 # Pages that exist and are deliberately not submitted. A page is in one list or the other;
