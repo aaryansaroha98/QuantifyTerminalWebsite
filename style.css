@@ -7010,3 +7010,138 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   font-size: 16px;
   font-weight: 600;
 }
+
+/* --- Contact: the follow list. One quiet list, not a wall of brand tiles: three channels,
+   the glyph in the page's ink (black is inside every brand's rules), the handle because it
+   is not guessable, and a colour step on hover. --- */
+.follow {
+  align-self: end;
+  max-width: 460px;
+  width: 100%;
+  justify-self: end;
+}
+
+.follow-label {
+  display: block;
+  margin: 0 0 12px;
+  color: var(--quiet);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.follow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.follow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 60px;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.follow-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 150ms ease;
+}
+
+.follow-glyph {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+}
+
+.follow-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--quiet);
+  font-size: 14px;
+  transition: color 150ms ease;
+}
+
+.follow-arrow {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 150ms ease;
+}
+
+.follow-row:hover .follow-name {
+  text-decoration-color: var(--text);
+}
+
+.follow-row:hover .follow-handle {
+  color: var(--text);
+}
+
+.follow-row:hover .follow-arrow {
+  transform: translate(2px, -2px);
+}
+
+.follow-row:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .follow {
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .follow-row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    padding: 10px 0;
+  }
+}
+
+/* --- The footer's profiles: glyphs in the page's ink, no tiles around them --- */
+.footer-social {
+  gap: 6px;
+}
+
+.footer-social a {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  color: var(--text);
+  opacity: 0.72;
+  transition: opacity 150ms ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  border: 0;
+  opacity: 1;
+}
+
+.footer-social svg {
+  width: 17px;
+  height: 17px;
+}
+
+.minimal .footer-social a,
+.minimal .footer-social a:hover {
+  border: 0;
+  color: var(--text);
+}
