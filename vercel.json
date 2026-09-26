@@ -32,6 +32,11 @@
       "source": "/blog/:path*",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/application",
+      "destination": "/careers",
+      "permanent": false
     }
   ],
   "headers": [

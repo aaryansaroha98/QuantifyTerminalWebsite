@@ -35,7 +35,6 @@ PAGES = [
     ("careers",            "monthly", "0.5"),
     ("privacy",            "yearly",  "0.3"),
     ("terms",              "yearly",  "0.3"),
-    ("application",        "monthly", "0.6"),
     ("what-changed-today", "weekly",  "0.6"),
 ]
 
@@ -43,6 +42,7 @@ PAGES = [
 # it cannot be in neither, which is the whole point of the check below.
 EXCLUDED = {
     "404": "the error page, and noindex in its own head",
+    "application": "internship applications are closed; /application redirects to /careers",
 }
 
 def lastmod(slug):
