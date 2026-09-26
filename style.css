@@ -7145,3 +7145,19 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   border: 0;
   color: var(--text);
 }
+
+/* Careers when applications are closed: the roles stay listed, the action does not act */
+.career-meta span.career-live.is-closed,
+.minimal .career-meta span.career-live.is-closed {
+  border-color: var(--closed);
+  color: var(--closed);
+}
+
+.btn.is-closed,
+.minimal .btn.is-closed {
+  pointer-events: none;
+  cursor: default;
+  border-color: var(--line-soft, rgba(127, 127, 127, 0.3));
+  background: transparent;
+  color: var(--quiet, #8a8f98);
+}
