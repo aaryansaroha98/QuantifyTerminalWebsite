@@ -525,7 +525,7 @@ HTML_FOOTER = """
         &copy; 2026 Quantify Terminal. All rights reserved. <br>Built for institutional desks and quantitative professionals.
       </div>
       <div class="footer-links">
-        <a href="https://x.com/QuantifTerm" target="_blank">X (Twitter)</a>
+        <a href="https://x.com/quantifytml" target="_blank">X (Twitter)</a>
         <a href="https://www.linkedin.com/company/quantify-terminal/" target="_blank">LinkedIn</a>
         <a href="/connect">Community</a>
       </div>
@@ -732,7 +732,7 @@ connect_html = HTML_HEAD("Connect") + """
           Official Website Architecture
         </a>
 
-        <a href="https://x.com/QuantifTerm" target="_blank" class="social-card">
+        <a href="https://x.com/quantifytml" target="_blank" class="social-card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
           Terminal X Broadcasts
         </a>
