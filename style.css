@@ -6907,3 +6907,106 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   color: var(--quiet);
   font-size: 12px;
 }
+
+/* --- Leadership: the founder page and the company page's leadership entry --- */
+.leader-role {
+  display: block;
+  margin: 0 0 10px;
+  color: var(--quiet);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fact-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.fact-list li {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 14px;
+  padding: 13px 0;
+  border-top: 1px solid var(--line-soft);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.fact-list li:first-child {
+  border-top: 0;
+  padding-top: 4px;
+}
+
+.fact-k {
+  padding-top: 2px;
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fact-v {
+  color: var(--text);
+  font-weight: 520;
+}
+
+.fact-v a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+.fact-v a:hover {
+  text-decoration-color: var(--text);
+}
+
+.note-title {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.signature {
+  margin-top: 28px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.signature span {
+  display: block;
+  margin-top: 2px;
+  color: var(--quiet);
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.contact-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .contact-grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.prose .note-title {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.prose .signature {
+  margin: 30px 0 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+}
