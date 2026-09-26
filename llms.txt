@@ -10,8 +10,8 @@ For analysts and portfolio managers who maintain their own models. Desktop termi
 - [What changed today](https://www.quantifyterminal.com/what-changed-today): the format the daily public brief will take, and the ninety-second walkthrough. Briefs begin with the next release.
 - [Product](https://www.quantifyterminal.com/product): the eight systems: Pulse, Deep Research, Financial Model Compiler, Thesis and Health, Portfolio Digital Twin, Decision Ledger and Replay, Scenario Lab and Red Team, agent access.
 - [Vision](https://www.quantifyterminal.com/vision): the system that maintains conviction, not just information; what it is, the order it is built in, what it is not.
-- [Pricing](https://www.quantifyterminal.com/pricing): plans are being set with the first customers; early access is open now.
-- [Early access](https://www.quantifyterminal.com/early-access): the request form; open to a small number of analysts and funds while it lands.
+- [Pricing](https://www.quantifyterminal.com/pricing): early access, by application; firms are set up after a short demo.
+- [Early access](https://www.quantifyterminal.com/early-access): the request form; access is by application for analysts and funds.
 - [Download](https://www.quantifyterminal.com/download): desktop builds.
 - [Agents](https://www.quantifyterminal.com/agents): ten read-only verbs over MCP or from Python, and Excel and Google Sheets formulas. There is no HTTP API.
 
