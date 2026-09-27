@@ -6322,18 +6322,30 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   padding: 0 20px;
 }
 
+/* The wordmark is set in Poppins, self-hosted and used for nothing else, so
+   the logo reads the same as the brand artwork. The full stop carries the
+   colour of the early-access strip above the header. */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/Public/fonts/poppins-latin-500.woff2") format("woff2");
+}
+
 .hdr-mark {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   margin-right: auto;
-  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  font-size: 29px;
-  font-weight: 700;
-  letter-spacing: -0.034em;
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
   color: var(--text);
   white-space: nowrap;
 }
+.mark-dot { color: #9810fa; }
 .hdr-mark:hover { color: var(--text); }
 
 .hdr-nav { display: none; }
@@ -6398,16 +6410,18 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
    narrow, at which point it drops to one word so the wordmark never gives
    ground. Two complete labels, because .hdr-cta is a flex container. */
 .hdr-cta-short { display: none; }
-@media (max-width: 359.98px) {
+@media (max-width: 419.98px) {
   .hdr-cta-long { display: none; }
   .hdr-cta-short { display: inline; }
   .hdr-cta { padding: 0 12px; }
-  .hdr-mark { font-size: 25px; }
+}
+@media (max-width: 359.98px) {
+  .hdr-mark { font-size: 19px; }
 }
 
 @media (min-width: 1024px) {
   .hdr-in { height: 80px; padding: 0 40px; }
-  .hdr-mark { font-size: 35px; }
+  .hdr-mark { font-size: 28px; }
   .hdr-nav {
     display: flex;
     align-items: center;
@@ -7184,10 +7198,11 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 
 .foot-mark {
   display: inline-block;
-  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.034em;
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
   line-height: 1;
   color: var(--text);
 }

@@ -26,6 +26,7 @@
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/style.css">
+  <link rel="preload" href="/Public/fonts/poppins-latin-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
@@ -63,7 +64,7 @@
   </div>
   <header class="hdr" data-hdr>
     <div class="hdr-in">
-      <a class="hdr-mark" href="/">quantify</a>
+      <a class="hdr-mark" href="/" aria-label="Quantify Terminal home">quantify terminal<span class="mark-dot">.</span></a>
       <nav class="hdr-nav" aria-label="Primary">
         <a href="/product">Product</a>
         <a href="/vision">Vision</a>
@@ -145,7 +146,7 @@
           <article class="release-card reveal">
             <span>04</span>
             <strong>Thesis and Health</strong>
-            <p>You write the thesis: title, direction, horizon and the assumptions under it. Each assumption is a numeric condition — threshold, weight, period — on any field the Data Fabric carries, or on a cell in a model you committed. Quantify re-checks them roughly daily, and again when a model commit moves a cell they read, marking each holding, warning, broken or unchecked. Health is the weighted score of the ones it could check, shown beside each assumption's status and last value, and left blank rather than zero when it could check none. A break reaches Pulse with the value that broke it; two broken on two checks running invalidate the thesis.</p>
+            <p>You write the thesis: title, direction, horizon and the assumptions under it. Each assumption is a numeric condition — threshold, weight, period — on any field the Data Fabric carries, or on a cell in a model you committed. Quantify Terminal re-checks them roughly daily, and again when a model commit moves a cell they read, marking each holding, warning, broken or unchecked. Health is the weighted score of the ones it could check, shown beside each assumption's status and last value, and left blank rather than zero when it could check none. A break reaches Pulse with the value that broke it; two broken on two checks running invalidate the thesis.</p>
           </article>
           <article class="release-card reveal">
             <span>05</span>
@@ -191,8 +192,8 @@
             <span class="spec-label">Point-in-time observation</span>
 <pre class="spec-block"><span class="k">effective_at</span>    <span class="c">period or instant the fact describes</span>
 <span class="k">published_at</span>    <span class="c">when the source published it</span>
-<span class="k">available_at</span>    <span class="c">earliest time Quantify could have known it</span>
-<span class="k">ingested_at</span>     <span class="c">when Quantify received it</span>
+<span class="k">available_at</span>    <span class="c">earliest time Quantify Terminal could have known it</span>
+<span class="k">ingested_at</span>     <span class="c">when Quantify Terminal received it</span>
 <span class="k">valid_from / valid_to</span>   <span class="c">version interval for restatements</span>
 <span class="k">source_version</span>  <span class="c">immutable vendor / document fingerprint</span></pre>
           </div>
@@ -487,7 +488,7 @@
   <footer class="site-footer">
     <div class="foot">
       <div class="foot-brand">
-        <a class="foot-mark" href="/">quantify</a>
+        <a class="foot-mark" href="/" aria-label="Quantify Terminal home">quantify terminal<span class="mark-dot">.</span></a>
         <p class="foot-line">Desktop research terminal for funds and investment teams.</p>
       </div>
       <nav class="foot-cols" aria-label="Site">

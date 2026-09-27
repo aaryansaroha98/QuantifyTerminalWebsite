@@ -29,6 +29,7 @@
   <meta name="twitter:description" content="Ten read-only verbs an agent can call over MCP or from Python, plus Excel and Google Sheets formulas. The same rights, point-in-time and audit checks as the desktop. Nothing writes.">
   <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
   <link rel="stylesheet" href="/style.css">
+  <link rel="preload" href="/Public/fonts/poppins-latin-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
@@ -53,7 +54,7 @@
   </div>
   <header class="hdr" data-hdr>
     <div class="hdr-in">
-      <a class="hdr-mark" href="/">quantify</a>
+      <a class="hdr-mark" href="/" aria-label="Quantify Terminal home">quantify terminal<span class="mark-dot">.</span></a>
       <nav class="hdr-nav" aria-label="Primary">
         <a href="/product">Product</a>
         <a href="/vision">Vision</a>
@@ -100,11 +101,11 @@
           </ul>
           <p>The formula is the same everywhere:</p>
 <pre class="spec-block">=QT("AAPL","price")</pre>
-          <p>The module and the script are generated for you, with the formulas and the connector address already in them. Pointing them at your own Quantify connector is two fields in the Workspace panel &mdash; its URL and the key it accepts &mdash; and the terminal writes both into every module it generates after that. The connector itself is yours: you deploy it once, from the folder the terminal hands you, and the desk that deployed it holds the key.</p>
+          <p>The module and the script are generated for you, with the formulas and the connector address already in them. Pointing them at your own Quantify Terminal connector is two fields in the Workspace panel &mdash; its URL and the key it accepts &mdash; and the terminal writes both into every module it generates after that. The connector itself is yours: you deploy it once, from the folder the terminal hands you, and the desk that deployed it holds the key.</p>
           <p>Two things worth knowing before you plan around it. The Workspace spreadsheet inside the terminal answers these formulas with nothing deployed and no key &mdash; a deployment is only needed to reach them from Excel or Sheets. And the connector returns market data and portfolio figures, not the canonical fields with provenance that the verbs above return; for those, the door is MCP.</p>
 
           <h2>MCP and Python</h2>
-          <p>An MCP server exposes ten verbs over stdio, so an assistant can call the terminal as a tool. A Python client calls the same server, so a notebook and an agent get the same answers. There is no HTTP API for any of this today &mdash; the one HTTP service we run carries model calls so that no desktop is handed a provider key, and it serves no Quantify data &mdash; and we would rather say so than let you plan around one.</p>
+          <p>An MCP server exposes ten verbs over stdio, so an assistant can call the terminal as a tool. A Python client calls the same server, so a notebook and an agent get the same answers. There is no HTTP API for any of this today &mdash; the one HTTP service we run carries model calls so that no desktop is handed a provider key, and it serves no Quantify Terminal data &mdash; and we would rather say so than let you plan around one.</p>
           <p>The server is set up on request rather than shipped in the download: it runs against a checkout and the terminal's own environment, and we configure it with you. <a href="mailto:sales@mail.quantifyterminal.com?subject=Agent%20access%20-%20Quantify%20Terminal">Write to us</a> and we will send the configuration.</p>
 
           <h2>The ten verbs</h2>
@@ -137,7 +138,7 @@
   <footer class="site-footer">
     <div class="foot">
       <div class="foot-brand">
-        <a class="foot-mark" href="/">quantify</a>
+        <a class="foot-mark" href="/" aria-label="Quantify Terminal home">quantify terminal<span class="mark-dot">.</span></a>
         <p class="foot-line">Desktop research terminal for funds and investment teams.</p>
       </div>
       <nav class="foot-cols" aria-label="Site">

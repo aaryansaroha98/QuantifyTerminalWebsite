@@ -1,6 +1,6 @@
 # Quantify Terminal
 
-> Terminals tell you what happened. Quantify tells you what changed because it happened. When a filing or a macro print lands, Quantify proposes the model changes with the source attached to every changed number, the assumptions behind your thesis move, and your portfolio exposure is recomputed and recorded.
+> Terminals tell you what happened. Quantify Terminal tells you what changed because it happened. When a filing or a macro print lands, Quantify Terminal proposes the model changes with the source attached to every changed number, the assumptions behind your thesis move, and your portfolio exposure is recomputed and recorded.
 
 For analysts and portfolio managers who maintain their own models. Desktop terminal for macOS, Windows and Linux.
 
