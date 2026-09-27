@@ -1,0 +1,163 @@
+/* How /sitemap.xml reads when a person opens it. Crawlers never load this.
+   CSS, not XSLT: Chrome stops running XSLT on stable on 17 November 2026,
+   and an xml-stylesheet of type text/css stays supported. */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap");
+@namespace url(http://www.sitemaps.org/schemas/sitemap/0.9);
+@namespace video url(http://www.google.com/schemas/sitemap-video/1.1);
+
+urlset {
+  display: block;
+  box-sizing: border-box;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 72px 40px 96px;
+  background: #ffffff;
+  color: #0b0e17;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+  counter-reset: page;
+}
+
+urlset::before {
+  content: "quantify";
+  display: block;
+  margin-bottom: 64px;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.034em;
+  line-height: 1;
+}
+
+url:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+url:first-of-type::before {
+  content: "Sitemap";
+  grid-column: 1 / -1;
+  margin-bottom: 16px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e5e7eb;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.034em;
+  line-height: 1;
+}
+
+urlset::after {
+  content: counter(page) " pages \00B7  www.quantifyterminal.com \00B7  every page a visitor can use is also linked from the footer of every page.";
+  display: block;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  color: #8b909c;
+  font-size: 13px;
+}
+
+url {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 32px;
+  padding: 16px 0;
+  border-top: 1px solid #e5e7eb;
+  counter-increment: page;
+}
+
+loc {
+  display: flex;
+  font-size: 15px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+loc::before {
+  content: counter(page, decimal-leading-zero);
+  flex: 0 0 40px;
+  padding-top: 2px;
+  color: #8b909c;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+lastmod {
+  display: block;
+  color: #5c6270;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+lastmod::before {
+  content: "UPDATED  ";
+  color: #8b909c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+video|video {
+  display: block;
+  grid-column: 1 / -1;
+  margin: 8px 0 0 40px;
+  color: #5c6270;
+  font-size: 13px;
+}
+
+video|title {
+  display: inline;
+}
+
+video|title::before {
+  content: "FILM  ";
+  color: #8b909c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+video|duration {
+  display: inline;
+  color: #8b909c;
+}
+
+video|duration::before { content: "  \00B7  "; }
+video|duration::after { content: " s"; }
+
+video|thumbnail_loc,
+video|description,
+video|content_loc,
+video|publication_date,
+video|family_friendly {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  urlset {
+    padding: 48px 20px 72px;
+  }
+  url:first-of-type::before {
+    font-size: 36px;
+    padding-bottom: 28px;
+  }
+  url {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
+  }
+  loc {
+    font-size: 13px;
+    overflow-wrap: normal;
+  }
+  loc::before {
+    flex-basis: 32px;
+    padding-top: 1px;
+  }
+  lastmod,
+  video|video {
+    padding-left: 32px;
+  }
+  video|video {
+    margin-left: 0;
+  }
+}

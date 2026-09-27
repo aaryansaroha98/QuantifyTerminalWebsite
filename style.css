@@ -7161,3 +7161,147 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   background: transparent;
   color: var(--quiet, #8a8f98);
 }
+
+/* =====================================================================
+   FOOTER — the site's visible sitemap (written by tools/build-footer.py)
+   Brand on the left, four columns of plain links, a hairline, then the
+   copyright and the profiles. No tiles, no pills, no accent bars.
+   ===================================================================== */
+.site-footer,
+.minimal .site-footer {
+  padding: 72px 0 32px;
+  border-top: 1px solid var(--line);
+  color: var(--quiet);
+}
+
+.foot {
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2.4fr);
+  column-gap: 64px;
+}
+
+.foot-mark {
+  display: inline-block;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.034em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.site-footer .foot-line {
+  max-width: 250px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.foot-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 32px;
+}
+
+.site-footer .foot-h {
+  margin: 0 0 18px;
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.foot-col ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foot-col li {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.foot-col a {
+  color: var(--muted);
+  transition: color 150ms ease;
+}
+
+.foot-col a:hover,
+.foot-col a:focus-visible,
+.foot-col a[aria-current="page"] {
+  color: var(--text);
+}
+
+.foot-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer .foot-copy {
+  margin: 0;
+  color: var(--quiet);
+  font-size: 13px;
+}
+
+.foot-bottom .footer-social {
+  width: auto;
+  margin: 0 -7px 0 0;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1023.98px) {
+  .foot {
+    grid-template-columns: 1fr;
+  }
+  .foot-cols {
+    margin-top: 44px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .site-footer,
+  .minimal .site-footer {
+    padding: 52px 0 24px;
+  }
+  .foot {
+    width: calc(100% - 40px);
+  }
+  .foot-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 36px;
+    margin-top: 40px;
+  }
+  .foot-col ul {
+    gap: 2px;
+  }
+  .foot-col a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+  .foot-bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 40px;
+  }
+  .foot-bottom .footer-social {
+    margin: 0 0 0 -7px;
+    justify-content: flex-start;
+  }
+}

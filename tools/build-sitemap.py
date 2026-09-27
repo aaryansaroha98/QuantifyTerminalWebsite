@@ -5,37 +5,55 @@ The sitemap is generated rather than hand-edited so that renaming a page, or
 adding one, cannot leave the index quietly disagreeing with the site. Run from
 the repo root:  python3 tools/build-sitemap.py
 
-lastmod comes from the last commit that actually touched each file, not from
-whenever somebody last edited the line, so the dates are true.
+What goes in, and why (Google Search Central, build-sitemap and video-sitemaps;
+Bing Webmaster blog, July 2025):
 
-To drop a page from the sitemap, delete its row. That stops it being submitted;
-it does not deindex it, and it does not stop it being crawled — for that the
-page itself needs a noindex.
+- <loc> is the page's canonical URL, exactly. A listed page that is noindex, or
+  whose rel=canonical names another URL, fails the build.
+- <lastmod> is the last commit that changed what the page SAYS. Google uses it
+  only while it stays "consistently and verifiably accurate", and says a change
+  to the footer or the copyright line is not a significant change -- so a commit
+  that only rewrote the shared footer does not move a page's date. Full
+  timestamp with offset, which Bing asks for.
+- No <changefreq> or <priority>: Google and Bing both say they ignore them.
+- A page with a film gets a video entry, read from the page's own VideoObject
+  structured data so the two can never disagree.
+
+To drop a page from the sitemap, move its slug to EXCLUDED with a reason. That
+stops it being submitted; it does not deindex it -- for that the page itself
+needs a noindex.
 """
-import subprocess, os, sys, datetime
+import datetime
+import json
+import os
+import re
+import subprocess
+import sys
+from xml.sax.saxutils import escape
 
 BASE = "https://www.quantifyterminal.com"
+VIDEO_NS = "http://www.google.com/schemas/sitemap-video/1.1"
 
-#      slug                 changefreq  priority
+# in the order a reader would want them
 PAGES = [
-    ("index",              "weekly",  "1.0"),
-    ("product",            "monthly", "0.9"),
-    ("early-access",       "monthly", "0.8"),
-    ("vision",             "monthly", "0.8"),
-    ("pricing",            "monthly", "0.8"),
-    ("accuracy",           "weekly",  "0.7"),
-    ("agents",             "monthly", "0.7"),
-    ("data-rights",        "monthly", "0.7"),
-    ("trust",              "monthly", "0.7"),
-    ("changelog",          "weekly",  "0.6"),
-    ("download",           "monthly", "0.6"),
-    ("company",            "monthly", "0.6"),
-    ("founder",            "monthly", "0.5"),
-    ("contact",            "monthly", "0.5"),
-    ("careers",            "monthly", "0.5"),
-    ("privacy",            "yearly",  "0.3"),
-    ("terms",              "yearly",  "0.3"),
-    ("what-changed-today", "weekly",  "0.6"),
+    "index",
+    "product",
+    "vision",
+    "pricing",
+    "early-access",
+    "download",
+    "accuracy",
+    "changelog",
+    "what-changed-today",
+    "agents",
+    "trust",
+    "data-rights",
+    "company",
+    "founder",
+    "careers",
+    "contact",
+    "privacy",
+    "terms",
 ]
 
 # Pages that exist and are deliberately not submitted. A page is in one list or the other;
@@ -45,12 +63,68 @@ EXCLUDED = {
     "application": "internship applications are closed; /application redirects to /careers",
 }
 
-def lastmod(slug):
-    d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", f"{slug}.html"],
-                       capture_output=True, text=True).stdout.strip()
-    return d or datetime.date.today().isoformat()
+FOOTER = re.compile(r'<footer class="site-footer">.*?</footer>', re.S)
 
-missing = [s for s, _, _ in PAGES if not os.path.exists(f"{s}.html")]
+
+def git(*args):
+    return subprocess.run(["git", *args], capture_output=True, text=True).stdout
+
+
+def content(text):
+    """What a page says, for dating it: everything but the shared footer."""
+    return FOOTER.sub("", text or "")
+
+
+def lastmod(slug):
+    """The last time the page's own content changed, as an ISO timestamp with offset."""
+    path = f"{slug}.html"
+    working = open(path, encoding="utf-8").read()
+    if content(working) != content(git("show", f"HEAD:{path}")):
+        # about to be committed: the change is now
+        return datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
+    for line in git("log", "--format=%H %cI", "--", path).splitlines():
+        sha, stamp = line.split(" ", 1)
+        before = git("show", f"{sha}^:{path}")
+        if content(git("show", f"{sha}:{path}")) != content(before):
+            return stamp
+    sys.exit(f"{path}: no commit found that changed its content")
+
+
+def head_of(slug):
+    text = open(f"{slug}.html", encoding="utf-8").read()
+    return text[: text.find("</head>")]
+
+
+def iso_seconds(duration):
+    m = re.fullmatch(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", duration or "")
+    if not m or not any(m.groups()):
+        sys.exit(f"cannot read the duration {duration!r}")
+    h, mi, s = (int(g or 0) for g in m.groups())
+    return h * 3600 + mi * 60 + s
+
+
+def videos(slug):
+    """The page's films, from its VideoObject structured data."""
+    found = []
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', head_of(slug), re.S):
+        data = json.loads(block)
+        for item in data if isinstance(data, list) else [data]:
+            if item.get("@type") == "VideoObject":
+                found.append(item)
+    return found
+
+
+def check(slug, loc):
+    head = head_of(slug)
+    robots = re.search(r'<meta name="robots" content="([^"]*)"', head)
+    if robots and "noindex" in robots.group(1):
+        sys.exit(f"{slug}.html is noindex but listed in the sitemap")
+    canonical = re.search(r'<link rel="canonical" href="([^"]*)"', head)
+    if not canonical or canonical.group(1) != loc:
+        sys.exit(f"{slug}.html canonical {canonical and canonical.group(1)!r} does not match {loc}")
+
+
+missing = [s for s in PAGES if not os.path.exists(f"{s}.html")]
 if missing:
     sys.exit(f"listed in the sitemap but not on disk: {missing}")
 
@@ -66,21 +140,38 @@ on_disk = {
     for name in names
     if name.endswith(".html") and ".git" not in root.split(os.sep)
 }
-unlisted = sorted(on_disk - {s for s, _, _ in PAGES} - set(EXCLUDED))
+unlisted = sorted(on_disk - set(PAGES) - set(EXCLUDED))
 if unlisted:
-    sys.exit("on disk but neither listed nor excluded — add a row to PAGES, or a reason to "
+    sys.exit("on disk but neither listed nor excluded — add it to PAGES, or a reason to "
              f"EXCLUDED: {unlisted}")
 
 lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-for slug, freq, pri in PAGES:
+         '<?xml-stylesheet type="text/css" href="/sitemap.css"?>',
+         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="{VIDEO_NS}">']
+films = 0
+for slug in PAGES:
     loc = BASE + ("/" if slug == "index" else "/" + slug)
+    check(slug, loc)
     lines += ["  <url>",
               f"    <loc>{loc}</loc>",
-              f"    <lastmod>{lastmod(slug)}</lastmod>",
-              f"    <changefreq>{freq}</changefreq>",
-              f"    <priority>{pri}</priority>",
-              "  </url>"]
+              f"    <lastmod>{lastmod(slug)}</lastmod>"]
+    for v in videos(slug):
+        if v.get("embedUrl") == loc:
+            sys.exit(f"{slug}.html: the VideoObject embedUrl is the page itself; Google rejects that")
+        description = v["description"]
+        if len(description) > 2048:
+            sys.exit(f"{slug}.html: video description is over 2,048 characters")
+        lines += ["    <video:video>",
+                  f"      <video:thumbnail_loc>{escape(v['thumbnailUrl'])}</video:thumbnail_loc>",
+                  f"      <video:title>{escape(v['name'])}</video:title>",
+                  f"      <video:description>{escape(description)}</video:description>",
+                  f"      <video:content_loc>{escape(v['contentUrl'])}</video:content_loc>",
+                  f"      <video:duration>{iso_seconds(v['duration'])}</video:duration>",
+                  f"      <video:publication_date>{escape(v['uploadDate'])}</video:publication_date>",
+                  "      <video:family_friendly>yes</video:family_friendly>",
+                  "    </video:video>"]
+        films += 1
+    lines += ["  </url>"]
 lines += ["</urlset>", ""]
 open("sitemap.xml", "w", encoding="utf-8").write("\n".join(lines))
-print(f"sitemap.xml: {len(PAGES)} urls")
+print(f"sitemap.xml: {len(PAGES)} urls, {films} films")
