@@ -11,13 +11,19 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>How to Backtest a Trading Strategy: A 2026 Guide | Quantify Terminal</title>
-  <meta name="description" content="A practical 2026 guide to backtesting a trading strategy — data quality, avoiding overfitting, the metrics that matter, and tools that make it repeatable.">
+  <title>How to Backtest a Trading Strategy (Step by Step)</title>
+  <meta name="description" content="How to backtest a trading strategy in six plain steps: the rule, the data, the costs, the held-back test, the reading and the record.">
   <meta name="theme-color" content="#9810fa">
-  <meta property="og:title" content="How to Backtest a Trading Strategy: A 2026 Guide">
-  <meta property="og:description" content="A practical 2026 guide to backtesting a trading strategy — data quality, avoiding overfitting, the metrics that matter, and tools that make it repeatable.">
-  <meta property="og:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
+  <meta property="og:title" content="How to Backtest a Trading Strategy (Step by Step)">
+  <meta property="og:description" content="How to backtest a trading strategy in six plain steps: the rule, the data, the costs, the held-back test, the reading and the record.">
+  <meta property="og:image" content="https://www.quantifyterminal.com/Public/blog/decision-ledger-every-decision-with-its-reason-og.jpg?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Quantify Terminal decision ledger listing each decision with its date, position, action and the reason given">
   <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-08-31T00:00:00+05:30">
+  <meta property="article:modified_time" content="2026-09-27T00:00:00+05:30">
+  <meta property="article:author" content="https://www.quantifyterminal.com/founder">
   <link rel="canonical" href="https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy">
   <link rel="icon" type="image/png" href="/Public/favicon.png">
   <link rel="apple-touch-icon" href="/Public/favicon.png">
@@ -25,37 +31,118 @@
   <meta property="og:url" content="https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy">
   <meta property="og:site_name" content="Quantify Terminal">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How to Backtest a Trading Strategy: A 2026 Guide">
-  <meta name="twitter:description" content="A practical 2026 guide to backtesting a trading strategy — data quality, avoiding overfitting, the metrics that matter, and tools that make it repeatable.">
-  <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2">
+  <meta name="twitter:title" content="How to Backtest a Trading Strategy (Step by Step)">
+  <meta name="twitter:description" content="How to backtest a trading strategy in six plain steps: the rule, the data, the costs, the held-back test, the reading and the record.">
+  <meta name="twitter:image" content="https://www.quantifyterminal.com/Public/blog/decision-ledger-every-decision-with-its-reason-og.jpg?v=1">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
   <script type="application/ld+json">
-  {
+{
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.quantifyterminal.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.quantifyterminal.com/blog" },
-      { "@type": "ListItem", "position": 3, "name": "How to backtest a trading strategy", "item": "https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy" }
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.quantifyterminal.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.quantifyterminal.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Backtest a Trading Strategy",
+        "item": "https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy"
+      }
     ]
   }
   </script>
   <script type="application/ld+json">
-  {
+{
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "How to backtest a trading strategy",
-    "description": "A practical 2026 guide to backtesting a trading strategy — data quality, avoiding overfitting, the metrics that matter, and tools that make it repeatable.",
-    "image": "https://www.quantifyterminal.com/Public/qt_images/optimized/image_30.jpg?v=2",
-    "author": { "@type": "Person", "name": "Aaryan Saroha" },
-    "publisher": { "@type": "Organization", "name": "Quantify Terminal", "url": "https://www.quantifyterminal.com/" },
-    "datePublished": "2026-08-31",
-    "dateModified": "2026-08-31",
-    "mainEntityOfPage": "https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy"
+    "headline": "How to Backtest a Trading Strategy",
+    "description": "How to backtest a trading strategy in six plain steps: the rule, the data, the costs, the held-back test, the reading and the record.",
+    "image": [
+      "https://www.quantifyterminal.com/Public/blog/decision-ledger-every-decision-with-its-reason-og.jpg?v=1",
+      "https://www.quantifyterminal.com/Public/blog/decision-ledger-every-decision-with-its-reason.jpg?v=1"
+    ],
+    "datePublished": "2026-08-31T00:00:00+05:30",
+    "dateModified": "2026-09-27T00:00:00+05:30",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "@id": "https://www.quantifyterminal.com/founder#person",
+      "name": "Aaryan Saroha",
+      "url": "https://www.quantifyterminal.com/founder",
+      "jobTitle": "Founder and Chief Executive Officer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://www.quantifyterminal.com/#organization",
+      "name": "Quantify Terminal",
+      "url": "https://www.quantifyterminal.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.quantifyterminal.com/Public/logo.PNG"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy"
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://www.quantifyterminal.com/blog#blog"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much history do I need to backtest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enough to include different kinds of market and enough trades to mean something. A few years of daily data is a minimum for most strategies, and more for slow ones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is overfitting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tuning a rule until it fits the past so closely that it has learned the noise. It shows up as a result that falls apart when the settings move slightly or when it is tested on new data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I backtest without coding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Spreadsheets work for simple rules, and many platforms let you describe a rule without writing code. Code helps once the rule or the data gets complicated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is walk-forward testing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Building the rule on one period and testing it on the next, then moving both forward, so every result comes from data the rule had not seen."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -97,98 +184,75 @@
   <main class="page">
     <section class="hero compact container">
       <div class="eyebrow reveal">Guide</div>
-      <h1 class="reveal">How to backtest a trading strategy</h1>
-      <p class="lead reveal">Backtesting is how a trading idea earns the right to risk real capital. This 2026 guide walks through the full process — framing a hypothesis, sourcing clean data, separating in-sample from out-of-sample periods, running the test, and reading the metrics that actually matter — then shows how to avoid the biases that flatter results and how an integrated terminal keeps the whole workflow repeatable.</p>
+      <h1 class="reveal">How to Backtest a Trading Strategy</h1>
+      <p class="lead reveal">A plain, step-by-step guide to testing a trading idea on past data, the mistakes that make results look better than they are, and what to keep once the test is done.</p>
+      <p class="post-byline reveal">By <a href="/founder">Aaryan Saroha</a>, Founder and CEO &middot; Published <time datetime="2026-08-31">31 August 2026</time> &middot; Updated <time datetime="2026-09-27">27 September 2026</time> &middot; 3 min read</p>
     </section>
+
     <section class="section tight">
       <div class="container">
         <article class="prose reveal article">
-          <p class="strong">Backtesting is applying a fixed set of trading rules to historical market data to estimate how a strategy would have performed before you risk real money on it.</p>
 
-          <p>Every systematic strategy rests on a simple question: if these rules had been followed in the past, what would have happened? Backtesting answers that with evidence rather than intuition. Done well, it turns a vague idea into a testable hypothesis. Done badly, it produces a beautiful equity curve that collapses the moment it meets a live market. The difference lies almost entirely in method.</p>
+          <p class="strong">To backtest a trading strategy, write the rule down before you look, run it on data as it was known at the time, charge realistic costs, keep some history back to test on, read the results with the drawdowns in view, and record what you decided and why.</p>
 
-          <h2>What backtesting is, and why it matters</h2>
+          <h2>1. Write the rule down first</h2>
+          <p>A backtest tests a rule, so the rule has to exist before the test: what you buy, when, how much, and when you sell. Written in advance, it cannot quietly bend to fit the history you are about to look at.</p>
 
-          <p>A backtest is a controlled simulation. You take a precise set of entry and exit rules, feed them historical prices, and record the trades those rules would have generated along with the resulting profit and loss. The output is a track record for a strategy that was never actually traded — a proxy for how it might behave, built from the past.</p>
+          <h2>2. Use data as it was known at the time</h2>
+          <p>The most common way a backtest misleads is by using information that did not exist yet. Companies restate figures, and many databases keep only the latest version, so a test that reads today&rsquo;s restated number on the date of the original report is seeing the future. The same goes for companies that no longer exist: a list of today&rsquo;s index members leaves out the ones that failed, and the past looks better than it was.</p>
+          <p>Each figure should carry the date it became public, not only the period it describes.</p>
 
-          <p>Its value is that it replaces opinion with measurement: instead of arguing whether a moving-average crossover "works", you measure how it performed across thousands of days and multiple regimes. It also protects capital, since most compelling-sounding ideas prove unprofitable once realistic costs are applied — cheaper to learn in a simulation than a live account. Backtesting is not a crystal ball, though; a backtest is only as trustworthy as the data and assumptions behind it.</p>
+          <h2>3. Charge realistic costs</h2>
+          <p>Commissions, the spread between the buying and selling price, and the price moving against a large order all come out of returns. A strategy that trades often can look excellent before costs and lose money after them.</p>
 
-          <h2>A step-by-step backtesting workflow</h2>
+          <h2>4. Keep some history back</h2>
+          <p>Build the rule on one stretch of history and test it on another it has never seen. Repeating that through time &mdash; build on one period, test on the next, then move both forward &mdash; shows whether the rule keeps working or only fitted the past.</p>
 
-          <h3>1. Define the hypothesis and rules</h3>
-          <p>Start with a clear, falsifiable hypothesis — for example, "stocks that break above their 50-day high on rising volume continue higher over the next twenty sessions." Translate it into unambiguous rules: exactly when to enter, how much to allocate, where to place stops, and when to exit. Each rule must be mechanical enough for a computer to execute without judgment. "Sell when momentum fades" cannot be tested; "sell when the 10-day RSI falls below 40" can.</p>
+          <h2>5. Read the results honestly</h2>
+          <ul>
+            <li><strong>Drawdown.</strong> The worst fall from a peak, and how long it lasted. This is what you would have lived through.</li>
+            <li><strong>Return for the risk taken,</strong> not return alone.</li>
+            <li><strong>Number of trades.</strong> A handful of trades proves little.</li>
+            <li><strong>Sensitivity.</strong> If the result only works at one exact setting, it has probably fitted noise.</li>
+          </ul>
 
-          <h3>2. Gather clean historical data</h3>
-          <p>A backtest inherits the quality of its data. You need price history that is accurate, adjusted for splits and dividends, and deep enough to cover several market cycles rather than one favourable stretch. Gaps, bad ticks, and unadjusted prices all distort results. If your strategy spans multiple asset classes the data must be consistent across them, and it should be point-in-time — reflecting only the information genuinely available on each historical date.</p>
+          <h2>6. Record what you decided, and why</h2>
+          <p>A backtest tests the rule. It does not tell you, a year later, why you switched it on, what you believed at the time or what you knew. Write that down when you decide: the rule, the evidence, the result you expected and the risk you accepted. It is the only way to learn from the live result rather than argue with it.</p>
 
-          <h3>3. Split in-sample and out-of-sample data</h3>
-          <p>Divide your history into at least two parts. The in-sample period is where you develop and tune the strategy; the out-of-sample period is held back, untouched, and used only to check whether it still works on data it has never seen. This separation is the single most important defence against fooling yourself. A strategy that shines in-sample but falls apart out-of-sample has almost certainly been fitted to noise rather than signal.</p>
+          <h2>Mistakes that flatter results</h2>
+          <ul>
+            <li><strong>Look-ahead:</strong> using a figure before it was published.</li>
+            <li><strong>Survivorship:</strong> testing only on companies that still exist.</li>
+            <li><strong>Overfitting:</strong> tuning the rule until it matches the past.</li>
+            <li><strong>Ignoring costs.</strong></li>
+            <li><strong>Too little history,</strong> or only one kind of market.</li>
+          </ul>
 
-          <h3>4. Run the test</h3>
-          <p>With rules and data in place, run the simulation across the in-sample period. A disciplined engine processes each bar in sequence, using only data available up to that point, generating orders, filling them at realistic prices, and updating the portfolio. Model transaction costs, commissions, and slippage from the start — a strategy that is profitable only when trading is assumed to be free is not a strategy. Record every trade so results can be audited later.</p>
-
-          <h3>5. Evaluate the results</h3>
-          <p>Study the output as a whole rather than the headline return: the shape of the equity curve, the depth and length of drawdowns, how many trades produced the result, and whether performance was concentrated in a few lucky periods. Then, and only then, run the strategy once on the out-of-sample data. If it holds up there, you have something worth taking seriously. For a wider view of where this fits, see our guide to <a href="/blog/what-is-a-quant-trading-terminal">what a quant trading terminal is</a>.</p>
-          <h2>The metrics that matter</h2>
-
-          <p>A single number rarely captures a strategy's quality. A short panel of complementary metrics gives a far more honest picture of both return and risk.</p>
-
-          <h3>CAGR</h3>
-          <p>The compound annual growth rate expresses the smoothed annual return, making strategies of different lengths comparable. It tells you how fast capital grew, but nothing about the ride it took to get there.</p>
-
-          <h3>Maximum drawdown</h3>
-          <p>The largest peak-to-trough decline in equity. It is the metric that decides whether you could actually stick with a strategy: a 60% drawdown may be mathematically survivable and psychologically impossible.</p>
-
-          <h3>Sharpe ratio</h3>
-          <p>The Sharpe ratio relates return to volatility, rewarding gains that arrive smoothly rather than in wild swings. Many practitioners treat a value above one as respectable and above two as excellent, though it is easy to inflate on short samples.</p>
-
-          <h3>Win rate and profit factor</h3>
-          <p>Win rate — the share of trades that were profitable — is intuitive but misleading alone: plenty of strong strategies win less than half the time while still making money, because their winners dwarf their losers. Profit factor, the ratio of gross profits to gross losses, captures that trade-off; the further above 1, the more cushion against a losing streak.</p>
-
-          <p>Read together, these metrics show not just whether a strategy made money but how, and whether the return justified the risk. Quantify Terminal's security-risk tools compute several — beta, correlation, Sharpe, value-at-risk, and drawdown — directly from historical returns.</p>
-
-          <h2>Common pitfalls that quietly ruin a backtest</h2>
-
-          <h3>Overfitting</h3>
-          <p>Overfitting, or curve-fitting, is the most common way to produce a backtest that lies. Keep adding parameters and tweaking thresholds until the history looks perfect and you are no longer modelling an edge — you are memorising past noise. Such strategies dazzle in-sample and disintegrate live. The cure is restraint: fewer parameters, a clear economic rationale, and honest out-of-sample testing.</p>
-
-          <h3>Look-ahead bias</h3>
-          <p>Look-ahead bias uses information that would not have been available at the moment of the trade — acting on a day's close at that day's open, or using earnings figures before they were released. It produces spectacular, entirely fictional results. Point-in-time data and strict bar-by-bar processing are the defence.</p>
-
-          <h3>Survivorship bias</h3>
-          <p>Survivorship bias creeps in when your data set contains only the assets that still exist today, silently excluding those that went bankrupt, delisted, or were acquired. Testing on today's index members ignores every failure that would have hurt you, inflating returns. A proper historical universe includes the losers.</p>
-
-          <h3>Ignoring costs and slippage</h3>
-          <p>A backtest that ignores commissions, spreads, and slippage — the gap between the price you expect and the price you get — will always flatter reality. High-turnover strategies are especially vulnerable, as small per-trade costs compound into a heavy drag. Model costs conservatively.</p>
-
-          <h2>Walk-forward validation</h2>
-
-          <p>A single in-sample/out-of-sample split is good; walk-forward validation is better. You optimise on a window of historical data, test on the period immediately following it, then roll the window forward and repeat. The strategy is re-tuned as it advances through time, exactly as in live trading, and every test runs on data the optimisation never saw. Survive walk-forward analysis across several regimes and your confidence is well earned; work only with hindsight-chosen parameters and walk-forward testing exposes it quickly.</p>
-          <h2>Making backtesting repeatable with an integrated terminal</h2>
-
-          <p>The hardest part of backtesting in practice is not the mathematics — it is keeping the process consistent. Data pulled from one vendor, cleaned in a spreadsheet, modelled in a separate script, and evaluated in yet another tool tends to produce results nobody can reproduce a month later. An integrated terminal removes those seams by keeping data, research, strategy, and evaluation in one environment, so a backtest can be run again and return the same answer.</p>
-
-          <p>Quantify Terminal, which we build, is organised around that principle. It is a desktop application for macOS, Windows, and Linux with a quant studio that pairs a Python strategy notebook with a backtest engine, alongside a visual strategy builder for testing logic without writing code. Because the same platform carries historical price data across equities, crypto, forex, commodities, funds, options, bonds, and derivatives, the prices you research are the prices you test against, and the security-risk tools that report Sharpe, value-at-risk, correlation, and drawdown draw on the same numbers. Screeners narrow a universe before you write a rule, and broker connectivity carries a validated strategy through to execution.</p>
-
-          <p>Reproducibility is the same problem discretionary research has, one level up. A backtest is reproducible when you can say exactly what was known at each point in time; a thesis is reproducible when you can say the same thing about a decision. So the terminal records each decision with the evidence and model version current at the moment it was made, and every figure extracted from a filing carries the document, page, and fact it came from. The discipline you apply to a strategy — point-in-time data, no hindsight, a result you can run again — is the discipline it applies to the reasoning behind a position. You can see the strategy, screener, and risk modules on the <a href="/product">features page</a>, and <a href="/early-access">early access</a> is open to a small number of analysts and funds. Traders focused on digital assets specifically may also find our roundup of the <a href="/blog/best-crypto-trading-terminal-2026">best crypto trading terminal for 2026</a> useful.</p>
-
-          <h2>Conclusion</h2>
-
-          <p>Backtesting is where a trading idea becomes evidence. The process is not complicated but it is unforgiving: define mechanical rules, feed them clean point-in-time data, keep an out-of-sample period honest, model real costs, and judge the result on risk-adjusted metrics rather than one flattering number. Guard against overfitting, look-ahead, and survivorship bias, and let walk-forward validation stress-test whatever survives. Above all, keep the workflow repeatable — a result you cannot reproduce is not a result. The same standard is worth holding your discretionary positions to: if you cannot reconstruct what you knew when you bought something, you cannot learn much from how it turned out.</p>
+          <h2>Where Quantify Terminal fits</h2>
+          <p>We build Quantify Terminal, and its focus is the record around a decision. Every figure in its Data Fabric carries the time it became knowable, so research reads what was known then rather than what was published later. Every decision is recorded with the rationale, the evidence cited and the model and thesis version on screen, and Replay reads that state back, so a year later the reasoning can be checked against what happened.</p>
+          <figure class="post-figure">
+            <img src="/Public/blog/decision-ledger-every-decision-with-its-reason.jpg?v=1" width="1600" height="900" alt="Quantify Terminal decision ledger listing each decision with its date, position, action and the reason given" loading="lazy" decoding="async">
+            <figcaption>The decision ledger: every decision with its date, position, action and the reason given. Recorded on a demonstration account.</figcaption>
+          </figure>
+          <p>It is in early access for funds and investment teams, by application. <a href="/product">See the product</a>.</p>
 
           <h2>Frequently asked questions</h2>
+          <h3>How much history do I need to backtest?</h3>
+          <p>Enough to include different kinds of market and enough trades to mean something. A few years of daily data is a minimum for most strategies, and more for slow ones.</p>
+          <h3>What is overfitting?</h3>
+          <p>Tuning a rule until it fits the past so closely that it has learned the noise. It shows up as a result that falls apart when the settings move slightly or when it is tested on new data.</p>
+          <h3>Can I backtest without coding?</h3>
+          <p>Yes. Spreadsheets work for simple rules, and many platforms let you describe a rule without writing code. Code helps once the rule or the data gets complicated.</p>
+          <h3>What is walk-forward testing?</h3>
+          <p>Building the rule on one period and testing it on the next, then moving both forward, so every result comes from data the rule had not seen.</p>
 
-          <h3>How much historical data do I need to backtest a strategy?</h3>
-          <p>Enough to cover several distinct market conditions — bull, bear, and sideways — rather than one favourable stretch. For a daily strategy that usually means many years; for higher-frequency strategies you may need less calendar time but far more granular data. The goal is a sample large enough that the result is not driven by a handful of lucky trades.</p>
 
-          <h3>What is the difference between backtesting and forward testing?</h3>
-          <p>Backtesting applies rules to historical data to estimate past performance. Forward testing, or paper trading, runs the strategy on live incoming data without risking real money. They are complementary: backtesting screens ideas quickly and cheaply, while forward testing validates a promising candidate before real capital is committed.</p>
-
-          <h3>Can backtesting guarantee future profits?</h3>
-          <p>No. A backtest estimates how a strategy would have performed under past conditions, but markets change and past performance never guarantees future results. A rigorous backtest improves your odds and filters out weak ideas, but it manages uncertainty rather than removing it.</p>
-
-          <h3>Do I need to know how to code to backtest a strategy?</h3>
-          <p>Not necessarily. Visual strategy builders let you express and test rules without programming, which is enough for many systematic ideas. Coding helps for complex logic, custom indicators, or large-scale research, and a platform offering both a code notebook and a visual builder — as Quantify Terminal does — lets you start simple and scale up.</p>
+          <h2>Related reading</h2>
+          <ul class="post-related">
+            <li><a href="/blog/what-is-a-quant-trading-terminal">What Is a Quant Trading Terminal?</a><span>What a quant trading terminal is, what one includes, how it differs from a broker app, and what is changing in 2026.</span></li>
+            <li><a href="/blog/best-free-trading-terminal-software-2026">Best Free Trading Terminal Software in 2026</a><span>The free trading terminals worth using in 2026, what each gives for nothing, the catch in each, and when a team outgrows free.</span></li>
+            <li><a href="/blog/bloomberg-terminal-cost-2026">Bloomberg Terminal Cost in 2026</a><span>What a Bloomberg Terminal costs in 2026, sourced and per seat, what the price buys, and what it still leaves to your analysts.</span></li>
+          </ul>
         </article>
       </div>
     </section>
