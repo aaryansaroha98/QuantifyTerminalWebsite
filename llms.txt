@@ -18,7 +18,6 @@ For analysts and portfolio managers who maintain their own models. Desktop termi
 ## Proof and trust
 
 - [Accuracy](https://www.quantifyterminal.com/accuracy): what is measured and when it abstains. The method is published; the numbers are not, and will not be invented.
-- [Changelog](https://www.quantifyterminal.com/changelog): every release, dated and plain.
 - [Trust](https://www.quantifyterminal.com/trust): security, data handling, export formats, escrow.
 - [Data rights](https://www.quantifyterminal.com/data-rights): display versus non-display, what the free tier is licensed for, how entitlements are enforced.
 

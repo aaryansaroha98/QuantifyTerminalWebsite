@@ -43,7 +43,6 @@ PAGES = [
     "early-access",
     "download",
     "accuracy",
-    "changelog",
     "what-changed-today",
     "agents",
     "trust",

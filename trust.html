@@ -93,7 +93,7 @@
         <article class="prose doc reveal">
           <h2>Security</h2>
           <ul>
-            <li><strong>Signed updates.</strong> Every release manifest is signed with an Ed25519 key held in a key vault. Each installed desktop embeds the public key and verifies the signature before it will install an update; a missing or wrong signature is rejected, not offered. Installers are additionally checked against a SHA-256 checksum on download. Details on the <a href="/changelog">changelog</a>.</li>
+            <li><strong>Signed updates.</strong> Every release manifest is signed with an Ed25519 key held in a key vault. Each installed desktop embeds the public key and verifies the signature before it will install an update; a missing or wrong signature is rejected, not offered. Installers are additionally checked against a SHA-256 checksum on download.</li>
             <li><strong>Credentials.</strong> Secrets on the desktop are held in the macOS keychain, and on Windows and Linux in an encrypted file in the app's data folder. A keychain failure cannot carry a secret out of the store.</li>
             <li><strong>Sign-in.</strong> Account sign-in runs through the console at <a href="https://console.quantifyterminal.com" target="_blank" rel="noopener">console.quantifyterminal.com</a>; the desktop completes sign-in through the browser and never holds your password.</li>
             <li><strong>Audit.</strong> A recorded decision stores its evidence, the moment it was taken and the model version; rights decisions, private-library access and account events go to append-only logs.</li>
@@ -137,7 +137,6 @@
             <li><a href="/pricing">Pricing</a></li>
             <li><a href="/download">Download</a></li>
             <li><a href="/early-access">Early access</a></li>
-            <li><a href="/changelog">Changelog</a></li>
           </ul>
         </div>
         <div class="foot-col">

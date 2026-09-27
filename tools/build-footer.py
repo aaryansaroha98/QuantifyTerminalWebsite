@@ -20,7 +20,6 @@ COLUMNS = [
         ("Pricing", "/pricing"),
         ("Download", "/download"),
         ("Early access", "/early-access"),
-        ("Changelog", "/changelog"),
     ]),
     ("Resources", [
         ("What changed today", "/what-changed-today"),
