@@ -92,7 +92,12 @@
 
     <section class="section">
       <div class="container">
-        <form class="ea-form reveal" data-early-form novalidate aria-label="Early access request">
+        <!-- Direct delivery into HQ stays OFF while these are empty: the form then only
+             composes an email, exactly as the hint below says. To switch it on, set the
+             Account API base (…/api/v1), a minted intake key (leads:create only) and the
+             Turnstile site key, and update the hint and privacy.html in the same change. -->
+        <form class="ea-form reveal" data-early-form novalidate aria-label="Early access request"
+              data-intake-endpoint="" data-intake-key="" data-turnstile-sitekey="">
           <div class="field-grid">
             <div class="field">
               <label for="ea-name">Name <span class="req" aria-hidden="true">*</span></label>
@@ -164,12 +169,19 @@
             </div>
           </div>
 
+          <!-- A field no person sees; a bot that fills it gets the same answer and nothing is kept. -->
+          <div class="ea-trap" aria-hidden="true">
+            <label for="ea-website">Leave this empty</label>
+            <input id="ea-website" name="website" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
+          <div class="ea-check" data-ea-turnstile hidden></div>
+
           <div class="form-actions">
             <button class="btn primary" type="submit">Send request</button>
             <button class="btn" type="button" data-ea-copy>Copy as text</button>
           </div>
           <div class="form-feedback" data-ea-feedback role="status"><span data-ea-feedback-text></span></div>
-          <p class="field-hint" style="margin-top: 14px;">Send opens your mail client with the request already written out, addressed to sales@mail.quantifyterminal.com. Nothing is sent from this page, and nothing is stored here.</p>
+          <p class="field-hint" style="margin-top: 14px;" data-ea-hint>Send opens your mail client with the request already written out, addressed to sales@mail.quantifyterminal.com. Nothing is sent from this page, and nothing is stored here.</p>
         </form>
       </div>
     </section>

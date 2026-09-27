@@ -7454,3 +7454,17 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .post-table th { white-space: normal; }
   .post-table td:first-child { white-space: normal; }
 }
+
+/* Early access: the honeypot is off-screen rather than display:none, which some bots
+   skip; the bot check sits above the buttons when it is switched on. */
+.ea-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.ea-check {
+  margin: 18px 0 0;
+}

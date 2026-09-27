@@ -927,10 +927,21 @@
     var feedback = form.querySelector("[data-ea-feedback]");
     var feedbackText = form.querySelector("[data-ea-feedback-text]");
 
+    // Direct delivery into HQ. Dormant until the form carries both an endpoint and an
+    // intake key: with either missing, Send composes an email exactly as before and
+    // nothing leaves this page.
+    var ENDPOINT = (form.getAttribute("data-intake-endpoint") || "").trim().replace(/\/+$/, "");
+    var INTAKE_KEY = (form.getAttribute("data-intake-key") || "").trim();
+    var SITEKEY = (form.getAttribute("data-turnstile-sitekey") || "").trim();
+    var direct = !!(ENDPOINT && INTAKE_KEY);
+    var turnstileWidget = null;
+
     function controls() {
       return Array.prototype.slice
         .call(form.querySelectorAll("input[name], select[name], textarea[name]"))
-        .filter(function (control) { return control.type !== "hidden"; });
+        .filter(function (control) {
+          return control.type !== "hidden" && !control.hasAttribute("data-honeypot");
+        });
     }
 
     function labelFor(control) {
@@ -1030,15 +1041,132 @@
       else say("Copying is blocked here. Write to " + MAILBOX + " instead.", true);
     }
 
+    function openMail() {
+      window.location.href = "mailto:" + MAILBOX +
+        "?subject=" + encodeURIComponent(subject()) +
+        "&body=" + encodeURIComponent(compose());
+    }
+
+    function field(name) {
+      var control = form.elements.namedItem(name);
+      return control ? String(control.value || "").trim() : "";
+    }
+
+    function campaign(name) {
+      try { return new URLSearchParams(window.location.search).get(name) || ""; }
+      catch (err) { return ""; }
+    }
+
+    function loadTurnstile() {
+      var slot = form.querySelector("[data-ea-turnstile]");
+      if (!slot || !SITEKEY) return;
+      slot.hidden = false;
+      window.qtEarlyAccessCheck = function () {
+        if (window.turnstile) {
+          turnstileWidget = window.turnstile.render(slot, { sitekey: SITEKEY, theme: "auto" });
+        }
+      };
+      var script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=qtEarlyAccessCheck";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    function checkToken() {
+      if (!window.turnstile || turnstileWidget === null) return "";
+      return window.turnstile.getResponse(turnstileWidget) || "";
+    }
+
+    function resetCheck() {
+      if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
+    }
+
+    // Anything that is not a clear answer from HQ — no network, a server error, a
+    // revoked key — hands the request to the mail client, so it is never lost.
+    function fallBackToMail() {
+      openMail();
+      say("Our server could not take it just now, so your mail client is opening with the " +
+          "request written out instead. Send it and we will come back to you.");
+    }
+
+    function deliver() {
+      var button = form.querySelector("button[type=submit]");
+      if (button) button.disabled = true;
+      say("Sending\u2026");
+      var body = {
+        source_key: "website_early_access",
+        email: field("email"),
+        full_name: field("name"),
+        company_name: field("firm"),
+        message: field("need"),
+        role: field("role"),
+        where: field("where"),
+        team_size: field("team"),
+        current_tools: field("current"),
+        utm_source: campaign("utm_source"),
+        utm_medium: campaign("utm_medium"),
+        utm_campaign: campaign("utm_campaign"),
+        referrer: document.referrer || "",
+        turnstile_token: checkToken(),
+        website: field("website")
+      };
+      fetch(ENDPOINT + "/public/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-QT-Intake-Key": INTAKE_KEY },
+        body: JSON.stringify(body)
+      }).then(function (response) {
+        return response.json().then(
+          function (payload) { return { status: response.status, payload: payload || {} }; },
+          function () { return { status: response.status, payload: {} }; }
+        );
+      }).then(function (result) {
+        if (button) button.disabled = false;
+        var error = result.payload.error || {};
+        var details = error.details || {};
+        if (result.status === 200 && result.payload.received) {
+          form.reset();
+          resetCheck();
+          say("Received. We read every request, and we will reply to the address you gave.");
+        } else if (result.status === 400 && details.email) {
+          setError(form.elements.namedItem("email"), "That email does not look right. Check it once.");
+          say("One of the fields still needs you.", true);
+        } else if (result.status === 403 && details.turnstile) {
+          resetCheck();
+          say("The check that you are a person did not finish. Tick it and send again, or use " +
+              "Copy as text and send it to " + MAILBOX + ".", true);
+        } else if (result.status === 429) {
+          say("Too many requests from here just now. Try again in a few minutes, or use Copy " +
+              "as text and send it to " + MAILBOX + ".", true);
+        } else {
+          fallBackToMail();
+        }
+      }, function () {
+        if (button) button.disabled = false;
+        fallBackToMail();
+      });
+    }
+
+    if (direct) {
+      var hint = form.querySelector("[data-ea-hint]");
+      if (hint) {
+        hint.textContent = "Send delivers your request to our team directly, and we keep it to " +
+          "reply to you. If it cannot reach us, your mail client opens with it written out instead.";
+      }
+      loadTurnstile();
+    }
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       if (!validate()) {
         say("One of the fields still needs you.", true);
         return;
       }
-      window.location.href = "mailto:" + MAILBOX +
-        "?subject=" + encodeURIComponent(subject()) +
-        "&body=" + encodeURIComponent(compose());
+      if (direct) {
+        deliver();
+        return;
+      }
+      openMail();
       say("Your mail client is opening with the request written out. Send it and we will " +
           "come back to you. If nothing opened, use Copy as text and send it to " + MAILBOX + ".");
     });
