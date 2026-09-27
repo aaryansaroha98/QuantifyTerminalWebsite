@@ -6328,9 +6328,16 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 @font-face {
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-display: swap;
-  src: url("/Public/fonts/poppins-latin-500.woff2") format("woff2");
+  src: url("/Public/fonts/poppins-latin-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/Public/fonts/poppins-latin-700.woff2") format("woff2");
 }
 
 .hdr-mark {
@@ -6339,13 +6346,14 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   min-height: 44px;
   margin-right: auto;
   font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 23px;
+  font-weight: 600;
   letter-spacing: 0;
   color: var(--text);
   white-space: nowrap;
 }
-.mark-dot { color: #9810fa; }
+/* One weight heavier than the letters, so the full stop reads as a solid dot. */
+.mark-dot { color: #9810fa; font-weight: 700; }
 .hdr-mark:hover { color: var(--text); }
 
 .hdr-nav { display: none; }
@@ -6416,12 +6424,12 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   .hdr-cta { padding: 0 12px; }
 }
 @media (max-width: 359.98px) {
-  .hdr-mark { font-size: 19px; }
+  .hdr-mark { font-size: 18px; }
 }
 
 @media (min-width: 1024px) {
   .hdr-in { height: 80px; padding: 0 40px; }
-  .hdr-mark { font-size: 28px; }
+  .hdr-mark { font-size: 32px; }
   .hdr-nav {
     display: flex;
     align-items: center;
@@ -7199,8 +7207,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .foot-mark {
   display: inline-block;
   font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 600;
   letter-spacing: 0;
   white-space: nowrap;
   line-height: 1;
