@@ -44,6 +44,13 @@ PAGES = [
     "download",
     "accuracy",
     "what-changed-today",
+    "blog",
+    "blog/best-bloomberg-terminal-alternatives-2026",
+    "blog/bloomberg-terminal-cost-2026",
+    "blog/best-free-trading-terminal-software-2026",
+    "blog/best-crypto-trading-terminal-2026",
+    "blog/what-is-a-quant-trading-terminal",
+    "blog/how-to-backtest-a-trading-strategy",
     "agents",
     "trust",
     "data-rights",
@@ -75,18 +82,29 @@ def content(text):
 
 
 def lastmod(slug):
-    """The last time the page's own content changed, as an ISO timestamp with offset."""
+    """The last time the page's own content changed, as an ISO timestamp with offset.
+
+    Walk the page's history newest first and find the commit that introduced the words it
+    has now. A commit that only touched the footer, or that deleted the page when it was
+    later restored with the same words, does not count as a change.
+    """
     path = f"{slug}.html"
-    working = open(path, encoding="utf-8").read()
-    if content(working) != content(git("show", f"HEAD:{path}")):
+    now = content(open(path, encoding="utf-8").read())
+    head = content(git("show", f"HEAD:{path}"))
+    if head and head != now:
         # about to be committed: the change is now
         return datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
+    found = None
     for line in git("log", "--format=%H %cI", "--", path).splitlines():
         sha, stamp = line.split(" ", 1)
-        before = git("show", f"{sha}^:{path}")
-        if content(git("show", f"{sha}:{path}")) != content(before):
-            return stamp
-    sys.exit(f"{path}: no commit found that changed its content")
+        after = content(git("show", f"{sha}:{path}"))
+        if after == now:
+            found = stamp
+        elif after == "":
+            continue
+        else:
+            break
+    return found or datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
 
 
 def head_of(slug):

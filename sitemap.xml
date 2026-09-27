@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.quantifyterminal.com/</loc>
-    <lastmod>2026-09-27T14:36:08+05:30</lastmod>
+    <lastmod>2026-09-27T14:36:18+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/product</loc>
@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/accuracy</loc>
-    <lastmod>2026-09-27T14:36:09+05:30</lastmod>
+    <lastmod>2026-09-27T14:36:18+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/what-changed-today</loc>
@@ -52,12 +52,40 @@
     </video:video>
   </url>
   <url>
+    <loc>https://www.quantifyterminal.com/blog</loc>
+    <lastmod>2026-09-15T23:52:32+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/blog/best-bloomberg-terminal-alternatives-2026</loc>
+    <lastmod>2026-09-27T14:41:47+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/blog/bloomberg-terminal-cost-2026</loc>
+    <lastmod>2026-09-27T14:41:47+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/blog/best-free-trading-terminal-software-2026</loc>
+    <lastmod>2026-09-27T14:41:47+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/blog/best-crypto-trading-terminal-2026</loc>
+    <lastmod>2026-09-27T14:41:47+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/blog/what-is-a-quant-trading-terminal</loc>
+    <lastmod>2026-09-27T14:41:47+05:30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy</loc>
+    <lastmod>2026-09-15T23:52:32+05:30</lastmod>
+  </url>
+  <url>
     <loc>https://www.quantifyterminal.com/agents</loc>
     <lastmod>2026-09-22T17:58:00+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/trust</loc>
-    <lastmod>2026-09-27T14:36:09+05:30</lastmod>
+    <lastmod>2026-09-27T14:36:18+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/data-rights</loc>

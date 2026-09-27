@@ -24,16 +24,6 @@
       "permanent": true
     },
     {
-      "source": "/blog",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:path*",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/application",
       "destination": "/careers",
       "permanent": false

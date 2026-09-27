@@ -6,7 +6,7 @@ the moment one of them is edited. Run from the site root:
 
     python3 tools/build-footer.py
 
-A page opts out by having no <footer class="site-footer"> at all (download.html, a
+Covers the root pages and blog/. A page opts out by having no <footer class="site-footer"> at all (download.html, a
 single-screen holding page, is one).
 """
 import html
@@ -22,6 +22,7 @@ COLUMNS = [
         ("Early access", "/early-access"),
     ]),
     ("Resources", [
+        ("Blog", "/blog"),
         ("What changed today", "/what-changed-today"),
         ("Accuracy", "/accuracy"),
         ("For agents", "/agents"),
@@ -94,9 +95,9 @@ def main():
         sys.exit(f"the footer links to pages that are not on disk: {missing}")
     pattern = re.compile(r'<footer class="site-footer">.*?</footer>', re.S)
     changed = 0
-    for name in sorted(os.listdir(".")):
-        if not name.endswith(".html"):
-            continue
+    pages = sorted(n for n in os.listdir(".") if n.endswith(".html"))
+    pages += sorted(os.path.join("blog", n) for n in os.listdir("blog") if n.endswith(".html"))
+    for name in pages:
         text = open(name, encoding="utf-8").read()
         if not pattern.search(text):
             continue
