@@ -38,6 +38,7 @@ VIDEO_NS = "http://www.google.com/schemas/sitemap-video/1.1"
 PAGES = [
     "index",
     "product",
+    "demo-video",
     "vision",
     "pricing",
     "early-access",

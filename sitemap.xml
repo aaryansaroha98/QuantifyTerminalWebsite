@@ -3,11 +3,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.quantifyterminal.com/</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/product</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://www.quantifyterminal.com/Public/video/quantify-terminal-overnight-demo-poster.jpg?v=4</video:thumbnail_loc>
+      <video:title>Quantify Terminal in three minutes: the overnight brief</video:title>
+      <video:description>One night of filings, prices and news read against a book; the brief the desk opens to at 06:41; the figure that breached, the sentence it came from, what it costs and what it would take to be right; theses, the model compiler, Deep Research, Pulse and the decision ledger; the system underneath; and the rest of the terminal.</video:description>
+      <video:content_loc>https://www.quantifyterminal.com/Public/video/quantify-terminal-overnight-demo.mp4?v=4</video:content_loc>
+      <video:duration>180</video:duration>
+      <video:publication_date>2026-09-26</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.quantifyterminal.com/demo-video</loc>
+    <lastmod>2026-09-28T23:43:33+05:30</lastmod>
     <video:video>
       <video:thumbnail_loc>https://www.quantifyterminal.com/Public/video/quantify-terminal-overnight-demo-poster.jpg?v=4</video:thumbnail_loc>
       <video:title>Quantify Terminal in three minutes: the overnight brief</video:title>
@@ -20,27 +33,27 @@
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/vision</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/pricing</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/early-access</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/download</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/accuracy</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/what-changed-today</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
     <video:video>
       <video:thumbnail_loc>https://www.quantifyterminal.com/Public/video/quantify-terminal-what-changed-today-poster.jpg</video:thumbnail_loc>
       <video:title>What changed today — one filing, followed to the decision it produced</video:title>
@@ -53,66 +66,66 @@
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog/best-bloomberg-terminal-alternatives-2026</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog/bloomberg-terminal-cost-2026</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog/best-free-trading-terminal-software-2026</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog/best-crypto-trading-terminal-2026</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog/what-is-a-quant-trading-terminal</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/blog/how-to-backtest-a-trading-strategy</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/agents</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/trust</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/data-rights</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/company</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/founder</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/careers</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/contact</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/privacy</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
   <url>
     <loc>https://www.quantifyterminal.com/terms</loc>
-    <lastmod>2026-09-27T20:48:59+05:30</lastmod>
+    <lastmod>2026-09-28T18:40:17+05:30</lastmod>
   </url>
 </urlset>
