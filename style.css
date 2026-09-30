@@ -6970,14 +6970,8 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   color: var(--muted);
   font-size: 17px;
 }
-.founder-remit {
-  margin: 22px 0 0;
-  color: var(--text);
-  font-size: 18px;
-  font-weight: 560;
-}
 .founder-bio {
-  margin: 12px 0 0;
+  margin: 20px 0 0;
   color: var(--muted);
   font-size: 16.5px;
   line-height: 1.65;
