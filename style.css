@@ -1097,6 +1097,13 @@ ul.terminal-list {
   letter-spacing: 0.005em;
 }
 
+/* A sub-heading inside a focus card, under its eyebrow. */
+.focus-sublabel {
+  margin-top: 18px;
+  font-size: 10px;
+}
+.focus-list + .focus-sublabel { margin-top: 26px; }
+
 .founder-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
