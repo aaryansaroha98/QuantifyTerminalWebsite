@@ -6948,27 +6948,61 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   text-transform: uppercase;
 }
 
-/* The founders page: the two profiles side by side, one column on narrow screens. */
-.people-grid {
+/* The founders page. Two equal columns under a hairline each, name, title, remit and a short
+   third-person bio; no cards and no label tables. One column on narrow screens. */
+.founders {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  align-items: stretch;
+  gap: 64px;
 }
-.person-name {
-  margin: 0 0 14px;
-  font-size: clamp(26px, 3vw, 32px);
-  line-height: 1.15;
+.founder {
+  padding-top: 28px;
+  border-top: 1px solid var(--text);
 }
-.person-card > p {
-  margin: 0 0 18px;
+.founder-name {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.founder-title {
+  margin: 10px 0 0;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
 }
-.founder-note { max-width: 780px; }
+.founder-remit {
+  margin: 22px 0 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 560;
+}
+.founder-bio {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+.founder-links {
+  display: flex;
+  gap: 22px;
+  margin: 20px 0 0;
+  font-size: 15px;
+  font-weight: 560;
+}
+.founder-links a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.founder-letter { max-width: 780px; }
+.founder-letter .founder-company {
+  margin-top: 26px;
+  color: var(--quiet);
+  font-size: 14px;
+}
 @media (max-width: 860px) {
-  .people-grid { grid-template-columns: 1fr; }
+  .founders { grid-template-columns: 1fr; gap: 48px; }
 }
 
 .fact-list {

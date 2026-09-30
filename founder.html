@@ -52,7 +52,7 @@
         "jobTitle": "Founder and Chief Executive Officer",
         "url": "https://www.quantifyterminal.com/founder",
         "worksFor": { "@id": "https://www.quantifyterminal.com/#organization" },
-        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Jammu" },
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Jammu" },
         "knowsAbout": ["Quantitative finance", "Financial data infrastructure", "Portfolio risk"],
         "sameAs": [
           "https://x.com/aaryan_sar60649",
@@ -66,7 +66,8 @@
         "jobTitle": "Co-founder and Managing Director",
         "url": "https://www.quantifyterminal.com/founder#jaswinder-saroha",
         "worksFor": { "@id": "https://www.quantifyterminal.com/#organization" },
-        "knowsAbout": ["Mathematics", "Quantitative finance", "Mathematical modelling"]
+        "knowsAbout": ["Mathematics", "Quantitative finance", "Mathematical modelling"],
+        "sameAs": ["https://hembit.in"]
       }
     ]
   }
@@ -110,45 +111,39 @@
 
   <main class="page">
     <section class="hero compact container">
-      <div class="eyebrow reveal">Leadership</div>
-      <h1 class="reveal">The founders.</h1>
-      <p class="lead reveal">Quantify Terminal was founded by two brothers in Jammu, India. Aaryan Saroha leads product and engineering as chief executive. Jaswinder Saroha leads strategy and operations as managing director.</p>
+      <div class="eyebrow reveal">Founders</div>
+      <h1 class="reveal">Aaryan and Jaswinder&nbsp;Saroha.</h1>
+      <p class="lead reveal">Quantify Terminal was founded in Jammu, India, by two brothers: an engineer who builds the product and a mathematician by training who runs the company.</p>
     </section>
 
     <section class="section tight">
-      <div class="container people-grid">
-        <article class="note-card person-card reveal" id="aaryan-saroha">
-          <span class="leader-role">Founder &amp; Chief Executive Officer</span>
-          <h2 class="person-name">Aaryan Saroha</h2>
-          <p>Aaryan founded Quantify Terminal and leads it as chief executive, with direct responsibility for product and engineering: the Data Fabric, the model compiler, the desktop terminal and the systems beneath them.</p>
-          <ul class="fact-list" aria-label="Aaryan Saroha, profile">
-            <li><span class="fact-k">Role</span><span class="fact-v">Founder and Chief Executive Officer</span></li>
-            <li><span class="fact-k">Leads</span><span class="fact-v">Product and engineering</span></li>
-            <li><span class="fact-k">Education</span><span class="fact-v">Electrical Engineering, Indian Institute of Technology Jammu</span></li>
-            <li><span class="fact-k">Profiles</span><span class="fact-v"><a href="https://www.linkedin.com/in/aaryan-saroha-4301a3378/" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="https://x.com/aaryan_sar60649" target="_blank" rel="noopener">X</a></span></li>
-          </ul>
+      <div class="container founders">
+        <article class="founder reveal" id="aaryan-saroha">
+          <h2 class="founder-name">Aaryan Saroha</h2>
+          <p class="founder-title">Founder and Chief Executive Officer</p>
+          <p class="founder-remit">Leads product and engineering.</p>
+          <p class="founder-bio">Aaryan founded Quantify Terminal and wrote its first version. He owns everything the product is built on: the Data Fabric, which keeps every figure with its source and the moment it became known; the model compiler; and the desktop terminal for macOS, Windows and Linux, checked by more than nine thousand automated tests. He is studying electrical engineering at the Indian Institute of Technology Jammu.</p>
+          <p class="founder-links"><a href="https://www.linkedin.com/in/aaryan-saroha-4301a3378/" target="_blank" rel="noopener">LinkedIn</a><a href="https://x.com/aaryan_sar60649" target="_blank" rel="noopener">X</a></p>
         </article>
-        <article class="note-card person-card reveal" id="jaswinder-saroha">
-          <span class="leader-role">Co-founder &amp; Managing Director</span>
-          <h2 class="person-name">Jaswinder Saroha</h2>
-          <p>Jaswinder co-founded Quantify Terminal and runs the company as managing director, leading strategy and operations. A background in mathematics, and a long interest in quantitative finance, mathematical modelling and systematic research, shape how the company is run: with structure, precision and decisions made for the long term.</p>
-          <ul class="fact-list" aria-label="Jaswinder Saroha, profile">
-            <li><span class="fact-k">Role</span><span class="fact-v">Co-founder and Managing Director</span></li>
-            <li><span class="fact-k">Leads</span><span class="fact-v">Strategy and operations</span></li>
-            <li><span class="fact-k">Background</span><span class="fact-v">Mathematics</span></li>
-          </ul>
+        <article class="founder reveal" id="jaswinder-saroha">
+          <h2 class="founder-name">Jaswinder Saroha</h2>
+          <p class="founder-title">Co-founder and Managing Director</p>
+          <p class="founder-remit">Leads strategy and operations.</p>
+          <p class="founder-bio">Jaswinder co-founded Quantify Terminal and runs the company as managing director. Trained in mathematics, with a long-standing interest in quantitative finance, mathematical modelling and systematic research, he brings that discipline to how the company plans, prioritises and decides, and to the questions the product must answer for the investors who use it. He is also the founder of HEMBIT, a clothing label.</p>
+          <p class="founder-links"><a href="https://hembit.in" target="_blank" rel="noopener">HEMBIT</a></p>
         </article>
       </div>
     </section>
 
     <section class="section tight">
       <div class="container">
-        <article class="prose founder-note reveal">
+        <article class="prose founder-letter reveal">
           <h2 class="note-title">Why we built Quantify Terminal</h2>
           <p>Terminals are very good at telling you what happened. What it means for your book is still worked out by hand: someone reads the filing, re-types the number into the model, and checks whether the reason for owning the position still holds. On a busy morning that work gets skipped, and that is where the expensive mistakes are.</p>
           <p>Quantify Terminal is built to do that work and to show it. When a filing lands, the change it makes to your model is proposed with the sentence it came from. The thesis that depends on it is re-checked, the exposure is recomputed, and what you decide is recorded with everything that was known at the time. The mathematics runs in deterministic, versioned code, and every number traces to its source.</p>
           <p>We are building it as infrastructure for investment teams: fast, transparent, and plain about what it cannot see.</p>
-          <p class="signature">Aaryan Saroha and Jaswinder Saroha<span>Founders, Quantify Terminal &middot; Jammu, India</span></p>
+          <p class="signature">Aaryan Saroha and Jaswinder Saroha<span>Founders, Quantify Terminal</span></p>
+          <p class="founder-company">Quantify Terminal is supported by a non-dilutive grant from the Innovation, Incubation and Entrepreneurship Development Centre at IIT Jammu.</p>
         </article>
       </div>
     </section>
