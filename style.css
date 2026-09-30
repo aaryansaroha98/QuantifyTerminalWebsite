@@ -6995,6 +6995,12 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
 }
+.founder-bio a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
 .founder-letter { max-width: 780px; }
 .founder-letter .founder-company {
   margin-top: 26px;
@@ -7079,6 +7085,16 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 
 @media (max-width: 640px) {
   .contact-grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  .contact-grid.three {
     grid-template-columns: 1fr;
   }
 }
