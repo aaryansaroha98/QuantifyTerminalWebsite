@@ -705,7 +705,7 @@ about_html = HTML_HEAD("Founder") + """
       <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border-light);">
         <h3 style="margin-top: 0;">Connect with Aaryan</h3>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-            <a href="https://x.com/aaryan_sar60649" target="_blank" class="btn btn-secondary">
+            <a href="https://x.com/aaryan_saroha" target="_blank" class="btn btn-secondary">
               <svg style="width:18px;margin-right:10px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
               X Account
             </a>
