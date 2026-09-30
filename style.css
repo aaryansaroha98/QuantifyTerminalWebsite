@@ -6289,6 +6289,14 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   background-size: 8px 1px;
 }
 
+/* The same rule on a band that follows the hero rather than another section. */
+.minimal main.page > .section.ruled-top {
+  background-image: var(--dash-h);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 8px 1px;
+}
+
 /* The uprights stay on a phone. They are the frame, and dropping them left
    the hero floating between two horizontals with nothing holding its sides. */
 
@@ -6954,10 +6962,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 64px;
-}
-.founder {
-  padding-top: 28px;
-  border-top: 1px solid var(--text);
 }
 .founder-name {
   margin: 0;
