@@ -24,7 +24,7 @@ For analysts and portfolio managers who maintain their own models. Desktop termi
 ## Company
 
 - [About](https://www.quantifyterminal.com/company)
-- [Founder](https://www.quantifyterminal.com/founder): Aaryan Saroha.
+- [Founders](https://www.quantifyterminal.com/founder): Aaryan Saroha, founder and CEO; Jaswinder Saroha, co-founder and managing director.
 - [Careers](https://www.quantifyterminal.com/careers): internship applications are closed.
 - [Contact](https://www.quantifyterminal.com/contact)
 - [Blog](https://www.quantifyterminal.com/blog)
