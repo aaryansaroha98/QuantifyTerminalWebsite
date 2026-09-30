@@ -7002,11 +7002,6 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   text-decoration-thickness: 1px;
 }
 .founder-letter { max-width: 780px; }
-.founder-letter .founder-company {
-  margin-top: 26px;
-  color: var(--quiet);
-  font-size: 14px;
-}
 @media (max-width: 860px) {
   .founders { grid-template-columns: 1fr; gap: 48px; }
 }
