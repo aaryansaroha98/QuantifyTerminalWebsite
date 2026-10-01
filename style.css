@@ -7292,6 +7292,16 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   color: var(--quiet);
 }
 
+/* Both footer rules are drawn like every other horizontal on the page:
+   dashed, 4px and 4px, edge to edge. */
+.minimal .site-footer {
+  border-top: 0;
+  background-image: var(--dash-h);
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 8px 1px;
+}
+
 .foot {
   width: min(var(--max), calc(100% - 40px));
   margin: 0 auto;
@@ -7369,6 +7379,24 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   margin-top: 64px;
   padding-top: 24px;
   border-top: 1px solid var(--line);
+}
+
+.minimal .foot-bottom {
+  position: relative;
+  border-top: 0;
+}
+.minimal .foot-bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background-image: var(--dash-h);
+  background-repeat: repeat-x;
+  background-size: 8px 1px;
+  pointer-events: none;
 }
 
 .site-footer .foot-copy {
