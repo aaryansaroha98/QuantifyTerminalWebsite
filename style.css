@@ -6159,6 +6159,41 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 
 .hero-actions .btn { white-space: nowrap; }
 
+/* On a phone, a centred hero's buttons stack at one shared width (the wider
+   label's own), so the pair reads as a pair. The contact page has three: the
+   two emails side by side, the phone line across the full width beneath. */
+@media (max-width: 720px) {
+  .minimal .hero.compact .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .minimal .hero.compact .hero-actions .btn {
+    width: 100%;
+    max-width: none;
+  }
+  .minimal .hero.compact.connect-hero .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+  .minimal .hero.compact.connect-hero .hero-actions .btn {
+    padding: 8px 6px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    text-align: center;
+    white-space: normal;
+  }
+  .minimal .hero.compact.connect-hero .hero-actions .btn:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
 /* On a phone the two hero buttons stack and share one width, so neither
    looks like the afterthought of the other. That shared width is the wider
    label's own, so the pair sits against the left rail rather than spanning
