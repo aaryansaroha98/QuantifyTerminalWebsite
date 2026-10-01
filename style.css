@@ -6289,6 +6289,42 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   background-size: 8px 1px;
 }
 
+/* The closing band above the footer: one line and one action, between the page's
+   dashed rules. No eyebrow, no paragraph, no second panel. */
+.minimal main.page > .section.closing {
+  padding: 112px 0;
+}
+.closing-in {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 64px;
+  align-items: end;
+}
+.minimal .closing-line {
+  margin: 0;
+  max-width: 22ch;
+  font-size: clamp(30px, 3.8vw, 48px);
+  line-height: 1.08;
+}
+.closing-act {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.closing-link {
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.closing-link:hover { color: var(--text); }
+@media (max-width: 760px) {
+  .minimal main.page > .section.closing { padding: 72px 0; }
+  .closing-in { grid-template-columns: 1fr; row-gap: 28px; }
+}
+
 /* The same rule on a band that follows the hero rather than another section. */
 .minimal main.page > .section.ruled-top {
   background-image: var(--dash-h);
