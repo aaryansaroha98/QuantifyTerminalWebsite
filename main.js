@@ -1104,6 +1104,7 @@
         where: field("where"),
         team_size: field("team"),
         current_tools: field("current"),
+        heard_from: field("heard"),
         utm_source: campaign("utm_source"),
         utm_medium: campaign("utm_medium"),
         utm_campaign: campaign("utm_campaign"),
