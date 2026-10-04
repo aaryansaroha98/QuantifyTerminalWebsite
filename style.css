@@ -7181,6 +7181,39 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* The agents page's three ways in: the name of each is the heading, set large
+   at the top left, with its one-line summary beneath. */
+.contact-grid.ways .contact-card {
+  min-height: 0;
+  padding: 28px 26px 24px;
+}
+.contact-grid.ways .way-name {
+  margin: 0;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(24px, 2.3vw, 30px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.contact-grid.ways .way-line {
+  margin: 10px 0 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.contact-grid.ways .way-desc {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.contact-grid.ways .contact-card strong {
+  padding-top: 28px;
+  font-size: 13px;
+}
+
 /* Cards drawn with the page's own dashed rule on all four sides: 4px dash,
    4px gap, as a background so the browser cannot pick its own rhythm. */
 .minimal .contact-grid.dashed .contact-card,
