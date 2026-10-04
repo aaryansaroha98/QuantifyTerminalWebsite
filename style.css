@@ -1900,43 +1900,6 @@ ul.terminal-list {
   background: rgba(30, 30, 28, 0.95);
 }
 
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-.js .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 640ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 640ms cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Blog content must be available immediately, including long articles on mobile. */
-.js .blog-page .reveal,
-.js .blog-page .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-  transition: none;
-  will-change: auto;
-}
-
-/* The homepage shows itself whole: no section slides in as it is scrolled to. */
-.js main.hero-solo .reveal,
-.js main.hero-solo .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-  transition: none;
-  will-change: auto;
-}
-
 .image-card {
   transition: none;
 }
@@ -2080,12 +2043,6 @@ ul.terminal-list {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .js .reveal,
-  .js .reveal.is-visible {
-    opacity: 1 !important;
-    transform: none !important;
   }
 
   *,

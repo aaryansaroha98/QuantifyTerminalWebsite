@@ -14,34 +14,7 @@
 
   
 
-  function setupReveal() {
-    var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
-    if (!items.length) return;
 
-    if (!("IntersectionObserver" in window)) {
-      items.forEach(function (item) {
-        item.classList.add("is-visible");
-      });
-      return;
-    }
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
-    );
-
-    items.forEach(function (item, index) {
-      item.style.transitionDelay = Math.min(index * 38, 190) + "ms";
-      observer.observe(item);
-    });
-  }
 
   function setupLightbox() {
     var images = Array.prototype.slice.call(
@@ -1186,7 +1159,6 @@
     setupHeader();
     setupDocsNav();
     setupMenu();
-    setupReveal();
     setupHeroTitle();
     setupLightbox();
     setupDownloadButtons();
