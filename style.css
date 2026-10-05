@@ -6435,6 +6435,15 @@ a.benefit-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 /* The wordmark is set in Poppins, self-hosted and used for nothing else, so
    the logo reads the same as the brand artwork. The full stop carries the
    colour of the early-access strip above the header. */
+/* Space Grotesk, self-hosted (variable weight) so no visitor's address is sent to a font
+   service before they have chosen anything. */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/Public/fonts/space-grotesk-latin-wght.woff2") format("woff2");
+}
 @font-face {
   font-family: "Poppins";
   font-style: normal;

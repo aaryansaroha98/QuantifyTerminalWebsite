@@ -13,13 +13,17 @@
 
   var KEY = "qt-consent";
   var VERSION = 1;
+  var MAX_AGE_MS = 183 * 24 * 60 * 60 * 1000;
 
   function readChoice() {
     try {
       var raw = window.localStorage.getItem(KEY);
       if (!raw) return null;
       var parsed = JSON.parse(raw);
-      return parsed && parsed.v === VERSION ? parsed : null;
+      if (!parsed || parsed.v !== VERSION) return null;
+      /* A choice is kept six months, then asked again. */
+      var age = Date.now() - Date.parse(parsed.at);
+      return age >= 0 && age < MAX_AGE_MS ? parsed : null;
     } catch (e) {
       return null;
     }
@@ -39,12 +43,11 @@
   var analyticsLoaded = false;
 
   /* Google Analytics is not on the page until it is accepted: no request goes to Google
-     before then. It loads with IP anonymisation on and Google signals and ad
-     personalisation off; advertising storage is never granted. */
+     before then. It loads with Google signals and ad personalisation off; advertising
+     storage is never granted. */
   function loadAnalytics() {
     window["ga-disable-" + ANALYTICS_ID] = false;
     var settings = {
-      anonymize_ip: true,
       allow_google_signals: false,
       allow_ad_personalization_signals: false
     };
@@ -128,6 +131,7 @@
     ".qtc-x:hover{color:#fff;background:#1b1b1b}",
     ".qtc-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}",
     ".qtc-end{display:flex;flex-wrap:wrap;gap:10px}",
+    ".qtc-row.qtc-row-end{justify-content:flex-end;gap:10px}",
     ".qtc-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;",
     "border:1px solid #fff;border-radius:999px;background:#fff;color:#0b0b0b;font:inherit;font-size:15px;",
     "font-weight:550;letter-spacing:0;line-height:1;cursor:pointer;white-space:nowrap}",
@@ -154,42 +158,47 @@
     ".qtc-switch input:checked+span::after{left:23px;background:#0b0b0b}",
     "@media (max-width:560px){.qtc{right:12px;bottom:12px;width:calc(100vw - 24px);padding:20px 18px 18px;font-size:14px}",
     ".qtc-row{flex-direction:column-reverse;align-items:stretch}.qtc-end{display:grid;grid-template-columns:1fr 1fr}",
-    ".qtc-btn{width:100%;padding:0 14px;font-size:14px}}",
+    ".qtc-btn{width:100%;padding:0 14px;font-size:14px}",
+    ".qtc-row.qtc-row-end{display:grid;grid-template-columns:1fr 1fr}.qtc-row-end .qtc-btn:first-child{grid-column:1/-1;order:3}}",
     "@media print{.qtc{display:none}}"
   ].join("");
 
-  var LINKS = 'Learn more in our <a href="/privacy#cookies">Privacy Policy</a> and <a href="/terms">Terms of Use</a>.';
+  var POLICY = '<a href="/privacy#cookies">Privacy Policy</a>';
 
   var NOTICE =
-    '<button type="button" class="qtc-x" data-qtc="close" aria-label="Close and reject optional cookies">&times;</button>' +
-    '<p class="qtc-text">This site works without cookies. Optional analytics cookies from Google Analytics show us ' +
-    "which pages are read &mdash; accept or reject them, or choose in settings. " + LINKS + "</p>" +
+    '<button type="button" class="qtc-x" data-qtc="close" aria-label="Close and reject analytics">&times;</button>' +
+    '<p class="qtc-text">Nothing on this site needs cookies. If you allow it, Google Analytics sets cookies ' +
+    "that show us which pages are read. Google processes the data, including in the US. Closing this " +
+    "message rejects them; change your mind any time in Cookie settings. " + POLICY + ".</p>" +
     '<div class="qtc-row">' +
     '<button type="button" class="qtc-btn ghost" data-qtc="settings">Cookie settings</button>' +
     '<div class="qtc-end">' +
-    '<button type="button" class="qtc-btn" data-qtc="reject">Reject all</button>' +
-    '<button type="button" class="qtc-btn" data-qtc="accept">Accept all cookies</button>' +
+    '<button type="button" class="qtc-btn" data-qtc="reject">Reject analytics</button>' +
+    '<button type="button" class="qtc-btn" data-qtc="accept">Accept analytics</button>' +
     "</div></div>";
 
   function settingsHTML(analyticsOn) {
     return (
-      '<button type="button" class="qtc-x" data-qtc="close" aria-label="Close without changing">&times;</button>' +
+      '<button type="button" class="qtc-x" data-qtc="close" aria-label="Close">&times;</button>' +
       '<p class="qtc-title" id="qtc-title">Cookie settings</p>' +
-      '<p class="qtc-text">Choose which cookies this site may set in your browser. ' + LINKS + "</p>" +
+      '<p class="qtc-text">One optional service runs on this site. Your answer is kept in this browser for ' +
+      "six months; change it here any time. " + POLICY + ".</p>" +
       '<ul class="qtc-list">' +
-      "<li><div><b>Strictly necessary</b><small>Remembers the choice you make here, in your own browser. " +
-      "Nothing is sent anywhere.</small></div><span class=\"qtc-always\">Always on</span></li>" +
-      "<li><div><b>Analytics</b><small>Google Analytics: which pages are visited and for how long. Sets the " +
-      "<code>_ga</code> cookies.</small></div>" +
+      "<li><div><b>Your choice</b><small>Remembers your answer so we do not ask on every page. Saved in " +
+      "your browser&rsquo;s local storage, not a cookie, and never sent to us or anyone else. Kept six " +
+      "months.</small></div><span class=\"qtc-always\">Always on</span></li>" +
+      "<li><div><b>Analytics</b><small>Which pages are visited, for how long, and where visitors come " +
+      "from: a random ID, the pages, the referring site, browser, device type and approximate country. " +
+      "Provider: Google LLC. Cookies: <code>_ga</code> and <code>_ga_DLHEB50F0J</code>, kept two " +
+      "years.</small></div>" +
       '<label class="qtc-switch"><input type="checkbox" data-qtc="analytics" aria-label="Analytics cookies"' +
       (analyticsOn ? " checked" : "") + "><span></span></label></li>" +
       "</ul>" +
-      '<div class="qtc-row">' +
-      '<button type="button" class="qtc-btn ghost" data-qtc="reject">Reject all</button>' +
-      '<div class="qtc-end">' +
+      '<div class="qtc-row qtc-row-end">' +
+      '<button type="button" class="qtc-btn" data-qtc="reject">Reject all</button>' +
       '<button type="button" class="qtc-btn" data-qtc="save">Save choices</button>' +
       '<button type="button" class="qtc-btn" data-qtc="accept">Accept all</button>' +
-      "</div></div>"
+      "</div>"
     );
   }
 
