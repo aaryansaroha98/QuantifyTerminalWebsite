@@ -6,9 +6,12 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    try { var qtc = JSON.parse(localStorage.getItem('qt-consent') || 'null'); if (qtc && qtc.v === 1 && qtc.analytics) gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-DLHEB50F0J');
   </script>
+  <script src="/consent.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Privacy Policy | Quantify Terminal</title>
@@ -110,7 +113,7 @@
           <h2>3. Communication</h2>
           <p>When you email us or reach out through our official channels, we use your contact details solely to reply and assist you. We may keep a record of correspondence for support and quality purposes.</p>
 
-          <h2>4. Cookies and analytics</h2>
+          <h2 id="cookies">4. Cookies and analytics</h2>
           <p>This website may use minimal cookies or privacy-respecting analytics to understand aggregate traffic and improve the experience. These do not personally identify you and can be controlled through your browser settings.</p>
 
           <h2>5. Data security</h2>
@@ -175,6 +178,7 @@
             <li><a href="/data-rights">Data rights</a></li>
             <li><a href="/privacy" aria-current="page">Privacy</a></li>
             <li><a href="/terms">Terms</a></li>
+            <li><a href="#cookie-settings" data-cookie-settings>Cookie settings</a></li>
           </ul>
         </div>
       </nav>

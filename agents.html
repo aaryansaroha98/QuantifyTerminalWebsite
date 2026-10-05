@@ -6,9 +6,12 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    try { var qtc = JSON.parse(localStorage.getItem('qt-consent') || 'null'); if (qtc && qtc.v === 1 && qtc.analytics) gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-DLHEB50F0J');
   </script>
+  <script src="/consent.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Agent access: MCP server, Python SDK, API and spreadsheets | Quantify Terminal</title>
@@ -288,6 +291,7 @@
             <li><a href="/data-rights">Data rights</a></li>
             <li><a href="/privacy">Privacy</a></li>
             <li><a href="/terms">Terms</a></li>
+            <li><a href="#cookie-settings" data-cookie-settings>Cookie settings</a></li>
           </ul>
         </div>
       </nav>

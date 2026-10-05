@@ -1,0 +1,236 @@
+/* Cookie consent for quantifyterminal.com.
+ *
+ * The site works without cookies. The only optional ones are Google Analytics', and they are
+ * not set until a visitor accepts them: every page's <head> declares analytics storage
+ * denied (Google Consent Mode v2) before the tag is configured, and restores a choice already
+ * made before the first hit. This file asks the question, records the answer in the browser,
+ * updates the tag, and removes Analytics' cookies when they are refused.
+ *
+ * The choice lives in localStorage under qt-consent as {"v":1,"analytics":bool,"at":ISO}. A
+ * "Cookie settings" link anywhere on a page (data-cookie-settings) reopens the choice.
+ */
+(function () {
+  "use strict";
+
+  var KEY = "qt-consent";
+  var VERSION = 1;
+
+  function readChoice() {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      return parsed && parsed.v === VERSION ? parsed : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveChoice(analytics) {
+    var choice = { v: VERSION, analytics: !!analytics, at: new Date().toISOString() };
+    try {
+      window.localStorage.setItem(KEY, JSON.stringify(choice));
+    } catch (e) {
+      /* Private windows can refuse storage; the choice still applies to this page. */
+    }
+    return choice;
+  }
+
+  function gtagSafe() {
+    if (typeof window.gtag === "function") window.gtag.apply(null, arguments);
+  }
+
+  function clearAnalyticsCookies() {
+    var host = window.location.hostname;
+    var domains = ["", host, "." + host.replace(/^www\./, "")];
+    document.cookie.split(";").forEach(function (pair) {
+      var name = pair.split("=")[0].trim();
+      if (name.indexOf("_ga") !== 0 && name.indexOf("_gid") !== 0) return;
+      domains.forEach(function (domain) {
+        document.cookie = name + "=; Max-Age=0; path=/" + (domain ? "; domain=" + domain : "");
+      });
+    });
+  }
+
+  function apply(choice) {
+    gtagSafe("consent", "update", {
+      analytics_storage: choice.analytics ? "granted" : "denied"
+    });
+    if (!choice.analytics) clearAnalyticsCookies();
+  }
+
+  var CSS = [
+    ".qtc{position:fixed;right:24px;bottom:24px;z-index:2147483000;box-sizing:border-box;width:min(560px,calc(100vw - 48px));",
+    "padding:24px 26px 22px;border:1px solid #2b2b2b;border-radius:16px;background:#0b0b0b;color:#a3a3a3;",
+    "font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Inter,Arial,sans-serif;",
+    "font-size:15px;line-height:1.6;box-shadow:0 18px 48px rgba(0,0,0,.28);-webkit-font-smoothing:antialiased}",
+    ".qtc[hidden]{display:none}",
+    ".qtc *{box-sizing:border-box}",
+    ".qtc p{color:#a3a3a3;font-size:inherit;line-height:1.6}.qtc .qtc-text{margin:0;padding-right:28px}",
+    ".qtc a{color:#fff !important;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}",
+    ".qtc a:hover{text-decoration-thickness:2px}",
+    ".qtc-x{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;justify-content:center;",
+    "width:32px;height:32px;padding:0;border:0;border-radius:50%;background:transparent;color:#8a8a8a;font:inherit;",
+    "font-size:20px;line-height:1;cursor:pointer}",
+    ".qtc-x:hover{color:#fff;background:#1b1b1b}",
+    ".qtc-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}",
+    ".qtc-end{display:flex;flex-wrap:wrap;gap:10px}",
+    ".qtc-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;",
+    "border:1px solid #fff;border-radius:999px;background:#fff;color:#0b0b0b;font:inherit;font-size:15px;",
+    "font-weight:550;letter-spacing:0;line-height:1;cursor:pointer;white-space:nowrap}",
+    ".qtc-btn:hover{background:#e6e6e6;border-color:#e6e6e6}",
+    ".qtc-btn.ghost{border-color:#3a3a3a;background:transparent;color:#fff}",
+    ".qtc-btn.ghost:hover{border-color:#fff;background:transparent}",
+    ".qtc-btn:focus-visible,.qtc-x:focus-visible,.qtc a:focus-visible,.qtc-switch input:focus-visible+span{",
+    "outline:2px solid #9810fa;outline-offset:3px}",
+    ".qtc .qtc-title{margin:0 0 4px;color:#fff;font-size:17px;font-weight:600;line-height:1.3;padding-right:28px}",
+    ".qtc-list{list-style:none;margin:14px 0 0;padding:0}",
+    ".qtc-list li{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:14px 0;",
+    "border-top:1px solid #222}",
+    ".qtc-list li:last-child{border-bottom:1px solid #222}",
+    ".qtc .qtc-list b{display:block;color:#fff;font-weight:600}",
+    ".qtc .qtc-list small{display:block;margin-top:2px;color:#9a9a9a;font-size:13.5px;line-height:1.5}",
+    ".qtc-always{flex:0 0 auto;padding-top:2px;color:#fff;font-size:13px;font-weight:600;white-space:nowrap}",
+    ".qtc-switch{position:relative;flex:0 0 auto;display:inline-block;width:46px;height:26px;margin-top:2px}",
+    ".qtc-switch input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}",
+    ".qtc-switch span{position:absolute;inset:0;border:1px solid #3a3a3a;border-radius:999px;background:#1b1b1b;",
+    "pointer-events:none}",
+    ".qtc-switch span::after{content:\"\";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;",
+    "background:#8a8a8a}",
+    ".qtc-switch input:checked+span{border-color:#fff;background:#fff}",
+    ".qtc-switch input:checked+span::after{left:23px;background:#0b0b0b}",
+    "@media (max-width:560px){.qtc{right:12px;bottom:12px;width:calc(100vw - 24px);padding:20px 18px 18px;font-size:14px}",
+    ".qtc-row{flex-direction:column-reverse;align-items:stretch}.qtc-end{display:grid;grid-template-columns:1fr 1fr}",
+    ".qtc-btn{width:100%;padding:0 14px;font-size:14px}}",
+    "@media print{.qtc{display:none}}"
+  ].join("");
+
+  var LINKS = 'Learn more in our <a href="/privacy#cookies">Privacy Policy</a> and <a href="/terms">Terms of Use</a>.';
+
+  var NOTICE =
+    '<button type="button" class="qtc-x" data-qtc="close" aria-label="Close and reject optional cookies">&times;</button>' +
+    '<p class="qtc-text">This site works without cookies. Optional analytics cookies from Google Analytics show us ' +
+    "which pages are read &mdash; accept or reject them, or choose in settings. " + LINKS + "</p>" +
+    '<div class="qtc-row">' +
+    '<button type="button" class="qtc-btn ghost" data-qtc="settings">Cookie settings</button>' +
+    '<div class="qtc-end">' +
+    '<button type="button" class="qtc-btn" data-qtc="reject">Reject all</button>' +
+    '<button type="button" class="qtc-btn" data-qtc="accept">Accept all cookies</button>' +
+    "</div></div>";
+
+  function settingsHTML(analyticsOn) {
+    return (
+      '<button type="button" class="qtc-x" data-qtc="close" aria-label="Close without changing">&times;</button>' +
+      '<p class="qtc-title" id="qtc-title">Cookie settings</p>' +
+      '<p class="qtc-text">Choose which cookies this site may set in your browser. ' + LINKS + "</p>" +
+      '<ul class="qtc-list">' +
+      "<li><div><b>Strictly necessary</b><small>Remembers the choice you make here, in your own browser. " +
+      "Nothing is sent anywhere.</small></div><span class=\"qtc-always\">Always on</span></li>" +
+      "<li><div><b>Analytics</b><small>Google Analytics: which pages are visited and for how long. Sets the " +
+      "<code>_ga</code> cookies.</small></div>" +
+      '<label class="qtc-switch"><input type="checkbox" data-qtc="analytics" aria-label="Analytics cookies"' +
+      (analyticsOn ? " checked" : "") + "><span></span></label></li>" +
+      "</ul>" +
+      '<div class="qtc-row">' +
+      '<button type="button" class="qtc-btn ghost" data-qtc="reject">Reject all</button>' +
+      '<div class="qtc-end">' +
+      '<button type="button" class="qtc-btn" data-qtc="save">Save choices</button>' +
+      '<button type="button" class="qtc-btn" data-qtc="accept">Accept all</button>' +
+      "</div></div>"
+    );
+  }
+
+  var box = null;
+  var mode = "notice";
+
+  function ensureBox() {
+    if (box) return box;
+    var style = document.createElement("style");
+    style.textContent = CSS;
+    document.head.appendChild(style);
+    box = document.createElement("div");
+    box.className = "qtc";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-live", "polite");
+    box.hidden = true;
+    box.addEventListener("click", onClick);
+    box.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") onAction("close");
+    });
+    document.body.appendChild(box);
+    return box;
+  }
+
+  function show(view) {
+    ensureBox();
+    mode = view;
+    var current = readChoice();
+    if (view === "settings") {
+      box.innerHTML = settingsHTML(current ? current.analytics : false);
+      box.setAttribute("aria-labelledby", "qtc-title");
+      box.removeAttribute("aria-label");
+    } else {
+      box.innerHTML = NOTICE;
+      box.removeAttribute("aria-labelledby");
+      box.setAttribute("aria-label", "Cookie consent");
+    }
+    box.hidden = false;
+  }
+
+  function hide() {
+    if (box) box.hidden = true;
+  }
+
+  function decide(analytics) {
+    apply(saveChoice(analytics));
+    hide();
+  }
+
+  function onAction(action) {
+    if (action === "accept") return decide(true);
+    if (action === "reject") return decide(false);
+    if (action === "settings") {
+      show("settings");
+      var first = box.querySelector("[data-qtc='analytics']");
+      if (first) first.focus();
+      return;
+    }
+    if (action === "save") {
+      var toggle = box.querySelector("[data-qtc='analytics']");
+      return decide(!!(toggle && toggle.checked));
+    }
+    if (action === "close") {
+      /* Closing the first notice is a refusal; closing settings after a choice keeps it. */
+      if (mode === "notice" || !readChoice()) return decide(false);
+      return hide();
+    }
+  }
+
+  function onClick(event) {
+    var target = event.target.closest ? event.target.closest("[data-qtc]") : null;
+    if (!target || target.getAttribute("data-qtc") === "analytics") return;
+    event.preventDefault();
+    onAction(target.getAttribute("data-qtc"));
+  }
+
+  function init() {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest ? event.target.closest("[data-cookie-settings]") : null;
+      if (!link) return;
+      event.preventDefault();
+      show("settings");
+    });
+    var choice = readChoice();
+    if (choice) {
+      if (!choice.analytics) clearAnalyticsCookies();
+      return;
+    }
+    show("notice");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
