@@ -1,10 +1,9 @@
 /* Cookie consent for quantifyterminal.com.
  *
- * The site works without cookies. The only optional ones are Google Analytics', and they are
- * not set until a visitor accepts them: every page's <head> declares analytics storage
- * denied (Google Consent Mode v2) before the tag is configured, and restores a choice already
- * made before the first hit. This file asks the question, records the answer in the browser,
- * updates the tag, and removes Analytics' cookies when they are refused.
+ * The site works without cookies. The only optional ones are Google Analytics', and no page
+ * carries the Google tag by itself: this file asks the question, records the answer in the
+ * browser, and adds the tag only once Analytics is accepted, so nothing is requested from
+ * Google before then. Refusing switches it off and removes its cookies.
  *
  * The choice lives in localStorage under qt-consent as {"v":1,"analytics":bool,"at":ISO}. A
  * "Cookie settings" link anywhere on a page (data-cookie-settings) reopens the choice.
@@ -36,27 +35,81 @@
     return choice;
   }
 
-  function gtagSafe() {
-    if (typeof window.gtag === "function") window.gtag.apply(null, arguments);
+  var ANALYTICS_ID = "G-DLHEB50F0J";
+  var analyticsLoaded = false;
+
+  /* Google Analytics is not on the page until it is accepted: no request goes to Google
+     before then. It loads with IP anonymisation on and Google signals and ad
+     personalisation off; advertising storage is never granted. */
+  function loadAnalytics() {
+    window["ga-disable-" + ANALYTICS_ID] = false;
+    var settings = {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    };
+    if (analyticsLoaded) {
+      window.gtag("consent", "update", { analytics_storage: "granted" });
+      window.gtag("config", ANALYTICS_ID, settings);
+      return;
+    }
+    analyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "granted"
+    });
+    window.gtag("js", new Date());
+    window.gtag("config", ANALYTICS_ID, settings);
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + ANALYTICS_ID;
+    document.head.appendChild(script);
   }
 
+  /* Remove Analytics' cookies (_ga, _ga_<id>, and the older _gid/_gat) from this host and
+     every parent domain they may have been written to. */
   function clearAnalyticsCookies() {
-    var host = window.location.hostname;
-    var domains = ["", host, "." + host.replace(/^www\./, "")];
-    document.cookie.split(";").forEach(function (pair) {
-      var name = pair.split("=")[0].trim();
-      if (name.indexOf("_ga") !== 0 && name.indexOf("_gid") !== 0) return;
-      domains.forEach(function (domain) {
-        document.cookie = name + "=; Max-Age=0; path=/" + (domain ? "; domain=" + domain : "");
+    var names = document.cookie.split(";").map(function (part) {
+      return part.split("=")[0].trim();
+    }).filter(function (name) {
+      return /^_ga(_|$)|^_gid$|^_gat/.test(name);
+    });
+    if (!names.length) return;
+    var labels = window.location.hostname.split(".");
+    var scopes = [""];
+    for (var i = 0; i < labels.length - 1; i++) {
+      var domain = labels.slice(i).join(".");
+      scopes.push("; domain=" + domain, "; domain=." + domain);
+    }
+    names.forEach(function (name) {
+      scopes.forEach(function (scope) {
+        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + scope;
       });
     });
   }
 
+  function stopAnalytics() {
+    window["ga-disable-" + ANALYTICS_ID] = true;
+    if (analyticsLoaded && typeof window.gtag === "function") {
+      window.gtag("consent", "update", { analytics_storage: "denied" });
+    }
+    clearAnalyticsCookies();
+  }
+
   function apply(choice) {
-    gtagSafe("consent", "update", {
-      analytics_storage: choice.analytics ? "granted" : "denied"
-    });
-    if (!choice.analytics) clearAnalyticsCookies();
+    if (choice.analytics) loadAnalytics();
+    else stopAnalytics();
+  }
+
+  /* A page that must never load analytics or store anything says so in its head with
+     <meta name="qt-analytics" content="never">; nothing here runs on it. */
+  function analyticsNever() {
+    var meta = document.querySelector('meta[name="qt-analytics"]');
+    return !!meta && String(meta.getAttribute("content") || "").trim() === "never";
   }
 
   var CSS = [
@@ -214,6 +267,7 @@
   }
 
   function init() {
+    if (analyticsNever()) return;
     document.addEventListener("click", function (event) {
       var link = event.target.closest ? event.target.closest("[data-cookie-settings]") : null;
       if (!link) return;
@@ -222,7 +276,7 @@
     });
     var choice = readChoice();
     if (choice) {
-      if (!choice.analytics) clearAnalyticsCookies();
+      apply(choice);
       return;
     }
     show("notice");
